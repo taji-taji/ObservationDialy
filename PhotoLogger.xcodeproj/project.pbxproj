@@ -7,14 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		931165BF1BD6459400F1D32D /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		931165C11BD6468D00F1D32D /* PhotoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931165C01BD6468D00F1D32D /* PhotoTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		932D92261BD855CC007AEBF0 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932D92251BD855CC007AEBF0 /* Data.swift */; settings = {ASSET_TAGS = (); }; };
+		932D92291BD8ABF3007AEBF0 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932D92281BD8ABF3007AEBF0 /* Realm.framework */; };
+		932D922A1BD8ABF3007AEBF0 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 932D92281BD8ABF3007AEBF0 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		932D922D1BD8ABFA007AEBF0 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 932D922C1BD8ABFA007AEBF0 /* RealmSwift.framework */; };
+		932D922E1BD8ABFA007AEBF0 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 932D922C1BD8ABFA007AEBF0 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9359960E1BD5AB8C0047EE9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359960D1BD5AB8C0047EE9F /* AppDelegate.swift */; };
 		935996101BD5AB8C0047EE9F /* TargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359960F1BD5AB8C0047EE9F /* TargetViewController.swift */; };
 		935996131BD5AB8C0047EE9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 935996111BD5AB8C0047EE9F /* Main.storyboard */; };
 		935996151BD5AB8C0047EE9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 935996141BD5AB8C0047EE9F /* Assets.xcassets */; };
 		935996181BD5AB8C0047EE9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 935996161BD5AB8C0047EE9F /* LaunchScreen.storyboard */; };
 		935996231BD5AB8D0047EE9F /* PhotoLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935996221BD5AB8D0047EE9F /* PhotoLoggerTests.swift */; };
-		9359962E1BD5E8140047EE9F /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359962D1BD5E8140047EE9F /* Target.swift */; settings = {ASSET_TAGS = (); }; };
-		935996301BD5EAE60047EE9F /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359962F1BD5EAE60047EE9F /* Photo.swift */; settings = {ASSET_TAGS = (); }; };
+		9359962E1BD5E8140047EE9F /* TargetStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359962D1BD5E8140047EE9F /* TargetStorage.swift */; settings = {ASSET_TAGS = (); }; };
 		935996321BD5EDC20047EE9F /* TargetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		935996341BD5F5A80047EE9F /* TargetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935996331BD5F5A80047EE9F /* TargetTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -29,7 +35,27 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		932D922B1BD8ABF4007AEBF0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				932D922E1BD8ABFA007AEBF0 /* RealmSwift.framework in Embed Frameworks */,
+				932D922A1BD8ABF3007AEBF0 /* Realm.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
+		931165C01BD6468D00F1D32D /* PhotoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewController.swift; sourceTree = "<group>"; };
+		932D92251BD855CC007AEBF0 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		932D92281BD8ABF3007AEBF0 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		932D922C1BD8ABFA007AEBF0 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		9359960A1BD5AB8C0047EE9F /* PhotoLogger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoLogger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9359960D1BD5AB8C0047EE9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9359960F1BD5AB8C0047EE9F /* TargetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetViewController.swift; sourceTree = "<group>"; };
@@ -40,8 +66,7 @@
 		9359961E1BD5AB8D0047EE9F /* PhotoLoggerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoLoggerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		935996221BD5AB8D0047EE9F /* PhotoLoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLoggerTests.swift; sourceTree = "<group>"; };
 		935996241BD5AB8D0047EE9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9359962D1BD5E8140047EE9F /* Target.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
-		9359962F1BD5EAE60047EE9F /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		9359962D1BD5E8140047EE9F /* TargetStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetStorage.swift; sourceTree = "<group>"; };
 		935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetTableViewCell.swift; sourceTree = "<group>"; };
 		935996331BD5F5A80047EE9F /* TargetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -51,6 +76,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				932D922D1BD8ABFA007AEBF0 /* RealmSwift.framework in Frameworks */,
+				932D92291BD8ABF3007AEBF0 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +94,8 @@
 		935996011BD5AB8C0047EE9F = {
 			isa = PBXGroup;
 			children = (
+				932D922C1BD8ABFA007AEBF0 /* RealmSwift.framework */,
+				932D92281BD8ABF3007AEBF0 /* Realm.framework */,
 				9359960C1BD5AB8C0047EE9F /* PhotoLogger */,
 				935996211BD5AB8D0047EE9F /* PhotoLoggerTests */,
 				9359960B1BD5AB8C0047EE9F /* Products */,
@@ -89,9 +118,11 @@
 				9359960F1BD5AB8C0047EE9F /* TargetViewController.swift */,
 				935996111BD5AB8C0047EE9F /* Main.storyboard */,
 				935996331BD5F5A80047EE9F /* TargetTableViewController.swift */,
+				931165C01BD6468D00F1D32D /* PhotoTableViewController.swift */,
 				935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */,
-				9359962D1BD5E8140047EE9F /* Target.swift */,
-				9359962F1BD5EAE60047EE9F /* Photo.swift */,
+				931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */,
+				9359962D1BD5E8140047EE9F /* TargetStorage.swift */,
+				932D92251BD855CC007AEBF0 /* Data.swift */,
 				935996141BD5AB8C0047EE9F /* Assets.xcassets */,
 				935996161BD5AB8C0047EE9F /* LaunchScreen.storyboard */,
 				935996191BD5AB8C0047EE9F /* Info.plist */,
@@ -118,6 +149,7 @@
 				935996061BD5AB8C0047EE9F /* Sources */,
 				935996071BD5AB8C0047EE9F /* Frameworks */,
 				935996081BD5AB8C0047EE9F /* Resources */,
+				932D922B1BD8ABF4007AEBF0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -157,6 +189,7 @@
 				TargetAttributes = {
 					935996091BD5AB8C0047EE9F = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = XP3HKSZM33;
 					};
 					9359961D1BD5AB8D0047EE9F = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -208,9 +241,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				935996301BD5EAE60047EE9F /* Photo.swift in Sources */,
-				9359962E1BD5E8140047EE9F /* Target.swift in Sources */,
+				931165BF1BD6459400F1D32D /* PhotoTableViewCell.swift in Sources */,
+				931165C11BD6468D00F1D32D /* PhotoTableViewController.swift in Sources */,
+				9359962E1BD5E8140047EE9F /* TargetStorage.swift in Sources */,
 				935996341BD5F5A80047EE9F /* TargetTableViewController.swift in Sources */,
+				932D92261BD855CC007AEBF0 /* Data.swift in Sources */,
 				935996321BD5EDC20047EE9F /* TargetTableViewCell.swift in Sources */,
 				935996101BD5AB8C0047EE9F /* TargetViewController.swift in Sources */,
 				9359960E1BD5AB8C0047EE9F /* AppDelegate.swift in Sources */,
@@ -342,10 +377,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = PhotoLogger/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.engideer.PhotoLogger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -353,10 +395,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = PhotoLogger/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.engideer.PhotoLogger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

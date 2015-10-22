@@ -8,15 +8,24 @@
 
 import UIKit
 
-class TargetViewController: UIViewController, UITextFieldDelegate {
+class TargetViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
     
     // MARK: Properties
     @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var targetSaveButton: UIBarButtonItem!
+
+    /*
+    This value is either passed by `MealTableViewController` in `prepareForSegue(_:sender:)`
+    or constructed as part of adding a new meal.
+    */
+    var target: TargetData?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         titleTextField.delegate = self;
+        
+        checkValidTargetTitle()
     }
     
     // MARK: UITextFieldDelegate
@@ -26,8 +35,39 @@ class TargetViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    func textFieldDidBeginEditing(textField: UITextField) {
+        // 入力中のsaveボタンを使用不可にする
+        targetSaveButton.enabled = false
+    }
+    
+    func checkValidTargetTitle() {
+        let text = titleTextField.text ?? ""
+        targetSaveButton.enabled = !text.isEmpty
+    }
+
     func textFieldDidEndEditing(textField: UITextField) {
-        
+        checkValidTargetTitle()
+    }
+    
+    // MARK: Navigation
+    @IBAction func targetCancel(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if targetSaveButton === sender {
+            let now = NSDate()
+            let formatter = NSDateFormatter()
+            formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+
+            let title = titleTextField.text ?? ""
+            let created = formatter.stringFromDate(now)
+            
+            target = TargetData()
+            target?.title = title
+            target?.created = created
+            TargetStorage().add(target!)
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -11,7 +11,8 @@ import UIKit
 class TargetTableViewController: UITableViewController {
     
     // MARK: Properties
-    var targets = [Target]()
+    //var targets = [TargetData]()
+    var targets = TargetStorage().findAll()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +22,6 @@ class TargetTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        // テスト
-        let target1 = Target(title: "test", photos: nil, created: "2015/10/20")!
-        let target2 = Target(title: "test2", photos: nil, created: "2015/10/19")!
-        targets += [target1, target2]
     }
 
     override func didReceiveMemoryWarning() {
@@ -101,4 +97,16 @@ class TargetTableViewController: UITableViewController {
     }
     */
 
+    @IBAction func unwindToTargetList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.sourceViewController as? TargetViewController, target = sourceViewController.target {
+            // targetの追加
+            // 0番目のindexPath
+            let newIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+            // 0番目のindexPathに新規targetが来るように配列の0番目に追加
+            targets.insert(target, atIndex: 0)
+            
+            // テーブルに挿入
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Top)
+        }
+    }
 }
