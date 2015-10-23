@@ -21,6 +21,7 @@
 		9359962E1BD5E8140047EE9F /* TargetStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359962D1BD5E8140047EE9F /* TargetStorage.swift */; };
 		935996321BD5EDC20047EE9F /* TargetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */; };
 		935996341BD5F5A80047EE9F /* TargetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935996331BD5F5A80047EE9F /* TargetTableViewController.swift */; };
+		93C7FD9F1BDA647200AC1A3D /* PhotoStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FD9E1BDA647200AC1A3D /* PhotoStorage.swift */; };
 		9B237546C96723C1FD1B6A24 /* Pods_PhotoLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87AB316AE548E70671C965DA /* Pods_PhotoLogger.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		9359962D1BD5E8140047EE9F /* TargetStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetStorage.swift; sourceTree = "<group>"; };
 		935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetTableViewCell.swift; sourceTree = "<group>"; };
 		935996331BD5F5A80047EE9F /* TargetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetTableViewController.swift; sourceTree = "<group>"; };
+		93C7FD9E1BDA647200AC1A3D /* PhotoStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoStorage.swift; sourceTree = "<group>"; };
 		DC840323EFBAEABBAEAD193C /* Pods-PhotoLoggerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoLoggerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoLoggerTests/Pods-PhotoLoggerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +136,7 @@
 				935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */,
 				931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */,
 				9359962D1BD5E8140047EE9F /* TargetStorage.swift */,
+				93C7FD9E1BDA647200AC1A3D /* PhotoStorage.swift */,
 				932D92251BD855CC007AEBF0 /* Data.swift */,
 				935996141BD5AB8C0047EE9F /* Assets.xcassets */,
 				935996161BD5AB8C0047EE9F /* LaunchScreen.storyboard */,
@@ -364,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93C7FD9F1BDA647200AC1A3D /* PhotoStorage.swift in Sources */,
 				931165BF1BD6459400F1D32D /* PhotoTableViewCell.swift in Sources */,
 				931165C11BD6468D00F1D32D /* PhotoTableViewController.swift in Sources */,
 				9359962E1BD5E8140047EE9F /* TargetStorage.swift in Sources */,

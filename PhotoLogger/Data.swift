@@ -31,6 +31,9 @@ class PhotoData: Object {
     dynamic var comment: String = ""
     dynamic var photo: AnyObject = UIImage()
     dynamic var created: String = ""
+    var target: [TargetData] {
+        return linkingObjects(TargetData.self, forProperty: "photos")
+    }
     
     override static func primaryKey() -> String? {
         return "id"

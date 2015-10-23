@@ -11,11 +11,14 @@ import UIKit
 class PhotoTableViewController: UITableViewController {
 
     // MARK: Properties
-    var photos = [PhotoData]()
+    var target: TargetData?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let target = target {
+            navigationItem.title = target.title
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,23 +30,26 @@ class PhotoTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return (target?.photos)!.count
     }
 
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> 
+        UITableViewCell {
+            let cellIdentifier = "PhotoTableViewCell"
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! PhotoTableViewCell
+            
+            let photoData = target?.photos[indexPath.row]
+            
+            cell.photoImage = photoData?.photo as! UIImageView
+            cell.createdLabel.text = target?.created
+            
+            return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
