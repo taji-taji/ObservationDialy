@@ -217,11 +217,13 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="xZb-bd-nzO">
                             <connections>
                                 <action selector="AddPhoto:" destination="b1G-HA-xKg" id="iq5-nR-La6"/>
-                                <segue destination="4xi-Aq-xdx" kind="presentation" id="ONV-Rl-8KB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="4xi-Aq-xdx" kind="show" identifier="AddPhotoSegue" id="jbL-fx-8fH"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ofl-du-Huq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -230,7 +232,7 @@
         <!--Photo View Controller-->
         <scene sceneID="ami-OU-IsG">
             <objects>
-                <viewController id="4xi-Aq-xdx" customClass="PhotoViewController" customModule="PhotoLogger" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoViewController" id="4xi-Aq-xdx" customClass="PhotoViewController" customModule="PhotoLogger" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="laX-7G-hcF"/>
                         <viewControllerLayoutGuide type="bottom" id="y8u-Kr-nMH"/>
@@ -239,27 +241,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pST-ge-6SY">
-                                <rect key="frame" x="20" y="37" width="560" height="558"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pST-ge-6SY">
+                                <rect key="frame" x="20" y="15" width="560" height="558"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" placeholderIntrinsicWidth="400" placeholderIntrinsicHeight="400" translatesAutoresizingMaskIntoConstraints="NO" id="Lwn-iF-XGz">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="400" placeholderIntrinsicHeight="400" translatesAutoresizingMaskIntoConstraints="NO" id="Lwn-iF-XGz">
                                         <rect key="frame" x="80" y="0.0" width="400" height="400"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="400" id="HbW-XF-HSp"/>
-                                            <constraint firstAttribute="height" constant="400" id="hnd-JF-p1b"/>
-                                        </constraints>
                                     </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" placeholderIntrinsicWidth="560" placeholderIntrinsicHeight="158" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YB4-8a-1Vn">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="560" placeholderIntrinsicHeight="158" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YB4-8a-1Vn">
                                         <rect key="frame" x="0.0" y="400" width="560" height="158"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="Lwn-iF-XGz" firstAttribute="top" secondItem="pST-ge-6SY" secondAttribute="topMargin" id="4pk-7v-Fka"/>
+                                    <constraint firstItem="YB4-8a-1Vn" firstAttribute="top" secondItem="Lwn-iF-XGz" secondAttribute="bottom" id="IlF-Ng-HVP"/>
+                                    <constraint firstItem="YB4-8a-1Vn" firstAttribute="trailing" secondItem="pST-ge-6SY" secondAttribute="trailingMargin" id="Rp0-GF-gfK"/>
+                                    <constraint firstItem="Lwn-iF-XGz" firstAttribute="top" secondItem="pST-ge-6SY" secondAttribute="top" id="aVb-SI-IaO"/>
+                                    <constraint firstItem="YB4-8a-1Vn" firstAttribute="leading" secondItem="pST-ge-6SY" secondAttribute="leadingMargin" id="ihF-bq-7hh"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pST-ge-6SY" firstAttribute="top" secondItem="oVa-rX-9tu" secondAttribute="topMargin" constant="15" id="Udt-aU-BWl"/>
+                            <constraint firstItem="pST-ge-6SY" firstAttribute="leading" secondItem="oVa-rX-9tu" secondAttribute="leadingMargin" id="nP6-bF-UEr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pST-ge-6SY" secondAttribute="trailing" id="ryF-C6-Het"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="YOT-d1-tqO"/>
                     <connections>
                         <outlet property="commentTextView" destination="YB4-8a-1Vn" id="cKK-Bz-UsT"/>
                         <outlet property="photoImageView" destination="Lwn-iF-XGz" id="MWW-Tk-yzM"/>
@@ -267,7 +278,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LBg-F0-uTs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1923" y="323"/>
+            <point key="canvasLocation" x="1961" y="323"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="D4l-07-aY5">

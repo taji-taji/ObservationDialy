@@ -11,11 +11,10 @@ import UIKit
 class TargetTableViewController: UITableViewController {
     
     // MARK: Properties
-    var targets = TargetStorage().findAll()
+    var targets = Storage().findAll(TargetData())
 
     override func viewDidLoad() {
         super.viewDidLoad()
-            print(targets)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -62,7 +61,7 @@ class TargetTableViewController: UITableViewController {
         if editingStyle == .Delete {
             // Delete the row from the data source
             let deleteData: TargetData = targets[indexPath.row]
-            TargetStorage().delete(deleteData)
+            Storage().delete(deleteData)
             targets.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {

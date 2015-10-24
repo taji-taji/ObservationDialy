@@ -1,4 +1,3 @@
-
 //
 //  PhotoStorage.swift
 //  PhotoLogger

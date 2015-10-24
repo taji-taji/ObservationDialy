@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhotoTableViewController: UITableViewController {
+class PhotoTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // MARK: Properties
     var target: TargetData?
@@ -24,6 +24,71 @@ class PhotoTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: Actions
+    @IBAction func AddPhoto(sender: UIBarButtonItem) {
+        // インスタンス生成　styleはActionSheet.
+        let myAlert = UIAlertController(title: "写真を追加する", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        // アクションを生成.
+        let imageFromLibrary = UIAlertAction(title: "フォトライブラリー", style: UIAlertActionStyle.Default, handler: {
+            (action: UIAlertAction!) in
+            self.pickImageFromLibrary()
+        })
+        
+        let imageFromCamera = UIAlertAction(title: "カメラ", style: UIAlertActionStyle.Default, handler: {
+            (action: UIAlertAction!) in
+            self.pickImageFromCamera()
+        })
+        
+        let cancel = UIAlertAction(title: "キャンセル", style: UIAlertActionStyle.Cancel, handler: {
+            (action: UIAlertAction!) in
+            print("cancel")
+        })
+        
+        // アクションを追加.
+        myAlert.addAction(imageFromLibrary)
+        myAlert.addAction(imageFromCamera)
+        myAlert.addAction(cancel)
+        
+        self.presentViewController(myAlert, animated: true, completion: nil)
+    }
+
+    
+    // ライブラリから写真を選択する
+    func pickImageFromLibrary() {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
+            let controller = UIImagePickerController()
+            controller.delegate = self
+            controller.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            self.presentViewController(controller, animated: true, completion: nil)
+        }
+    }
+    
+    // 写真を撮ってそれを選択
+    func pickImageFromCamera() {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+            let controller = UIImagePickerController()
+            controller.delegate = self
+            controller.sourceType = UIImagePickerControllerSourceType.Camera
+            self.presentViewController(controller, animated: true, completion: nil)
+        }
+    }
+    
+    // MARK: UIImagePickerControllerDelegate
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        // Dismiss the picker if the user canceled.
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // 写真を選択した時に呼ばれる
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        print(selectedImage)
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        performSegueWithIdentifier("AddPhotoSegue", sender: selectedImage)
     }
 
     // MARK: - Table view data source
@@ -86,14 +151,21 @@ class PhotoTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        print(sender)
+        if sender is UIImage {
+            if let selectedImage = sender as? UIImage {
+                let photoViewController = segue.destinationViewController as! PhotoViewController
+                print(photoViewController)
+                photoViewController.selectedImage = selectedImage
+            }
+        }
     }
-    */
+
 
 }

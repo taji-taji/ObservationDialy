@@ -14,14 +14,15 @@
 		9353CC741BDA127A00EAFCD6 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 9353CC731BDA127A00EAFCD6 /* Podfile */; };
 		9359960E1BD5AB8C0047EE9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359960D1BD5AB8C0047EE9F /* AppDelegate.swift */; };
 		935996101BD5AB8C0047EE9F /* TargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359960F1BD5AB8C0047EE9F /* TargetViewController.swift */; };
-		935996131BD5AB8C0047EE9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 935996111BD5AB8C0047EE9F /* Main.storyboard */; };
 		935996151BD5AB8C0047EE9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 935996141BD5AB8C0047EE9F /* Assets.xcassets */; };
 		935996181BD5AB8C0047EE9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 935996161BD5AB8C0047EE9F /* LaunchScreen.storyboard */; };
 		935996231BD5AB8D0047EE9F /* PhotoLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935996221BD5AB8D0047EE9F /* PhotoLoggerTests.swift */; };
-		9359962E1BD5E8140047EE9F /* TargetStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359962D1BD5E8140047EE9F /* TargetStorage.swift */; };
 		935996321BD5EDC20047EE9F /* TargetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */; };
 		935996341BD5F5A80047EE9F /* TargetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935996331BD5F5A80047EE9F /* TargetTableViewController.swift */; };
-		93C7FD9F1BDA647200AC1A3D /* PhotoStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FD9E1BDA647200AC1A3D /* PhotoStorage.swift */; };
+		939EBF821BDB4A3F00436BC0 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EBF811BDB4A3F00436BC0 /* PhotoViewController.swift */; };
+		939EBF841BDB5D3400436BC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 939EBF831BDB5D3400436BC0 /* Main.storyboard */; };
+		93C7FDA11BDA7B7A00AC1A3D /* StorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */; };
+		93C7FDA31BDA89F200AC1A3D /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FDA21BDA89F200AC1A3D /* Storage.swift */; };
 		9B237546C96723C1FD1B6A24 /* Pods_PhotoLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87AB316AE548E70671C965DA /* Pods_PhotoLogger.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,17 +62,18 @@
 		9359960A1BD5AB8C0047EE9F /* PhotoLogger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoLogger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9359960D1BD5AB8C0047EE9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9359960F1BD5AB8C0047EE9F /* TargetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetViewController.swift; sourceTree = "<group>"; };
-		935996121BD5AB8C0047EE9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		935996141BD5AB8C0047EE9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		935996171BD5AB8C0047EE9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		935996191BD5AB8C0047EE9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9359961E1BD5AB8D0047EE9F /* PhotoLoggerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoLoggerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		935996221BD5AB8D0047EE9F /* PhotoLoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLoggerTests.swift; sourceTree = "<group>"; };
 		935996241BD5AB8D0047EE9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9359962D1BD5E8140047EE9F /* TargetStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetStorage.swift; sourceTree = "<group>"; };
 		935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetTableViewCell.swift; sourceTree = "<group>"; };
 		935996331BD5F5A80047EE9F /* TargetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetTableViewController.swift; sourceTree = "<group>"; };
-		93C7FD9E1BDA647200AC1A3D /* PhotoStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoStorage.swift; sourceTree = "<group>"; };
+		939EBF811BDB4A3F00436BC0 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		939EBF831BDB5D3400436BC0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageProtocol.swift; sourceTree = "<group>"; };
+		93C7FDA21BDA89F200AC1A3D /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		DC840323EFBAEABBAEAD193C /* Pods-PhotoLoggerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoLoggerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoLoggerTests/Pods-PhotoLoggerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,14 +131,15 @@
 			isa = PBXGroup;
 			children = (
 				9359960D1BD5AB8C0047EE9F /* AppDelegate.swift */,
+				939EBF831BDB5D3400436BC0 /* Main.storyboard */,
 				9359960F1BD5AB8C0047EE9F /* TargetViewController.swift */,
-				935996111BD5AB8C0047EE9F /* Main.storyboard */,
+				939EBF811BDB4A3F00436BC0 /* PhotoViewController.swift */,
 				935996331BD5F5A80047EE9F /* TargetTableViewController.swift */,
 				931165C01BD6468D00F1D32D /* PhotoTableViewController.swift */,
 				935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */,
 				931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */,
-				9359962D1BD5E8140047EE9F /* TargetStorage.swift */,
-				93C7FD9E1BDA647200AC1A3D /* PhotoStorage.swift */,
+				93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */,
+				93C7FDA21BDA89F200AC1A3D /* Storage.swift */,
 				932D92251BD855CC007AEBF0 /* Data.swift */,
 				935996141BD5AB8C0047EE9F /* Assets.xcassets */,
 				935996161BD5AB8C0047EE9F /* LaunchScreen.storyboard */,
@@ -256,7 +259,7 @@
 				935996181BD5AB8C0047EE9F /* LaunchScreen.storyboard in Resources */,
 				935996151BD5AB8C0047EE9F /* Assets.xcassets in Resources */,
 				9353CC741BDA127A00EAFCD6 /* Podfile in Resources */,
-				935996131BD5AB8C0047EE9F /* Main.storyboard in Resources */,
+				939EBF841BDB5D3400436BC0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,15 +370,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93C7FD9F1BDA647200AC1A3D /* PhotoStorage.swift in Sources */,
+				93C7FDA31BDA89F200AC1A3D /* Storage.swift in Sources */,
 				931165BF1BD6459400F1D32D /* PhotoTableViewCell.swift in Sources */,
 				931165C11BD6468D00F1D32D /* PhotoTableViewController.swift in Sources */,
-				9359962E1BD5E8140047EE9F /* TargetStorage.swift in Sources */,
 				935996341BD5F5A80047EE9F /* TargetTableViewController.swift in Sources */,
 				932D92261BD855CC007AEBF0 /* Data.swift in Sources */,
 				935996321BD5EDC20047EE9F /* TargetTableViewCell.swift in Sources */,
+				93C7FDA11BDA7B7A00AC1A3D /* StorageProtocol.swift in Sources */,
 				935996101BD5AB8C0047EE9F /* TargetViewController.swift in Sources */,
 				9359960E1BD5AB8C0047EE9F /* AppDelegate.swift in Sources */,
+				939EBF821BDB4A3F00436BC0 /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,14 +402,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		935996111BD5AB8C0047EE9F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				935996121BD5AB8C0047EE9F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		935996161BD5AB8C0047EE9F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

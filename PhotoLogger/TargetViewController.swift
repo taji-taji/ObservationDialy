@@ -66,7 +66,7 @@ class TargetViewController: UIViewController, UITextFieldDelegate, UINavigationC
             target = TargetData()
             target?.title = title
             target?.created = created
-            TargetStorage().add(target!)
+            Storage().add(target!)
         }
     }
 

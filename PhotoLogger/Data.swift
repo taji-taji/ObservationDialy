@@ -9,10 +9,13 @@
 import UIKit
 import RealmSwift
 
-class TargetData: Object {
+class Data: Object {
+    dynamic var id: Int = 0
+}
+
+class TargetData: Data {
     
     // MARK: Properties
-    dynamic var id: Int = 0
     dynamic var title: String = ""
     dynamic var created: String = ""
     var photos = List<PhotoData>()
@@ -24,10 +27,9 @@ class TargetData: Object {
     
 }
 
-class PhotoData: Object {
+class PhotoData: Data {
     
     // MARK: Properties
-    dynamic var id: Int = 0
     dynamic var comment: String = ""
     dynamic var photo: AnyObject = UIImage()
     dynamic var created: String = ""

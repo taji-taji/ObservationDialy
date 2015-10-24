@@ -1,24 +1,24 @@
 //
-//  TargetStorage.swift
+//  Storage.swift
 //  PhotoLogger
 //
-//  Created by tajika on 2015/10/20.
+//  Created by tajika on 2015/10/24.
 //  Copyright © 2015年 Tajika. All rights reserved.
 //
 
 import UIKit
 import RealmSwift
 
-class TargetStorage {
-
+class Storage: StorageProtocol {
+    
     private let realm: Realm
     
     init() {
         realm = try! Realm()
     }
-
-    func add(d: TargetData) {
-        if let last = realm.objects(TargetData).sorted("id").last {
+    
+    func add<T: Data>(d: T) {
+        if let last = realm.objects(T).sorted("id").last {
             d.id = last.id + 1
         } else {
             d.id = 1
@@ -30,22 +30,21 @@ class TargetStorage {
         } catch {
             print("error")
         }
-        
-    }
-
-    func find(id: Int) -> TargetData? {
-        return realm.objects(TargetData).filter("id = \(id)").first
-    }
-
-    func findWhere(filter: String) -> TargetData? {
-        return realm.objects(TargetData).filter(filter).first
     }
     
-    func findAll() -> [TargetData] {
-        return realm.objects(TargetData).map { $0 }
+    func find<T: Data>(id: Int) -> T? {
+        return realm.objects(T).filter("id = \(id)").first
     }
-
-    func delete(d: TargetData) {
+    
+    func findWhere<T: Data>(filter: String) -> T? {
+        return realm.objects(T).filter(filter).first
+    }
+    
+    func findAll<T: Data>(type: T) -> [T] {
+        return realm.objects(T).map { $0 }
+    }
+    
+    func delete<T: Data>(d: T) {
         do {
             try realm.write {
                 self.realm.delete(d)
@@ -54,5 +53,5 @@ class TargetStorage {
             print("error")
         }
     }
-
+    
 }
