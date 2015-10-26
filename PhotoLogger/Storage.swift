@@ -24,20 +24,21 @@ class Storage: StorageProtocol {
             d.id = 1
         }
         do {
-            try realm.write {
+            try realm.write({ () -> Void in
                 self.realm.add(d)
-            }
+            })
         } catch {
+            realm.cancelWrite()
             print("error")
         }
     }
     
-    func find<T: Data>(id: Int) -> T? {
+    func find<T: Data>(type: T, id: Int) -> T? {
         return realm.objects(T).filter("id = \(id)").first
     }
     
-    func findWhere<T: Data>(filter: String) -> T? {
-        return realm.objects(T).filter(filter).first
+    func findWhere<T: Data>(type: T, filter: String) -> [T]? {
+        return realm.objects(T).filter(filter).map { $0 }
     }
     
     func findAll<T: Data>(type: T) -> [T] {

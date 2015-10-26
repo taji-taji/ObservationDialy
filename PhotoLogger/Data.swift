@@ -31,7 +31,7 @@ class PhotoData: Data {
     
     // MARK: Properties
     dynamic var comment: String = ""
-    dynamic var photo: AnyObject = UIImage()
+    dynamic var photo: String = ""
     dynamic var created: String = ""
     var target: [TargetData] {
         return linkingObjects(TargetData.self, forProperty: "photos")

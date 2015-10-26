@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import RealmSwift
 
 class PhotoTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // MARK: Properties
     var target: TargetData?
+    let realm = try! Realm()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +21,16 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         if let target = target {
             navigationItem.title = target.title
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "insertPhoto:", name: "photoAdded", object: nil)
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        //NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -76,6 +88,24 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         }
     }
     
+    func insertPhoto(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            print(userInfo["photo"])
+            let photo = userInfo["photo"] as! PhotoData
+            let newIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+            print(target?.photos)
+            do {
+                try realm.write {
+                    self.target?.photos.append(photo)
+                    self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+                    self.navigationController?.popViewControllerAnimated(true)
+                }
+            } catch {
+                print("error")
+            }
+        }
+    }
+
     // MARK: UIImagePickerControllerDelegate
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
@@ -86,7 +116,6 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
     // 写真を選択した時に呼ばれる
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        print(selectedImage)
         picker.dismissViewControllerAnimated(true, completion: nil)
         performSegueWithIdentifier("AddPhotoSegue", sender: selectedImage)
     }
@@ -110,8 +139,20 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
             
             let photoData = target?.photos[indexPath.row]
             
-            cell.photoImage = photoData?.photo as! UIImageView
-            cell.createdLabel.text = target?.created
+            // ディレクトリ
+            let DocumentsDirectory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first!
+            let PhotoDirectory = "/photos"
+            let PhotoDirectoryPath = DocumentsDirectory + PhotoDirectory
+            
+            // ファイル名
+            let fileName = photoData?.photo
+            let filePath = PhotoDirectoryPath + "/" + fileName!
+            
+            let url = NSURL(fileURLWithPath: filePath)
+            if let jpegData = NSData(contentsOfURL: url) {
+                cell.photoImage.image = UIImage(data: jpegData)
+                cell.createdLabel.text = target?.created
+            }
             
             return cell
     }
@@ -155,17 +196,12 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        print(sender)
         if sender is UIImage {
             if let selectedImage = sender as? UIImage {
                 let photoViewController = segue.destinationViewController as! PhotoViewController
-                print(photoViewController)
                 photoViewController.selectedImage = selectedImage
             }
         }
     }
-
 
 }
