@@ -163,35 +163,27 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="699"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="S7M-S3-q5G">
-                                            <rect key="frame" x="0.0" y="8" width="600" height="621"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="S7M-S3-q5G">
+                                            <rect key="frame" x="0.0" y="8" width="50" height="71"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="42" placeholderIntrinsicHeight="21" text="created" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMy-gK-64g">
-                                                    <rect key="frame" x="0.0" y="0.0" width="588" height="21"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZZc-Cu-Dvz">
-                                                    <rect key="frame" x="0.0" y="21" width="600" height="600"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZZc-Cu-Dvz">
+                                                    <rect key="frame" x="0.0" y="21" width="50" height="50"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="600" id="1v2-Nk-peK"/>
                                                         <constraint firstAttribute="width" secondItem="ZZc-Cu-Dvz" secondAttribute="height" multiplier="1:1" id="8wD-5O-csZ"/>
-                                                        <constraint firstAttribute="height" constant="600" id="Rcr-C1-Qey"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="ZZc-Cu-Dvz" firstAttribute="leading" secondItem="S7M-S3-q5G" secondAttribute="leadingMargin" id="8pT-zj-o49"/>
                                                 <constraint firstItem="ZZc-Cu-Dvz" firstAttribute="trailing" secondItem="S7M-S3-q5G" secondAttribute="trailingMargin" id="BqL-ue-iOh"/>
-                                                <constraint firstAttribute="trailing" secondItem="kMy-gK-64g" secondAttribute="trailing" constant="12" id="CPF-8g-0b8"/>
-                                                <constraint firstItem="ZZc-Cu-Dvz" firstAttribute="top" secondItem="kMy-gK-64g" secondAttribute="bottom" constant="12" id="tha-bq-IFl"/>
+                                                <constraint firstAttribute="trailing" secondItem="kMy-gK-64g" secondAttribute="trailing" id="CPF-8g-0b8"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="tha-bq-IFl"/>
-                                                </mask>
-                                            </variation>
                                         </stackView>
                                     </subviews>
                                     <constraints>
@@ -200,8 +192,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="createdLabel" destination="kMy-gK-64g" id="PlK-pp-ifh"/>
-                                    <outlet property="photoImage" destination="ZZc-Cu-Dvz" id="ZRw-60-gfd"/>
+                                    <outlet property="createdLabel" destination="kMy-gK-64g" id="7tF-mf-aG1"/>
+                                    <outlet property="photoImage" destination="ZZc-Cu-Dvz" id="Ck5-Y1-zIm"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -210,9 +202,7 @@
                             <outlet property="delegate" destination="b1G-HA-xKg" id="syK-gM-0PJ"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="pYI-u2-elE"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Title" id="XxW-Hu-94u">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="xZb-bd-nzO">
                             <connections>

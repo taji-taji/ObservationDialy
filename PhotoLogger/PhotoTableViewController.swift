@@ -30,7 +30,6 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        //NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -89,11 +88,10 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
     }
     
     func insertPhoto(notification: NSNotification) {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
         if let userInfo = notification.userInfo {
-            print(userInfo["photo"])
             let photo = userInfo["photo"] as! PhotoData
             let newIndexPath = NSIndexPath(forRow: 0, inSection: 0)
-            print(target?.photos)
             do {
                 try realm.write {
                     self.target?.photos.append(photo)
@@ -137,21 +135,21 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
             let cellIdentifier = "PhotoTableViewCell"
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! PhotoTableViewCell
             
-            let photoData = target?.photos[indexPath.row]
+            let photoData = (target?.photos[indexPath.row])!
             
             // ディレクトリ
             let DocumentsDirectory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first!
             let PhotoDirectory = "/photos"
             let PhotoDirectoryPath = DocumentsDirectory + PhotoDirectory
             
-            // ファイル名
-            let fileName = photoData?.photo
-            let filePath = PhotoDirectoryPath + "/" + fileName!
+            // ファイルパス
+            let fileName = photoData.photo
+            let filePath = PhotoDirectoryPath + "/" + fileName
             
-            let url = NSURL(fileURLWithPath: filePath)
-            if let jpegData = NSData(contentsOfURL: url) {
-                cell.photoImage.image = UIImage(data: jpegData)
-                cell.createdLabel.text = target?.created
+            // let url = NSURL(fileURLWithPath: (photoData?.photo)!)
+            if let jpeg: UIImage? = UIImage(contentsOfFile: filePath) {
+                cell.photoImage.image = jpeg
+                cell.createdLabel.text = photoData.created
             }
             
             return cell

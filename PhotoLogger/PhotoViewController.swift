@@ -65,7 +65,9 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
                 , name: UIKeyboardWillHideNotification, object: nil)
             isObserving = false
         }
-        realm.removeNotification(realmNotificationToken!)
+        if let token = self.realmNotificationToken {
+            realm.removeNotification(token)
+        }
     }
 
     //テキストビューが変更された
@@ -166,7 +168,7 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
         
         photo = PhotoData()
         photo?.comment = commentTextView.text
-        photo?.photo = filePath
+        photo?.photo = fileName
         formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
         photo?.created = formatter.stringFromDate(now)
 
@@ -174,16 +176,30 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
         let n: NSNotification = NSNotification(name: "photoAdded", object: self, userInfo: ["photo": photo!])
         
         realmNotificationToken = realm.addNotificationBlock{ notification, realm in
-            realm.removeNotification(self.realmNotificationToken!)
-            print(notification)
-            //通知を送る
-            NSNotificationCenter.defaultCenter().postNotification(n)
-            //self.dismissViewControllerAnimated(true, completion: nil)
+            if notification == .DidChange {
+                defer {
+                    //通知を送る
+                    print("send")
+                    NSNotificationCenter.defaultCenter().postNotification(n)
+                }
+                realm.removeNotification(self.realmNotificationToken!)
+                print(notification)
+                //self.dismissViewControllerAnimated(true, completion: nil)
+            }
         }
         Storage().add(photo!)
     }
 
     // MARK: - Navigation
+    @IBAction func cancel(sender: UIBarButtonItem) {
+        let isPresentingInAddMealMode = presentingViewController is UINavigationController
+        if isPresentingInAddMealMode {
+            dismissViewControllerAnimated(true, completion: nil)
+        }
+        else {
+            navigationController!.popViewControllerAnimated(true)
+        }
+    }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     // override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
