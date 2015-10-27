@@ -12,7 +12,25 @@ class PhotoTableViewCell: UITableViewCell {
     
     // MARK: Properties
     @IBOutlet weak var createdLabel: UILabel!
+    @IBOutlet weak var commentText: UITextView!
     @IBOutlet weak var photoImage: UIImageView!
+    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    
+    @IBAction func deletePhoto(sender: UIButton) {
+
+        let alertController = UIAlertController(title: "Hello!", message: "This is Alert sample.", preferredStyle: .Alert)
+        let otherAction = UIAlertAction(title: "OK", style: .Default) {
+            action in print(sender)
+        }
+        let cancelAction = UIAlertAction(title: "CANCEL", style: .Cancel) {
+            action in print("Pushed CANCEL!")
+        }
+    
+        alertController.addAction(otherAction)
+        alertController.addAction(cancelAction)
+        //presentViewController(alertController, animated: true, completion: nil)
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()

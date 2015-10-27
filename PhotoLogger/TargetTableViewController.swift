@@ -46,6 +46,12 @@ class TargetTableViewController: UITableViewController {
         cell.titleLabel.text = target.title
         // ここは後で直す
         cell.updatedLabel.text = target.created
+        
+        if let photoData = target.photos.last {
+            if let jpeg: UIImage? = PhotoManager().get(photoData.photo) {
+                cell.photoImageView.image = jpeg
+            }
+        }
 
         return cell
     }

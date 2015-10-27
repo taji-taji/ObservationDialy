@@ -12,7 +12,7 @@ import RealmSwift
 class PhotoTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // MARK: Properties
-    var target: TargetData?
+    var target: TargetData?  
     let realm = try! Realm()
 
     override func viewDidLoad() {
@@ -65,6 +65,17 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         
         self.presentViewController(myAlert, animated: true, completion: nil)
     }
+    
+    @IBAction func deletePhoto(sender: UITapGestureRecognizer) {
+        let tappedLocation = sender.locationInView(tableView)
+        let tappedPath = tableView.indexPathForRowAtPoint(tappedLocation)
+        let tappedRow = tappedPath?.row
+        print(tappedRow)
+    }
+//    func deletePhoto(sender:UITapGestureRecognizer) {
+//        let cell = sender.view as! UIButton
+//        print(cell.tag)
+//    }
 
     
     // ライブラリから写真を選択する
@@ -135,22 +146,22 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
             let cellIdentifier = "PhotoTableViewCell"
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! PhotoTableViewCell
             
-            let photoData = (target?.photos[indexPath.row])!
+            let photos = target?.photos.sorted("created", ascending: false)
             
-            // ディレクトリ
-            let DocumentsDirectory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first!
-            let PhotoDirectory = "/photos"
-            let PhotoDirectoryPath = DocumentsDirectory + PhotoDirectory
-            
-            // ファイルパス
+            let photoData = photos![indexPath.row]
+
             let fileName = photoData.photo
-            let filePath = PhotoDirectoryPath + "/" + fileName
-            
-            // let url = NSURL(fileURLWithPath: (photoData?.photo)!)
-            if let jpeg: UIImage? = UIImage(contentsOfFile: filePath) {
+
+            if let jpeg: UIImage? = PhotoManager().get(fileName) {
                 cell.photoImage.image = jpeg
                 cell.createdLabel.text = photoData.created
+                cell.commentText.text = photoData.comment
             }
+            
+//            cell.deleteButton.tag = indexPath.row
+//            
+//            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "deletePhoto:")
+//            cell.deleteButton.addGestureRecognizer(tapGestureRecognizer)
             
             return cell
     }

@@ -22,7 +22,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KQC-Q0-nHT">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="89" placeholderIntrinsicHeight="89" image="DefaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="KQC-Q0-nHT">
                                             <rect key="frame" x="0.0" y="0.0" width="89" height="89"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="89" id="bqO-v9-dLW"/>
@@ -152,47 +152,100 @@
             <objects>
                 <tableViewController id="b1G-HA-xKg" customClass="PhotoTableViewController" customModule="PhotoLogger" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="573" sectionHeaderHeight="28" sectionFooterHeight="28" id="oFp-fq-mf8">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PhotoTableViewCell" rowHeight="700" id="5XM-lf-8NK" customClass="PhotoTableViewCell" customModule="PhotoLogger" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="700"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PhotoTableViewCell" rowHeight="800" id="5XM-lf-8NK" customClass="PhotoTableViewCell" customModule="PhotoLogger" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="800"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5XM-lf-8NK" id="NRx-fF-3To">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="699"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="799"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="S7M-S3-q5G">
-                                            <rect key="frame" x="0.0" y="8" width="50" height="71"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="S7M-S3-q5G">
+                                            <rect key="frame" x="0.0" y="8" width="600" height="783"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="42" placeholderIntrinsicHeight="21" text="created" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMy-gK-64g">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="21"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZZc-Cu-Dvz">
-                                                    <rect key="frame" x="0.0" y="21" width="50" height="50"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L76-w1-v1S">
+                                                    <rect key="frame" x="0.0" y="21" width="600" height="600"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="0.0" placeholderIntrinsicHeight="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="ZZc-Cu-Dvz">
+                                                            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="600" id="ciw-ie-IdH"/>
+                                                                <constraint firstAttribute="height" constant="600" id="xTJ-qJ-X6P"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="ZZc-Cu-Dvz" secondAttribute="height" multiplier="1:1" id="8wD-5O-csZ"/>
+                                                        <constraint firstItem="ZZc-Cu-Dvz" firstAttribute="centerY" secondItem="L76-w1-v1S" secondAttribute="centerY" id="nro-dM-LDG"/>
+                                                        <constraint firstAttribute="width" secondItem="L76-w1-v1S" secondAttribute="height" multiplier="1:1" id="pSZ-Zp-6zA"/>
+                                                        <constraint firstItem="ZZc-Cu-Dvz" firstAttribute="top" secondItem="L76-w1-v1S" secondAttribute="top" id="rRd-C6-wUd"/>
+                                                        <constraint firstItem="ZZc-Cu-Dvz" firstAttribute="leading" secondItem="L76-w1-v1S" secondAttribute="leading" id="tTv-fC-5qD"/>
+                                                        <constraint firstItem="ZZc-Cu-Dvz" firstAttribute="centerX" secondItem="L76-w1-v1S" secondAttribute="centerX" id="vDY-yD-3hH"/>
                                                     </constraints>
-                                                </imageView>
+                                                </view>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vPg-fN-Rgu">
+                                                    <rect key="frame" x="0.0" y="621" width="600" height="132"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="132" id="e6A-vr-p8X"/>
+                                                    </constraints>
+                                                    <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <stackView opaque="NO" contentMode="right" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ibr-By-xyI">
+                                                    <rect key="frame" x="0.0" y="753" width="600" height="30"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKZ-4O-3eF">
+                                                            <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
+                                                            <color key="backgroundColor" red="0.34153099404765219" green="1" blue="0.25817764280877586" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <state key="normal" title="編集する">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxc-Sj-Xuw">
+                                                            <rect key="frame" x="300" y="0.0" width="300" height="30"/>
+                                                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <gestureRecognizers/>
+                                                            <state key="normal" title="削除する">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <connections>
+                                                                <outletCollection property="gestureRecognizers" destination="Fmg-Pr-k1Y" appends="YES" id="yUI-Wg-NnM"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ZZc-Cu-Dvz" firstAttribute="leading" secondItem="S7M-S3-q5G" secondAttribute="leadingMargin" id="8pT-zj-o49"/>
-                                                <constraint firstItem="ZZc-Cu-Dvz" firstAttribute="trailing" secondItem="S7M-S3-q5G" secondAttribute="trailingMargin" id="BqL-ue-iOh"/>
                                                 <constraint firstAttribute="trailing" secondItem="kMy-gK-64g" secondAttribute="trailing" id="CPF-8g-0b8"/>
+                                                <constraint firstItem="Ibr-By-xyI" firstAttribute="centerX" secondItem="S7M-S3-q5G" secondAttribute="centerX" id="hdD-cU-X3k"/>
+                                                <constraint firstItem="vPg-fN-Rgu" firstAttribute="centerX" secondItem="S7M-S3-q5G" secondAttribute="centerX" id="v4Q-Yu-3OW"/>
+                                                <constraint firstItem="L76-w1-v1S" firstAttribute="centerX" secondItem="S7M-S3-q5G" secondAttribute="centerX" id="zN6-sR-o7z"/>
                                             </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="S7M-S3-q5G" firstAttribute="centerX" secondItem="NRx-fF-3To" secondAttribute="centerX" id="2Aj-a5-a8t"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="S7M-S3-q5G" secondAttribute="bottom" id="82K-PW-ylJ"/>
                                         <constraint firstItem="S7M-S3-q5G" firstAttribute="top" secondItem="NRx-fF-3To" secondAttribute="topMargin" id="IeH-GD-0Wt"/>
                                         <constraint firstItem="S7M-S3-q5G" firstAttribute="leading" secondItem="NRx-fF-3To" secondAttribute="leading" id="Q78-UG-tuZ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="commentText" destination="vPg-fN-Rgu" id="BF7-V8-vMe"/>
                                     <outlet property="createdLabel" destination="kMy-gK-64g" id="7tF-mf-aG1"/>
+                                    <outlet property="deleteButton" destination="nxc-Sj-Xuw" id="lOm-LQ-HWR"/>
+                                    <outlet property="editButton" destination="eKZ-4O-3eF" id="5OO-me-kIG"/>
                                     <outlet property="photoImage" destination="ZZc-Cu-Dvz" id="Ck5-Y1-zIm"/>
                                 </connections>
                             </tableViewCell>
@@ -211,13 +264,20 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="1000"/>
                     <connections>
                         <segue destination="4xi-Aq-xdx" kind="show" identifier="AddPhotoSegue" id="jbL-fx-8fH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ofl-du-Huq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Fmg-Pr-k1Y">
+                    <connections>
+                        <action selector="deletePhoto:" destination="b1G-HA-xKg" id="LQx-bt-5eQ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1172" y="323"/>
+            <point key="canvasLocation" x="1218" y="24"/>
         </scene>
         <!--Photo View Controller-->
         <scene sceneID="ami-OU-IsG">
@@ -273,6 +333,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="commentTextView" destination="YB4-8a-1Vn" id="cKK-Bz-UsT"/>
                         <outlet property="photoImageView" destination="Lwn-iF-XGz" id="MWW-Tk-yzM"/>
@@ -287,7 +348,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1961" y="323"/>
+            <point key="canvasLocation" x="2006" y="173"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="D4l-07-aY5">
@@ -326,4 +387,7 @@
             <point key="canvasLocation" x="430" y="1086"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="DefaultPhoto" width="222" height="222"/>
+    </resources>
 </document>

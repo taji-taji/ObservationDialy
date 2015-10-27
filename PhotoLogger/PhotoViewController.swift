@@ -139,38 +139,8 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
         let now = NSDate()
         let formatter = NSDateFormatter()
         
-        /** 画像の保存 **/
-        
-        // 保存先の確認
-        let DocumentsDirectory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first!
-        let PhotoDirectory = "/photos"
-        let PhotoDirectoryPath = DocumentsDirectory + PhotoDirectory
-        var isDir: ObjCBool = false
-        let fileManager = NSFileManager.defaultManager()
-        fileManager.fileExistsAtPath(PhotoDirectoryPath, isDirectory: &isDir)
-        
-        //ディレクトリが存在しない場合に、ディレクトリを作成する
-        if !isDir {
-            do {
-                try fileManager.createDirectoryAtPath(PhotoDirectoryPath ,withIntermediateDirectories: true, attributes: nil)
-            } catch {
-                print("error: cannot create directory")
-            }
-        }
-        
-        let jpegData = UIImageJPEGRepresentation((photoImageView?.image)!, 0.8)!
-        
-        // ファイル名を指定して保存
-        formatter.dateFormat = "yyyyMMddHHmmss"
-        let fileName = formatter.stringFromDate(now) + ".jpg"
-        let filePath = PhotoDirectoryPath + "/" + fileName
-        jpegData.writeToFile(filePath, atomically: true)
-        
-        photo = PhotoData()
-        photo?.comment = commentTextView.text
-        photo?.photo = fileName
-        formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
-        photo?.created = formatter.stringFromDate(now)
+        // ファイルを保存
+        photo = PhotoManager().insert((photoImageView?.image)!, comment: commentTextView.text)
 
         //NSNotificationのインスタンスを作成
         let n: NSNotification = NSNotification(name: "photoAdded", object: self, userInfo: ["photo": photo!])
@@ -179,12 +149,9 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
             if notification == .DidChange {
                 defer {
                     //通知を送る
-                    print("send")
                     NSNotificationCenter.defaultCenter().postNotification(n)
                 }
                 realm.removeNotification(self.realmNotificationToken!)
-                print(notification)
-                //self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
         Storage().add(photo!)

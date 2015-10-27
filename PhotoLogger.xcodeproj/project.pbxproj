@@ -19,6 +19,7 @@
 		935996231BD5AB8D0047EE9F /* PhotoLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935996221BD5AB8D0047EE9F /* PhotoLoggerTests.swift */; };
 		935996321BD5EDC20047EE9F /* TargetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */; };
 		935996341BD5F5A80047EE9F /* TargetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935996331BD5F5A80047EE9F /* TargetTableViewController.swift */; };
+		936505A71BDF1FEF00A824E0 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936505A61BDF1FEF00A824E0 /* PhotoManager.swift */; };
 		939EBF821BDB4A3F00436BC0 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EBF811BDB4A3F00436BC0 /* PhotoViewController.swift */; };
 		939EBF841BDB5D3400436BC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 939EBF831BDB5D3400436BC0 /* Main.storyboard */; };
 		93C7FDA11BDA7B7A00AC1A3D /* StorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */; };
@@ -70,6 +71,7 @@
 		935996241BD5AB8D0047EE9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetTableViewCell.swift; sourceTree = "<group>"; };
 		935996331BD5F5A80047EE9F /* TargetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetTableViewController.swift; sourceTree = "<group>"; };
+		936505A61BDF1FEF00A824E0 /* PhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		939EBF811BDB4A3F00436BC0 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		939EBF831BDB5D3400436BC0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageProtocol.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */,
 				93C7FDA21BDA89F200AC1A3D /* Storage.swift */,
 				932D92251BD855CC007AEBF0 /* Data.swift */,
+				936505A61BDF1FEF00A824E0 /* PhotoManager.swift */,
 				935996141BD5AB8C0047EE9F /* Assets.xcassets */,
 				935996161BD5AB8C0047EE9F /* LaunchScreen.storyboard */,
 				935996191BD5AB8C0047EE9F /* Info.plist */,
@@ -372,6 +375,7 @@
 			files = (
 				93C7FDA31BDA89F200AC1A3D /* Storage.swift in Sources */,
 				931165BF1BD6459400F1D32D /* PhotoTableViewCell.swift in Sources */,
+				936505A71BDF1FEF00A824E0 /* PhotoManager.swift in Sources */,
 				931165C11BD6468D00F1D32D /* PhotoTableViewController.swift in Sources */,
 				935996341BD5F5A80047EE9F /* TargetTableViewController.swift in Sources */,
 				932D92261BD855CC007AEBF0 /* Data.swift in Sources */,
