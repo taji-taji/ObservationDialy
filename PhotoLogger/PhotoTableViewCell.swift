@@ -15,7 +15,7 @@ class PhotoTableViewCell: UITableViewCell {
     @IBOutlet weak var commentText: UITextView!
     @IBOutlet weak var photoImage: UIImageView!
     @IBOutlet weak var editButton: UIButton!
-    @IBOutlet weak var deleteButton: UIButton!
+    var id: Int?
     
     @IBAction func deletePhoto(sender: UIButton) {
 

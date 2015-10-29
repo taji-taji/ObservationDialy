@@ -202,26 +202,15 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <stackView opaque="NO" contentMode="right" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ibr-By-xyI">
+                                                <stackView opaque="NO" contentMode="right" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Ibr-By-xyI">
                                                     <rect key="frame" x="0.0" y="753" width="600" height="30"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKZ-4O-3eF">
-                                                            <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="30" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKZ-4O-3eF">
+                                                            <rect key="frame" x="0.0" y="0.0" width="600" height="30"/>
                                                             <color key="backgroundColor" red="0.34153099404765219" green="1" blue="0.25817764280877586" alpha="1" colorSpace="calibratedRGB"/>
                                                             <state key="normal" title="編集する">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxc-Sj-Xuw">
-                                                            <rect key="frame" x="300" y="0.0" width="300" height="30"/>
-                                                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <gestureRecognizers/>
-                                                            <state key="normal" title="削除する">
-                                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                            <connections>
-                                                                <outletCollection property="gestureRecognizers" destination="Fmg-Pr-k1Y" appends="YES" id="yUI-Wg-NnM"/>
-                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -244,8 +233,7 @@
                                 <connections>
                                     <outlet property="commentText" destination="vPg-fN-Rgu" id="BF7-V8-vMe"/>
                                     <outlet property="createdLabel" destination="kMy-gK-64g" id="7tF-mf-aG1"/>
-                                    <outlet property="deleteButton" destination="nxc-Sj-Xuw" id="lOm-LQ-HWR"/>
-                                    <outlet property="editButton" destination="eKZ-4O-3eF" id="5OO-me-kIG"/>
+                                    <outlet property="editButton" destination="eKZ-4O-3eF" id="N4V-7g-ZRN"/>
                                     <outlet property="photoImage" destination="ZZc-Cu-Dvz" id="Ck5-Y1-zIm"/>
                                 </connections>
                             </tableViewCell>
@@ -271,11 +259,6 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ofl-du-Huq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Fmg-Pr-k1Y">
-                    <connections>
-                        <action selector="deletePhoto:" destination="b1G-HA-xKg" id="LQx-bt-5eQ"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1218" y="24"/>
         </scene>
@@ -294,12 +277,26 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ux1-kz-Hyc">
                                 <rect key="frame" x="0.0" y="84" width="600" height="478"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" translatesAutoresizingMaskIntoConstraints="NO" id="Lwn-iF-XGz">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vrD-1S-P5M">
                                         <rect key="frame" x="140" y="0.0" width="320" height="320"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="0.0" placeholderIntrinsicHeight="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="Lwn-iF-XGz">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="320" id="WkS-lV-mvu"/>
+                                                    <constraint firstAttribute="height" constant="320" id="rNf-JK-ZsU"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="Lwn-iF-XGz" secondAttribute="height" multiplier="1:1" id="0dO-02-PU6"/>
+                                            <constraint firstItem="Lwn-iF-XGz" firstAttribute="centerY" secondItem="vrD-1S-P5M" secondAttribute="centerY" id="Ewt-wF-E3d"/>
+                                            <constraint firstAttribute="width" secondItem="vrD-1S-P5M" secondAttribute="height" multiplier="1:1" id="Jlm-vK-bQt"/>
+                                            <constraint firstItem="Lwn-iF-XGz" firstAttribute="centerX" secondItem="vrD-1S-P5M" secondAttribute="centerX" id="VSS-ov-bBc"/>
+                                            <constraint firstItem="Lwn-iF-XGz" firstAttribute="leading" secondItem="vrD-1S-P5M" secondAttribute="leading" id="bCD-zD-z2W"/>
+                                            <constraint firstItem="Lwn-iF-XGz" firstAttribute="top" secondItem="vrD-1S-P5M" secondAttribute="top" id="gow-aj-Bgo"/>
                                         </constraints>
-                                    </imageView>
+                                    </view>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="YB4-8a-1Vn">
                                         <rect key="frame" x="140" y="320" width="320" height="158"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -311,6 +308,9 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="vrD-1S-P5M" firstAttribute="centerX" secondItem="ux1-kz-Hyc" secondAttribute="centerX" id="MXS-AC-4OM"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

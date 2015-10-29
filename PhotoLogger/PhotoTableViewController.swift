@@ -66,18 +66,6 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         self.presentViewController(myAlert, animated: true, completion: nil)
     }
     
-    @IBAction func deletePhoto(sender: UITapGestureRecognizer) {
-        let tappedLocation = sender.locationInView(tableView)
-        let tappedPath = tableView.indexPathForRowAtPoint(tappedLocation)
-        let tappedRow = tappedPath?.row
-        print(tappedRow)
-    }
-//    func deletePhoto(sender:UITapGestureRecognizer) {
-//        let cell = sender.view as! UIButton
-//        print(cell.tag)
-//    }
-
-    
     // ライブラリから写真を選択する
     func pickImageFromLibrary() {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
@@ -115,6 +103,81 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         }
     }
 
+    
+    // 既存の写真の編集ボタンを押した時の選択肢
+    func editAlert(sender: UITapGestureRecognizer) {
+        // インスタンス生成　styleはActionSheet.
+        let myAlert = UIAlertController(title: "写真を編集・削除する", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        let cell = findUITableViewCellFromSuperViewsForView(sender.view as! UIButton) as! PhotoTableViewCell
+        let newIndexPath = self.tableView.indexPathForCell(cell)
+        
+        // アクションを生成.
+        let editPhoto = UIAlertAction(title: "編集する", style: UIAlertActionStyle.Default, handler: {
+            (action: UIAlertAction!) in
+            // 編集のアクション
+        })
+        
+        let deleteAlert = UIAlertAction(title: "削除する", style: .Default, handler: {
+            (action: UIAlertAction!) in
+            self.deleteAlert(cell.id!, indexPath: newIndexPath!)
+        })
+        
+        let cancel = UIAlertAction(title: "キャンセル", style: .Cancel, handler: {
+            (action: UIAlertAction!) in
+            print("cancel")
+        })
+        
+        // アクションを追加.
+        myAlert.addAction(editPhoto)
+        myAlert.addAction(deleteAlert)
+        myAlert.addAction(cancel)
+        
+        self.presentViewController(myAlert, animated: true, completion: nil)
+    }
+
+    // 削除ボタンを押した時にアラートを出す
+    func deleteAlert(id: Int, indexPath: NSIndexPath) {
+        let alertController = UIAlertController(title: "削除します。", message: "この操作は取り消せません。", preferredStyle: .Alert)
+        let deletePhoto = UIAlertAction(title: "削除する", style: .Default, handler: {
+            (action: UIAlertAction!) in
+            self.deletePhoto(id, indexPath: indexPath)
+        })
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .Cancel, handler: {
+            (action: UIAlertAction!) in
+            print("cancelAction")
+        })
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(deletePhoto)
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    // 画像の削除操作
+    func deletePhoto(id: Int, indexPath: NSIndexPath) {
+        let photo = Storage().find(PhotoData(), id: id)
+        let deleteIndex = (self.target?.photos.count)! - indexPath.row - 1
+        do {
+            try realm.write {
+                self.target?.photos.removeAtIndex(deleteIndex)
+                // Delete the row from the data source
+                self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                PhotoManager().delete(photo!.photo)
+                //self.tableView.reloadData()
+            }
+        } catch {
+            print("error")
+        }
+    }
+    
+    func findUITableViewCellFromSuperViewsForView(sender: UIView) -> UITableViewCell {
+        var superView = sender
+        while !(superView is UITableViewCell) {
+            superView = superView.superview!
+        }
+        return superView as! UITableViewCell
+    }
+    
     // MARK: UIImagePickerControllerDelegate
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
@@ -156,13 +219,12 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
                 cell.photoImage.image = jpeg
                 cell.createdLabel.text = photoData.created
                 cell.commentText.text = photoData.comment
+                cell.id = photoData.id
             }
             
-//            cell.deleteButton.tag = indexPath.row
-//            
-//            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "deletePhoto:")
-//            cell.deleteButton.addGestureRecognizer(tapGestureRecognizer)
-            
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "editAlert:")
+            cell.editButton.addGestureRecognizer(tapGestureRecognizer)
+
             return cell
     }
 

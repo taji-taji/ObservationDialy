@@ -33,8 +33,11 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
             photoImageView?.image = selectedImage
         }
 
+        // コメント入力欄の設定
+        commentTextView.layer.borderWidth = 0.5
+        commentTextView.layer.cornerRadius = 3
+        commentTextView.layer.borderColor = UIColor.lightGrayColor().CGColor
         commentTextView.layer.masksToBounds = true
-        commentTextView.backgroundColor = UIColor.grayColor()
 
     }
     
@@ -73,11 +76,6 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
     //テキストビューが変更された
     func textViewDidChange(textView: UITextView) {
         print("textViewDidChange")
-        //            let maxHeight = 80.0  // 入力フィールドの最大サイズ
-        //            if(commentTextView.frame.size.height.native < maxHeight) {
-        //                let size:CGSize = commentTextView.sizeThatFits(commentTextView.frame.size)
-        //                CommentTextHeight.constant = size.height
-        //            }
     }
     
     // テキストビューにフォーカスが移った
@@ -159,8 +157,8 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
 
     // MARK: - Navigation
     @IBAction func cancel(sender: UIBarButtonItem) {
-        let isPresentingInAddMealMode = presentingViewController is UINavigationController
-        if isPresentingInAddMealMode {
+        let isPresentingInAddPhotoMode = presentingViewController is UINavigationController
+        if isPresentingInAddPhotoMode {
             dismissViewControllerAnimated(true, completion: nil)
         }
         else {

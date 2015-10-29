@@ -21,6 +21,10 @@ class TargetTableViewController: UITableViewController {
 
         navigationItem.leftBarButtonItem = editButtonItem()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
