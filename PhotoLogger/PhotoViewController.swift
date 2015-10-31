@@ -18,19 +18,27 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     var photo: PhotoData?
+    // 新規作成時に選択された画像
     var selectedImage: UIImage?
+    // 編集の際に受け取るコメント
+    var editCommentText: String?
+    // 編集の際に受け取るID
+    var selectedId: Int?
     var isObserving = false
     var screenOffsetY: CGFloat = 0
-    private var realmNotificationToken: NotificationToken?
+    private var realmNotificationTokenAdd: NotificationToken?
+    private var realmNotificationTokenEdit: NotificationToken?
     let realm = try! Realm()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
-        if let selectedImage = selectedImage {
+        if (selectedImage != nil) {
             photoImageView?.image = selectedImage
+        }
+        
+        if (editCommentText != nil) {
+            commentTextView.text = editCommentText
         }
 
         // コメント入力欄の設定
@@ -38,7 +46,6 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
         commentTextView.layer.cornerRadius = 3
         commentTextView.layer.borderColor = UIColor.lightGrayColor().CGColor
         commentTextView.layer.masksToBounds = true
-
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -68,7 +75,10 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
                 , name: UIKeyboardWillHideNotification, object: nil)
             isObserving = false
         }
-        if let token = self.realmNotificationToken {
+        if let token = self.realmNotificationTokenAdd {
+            realm.removeNotification(token)
+        }
+        if let token = self.realmNotificationTokenEdit {
             realm.removeNotification(token)
         }
     }
@@ -134,25 +144,55 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
     // MARK: Actions
     @IBAction func savePhoto(sender: UIBarButtonItem) {
         
-        let now = NSDate()
-        let formatter = NSDateFormatter()
-        
-        // ファイルを保存
-        photo = PhotoManager().insert((photoImageView?.image)!, comment: commentTextView.text)
-
-        //NSNotificationのインスタンスを作成
-        let n: NSNotification = NSNotification(name: "photoAdded", object: self, userInfo: ["photo": photo!])
-        
-        realmNotificationToken = realm.addNotificationBlock{ notification, realm in
-            if notification == .DidChange {
-                defer {
-                    //通知を送る
-                    NSNotificationCenter.defaultCenter().postNotification(n)
+        // self.selectedIdがあれば編集
+        if (self.selectedId != nil) {
+            
+            //NSNotificationのインスタンスを作成
+            let n: NSNotification = NSNotification(name: "photoEdited", object: self)
+            
+            realmNotificationTokenEdit = realm.addNotificationBlock{ notification, realm in
+                if notification == .DidChange {
+                    defer {
+                        //通知を送る
+                        NSNotificationCenter.defaultCenter().postNotification(n)
+                    }
+                    realm.removeNotification(self.realmNotificationTokenEdit!)
                 }
-                realm.removeNotification(self.realmNotificationToken!)
+                
             }
+
+            let updateValue = ["id": self.selectedId!, "comment": self.commentTextView.text]
+            do {
+                try realm.write {
+                    self.realm.create(PhotoData.self, value: updateValue, update: true)
+                }
+            } catch {
+                print("error")
+            }
+            
+        // self.selectedIdがなければ新規
+        } else {
+            let now = NSDate()
+            let formatter = NSDateFormatter()
+        
+            // ファイルを保存
+            photo = PhotoManager().insert((photoImageView?.image)!, comment: commentTextView.text)
+
+            //NSNotificationのインスタンスを作成
+            let n: NSNotification = NSNotification(name: "photoAdded", object: self, userInfo: ["photo": photo!])
+        
+            realmNotificationTokenAdd = realm.addNotificationBlock{ notification, realm in
+                if notification == .DidChange {
+                    defer {
+                        //通知を送る
+                        NSNotificationCenter.defaultCenter().postNotification(n)
+                    }
+                    realm.removeNotification(self.realmNotificationTokenAdd!)
+                }
+        
+            }
+            Storage().add(photo!)
         }
-        Storage().add(photo!)
     }
 
     // MARK: - Navigation

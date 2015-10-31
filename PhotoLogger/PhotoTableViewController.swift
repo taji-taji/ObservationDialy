@@ -26,6 +26,7 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "insertPhoto:", name: "photoAdded", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updatePhoto:", name: "photoEdited", object: nil)
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -78,12 +79,27 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
     
     // 写真を撮ってそれを選択
     func pickImageFromCamera() {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
-            let controller = UIImagePickerController()
-            controller.delegate = self
-            controller.sourceType = UIImagePickerControllerSourceType.Camera
-            self.presentViewController(controller, animated: true, completion: nil)
-        }
+        let latestPhotoFile = target?.photos.last?.photo
+        let latestPhotoImage = PhotoManager().get(latestPhotoFile!)
+
+        let controller = CameraViewController()
+        controller.overlayImage = latestPhotoImage
+        self.presentViewController(controller, animated: true, completion: nil)
+//        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+//            let controller = UIImagePickerController()
+//            controller.delegate = self
+//            controller.sourceType = UIImagePickerControllerSourceType.Camera
+//            
+//            // 最新の画像を取得
+//            let latestPhotoFile = target?.photos.last?.photo
+//            let latestPhotoImage = PhotoManager().get(latestPhotoFile!)
+//            let overlayView = UINib(nibName: "CameraOverlayView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! UIView
+//            let imageView = overlayView.viewWithTag(1) as! UIImageView
+//            imageView.image = latestPhotoImage
+//            
+//            controller.cameraOverlayView = overlayView
+//            self.presentViewController(controller, animated: true, completion: nil)
+//        }
     }
     
     func insertPhoto(notification: NSNotification) {
@@ -95,7 +111,7 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
                 try realm.write {
                     self.target?.photos.append(photo)
                     self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
-                    self.navigationController?.popViewControllerAnimated(true)
+                    self.presentedViewController?.dismissViewControllerAnimated(true, completion: nil)
                 }
             } catch {
                 print("error")
@@ -103,6 +119,11 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         }
     }
 
+    func updatePhoto(notification: NSNotification) {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        self.tableView.reloadData()
+        self.presentedViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     // 既存の写真の編集ボタンを押した時の選択肢
     func editAlert(sender: UITapGestureRecognizer) {
@@ -113,9 +134,9 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         let newIndexPath = self.tableView.indexPathForCell(cell)
         
         // アクションを生成.
-        let editPhoto = UIAlertAction(title: "編集する", style: UIAlertActionStyle.Default, handler: {
+        let editPhoto = UIAlertAction(title: "編集する", style: .Default, handler: {
             (action: UIAlertAction!) in
-            // 編集のアクション
+            self.editPhoto(cell)
         })
         
         let deleteAlert = UIAlertAction(title: "削除する", style: .Default, handler: {
@@ -134,6 +155,12 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         myAlert.addAction(cancel)
         
         self.presentViewController(myAlert, animated: true, completion: nil)
+    }
+    
+    // 編集ボタンを押した時
+    func editPhoto(cell: PhotoTableViewCell) {
+        // 画面遷移
+        performSegueWithIdentifier("DetailPhotoSegue", sender: cell)
     }
 
     // 削除ボタンを押した時にアラートを出す
@@ -163,7 +190,6 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
                 // Delete the row from the data source
                 self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                 PhotoManager().delete(photo!.photo)
-                //self.tableView.reloadData()
             }
         } catch {
             print("error")
@@ -189,7 +215,7 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         picker.dismissViewControllerAnimated(true, completion: nil)
-        performSegueWithIdentifier("AddPhotoSegue", sender: selectedImage)
+        performSegueWithIdentifier("DetailPhotoSegue", sender: selectedImage)
     }
 
     // MARK: - Table view data source
@@ -224,8 +250,13 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
             
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "editAlert:")
             cell.editButton.addGestureRecognizer(tapGestureRecognizer)
+            cell.editButton.layer.cornerRadius = 3
 
             return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
     /*
@@ -267,10 +298,20 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let nav: UINavigationController = segue.destinationViewController as! UINavigationController
+        let photoViewController = nav.viewControllers[0] as! PhotoViewController
+        // 新規作成の時はsenderがUIImage
         if sender is UIImage {
             if let selectedImage = sender as? UIImage {
-                let photoViewController = segue.destinationViewController as! PhotoViewController
                 photoViewController.selectedImage = selectedImage
+            }
+        // 編集の時はsenderがPhotoTableViewCell
+        } else if sender is PhotoTableViewCell {
+            if let cell = sender as? PhotoTableViewCell {
+                print(cell.commentText.text)
+                photoViewController.selectedImage = cell.photoImage.image
+                photoViewController.editCommentText = cell.commentText.text
+                photoViewController.selectedId = cell.id
             }
         }
     }
