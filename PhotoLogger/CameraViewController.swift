@@ -9,20 +9,26 @@
 import UIKit
 import AVFoundation
 
-class CameraViewController: UIViewController {
+class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
     // MARK: Properties
 
     var input: AVCaptureDeviceInput!
-    var output: AVCaptureStillImageOutput!
+    var output: AVCaptureVideoDataOutput!
     var session: AVCaptureSession!
-    var preView: UIView!
+    var imageView: UIImageView!
     var camera: AVCaptureDevice!
     var overlayImage: UIImage?
+    var screenWidth: CGFloat = 0.0
+    var screenHeight: CGFloat = 0.0
+    var previewWidth: CGFloat = 0.0
+    var previewHeight: CGFloat = 0.0
+    var screenTopMargin: CGFloat = 0.0
+    var screenTopMarginRate: CGFloat = 0.16
+    var overlayView: UIView = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
     // メモリ管理のため
@@ -52,12 +58,18 @@ class CameraViewController: UIViewController {
     
     func setupDisplay(){
         //スクリーンの幅
-        let screenWidth = UIScreen.mainScreen().bounds.size.width;
+        screenWidth = UIScreen.mainScreen().bounds.size.width
         //スクリーンの高さ
-        let screenHeight = screenWidth;
+        screenHeight = UIScreen.mainScreen().bounds.size.height
+        
+        previewWidth = screenWidth
+        previewHeight = previewWidth
+        
+        screenTopMargin = screenTopMarginRate * screenHeight
         
         // プレビュー用のビューを生成
-        preView = UIView(frame: CGRectMake(0.0, 60.0, screenWidth, screenHeight))
+        imageView = UIImageView()
+        imageView.frame = CGRectMake(0.0, screenTopMargin, previewWidth, previewHeight)
         
     }
     
@@ -66,10 +78,13 @@ class CameraViewController: UIViewController {
         // セッション
         session = AVCaptureSession()
         
-        for caputureDevice: AnyObject in AVCaptureDevice.devices() {
+        // sessionPreset: キャプチャ・クオリティの設定
+        session.sessionPreset = AVCaptureSessionPresetHigh
+        
+        for captureDevice: AnyObject in AVCaptureDevice.devices() {
             // 背面カメラを取得
-            if caputureDevice.position == AVCaptureDevicePosition.Back {
-                camera = caputureDevice as? AVCaptureDevice
+            if captureDevice.position == AVCaptureDevicePosition.Back {
+                camera = captureDevice as? AVCaptureDevice
             }
             // 前面カメラを取得
             //if caputureDevice.position == AVCaptureDevicePosition.Front {
@@ -85,44 +100,55 @@ class CameraViewController: UIViewController {
         }
         
         // 入力をセッションに追加
-        if(session.canAddInput(input)) {
+        if (session.canAddInput(input)) {
             session.addInput(input)
         }
         
-        // 静止画出力のインスタンス生成
-        output = AVCaptureStillImageOutput()
+        // 動画出力のインスタンス生成
+        output = AVCaptureVideoDataOutput()
         // 出力をセッションに追加
-        if(session.canAddOutput(output)) {
+        if (session.canAddOutput(output)) {
             session.addOutput(output)
         }
         
-        // セッションからプレビューを表示を
-        let previewLayer = AVCaptureVideoPreviewLayer(session: session)
+        // ピクセルフォーマットを 32bit BGR + A とする
+        output.videoSettings = [kCVPixelBufferPixelFormatTypeKey : Int(kCVPixelFormatType_32BGRA)]
         
-        previewLayer.frame = preView.frame
+        // フレームをキャプチャするためのサブスレッド用のシリアルキューを用意
+        output.setSampleBufferDelegate(self, queue: dispatch_get_main_queue())
         
-        // previewLayer.videoGravity = AVLayerVideoGravityResize
-        // previewLayer.videoGravity = AVLayerVideoGravityResizeAspect
-        previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        output.alwaysDiscardsLateVideoFrames = true
         
-        // レイヤーをViewに設定
-        self.view.layer.addSublayer(previewLayer)
+        // ビデオ出力に接続
+        // let connection = output.connectionWithMediaType(AVMediaTypeVideo)
         
+        session.startRunning()
+
+        // deviceをロックして設定
+        // swift 2.0
+        do {
+            try camera.lockForConfiguration()
+            // フレームレート
+            camera.activeVideoMinFrameDuration = CMTimeMake(1, 15)
+            
+            camera.unlockForConfiguration()
+        } catch _ {
+        }
 
         // プレビューにオーバーレイするビューを作成
         // let overlayView = UINib(nibName: "CameraOverlayView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! UIView
         // let imageView = overlayView.viewWithTag(1) as! UIImageView
-        let overlayView = UIView(frame: CGRectMake(0.0, 0.0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height))
-        
+        overlayView = UIView(frame: CGRectMake(0.0, 0.0, screenWidth, screenHeight))
+
         self.view.addSubview(overlayView)
-        
+
         // 前回撮影の画像をビューに重ねる
         if overlayImage != nil {
-            let imageView = UIImageView(frame: CGRectMake(0.0, 60.0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.width))
+            let overlayImageView = UIImageView(frame: CGRectMake(0.0, screenTopMargin, previewWidth,previewHeight))
         
-            imageView.image = overlayImage
-            imageView.alpha = 0.3
-            
+            overlayImageView.image = overlayImage
+            overlayImageView.alpha = 0.3
+
             overlayView.addSubview(imageView)
         }
         // 撮影ボタンを追加
@@ -132,7 +158,7 @@ class CameraViewController: UIViewController {
         takeButton.layer.cornerRadius = 50.0
         takeButton.layer.position = CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height-100)
         takeButton.addTarget(self, action: "takeStillPicture:", forControlEvents: .TouchUpInside)
-        
+
         // 撮影ボタンをViewに追加.
         overlayView.addSubview(takeButton);
         
@@ -143,32 +169,70 @@ class CameraViewController: UIViewController {
         cancelButton.layer.cornerRadius = 3.0
         cancelButton.layer.position = CGPoint(x: 60.0, y: 25.0)
         cancelButton.addTarget(self, action: "cancel:", forControlEvents: .TouchUpInside)
-
+        
         // キャンセルボタンをViewに追加.
         overlayView.addSubview(cancelButton);
+
+    }
+    
+    // 新しいキャプチャの追加で呼ばれる
+    func captureOutput(captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, fromConnection connection: AVCaptureConnection!) {
         
-        session.startRunning()
+        // キャプチャしたsampleBufferからUIImageを作成
+        let image: UIImage = self.captureImage(sampleBuffer)
+        
+        // 画像を画面に表示
+        dispatch_async(dispatch_get_main_queue()) {
+            let cropImage = self.cropThumbnailImage(image, x: 0.0, y: 0.0, width: image.size.width, height: image.size.width)
+            self.imageView.image = cropImage
+            
+            // UIImageViewをビューに追加
+            self.overlayView.addSubview(self.imageView)
+        }
+    }
+    
+    // sampleBufferからUIImageを作成
+    func captureImage(sampleBuffer: CMSampleBufferRef) -> UIImage {
+        
+        // Sampling Bufferから画像を取得
+        let imageBuffer: CVImageBufferRef = CMSampleBufferGetImageBuffer(sampleBuffer)!
+        
+        // pixel buffer のベースアドレスをロック
+        CVPixelBufferLockBaseAddress(imageBuffer, 0)
+        
+        let baseAddress: UnsafeMutablePointer<Void> = CVPixelBufferGetBaseAddressOfPlane(imageBuffer, 0)
+        
+        let bytesPerRow: Int = CVPixelBufferGetBytesPerRow(imageBuffer)
+        let width: Int = CVPixelBufferGetWidth(imageBuffer)
+        let height: Int = CVPixelBufferGetHeight(imageBuffer)
+        
+        // 色空間
+        let colorSpace: CGColorSpaceRef = CGColorSpaceCreateDeviceRGB()!
+        
+        let bitsPerCompornent: Int = 8
+        // swift 2.0
+        let newContext: CGContextRef = CGBitmapContextCreate(baseAddress, width, height, bitsPerCompornent, bytesPerRow, colorSpace,  CGImageAlphaInfo.PremultipliedFirst.rawValue|CGBitmapInfo.ByteOrder32Little.rawValue)!
+        
+        let imageRef:CGImageRef = CGBitmapContextCreateImage(newContext)!
+        let resultImage = UIImage(CGImage: imageRef, scale: 2.0, orientation: UIImageOrientation.Right)
+
+        return resultImage
     }
 
     func takeStillPicture(sender: UIButton) {
         
         // ビデオ出力に接続.
-        if let connection:AVCaptureConnection? = output.connectionWithMediaType(AVMediaTypeVideo){
-            // ビデオ出力から画像を非同期で取得
-            output.captureStillImageAsynchronouslyFromConnection(connection, completionHandler: { (imageDataBuffer, error) -> Void in
-                
-                // 取得画像のDataBufferをJpegに変換
-                let imageData:NSData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageDataBuffer)
-                
-                // JpegからUIImageを作成.
-                let image:UIImage = UIImage(data: imageData)!
-                
-                // アルバムに追加.
-                UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
-                
-                // 確認画面へ
-                
-            })
+        if let connection: AVCaptureConnection? = output.connectionWithMediaType(AVMediaTypeVideo) {
+            // シャッター音
+            AudioServicesPlaySystemSound(1108)
+            
+            // プレビューのUIImage
+            let image: UIImage = self.imageView.image!
+            
+            // 確認画面へ
+
+            // アルバムに追加.
+            UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
         }
     }
     
@@ -182,6 +246,18 @@ class CameraViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func cropThumbnailImage(image: UIImage, x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) -> UIImage {
+
+        let fixedImage = image.fixOrientation()
+
+        // 切り抜き処理
+        let cropRect  = CGRectMake(x, y, width, height)
+        let cropRef   = CGImageCreateWithImageInRect(fixedImage.CGImage!, cropRect)
+        let cropImage = UIImage(CGImage: cropRef!)
+        
+        return cropImage
+    }
+
     /*
     // MARK: - Navigation
 
@@ -192,4 +268,58 @@ class CameraViewController: UIViewController {
     }
     */
 
+}
+
+// 画像が回転される
+extension UIImage {
+    func fixOrientation () -> UIImage {
+        if self.imageOrientation == .Up {
+            return self
+        }
+        var transform = CGAffineTransformIdentity
+        let width = self.size.width
+        let height = self.size.height
+        
+        switch (self.imageOrientation) {
+        case .Down, .DownMirrored:
+            transform = CGAffineTransformTranslate(transform, width, height)
+        case .Left, .LeftMirrored:
+            transform = CGAffineTransformTranslate(transform, width, 0)
+            transform = CGAffineTransformRotate(transform, CGFloat(M_PI_2))
+        case .Right, .RightMirrored:
+            transform = CGAffineTransformTranslate(transform, 0, height)
+            transform = CGAffineTransformRotate(transform, CGFloat(-M_PI_2))
+        default: // o.Up, o.UpMirrored:
+            break
+        }
+        
+        switch (self.imageOrientation) {
+        case .UpMirrored, .DownMirrored:
+            transform = CGAffineTransformTranslate(transform, width, 0)
+            transform = CGAffineTransformScale(transform, -1, 1)
+        case .LeftMirrored, .RightMirrored:
+            transform = CGAffineTransformTranslate(transform, height, 0)
+            transform = CGAffineTransformScale(transform, -1, 1)
+        default: // o.Up, o.Down, o.Left, o.Right
+            break
+        }
+        let cgimage = self.CGImage
+        
+        let ctx = CGBitmapContextCreate(nil, Int(width), Int(height),
+            CGImageGetBitsPerComponent(cgimage), 0,
+            CGImageGetColorSpace(cgimage),
+            CGImageGetBitmapInfo(cgimage).rawValue)
+        
+        CGContextConcatCTM(ctx, transform)
+        
+        switch (self.imageOrientation) {
+        case .Left, .LeftMirrored, .Right, .RightMirrored:
+            CGContextDrawImage(ctx, CGRectMake(0, 0, height, width), cgimage)
+        default:
+            CGContextDrawImage(ctx, CGRectMake(0, 0, width, height), cgimage)
+        }
+        let cgimg = CGBitmapContextCreateImage(ctx)
+        let img = UIImage(CGImage: cgimg!)
+        return img
+    }
 }
