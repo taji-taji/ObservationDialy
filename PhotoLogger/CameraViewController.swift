@@ -16,7 +16,8 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     var input: AVCaptureDeviceInput!
     var output: AVCaptureVideoDataOutput!
     var session: AVCaptureSession!
-    var imageView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var overlayImageView: UIImageView! = UIImageView()
     var camera: AVCaptureDevice!
     var overlayImage: UIImage?
     var screenWidth: CGFloat = 0.0
@@ -25,19 +26,21 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     var previewHeight: CGFloat = 0.0
     var screenTopMargin: CGFloat = 0.0
     var screenTopMarginRate: CGFloat = 0.16
-    var overlayView: UIView = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+             
+        // 前回撮影の画像をビューに重ねる
+        if overlayImage != nil {
+            overlayImageView?.image = overlayImage
+        }
+        // カメラの設定
+        setupCamera()
     }
 
     // メモリ管理のため
     override func viewWillAppear(animated: Bool) {
-        self.view.backgroundColor = UIColor.lightGrayColor()
-        // スクリーン設定
-        setupDisplay()
-        // カメラの設定
-        setupCamera()
+
     }
     
     // メモリ管理のため
@@ -56,24 +59,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         camera = nil
     }
     
-    func setupDisplay(){
-        //スクリーンの幅
-        screenWidth = UIScreen.mainScreen().bounds.size.width
-        //スクリーンの高さ
-        screenHeight = UIScreen.mainScreen().bounds.size.height
-        
-        previewWidth = screenWidth
-        previewHeight = previewWidth
-        
-        screenTopMargin = screenTopMarginRate * screenHeight
-        
-        // プレビュー用のビューを生成
-        imageView = UIImageView()
-        imageView.frame = CGRectMake(0.0, screenTopMargin, previewWidth, previewHeight)
-        
-    }
-    
-    func setupCamera(){
+    func setupCamera() {
         
         // セッション
         session = AVCaptureSession()
@@ -135,44 +121,6 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         } catch _ {
         }
 
-        // プレビューにオーバーレイするビューを作成
-        // let overlayView = UINib(nibName: "CameraOverlayView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! UIView
-        // let imageView = overlayView.viewWithTag(1) as! UIImageView
-        overlayView = UIView(frame: CGRectMake(0.0, 0.0, screenWidth, screenHeight))
-
-        self.view.addSubview(overlayView)
-
-        // 前回撮影の画像をビューに重ねる
-        if overlayImage != nil {
-            let overlayImageView = UIImageView(frame: CGRectMake(0.0, screenTopMargin, previewWidth,previewHeight))
-        
-            overlayImageView.image = overlayImage
-            overlayImageView.alpha = 0.3
-
-            overlayView.addSubview(imageView)
-        }
-        // 撮影ボタンを追加
-        let takeButton = UIButton(frame: CGRectMake(0.0 , 0.0, 100.0, 100.0))
-        takeButton.backgroundColor = UIColor.greenColor();
-        takeButton.layer.masksToBounds = true
-        takeButton.layer.cornerRadius = 50.0
-        takeButton.layer.position = CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height-100)
-        takeButton.addTarget(self, action: "takeStillPicture:", forControlEvents: .TouchUpInside)
-
-        // 撮影ボタンをViewに追加.
-        overlayView.addSubview(takeButton);
-        
-        // キャンセルボタンを追加
-        let cancelButton = UIButton(frame: CGRectMake(0.0 , 0.0, 100.0, 40.0))
-        cancelButton.backgroundColor = UIColor.redColor();
-        cancelButton.layer.masksToBounds = true
-        cancelButton.layer.cornerRadius = 3.0
-        cancelButton.layer.position = CGPoint(x: 60.0, y: 25.0)
-        cancelButton.addTarget(self, action: "cancel:", forControlEvents: .TouchUpInside)
-        
-        // キャンセルボタンをViewに追加.
-        overlayView.addSubview(cancelButton);
-
     }
     
     // 新しいキャプチャの追加で呼ばれる
@@ -184,10 +132,9 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         // 画像を画面に表示
         dispatch_async(dispatch_get_main_queue()) {
             let cropImage = self.cropThumbnailImage(image, x: 0.0, y: 0.0, width: image.size.width, height: image.size.width)
-            self.imageView.image = cropImage
-            
-            // UIImageViewをビューに追加
-            self.overlayView.addSubview(self.imageView)
+            if self.imageView != nil {
+                self.imageView.image = cropImage
+            }
         }
     }
     
@@ -219,10 +166,9 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         return resultImage
     }
 
-    func takeStillPicture(sender: UIButton) {
-        
+    @IBAction func takeStillPicture(sender: UIButton) {
         // ビデオ出力に接続.
-        if let connection: AVCaptureConnection? = output.connectionWithMediaType(AVMediaTypeVideo) {
+        if let _: AVCaptureConnection? = output.connectionWithMediaType(AVMediaTypeVideo) {
             // シャッター音
             AudioServicesPlaySystemSound(1108)
             
@@ -236,7 +182,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         }
     }
     
-    func cancel(sender: UIButton) {
+    @IBAction func cancel(sender: UIBarButtonItem) {
         print("cancel")
         self.dismissViewControllerAnimated(true, completion: nil)
     }

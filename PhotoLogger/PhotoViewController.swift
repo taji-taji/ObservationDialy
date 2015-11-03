@@ -33,11 +33,11 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if (selectedImage != nil) {
+        if selectedImage != nil {
             photoImageView?.image = selectedImage
         }
         
-        if (editCommentText != nil) {
+        if editCommentText != nil {
             commentTextView.text = editCommentText
         }
 

@@ -147,26 +147,108 @@
             </objects>
             <point key="canvasLocation" x="1172" y="1086"/>
         </scene>
-        <!--View Controller-->
+        <!--Camera View Controller-->
         <scene sceneID="29N-Wd-b4J">
             <objects>
-                <viewController id="d6S-Ei-ZEh" sceneMemberID="viewController">
+                <viewController id="d6S-Ei-ZEh" customClass="CameraViewController" customModule="PhotoLogger" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NiA-eM-nXD"/>
                         <viewControllerLayoutGuide type="bottom" id="BqB-2X-UVr"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dPI-Zz-gSa">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="936"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SfB-6Q-Zlj" userLabel="cameraViewImage">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <accessibility key="accessibilityConfiguration" identifier="" label=""/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="SfB-6Q-Zlj" secondAttribute="height" multiplier="1:1" id="UFD-jx-T3C"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="66" placeholderIntrinsicHeight="66" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zto-n5-4zo">
+                                <rect key="frame" x="267" y="840" width="66" height="66"/>
+                                <state key="normal" image="cameraButton"/>
+                                <connections>
+                                    <action selector="takeStillPicture:" destination="d6S-Ei-ZEh" eventType="touchUpInside" id="zy2-HL-2Jv"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZTf-I6-fDN" userLabel="overlayImage">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <accessibility key="accessibilityConfiguration" identifier="" label="">
+                                    <bool key="isElement" value="NO"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ZTf-I6-fDN" secondAttribute="height" multiplier="1:1" id="rkz-RN-y2e"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SfB-6Q-Zlj" firstAttribute="top" secondItem="NiA-eM-nXD" secondAttribute="bottom" id="76B-Nz-99e"/>
+                            <constraint firstItem="ZTf-I6-fDN" firstAttribute="leading" secondItem="dPI-Zz-gSa" secondAttribute="leading" id="PFw-5A-FoB"/>
+                            <constraint firstAttribute="trailing" secondItem="ZTf-I6-fDN" secondAttribute="trailing" id="c9k-Ah-o8M"/>
+                            <constraint firstItem="SfB-6Q-Zlj" firstAttribute="leading" secondItem="dPI-Zz-gSa" secondAttribute="leading" id="dTe-EO-IM4"/>
+                            <constraint firstItem="ZTf-I6-fDN" firstAttribute="top" secondItem="NiA-eM-nXD" secondAttribute="bottom" id="juH-HS-gNI"/>
+                            <constraint firstAttribute="bottom" secondItem="Zto-n5-4zo" secondAttribute="bottom" constant="30" id="qVx-Sf-AKf"/>
+                            <constraint firstAttribute="trailing" secondItem="SfB-6Q-Zlj" secondAttribute="trailing" id="sFb-uX-Jra"/>
+                            <constraint firstItem="Zto-n5-4zo" firstAttribute="centerX" secondItem="dPI-Zz-gSa" secondAttribute="centerX" id="yur-Bf-1SO"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="wD8-ie-j8i"/>
+                    <navigationItem key="navigationItem" id="wD8-ie-j8i">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="fMq-dY-IOU">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancel:" destination="d6S-Ei-ZEh" id="Aq1-MC-0gi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="600"/>
+                    <size key="freeformSize" width="600" height="1000"/>
+                    <connections>
+                        <outlet property="imageView" destination="SfB-6Q-Zlj" id="i4L-TC-uuc"/>
+                        <outlet property="overlayImageView" destination="ZTf-I6-fDN" id="IfQ-JN-cxa"/>
+                        <segue destination="CbF-mQ-l8g" kind="presentation" modalTransitionStyle="crossDissolve" id="RGc-HD-tRQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PLS-YL-fIL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2822" y="717"/>
+            <point key="canvasLocation" x="2752" y="823"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="qqX-A2-Cii">
+            <objects>
+                <viewController id="gEQ-Xm-eIs" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mfF-ZL-fSQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="BdO-q7-fB2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KzM-DY-XTX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oSy-Ed-pcO">
+                                <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="oSy-Ed-pcO" secondAttribute="height" multiplier="1:1" id="Hog-7n-sf4"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oSy-Ed-pcO" firstAttribute="top" secondItem="mfF-ZL-fSQ" secondAttribute="bottom" id="RMY-dQ-VJf"/>
+                            <constraint firstAttribute="trailing" secondItem="oSy-Ed-pcO" secondAttribute="trailing" id="UJA-nR-yrK"/>
+                            <constraint firstItem="oSy-Ed-pcO" firstAttribute="leading" secondItem="KzM-DY-XTX" secondAttribute="leading" id="xmm-v4-RX3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="LjF-KH-7No"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="1000"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wpm-b7-BPB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4249" y="823"/>
         </scene>
         <!--Title-->
         <scene sceneID="fV5-NN-cmm">
@@ -294,6 +376,7 @@
                     <size key="freeformSize" width="600" height="1000"/>
                     <connections>
                         <segue destination="ent-AI-hJP" kind="presentation" identifier="DetailPhotoSegue" id="jbL-fx-8fH"/>
+                        <segue destination="lXz-5x-gcC" kind="presentation" identifier="showCameraView" id="BOj-OB-scx"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ofl-du-Huq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -450,9 +533,12 @@
         <!--Navigation Controller-->
         <scene sceneID="4mx-q9-Izn">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lXz-5x-gcC" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="cameraViewNavigation" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lXz-5x-gcC" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iMH-3B-Ygw">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="iMH-3B-Ygw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -465,8 +551,27 @@
             </objects>
             <point key="canvasLocation" x="2064" y="717"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kNf-CQ-DC8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CbF-mQ-l8g" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mas-ja-NwG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gEQ-Xm-eIs" kind="relationship" relationship="rootViewController" id="4oj-jM-Xpu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sHW-dv-kdT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3500" y="623"/>
+        </scene>
     </scenes>
     <resources>
         <image name="DefaultPhoto" width="222" height="222"/>
+        <image name="cameraButton" width="66" height="66"/>
     </resources>
 </document>

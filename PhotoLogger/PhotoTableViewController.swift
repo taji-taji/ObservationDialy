@@ -40,66 +40,11 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
     
     // MARK: Actions
     @IBAction func AddPhoto(sender: UIBarButtonItem) {
-        // インスタンス生成　styleはActionSheet.
-        let myAlert = UIAlertController(title: "写真を追加する", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
-        
-        // アクションを生成.
-        let imageFromLibrary = UIAlertAction(title: "フォトライブラリー", style: UIAlertActionStyle.Default, handler: {
-            (action: UIAlertAction!) in
-            self.pickImageFromLibrary()
-        })
-        
-        let imageFromCamera = UIAlertAction(title: "カメラ", style: UIAlertActionStyle.Default, handler: {
-            (action: UIAlertAction!) in
-            self.pickImageFromCamera()
-        })
-        
-        let cancel = UIAlertAction(title: "キャンセル", style: UIAlertActionStyle.Cancel, handler: {
-            (action: UIAlertAction!) in
-            print("cancel")
-        })
-        
-        // アクションを追加.
-        myAlert.addAction(imageFromLibrary)
-        myAlert.addAction(imageFromCamera)
-        myAlert.addAction(cancel)
-        
-        self.presentViewController(myAlert, animated: true, completion: nil)
-    }
-    
-    // ライブラリから写真を選択する
-    func pickImageFromLibrary() {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
-            let controller = UIImagePickerController()
-            controller.delegate = self
-            controller.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-            self.presentViewController(controller, animated: true, completion: nil)
-        }
-    }
-    
-    // 写真を撮ってそれを選択
-    func pickImageFromCamera() {
+        // 写真を撮ってそれを選択
         let latestPhotoFile = target?.photos.last?.photo
         let latestPhotoImage = PhotoManager().get(latestPhotoFile!)
 
-        let controller = CameraViewController()
-        controller.overlayImage = latestPhotoImage
-        self.presentViewController(controller, animated: true, completion: nil)
-//        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
-//            let controller = UIImagePickerController()
-//            controller.delegate = self
-//            controller.sourceType = UIImagePickerControllerSourceType.Camera
-//            
-//            // 最新の画像を取得
-//            let latestPhotoFile = target?.photos.last?.photo
-//            let latestPhotoImage = PhotoManager().get(latestPhotoFile!)
-//            let overlayView = UINib(nibName: "CameraOverlayView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! UIView
-//            let imageView = overlayView.viewWithTag(1) as! UIImageView
-//            imageView.image = latestPhotoImage
-//            
-//            controller.cameraOverlayView = overlayView
-//            self.presentViewController(controller, animated: true, completion: nil)
-//        }
+        performSegueWithIdentifier("showCameraView", sender: latestPhotoImage)
     }
     
     func insertPhoto(notification: NSNotification) {
@@ -206,11 +151,6 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
     
     // MARK: UIImagePickerControllerDelegate
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        // Dismiss the picker if the user canceled.
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     // 写真を選択した時に呼ばれる
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
@@ -299,19 +239,28 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let nav: UINavigationController = segue.destinationViewController as! UINavigationController
-        let photoViewController = nav.viewControllers[0] as! PhotoViewController
-        // 新規作成の時はsenderがUIImage
-        if sender is UIImage {
-            if let selectedImage = sender as? UIImage {
-                photoViewController.selectedImage = selectedImage
+        let identifier = segue.identifier
+        
+        if identifier == "DetailPhotoSegue" {
+            let photoViewController = nav.viewControllers[0] as! PhotoViewController
+            // 新規作成の時はsenderがUIImage
+            if sender is UIImage {
+                if let selectedImage = sender as? UIImage {
+                    photoViewController.selectedImage = selectedImage
+                }
+                // 編集の時はsenderがPhotoTableViewCell
+            } else if sender is PhotoTableViewCell {
+                if let cell = sender as? PhotoTableViewCell {
+                    print(cell.commentText.text)
+                    photoViewController.selectedImage = cell.photoImage.image
+                    photoViewController.editCommentText = cell.commentText.text
+                    photoViewController.selectedId = cell.id
+                }
             }
-        // 編集の時はsenderがPhotoTableViewCell
-        } else if sender is PhotoTableViewCell {
-            if let cell = sender as? PhotoTableViewCell {
-                print(cell.commentText.text)
-                photoViewController.selectedImage = cell.photoImage.image
-                photoViewController.editCommentText = cell.commentText.text
-                photoViewController.selectedId = cell.id
+        } else if identifier == "showCameraView" {
+            let cameraViewController = nav.viewControllers[0] as! CameraViewController
+            if let overlayImage = sender as? UIImage {
+                cameraViewController.overlayImage = overlayImage
             }
         }
     }
