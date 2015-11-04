@@ -74,7 +74,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="記録リスト" id="Wlj-PN-csu">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="31f-Gk-qw9">
+                        <barButtonItem key="rightBarButtonItem" title="＋記録の追加" id="31f-Gk-qw9">
                             <connections>
                                 <segue destination="Pvg-mY-NFa" kind="show" identifier="AddItem" id="rtD-yk-rCO"/>
                             </connections>
@@ -126,12 +126,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="新しい記録の追加" id="WD7-nv-Ubh">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Tqn-Cd-Jw2">
+                        <barButtonItem key="leftBarButtonItem" title="キャンセル" id="Tqn-Cd-Jw2">
                             <connections>
                                 <action selector="targetCancel:" destination="BYZ-38-t0r" id="wYT-tg-9sY"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="rEk-RK-YCP">
+                        <barButtonItem key="rightBarButtonItem" title="保存" style="done" id="rEk-RK-YCP">
                             <connections>
                                 <segue destination="KwE-HN-3SG" kind="unwind" unwindAction="unwindToTargetList:" id="Emn-A3-DOE"/>
                             </connections>
@@ -196,7 +196,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wD8-ie-j8i">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="fMq-dY-IOU">
+                        <barButtonItem key="leftBarButtonItem" title="キャンセル" id="fMq-dY-IOU">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="cancel:" destination="d6S-Ei-ZEh" id="Aq1-MC-0gi"/>
@@ -209,46 +209,12 @@
                     <connections>
                         <outlet property="imageView" destination="SfB-6Q-Zlj" id="i4L-TC-uuc"/>
                         <outlet property="overlayImageView" destination="ZTf-I6-fDN" id="IfQ-JN-cxa"/>
-                        <segue destination="CbF-mQ-l8g" kind="presentation" modalTransitionStyle="crossDissolve" id="RGc-HD-tRQ"/>
+                        <segue destination="ent-AI-hJP" kind="presentation" identifier="confirmPhoto" modalTransitionStyle="flipHorizontal" id="5xa-s8-gx0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PLS-YL-fIL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2752" y="823"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="qqX-A2-Cii">
-            <objects>
-                <viewController id="gEQ-Xm-eIs" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="mfF-ZL-fSQ"/>
-                        <viewControllerLayoutGuide type="bottom" id="BdO-q7-fB2"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="KzM-DY-XTX">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oSy-Ed-pcO">
-                                <rect key="frame" x="0.0" y="64" width="600" height="600"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="oSy-Ed-pcO" secondAttribute="height" multiplier="1:1" id="Hog-7n-sf4"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="oSy-Ed-pcO" firstAttribute="top" secondItem="mfF-ZL-fSQ" secondAttribute="bottom" id="RMY-dQ-VJf"/>
-                            <constraint firstAttribute="trailing" secondItem="oSy-Ed-pcO" secondAttribute="trailing" id="UJA-nR-yrK"/>
-                            <constraint firstItem="oSy-Ed-pcO" firstAttribute="leading" secondItem="KzM-DY-XTX" secondAttribute="leading" id="xmm-v4-RX3"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="LjF-KH-7No"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="1000"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wpm-b7-BPB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4249" y="823"/>
+            <point key="canvasLocation" x="2800" y="897"/>
         </scene>
         <!--Title-->
         <scene sceneID="fV5-NN-cmm">
@@ -414,7 +380,6 @@
                                             <constraint firstItem="Lwn-iF-XGz" firstAttribute="centerY" secondItem="vrD-1S-P5M" secondAttribute="centerY" id="Ewt-wF-E3d"/>
                                             <constraint firstAttribute="width" secondItem="vrD-1S-P5M" secondAttribute="height" multiplier="1:1" id="Jlm-vK-bQt"/>
                                             <constraint firstItem="Lwn-iF-XGz" firstAttribute="centerX" secondItem="vrD-1S-P5M" secondAttribute="centerX" id="VSS-ov-bBc"/>
-                                            <constraint firstItem="Lwn-iF-XGz" firstAttribute="leading" secondItem="vrD-1S-P5M" secondAttribute="leading" id="bCD-zD-z2W"/>
                                             <constraint firstItem="Lwn-iF-XGz" firstAttribute="top" secondItem="vrD-1S-P5M" secondAttribute="top" id="gow-aj-Bgo"/>
                                         </constraints>
                                     </view>
@@ -440,7 +405,6 @@
                             <constraint firstItem="ux1-kz-Hyc" firstAttribute="leading" secondItem="oVa-rX-9tu" secondAttribute="leading" id="RRO-rD-iql"/>
                             <constraint firstItem="ux1-kz-Hyc" firstAttribute="width" secondItem="oVa-rX-9tu" secondAttribute="width" id="UKD-6h-vic"/>
                             <constraint firstAttribute="trailing" secondItem="ux1-kz-Hyc" secondAttribute="trailing" id="c9i-yJ-uUb"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="ux1-kz-Hyc" secondAttribute="bottom" constant="38" id="har-Md-nXJ"/>
                             <constraint firstItem="ux1-kz-Hyc" firstAttribute="top" secondItem="laX-7G-hcF" secondAttribute="bottom" constant="20" id="x1y-vt-6S5"/>
                         </constraints>
                         <connections>
@@ -459,7 +423,8 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <splitViewMasterSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="600"/>
                     <connections>
                         <outlet property="commentTextView" destination="YB4-8a-1Vn" id="cKK-Bz-UsT"/>
                         <outlet property="photoImageView" destination="Lwn-iF-XGz" id="MWW-Tk-yzM"/>
@@ -551,27 +516,12 @@
             </objects>
             <point key="canvasLocation" x="2064" y="717"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="kNf-CQ-DC8">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CbF-mQ-l8g" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mas-ja-NwG">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="gEQ-Xm-eIs" kind="relationship" relationship="rootViewController" id="4oj-jM-Xpu"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sHW-dv-kdT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3500" y="623"/>
-        </scene>
     </scenes>
     <resources>
         <image name="DefaultPhoto" width="222" height="222"/>
         <image name="cameraButton" width="66" height="66"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="5xa-s8-gx0"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -17,6 +17,7 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var photoImageView: UIImageView?
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+
     var photo: PhotoData?
     // 新規作成時に選択された画像
     var selectedImage: UIImage?

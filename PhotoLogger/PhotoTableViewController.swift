@@ -42,7 +42,12 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
     @IBAction func AddPhoto(sender: UIBarButtonItem) {
         // 写真を撮ってそれを選択
         let latestPhotoFile = target?.photos.last?.photo
-        let latestPhotoImage = PhotoManager().get(latestPhotoFile!)
+        var latestPhotoImage: UIImage?
+        
+        // 前回写真がある場合は取得
+        if latestPhotoFile != nil {
+            latestPhotoImage = PhotoManager().get(latestPhotoFile!)
+        }
 
         performSegueWithIdentifier("showCameraView", sender: latestPhotoImage)
     }
@@ -148,15 +153,6 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         }
         return superView as! UITableViewCell
     }
-    
-    // MARK: UIImagePickerControllerDelegate
-    
-    // 写真を選択した時に呼ばれる
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        picker.dismissViewControllerAnimated(true, completion: nil)
-        performSegueWithIdentifier("DetailPhotoSegue", sender: selectedImage)
-    }
 
     // MARK: - Table view data source
 
@@ -243,13 +239,7 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         
         if identifier == "DetailPhotoSegue" {
             let photoViewController = nav.viewControllers[0] as! PhotoViewController
-            // 新規作成の時はsenderがUIImage
-            if sender is UIImage {
-                if let selectedImage = sender as? UIImage {
-                    photoViewController.selectedImage = selectedImage
-                }
-                // 編集の時はsenderがPhotoTableViewCell
-            } else if sender is PhotoTableViewCell {
+            if sender is PhotoTableViewCell {
                 if let cell = sender as? PhotoTableViewCell {
                     print(cell.commentText.text)
                     photoViewController.selectedImage = cell.photoImage.image

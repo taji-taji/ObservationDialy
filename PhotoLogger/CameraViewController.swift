@@ -34,13 +34,14 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         if overlayImage != nil {
             overlayImageView?.image = overlayImage
         }
-        // カメラの設定
-        setupCamera()
+
     }
 
     // メモリ管理のため
     override func viewWillAppear(animated: Bool) {
-
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "dismissSelf:", name: "photoAdded", object: nil)
+        // カメラの設定
+        setupCamera()
     }
     
     // メモリ管理のため
@@ -105,9 +106,6 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         output.alwaysDiscardsLateVideoFrames = true
         
-        // ビデオ出力に接続
-        // let connection = output.connectionWithMediaType(AVMediaTypeVideo)
-        
         session.startRunning()
 
         // deviceをロックして設定
@@ -171,14 +169,15 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         if let _: AVCaptureConnection? = output.connectionWithMediaType(AVMediaTypeVideo) {
             // シャッター音
             AudioServicesPlaySystemSound(1108)
-            
+
             // プレビューのUIImage
             let image: UIImage = self.imageView.image!
             
             // 確認画面へ
+            performSegueWithIdentifier("confirmPhoto", sender: image)
 
             // アルバムに追加.
-            UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
+            // UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
         }
     }
     
@@ -204,16 +203,27 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         return cropImage
     }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+        let nav: UINavigationController = segue.destinationViewController as! UINavigationController
 
+        let photoViewController = nav.viewControllers[0] as! PhotoViewController
+        // 新規作成の時はsenderがUIImage
+        if sender is UIImage {
+            if let takenPhoto = sender as? UIImage {
+                photoViewController.selectedImage = takenPhoto
+            }
+
+        }
+    }
+
+    // 新規作成の通知が来たらdismissする
+    func dismissSelf(notification: NSNotification) {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }
 
 // 画像が回転される
