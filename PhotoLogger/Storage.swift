@@ -33,6 +33,16 @@ class Storage: StorageProtocol {
         }
     }
     
+    func update<T: Data>(type: T, updateValues: NSDictionary) {
+        do {
+            try realm.write {
+                self.realm.create(T.self, value: updateValues, update: true)
+            }
+        } catch {
+            print("error")
+        }
+    }
+    
     func find<T: Data>(type: T, id: Int) -> T? {
         return realm.objects(T).filter("id = \(id)").first
     }
@@ -41,8 +51,12 @@ class Storage: StorageProtocol {
         return realm.objects(T).filter(filter).map { $0 }
     }
     
-    func findAll<T: Data>(type: T) -> [T] {
-        return realm.objects(T).map { $0 }
+    func findAll<T: Data>(type: T, orderby: String?, ascending: Bool = true) -> [T] {
+        var results = realm.objects(T)
+        if orderby != nil {
+            results = results.sorted(orderby!, ascending: ascending)
+        }
+        return results.map { $0 }
     }
     
     func delete<T: Data>(d: T) {

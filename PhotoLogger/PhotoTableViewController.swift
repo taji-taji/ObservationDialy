@@ -61,7 +61,8 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
                 try realm.write {
                     self.target?.photos.append(photo)
                     self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
-                    self.presentedViewController?.dismissViewControllerAnimated(true, completion: nil)
+                    // 全てのモーダルを閉じる
+                    self.presentedViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
                 }
             } catch {
                 print("error")

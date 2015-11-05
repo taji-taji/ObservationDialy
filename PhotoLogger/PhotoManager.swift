@@ -37,7 +37,7 @@ class PhotoManager {
         }
     }
 
-    func insert(image: UIImage, comment: String) -> PhotoData? {
+    func insert(image: UIImage) -> String? {
         
         //ディレクトリが存在しない場合に、ディレクトリを作成する
         if !isDir {
@@ -48,7 +48,7 @@ class PhotoManager {
             }
         }
         
-        let jpegData = UIImageJPEGRepresentation(image, 0.8)!
+        let jpegData = UIImageJPEGRepresentation(image, 1.0)!
         
         // ファイル名を指定して保存
         formatter.dateFormat = "yyyyMMddHHmmss"
@@ -56,14 +56,7 @@ class PhotoManager {
         let filePath = PhotoDirectoryPath + "/" + fileName
         jpegData.writeToFile(filePath, atomically: true)
         
-        let photo: PhotoData?
-        photo = PhotoData()
-        photo!.comment = comment
-        photo!.photo = fileName
-        formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
-        photo!.created = formatter.stringFromDate(now)
-        
-        return photo
+        return fileName
     }
     
     func delete(fileName: String) {

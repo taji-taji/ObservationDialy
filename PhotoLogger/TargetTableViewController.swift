@@ -11,7 +11,7 @@ import UIKit
 class TargetTableViewController: UITableViewController {
     
     // MARK: Properties
-    var targets = Storage().findAll(TargetData())
+    var targets = Storage().findAll(TargetData(), orderby: "updated", ascending: false)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,7 @@ class TargetTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        targets = Storage().findAll(TargetData(), orderby: "updated", ascending: false)
         tableView.reloadData()
     }
 
@@ -48,8 +49,7 @@ class TargetTableViewController: UITableViewController {
         let target = targets[indexPath.row]
         
         cell.titleLabel.text = target.title
-        // ここは後で直す
-        cell.updatedLabel.text = target.created
+        cell.updatedLabel.text = target.updated
         
         if let photoData = target.photos.last {
             if let jpeg: UIImage? = PhotoManager().get(photoData.photo) {

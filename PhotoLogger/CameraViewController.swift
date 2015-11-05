@@ -39,7 +39,6 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
 
     // メモリ管理のため
     override func viewWillAppear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "dismissSelf:", name: "photoAdded", object: nil)
         // カメラの設定
         setupCamera()
     }
@@ -219,11 +218,6 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         }
     }
 
-    // 新規作成の通知が来たらdismissする
-    func dismissSelf(notification: NSNotification) {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
 }
 
 // 画像が回転される

@@ -18,6 +18,7 @@ class TargetData: Data {
     // MARK: Properties
     dynamic var title: String = ""
     dynamic var created: String = ""
+    dynamic var updated: String = ""
     var photos = List<PhotoData>()
     
     // プライマリーキーを指定
@@ -33,6 +34,7 @@ class PhotoData: Data {
     dynamic var comment: String = ""
     dynamic var photo: String = ""
     dynamic var created: String = ""
+    dynamic var updated: String = ""
     var target: [TargetData] {
         return linkingObjects(TargetData.self, forProperty: "photos")
     }

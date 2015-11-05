@@ -62,10 +62,12 @@ class TargetViewController: UIViewController, UITextFieldDelegate, UINavigationC
 
             let title = titleTextField.text ?? ""
             let created = formatter.stringFromDate(now)
+            let updated = formatter.stringFromDate(now)
             
             target = TargetData()
             target?.title = title
             target?.created = created
+            target?.updated = updated
             Storage().add(target!)
         }
     }

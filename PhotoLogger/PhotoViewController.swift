@@ -29,6 +29,8 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
     var screenOffsetY: CGFloat = 0
     private var realmNotificationTokenAdd: NotificationToken?
     private var realmNotificationTokenEdit: NotificationToken?
+    let now = NSDate()
+    let formatter = NSDateFormatter()
     let realm = try! Realm()
 
     override func viewDidLoad() {
@@ -163,21 +165,33 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
             }
 
             let updateValue = ["id": self.selectedId!, "comment": self.commentTextView.text]
-            do {
-                try realm.write {
-                    self.realm.create(PhotoData.self, value: updateValue, update: true)
-                }
-            } catch {
-                print("error")
-            }
+            Storage().update(PhotoData(), updateValues: updateValue)
+            
+            // targetのタイムスタンプ更新
+            photo = Storage().find(PhotoData(), id: self.selectedId!)
+            let target = photo!.target[0]
+            formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+            let targetUpdated = formatter.stringFromDate(now)
+            let targetUpdateValues = ["id": target.id, "updated": targetUpdated]
+            Storage().update(TargetData(), updateValues: targetUpdateValues)
             
         // self.selectedIdがなければ新規
         } else {
-            let now = NSDate()
-            let formatter = NSDateFormatter()
         
             // ファイルを保存
-            photo = PhotoManager().insert((photoImageView?.image)!, comment: commentTextView.text)
+            let fileName = PhotoManager().insert((photoImageView?.image)!)
+            
+            photo = PhotoData()
+    
+            if fileName != nil {
+                photo!.comment = commentTextView.text
+                photo!.photo = fileName!
+                formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+                photo!.created = formatter.stringFromDate(now)
+                photo!.updated = formatter.stringFromDate(now)
+            } else {
+                return
+            }
 
             //NSNotificationのインスタンスを作成
             let n: NSNotification = NSNotification(name: "photoAdded", object: self, userInfo: ["photo": photo!])
@@ -193,6 +207,13 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
         
             }
             Storage().add(photo!)
+
+            // targetのタイムスタンプ更新
+            let target = photo!.target[0]
+            formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+            let targetUpdated = formatter.stringFromDate(now)
+            let targetUpdateValues = ["id": target.id, "updated": targetUpdated]
+            Storage().update(TargetData(), updateValues: targetUpdateValues)
         }
     }
 
