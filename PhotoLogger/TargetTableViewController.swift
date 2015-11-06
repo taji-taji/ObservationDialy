@@ -49,12 +49,16 @@ class TargetTableViewController: UITableViewController {
         let target = targets[indexPath.row]
         
         cell.titleLabel.text = target.title
-        cell.updatedLabel.text = target.updated
+        cell.updatedLabel.text = (target.updated as NSString).substringWithRange(NSRange(location: 0, length: 16))
         
+        // 最新の画像をサムネイルに入れる
         if let photoData = target.photos.last {
             if let jpeg: UIImage? = PhotoManager().get(photoData.photo) {
                 cell.photoImageView.image = jpeg
             }
+        // 画像がない場合はデフォルト画像
+        } else {
+            cell.photoImageView.image = UIImage(named: "DefaultPhoto")
         }
 
         return cell
@@ -69,11 +73,27 @@ class TargetTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
+            
+            // 削除ターゲットデータを取得
             let deleteData: TargetData = targets[indexPath.row]
+            
+            // ファイル名をすべて取得
+            var deleteFiles: [String] = []
+            for photo in deleteData.photos {
+                deleteFiles.append(photo.photo)
+            }
+            print(deleteFiles)
+            
+            // データを削除
             Storage().delete(deleteData)
             targets.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            
+            // ファイルをすべて削除
+            for fileName in deleteFiles {
+                PhotoManager().delete(fileName)
+            }
+            
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    

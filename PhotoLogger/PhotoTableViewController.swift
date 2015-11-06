@@ -14,6 +14,8 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
     // MARK: Properties
     var target: TargetData?  
     let realm = try! Realm()
+    let now = NSDate()
+    let formatter = NSDateFormatter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -145,6 +147,13 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         } catch {
             print("error")
         }
+        
+        // targetのタイムスタンプ更新
+        formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        let targetUpdated = formatter.stringFromDate(now)
+        let targetUpdateValues = ["id": (self.target?.id)!, "updated": targetUpdated]
+        Storage().update(TargetData(), updateValues: targetUpdateValues)
+
     }
     
     func findUITableViewCellFromSuperViewsForView(sender: UIView) -> UITableViewCell {

@@ -21,6 +21,7 @@
 		935996341BD5F5A80047EE9F /* TargetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935996331BD5F5A80047EE9F /* TargetTableViewController.swift */; };
 		936505A71BDF1FEF00A824E0 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936505A61BDF1FEF00A824E0 /* PhotoManager.swift */; };
 		936505AB1BE4843300A824E0 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936505AA1BE4843200A824E0 /* CameraViewController.swift */; };
+		9368DD4C1BEB9E5700F6E034 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9368DD4B1BEB9E5700F6E034 /* Constants.swift */; };
 		939EBF821BDB4A3F00436BC0 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EBF811BDB4A3F00436BC0 /* PhotoViewController.swift */; };
 		939EBF841BDB5D3400436BC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 939EBF831BDB5D3400436BC0 /* Main.storyboard */; };
 		93C7FDA11BDA7B7A00AC1A3D /* StorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */; };
@@ -74,6 +75,7 @@
 		935996331BD5F5A80047EE9F /* TargetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetTableViewController.swift; sourceTree = "<group>"; };
 		936505A61BDF1FEF00A824E0 /* PhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		936505AA1BE4843200A824E0 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		9368DD4B1BEB9E5700F6E034 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		939EBF811BDB4A3F00436BC0 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		939EBF831BDB5D3400436BC0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageProtocol.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */,
 				93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */,
 				93C7FDA21BDA89F200AC1A3D /* Storage.swift */,
+				9368DD4B1BEB9E5700F6E034 /* Constants.swift */,
 				932D92251BD855CC007AEBF0 /* Data.swift */,
 				936505A61BDF1FEF00A824E0 /* PhotoManager.swift */,
 				935996141BD5AB8C0047EE9F /* Assets.xcassets */,
@@ -383,6 +386,7 @@
 				935996341BD5F5A80047EE9F /* TargetTableViewController.swift in Sources */,
 				936505AB1BE4843300A824E0 /* CameraViewController.swift in Sources */,
 				932D92261BD855CC007AEBF0 /* Data.swift in Sources */,
+				9368DD4C1BEB9E5700F6E034 /* Constants.swift in Sources */,
 				935996321BD5EDC20047EE9F /* TargetTableViewCell.swift in Sources */,
 				93C7FDA11BDA7B7A00AC1A3D /* StorageProtocol.swift in Sources */,
 				935996101BD5AB8C0047EE9F /* TargetViewController.swift in Sources */,
