@@ -26,6 +26,32 @@ class TargetViewController: UIViewController, UITextFieldDelegate, UINavigationC
         titleTextField.delegate = self;
         
         checkValidTargetTitle()
+        
+        // キーボードの完了ボタン
+        let myKeyboard = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, 40))
+        myKeyboard.backgroundColor = UIColor.whiteColor()
+        let myKeyboardLine = UIView(frame: CGRectMake(0, 0, myKeyboard.frame.size.width, 0.5))
+        myKeyboardLine.backgroundColor = UIColor.lightGrayColor()
+        myKeyboard.addSubview(myKeyboardLine)
+
+        //完了ボタンの生成
+        let completeButton = UIButton(frame: CGRectMake(300, 5, 70, 30))
+        completeButton.backgroundColor = Constants.Theme.concept()
+        completeButton.setTitle("完了", forState: .Normal)
+        completeButton.titleLabel?.font = UIFont.boldSystemFontOfSize(20)
+        completeButton.layer.cornerRadius = 3.0
+        completeButton.addTarget(self, action: "onClickCompleteButton:", forControlEvents: .TouchUpInside)
+        
+        //Viewに完了ボタンを追加する。
+        myKeyboard.addSubview(completeButton)
+        
+        //ViewをFieldに設定する
+        titleTextField.inputAccessoryView = myKeyboard
+    }
+    
+    // MARK: Actions
+    func onClickCompleteButton(sender: UIButton) {
+        self.view.endEditing(true)
     }
     
     // MARK: UITextFieldDelegate
@@ -51,6 +77,8 @@ class TargetViewController: UIViewController, UITextFieldDelegate, UINavigationC
     
     // MARK: Navigation
     @IBAction func targetCancel(sender: UIBarButtonItem) {
+        // キーボードが上がっている場合もあるので、キーボードを隠す処理
+        self.view.endEditing(true)
         dismissViewControllerAnimated(true, completion: nil)
     }
     

@@ -49,6 +49,28 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
         commentTextView.layer.cornerRadius = 3
         commentTextView.layer.borderColor = UIColor.lightGrayColor().CGColor
         commentTextView.layer.masksToBounds = true
+
+        // キーボードの完了ボタン
+        let myKeyboard = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, 40))
+        myKeyboard.backgroundColor = UIColor.whiteColor()
+        let myKeyboardLine = UIView(frame: CGRectMake(0, 0, myKeyboard.frame.size.width, 0.5))
+        myKeyboardLine.backgroundColor = UIColor.lightGrayColor()
+        myKeyboard.addSubview(myKeyboardLine)
+        
+        //完了ボタンの生成
+        let completeButton = UIButton(frame: CGRectMake(300, 5, 70, 30))
+        completeButton.backgroundColor = Constants.Theme.concept()
+        completeButton.setTitle("完了", forState: .Normal)
+        completeButton.titleLabel?.font = UIFont.boldSystemFontOfSize(20)
+        completeButton.layer.cornerRadius = 3.0
+        completeButton.addTarget(self, action: "onClickCompleteButton:", forControlEvents: .TouchUpInside)
+        
+        //Viewに完了ボタンを追加する。
+        myKeyboard.addSubview(completeButton)
+        
+        //ViewをFieldに設定する
+        commentTextView.inputAccessoryView = myKeyboard
+    
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -86,6 +108,8 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
         }
     }
 
+    // MARK: Actions
+    
     //テキストビューが変更された
     func textViewDidChange(textView: UITextView) {
         print("textViewDidChange")
@@ -103,6 +127,10 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
         return true
     }
 
+    func onClickCompleteButton(sender: UIButton) {
+        self.view.endEditing(true)
+    }
+    
     //キーボードが表示された時
     func handleKeyboardWillShowNotification(notification: NSNotification) {
         // 郵便入れみたいなもの
@@ -111,14 +139,10 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
         let keyboardRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
         // 画面のサイズを取得
         let myBoundSize: CGSize = UIScreen.mainScreen().bounds.size
-        //　ViewControllerを基準にtextFieldの下辺までの距離を取得
+        // ViewControllerを基準にtextFieldの下辺までの距離を取得
         let txtLimit = commentTextView.frame.origin.y + commentTextView.frame.height + 8.0
         // ViewControllerの高さからキーボードの高さを引いた差分を取得
         let kbdLimit = myBoundSize.height - keyboardRect.size.height
-        
-        // こうすることで高さを確認できる（なくてもいい）
-        print("テキストフィールドの下辺：(\(txtLimit))")
-        print("キーボードの上辺：(\(kbdLimit))")
 
         if screenOffsetY == 0 {
             screenOffsetY = photoScrollView.contentOffset.y

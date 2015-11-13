@@ -34,6 +34,8 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         if overlayImage != nil {
             overlayImageView?.image = overlayImage
         }
+        
+        UIInterfaceOrientation.Portrait.rawValue
 
     }
 
@@ -216,6 +218,16 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             }
 
         }
+    }
+    
+    //サポートするデバイスの向きを指定する
+//    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+//        let orientation: UIInterfaceOrientationMask = [UIInterfaceOrientationMask.Portrait]
+//        return orientation
+//    }
+    //指定方向に自動的に変更するか？
+    override func shouldAutorotate() -> Bool{
+        return true
     }
 
 }

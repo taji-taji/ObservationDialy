@@ -23,6 +23,10 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         if let target = target {
             navigationItem.title = target.title
         }
+        
+        //高さ
+        self.tableView.estimatedRowHeight = 900
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -164,6 +168,57 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         return superView as! UITableViewCell
     }
 
+    // 写真をカメラロールに保存
+    func savePhotoToCameraroll(sender: UILongPressGestureRecognizer) {
+        if sender.state == UIGestureRecognizerState.Began {
+            let photoImageView = sender.view as! UIImageView
+            print(photoImageView)
+            // インスタンス生成　styleはActionSheet.
+            let myAlert = UIAlertController(title: "写真の保存", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
+
+            // アクションを生成.
+            let savePhoto = UIAlertAction(title: "カメラロールに保存する", style: .Default, handler: {
+                (action: UIAlertAction!) in
+                // 保存中のビューを出す
+                LoadingOverlay.shared.showOverlay(self.navigationController?.view)
+                // カメラロールに保存
+                UIImageWriteToSavedPhotosAlbum(photoImageView.image!, self, "image:didFinishSavingWithError:contextInfo:", nil)
+            })
+            
+            let cancel = UIAlertAction(title: "キャンセル", style: .Cancel, handler: {
+                (action: UIAlertAction!) in
+                print("cancel")
+            })
+            
+            // アクションを追加.
+            myAlert.addAction(savePhoto)
+            myAlert.addAction(cancel)
+            
+            self.presentViewController(myAlert, animated: true, completion: nil)
+        }
+    }
+    
+    func image(image: UIImage, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutablePointer<Void>) {
+        // 保存中のビューを消す
+        LoadingOverlay.shared.hideOverlayView()
+        
+        var title = "保存完了"
+        var message = "カメラロールへ保存しました"
+        
+        if error != nil {
+            title = "エラー"
+            message = "カメラロールへの保存に失敗しました"
+        }
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        let confirm = UIAlertAction(title: "OK", style: .Default, handler: {
+            (action: UIAlertAction!) in
+        })
+        alertController.addAction(confirm)
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+        
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -174,6 +229,10 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return (target?.photos)!.count
+    }
+    
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> 
@@ -197,12 +256,14 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "editAlert:")
             cell.editButton.addGestureRecognizer(tapGestureRecognizer)
             cell.editButton.layer.cornerRadius = 3
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            
+            // 画像長押しでカメラロールに保存
+            let gesture: UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "savePhotoToCameraroll:")
+            gesture.minimumPressDuration = 0.5
+            cell.photoImage.addGestureRecognizer(gesture)
 
             return cell
-    }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
     /*
