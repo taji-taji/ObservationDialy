@@ -49,7 +49,8 @@ class TargetTableViewController: UITableViewController {
         let target = targets[indexPath.row]
         
         cell.titleLabel.text = target.title
-        cell.updatedLabel.text = (target.updated as NSString).substringWithRange(NSRange(location: 0, length: 16))
+        //cell.updatedLabel.text = (target.updated as NSString).substringWithRange(NSRange(location: 0, length: 16))
+        cell.updatedLabel.text = DateUtility().strToDateFromNow(target.updated)
         
         // 最新の画像をサムネイルに入れる
         if let photoData = target.photos.last {

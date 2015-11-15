@@ -27,6 +27,7 @@
 		93C7FDA11BDA7B7A00AC1A3D /* StorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */; };
 		93C7FDA31BDA89F200AC1A3D /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FDA21BDA89F200AC1A3D /* Storage.swift */; };
 		93CD876A1BF69818003F836B /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD87691BF69818003F836B /* LoadingOverlay.swift */; };
+		93DBDBA71BF83A3F00E96148 /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBA61BF83A3F00E96148 /* DateUtility.swift */; };
 		9B237546C96723C1FD1B6A24 /* Pods_PhotoLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87AB316AE548E70671C965DA /* Pods_PhotoLogger.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageProtocol.swift; sourceTree = "<group>"; };
 		93C7FDA21BDA89F200AC1A3D /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		93CD87691BF69818003F836B /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
+		93DBDBA61BF83A3F00E96148 /* DateUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtility.swift; sourceTree = "<group>"; };
 		DC840323EFBAEABBAEAD193C /* Pods-PhotoLoggerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoLoggerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoLoggerTests/Pods-PhotoLoggerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,6 +149,7 @@
 				93CD87691BF69818003F836B /* LoadingOverlay.swift */,
 				931165C01BD6468D00F1D32D /* PhotoTableViewController.swift */,
 				935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */,
+				93DBDBA61BF83A3F00E96148 /* DateUtility.swift */,
 				931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */,
 				93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */,
 				93C7FDA21BDA89F200AC1A3D /* Storage.swift */,
@@ -392,6 +395,7 @@
 				9368DD4C1BEB9E5700F6E034 /* Constants.swift in Sources */,
 				935996321BD5EDC20047EE9F /* TargetTableViewCell.swift in Sources */,
 				93C7FDA11BDA7B7A00AC1A3D /* StorageProtocol.swift in Sources */,
+				93DBDBA71BF83A3F00E96148 /* DateUtility.swift in Sources */,
 				935996101BD5AB8C0047EE9F /* TargetViewController.swift in Sources */,
 				93CD876A1BF69818003F836B /* LoadingOverlay.swift in Sources */,
 				9359960E1BD5AB8C0047EE9F /* AppDelegate.swift in Sources */,

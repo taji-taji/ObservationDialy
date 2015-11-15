@@ -13,17 +13,20 @@ class TargetViewController: UIViewController, UITextFieldDelegate, UINavigationC
     // MARK: Properties
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var targetSaveButton: UIBarButtonItem!
-
-    /*
-    This value is either passed by `MealTableViewController` in `prepareForSegue(_:sender:)`
-    or constructed as part of adding a new meal.
-    */
     var target: TargetData?
+    var titleText: String?
+    var targetId: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         titleTextField.delegate = self;
+        
+        // titleTextがnilでなければ名称変更
+        if titleText != nil {
+            titleTextField.text = titleText
+            self.navigationItem.title = "タイトル変更"
+        }
         
         checkValidTargetTitle()
         
@@ -89,14 +92,22 @@ class TargetViewController: UIViewController, UITextFieldDelegate, UINavigationC
             formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
 
             let title = titleTextField.text ?? ""
-            let created = formatter.stringFromDate(now)
             let updated = formatter.stringFromDate(now)
             
             target = TargetData()
             target?.title = title
-            target?.created = created
             target?.updated = updated
-            Storage().add(target!)
+            
+            // targetIdがあればアップデート
+            if targetId != nil {
+                Storage().update(target!, updateValues: ["id": targetId!, "title": title, "updated": updated])
+            
+            // なければ新規追加
+            } else {
+                let created = formatter.stringFromDate(now)
+                target?.created = created
+                Storage().add(target!)
+            }
         }
     }
 

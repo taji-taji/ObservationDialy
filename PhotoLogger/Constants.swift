@@ -22,6 +22,14 @@ class Constants {
         static func concept() -> UIColor {
             return UIColor(red: 127.0/255, green: 214.0/255, blue: 154.0/255, alpha: 1.0)
         }
+        // Concept Theme RGB 179 150 116
+        static func subConcept() -> UIColor {
+            return UIColor(red: 179.0/255, green: 150.0/255, blue: 116.0/255, alpha: 1.0)
+        }
+        // Red RGB 245 245 245
+        static func backGround() -> UIColor {
+            return UIColor(red: 245.0/255, green: 245.0/255, blue: 245.0/255, alpha: 1.0)
+        }
         // Red RGB 255 50 72 (#ff3248)
         static func reset() -> UIColor {
             return UIColor(red: 1.0, green: 50.0/255, blue: 72.0/255, alpha: 1.0)

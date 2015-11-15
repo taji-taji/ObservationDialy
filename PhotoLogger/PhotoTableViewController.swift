@@ -12,7 +12,8 @@ import RealmSwift
 class PhotoTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // MARK: Properties
-    var target: TargetData?  
+    var target: TargetData?
+    var photos: Results<PhotoData>?
     let realm = try! Realm()
     let now = NSDate()
     let formatter = NSDateFormatter()
@@ -22,10 +23,11 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
 
         if let target = target {
             navigationItem.title = target.title
+            photos = target.photos.sorted("created", ascending: false)
         }
         
         //高さ
-        self.tableView.estimatedRowHeight = 900
+        self.tableView.estimatedRowHeight = 850
         tableView.rowHeight = UITableViewAutomaticDimension
     }
     
@@ -33,10 +35,48 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         super.viewWillAppear(animated)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "insertPhoto:", name: "photoAdded", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updatePhoto:", name: "photoEdited", object: nil)
+        
+        // ツールバーをセット
+        self.navigationController?.setToolbarHidden(false, animated: true)
+        let toolbar = self.navigationController?.toolbar
+        toolbar!.tintColor = UIColor.whiteColor()
+        toolbar!.barTintColor = Constants.Theme.concept()
+        toolbar!.frame = CGRectMake(0, self.view.frame.height - 50, self.view.frame.width, 50)
+        
+        // ツールバーボタンのセット
+        let cameraButton: UIButton = UIButton(type: UIButtonType.Custom)
+        cameraButton.addTarget(self, action: "AddPhoto:", forControlEvents: .TouchUpInside)
+        cameraButton.setImage(UIImage(named: "CameraIcon"), forState: .Normal)
+        cameraButton.imageView?.contentMode = .ScaleAspectFit
+        cameraButton.frame = CGRectMake(toolbar!.bounds.size.width / 3, 0, toolbar!.bounds.size.width / 3, 75)
+        let barCameraButton: UIBarButtonItem = UIBarButtonItem(customView: cameraButton)
+        
+        let editButton: UIButton = UIButton(type: UIButtonType.Custom)
+        editButton.addTarget(self, action: "editTarget:", forControlEvents: .TouchUpInside)
+        editButton.setImage(UIImage(named: "EditPencil"), forState: .Normal)
+        editButton.imageView?.contentMode = .ScaleAspectFit
+        editButton.frame = CGRectMake(0, 0, toolbar!.bounds.size.width / 3, 50)
+        let barEditButton: UIBarButtonItem = UIBarButtonItem(customView: editButton)
+
+        let movieButton: UIButton = UIButton(type: UIButtonType.Custom)
+        movieButton.addTarget(self, action: "makeMovie:", forControlEvents: .TouchUpInside)
+        movieButton.setImage(UIImage(named: "MovieIcon"), forState: .Normal)
+        movieButton.imageView?.contentMode = .ScaleAspectFit
+        movieButton.frame = CGRectMake(toolbar!.bounds.size.width / 3 * 2, 0, toolbar!.bounds.size.width / 3, 50)
+        let barMovieButton: UIBarButtonItem = UIBarButtonItem(customView: movieButton)
+        
+        let flexibleSpace: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: self, action: nil)
+        
+        let toolbarItems = [flexibleSpace, barEditButton, flexibleSpace, barCameraButton, flexibleSpace, barMovieButton, flexibleSpace]
+        self.setToolbarItems(toolbarItems, animated: true)
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.setToolbarHidden(true, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,7 +85,7 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
     }
     
     // MARK: Actions
-    @IBAction func AddPhoto(sender: UIBarButtonItem) {
+    func AddPhoto(sender: UIBarButtonItem) {
         // 写真を撮ってそれを選択
         let latestPhotoFile = target?.photos.last?.photo
         var latestPhotoImage: UIImage?
@@ -65,10 +105,12 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
             let newIndexPath = NSIndexPath(forRow: 0, inSection: 0)
             do {
                 try realm.write {
+                    defer {
+                        // 全てのモーダルを閉じる
+                        self.presentedViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                    }
                     self.target?.photos.append(photo)
-                    self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
-                    // 全てのモーダルを閉じる
-                    self.presentedViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                    self.tableView.reloadData()
                 }
             } catch {
                 print("error")
@@ -82,12 +124,24 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         self.presentedViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    // 記録名の編集
+    func editTarget(sender: UIBarButtonItem) {
+        print("editTarget")
+        performSegueWithIdentifier("ModifyItem", sender: self.target)
+    }
+
+    // ムービーの作成
+    func makeMovie(sender: UIBarButtonItem) {
+        print("makeMovie")
+    }
+    
     // 既存の写真の編集ボタンを押した時の選択肢
-    func editAlert(sender: UITapGestureRecognizer) {
+    func editAlert(sender: UIGestureRecognizer) {
         // インスタンス生成　styleはActionSheet.
         let myAlert = UIAlertController(title: "写真を編集・削除する", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
-        
+
         let cell = findUITableViewCellFromSuperViewsForView(sender.view as! UIButton) as! PhotoTableViewCell
+
         let newIndexPath = self.tableView.indexPathForCell(cell)
         
         // アクションを生成.
@@ -140,12 +194,12 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
     // 画像の削除操作
     func deletePhoto(id: Int, indexPath: NSIndexPath) {
         let photo = Storage().find(PhotoData(), id: id)
-        let deleteIndex = (self.target?.photos.count)! - indexPath.row - 1
+        let deleteIndex = (self.target?.photos.count)! - (indexPath.section + 1)
         do {
             try realm.write {
                 self.target?.photos.removeAtIndex(deleteIndex)
                 // Delete the row from the data source
-                self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                self.tableView.deleteSections(NSIndexSet(index: indexPath.section), withRowAnimation: .Fade)
                 PhotoManager().delete(photo!.photo)
             }
         } catch {
@@ -172,7 +226,7 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
     func savePhotoToCameraroll(sender: UILongPressGestureRecognizer) {
         if sender.state == UIGestureRecognizerState.Began {
             let photoImageView = sender.view as! UIImageView
-            print(photoImageView)
+
             // インスタンス生成　styleはActionSheet.
             let myAlert = UIAlertController(title: "写真の保存", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
 
@@ -223,12 +277,12 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return (target?.photos)!.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return (target?.photos)!.count
+        return 1
     }
     
     override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -240,22 +294,19 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
             let cellIdentifier = "PhotoTableViewCell"
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! PhotoTableViewCell
             
-            let photos = target?.photos.sorted("created", ascending: false)
-            
-            let photoData = photos![indexPath.row]
+            let photoData = photos![indexPath.section]
 
             let fileName = photoData.photo
 
             if let jpeg: UIImage? = PhotoManager().get(fileName) {
                 cell.photoImage.image = jpeg
-                cell.createdLabel.text = photoData.created
                 cell.commentText.text = photoData.comment
                 cell.id = photoData.id
             }
-            
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "editAlert:")
             cell.editButton.addGestureRecognizer(tapGestureRecognizer)
-            cell.editButton.layer.cornerRadius = 3
+            cell.editButton.setImage(UIImage(named: "EditIconHighlighted"), forState: .Highlighted)
+
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             
             // 画像長押しでカメラロールに保存
@@ -266,6 +317,28 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
             return cell
     }
 
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        // headerのビュー
+        let header = UIView(frame: CGRectMake(0, 0, tableView.bounds.size.width, 40))
+        header.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.95)
+        let headerBorder = UIView(frame: CGRectMake(0, header.bounds.size.height, header.bounds.size.width, 0.5))
+        headerBorder.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1.0)
+        
+        // 作成日
+        let created = UILabel(frame: CGRectMake(10, 0, tableView.bounds.size.width, header.bounds.size.height))
+        created.text = (photos![section].created as NSString).substringWithRange(NSRange(location: 0, length: 16))
+        created.font = UIFont.systemFontOfSize(15)
+        created.textColor = UIColor.lightGrayColor()
+
+        header.addSubview(created)
+        header.addSubview(headerBorder)
+        return header
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -312,7 +385,6 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
             let photoViewController = nav.viewControllers[0] as! PhotoViewController
             if sender is PhotoTableViewCell {
                 if let cell = sender as? PhotoTableViewCell {
-                    print(cell.commentText.text)
                     photoViewController.selectedImage = cell.photoImage.image
                     photoViewController.editCommentText = cell.commentText.text
                     photoViewController.selectedId = cell.id
@@ -322,6 +394,14 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
             let cameraViewController = nav.viewControllers[0] as! CameraViewController
             if let overlayImage = sender as? UIImage {
                 cameraViewController.overlayImage = overlayImage
+            }
+        } else if identifier == "ModifyItem" {
+            let targetViewController = nav.viewControllers[0] as! TargetViewController
+            if sender is TargetData {
+                if let target = sender as? TargetData {
+                    targetViewController.titleText = target.title
+                    targetViewController.targetId = target.id
+                }
             }
         }
     }
