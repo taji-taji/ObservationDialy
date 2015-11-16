@@ -238,6 +238,17 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
             let targetUpdated = formatter.stringFromDate(now)
             let targetUpdateValues = ["id": target.id, "updated": targetUpdated]
             Storage().update(TargetData(), updateValues: targetUpdateValues)
+            
+            // 画像をすべて取得
+            var photos: [UIImage] = []
+            for photoData in target.photos {
+                let image = PhotoManager().get(photoData.photo)
+                photos.append(image!)
+            }
+            
+            if photos.count > 2 {
+                VideoManager().makeVideoFromPhotos(photos, fileName: "\(target.id).mp4")
+            }
         }
     }
 

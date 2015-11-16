@@ -1,20 +1,18 @@
 //
-//  PhotoManager.swift
+//  MediaManager.swift
 //  PhotoLogger
 //
-//  Created by tajika on 2015/10/27.
+//  Created by tajika on 2015/11/15.
 //  Copyright © 2015年 Tajika. All rights reserved.
 //
 
 import UIKit
 
-class PhotoManager {
-
+class MediaManager {
+    
     // MARK: Properties
-
+    
     let DocumentsDirectory: String
-    let PhotoDirectory: String = "/photos"
-    let PhotoDirectoryPath: String
     var isDir: ObjCBool = false
     let fileManager = NSFileManager.defaultManager()
     let now = NSDate()
@@ -22,8 +20,6 @@ class PhotoManager {
     
     init() {
         DocumentsDirectory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first!
-        PhotoDirectoryPath = DocumentsDirectory + PhotoDirectory
-        fileManager.fileExistsAtPath(PhotoDirectoryPath, isDirectory: &isDir)
     }
     
     // MARK: Methods
@@ -35,7 +31,7 @@ class PhotoManager {
             return nil
         }
     }
-
+    
     func insert(image: UIImage) -> String? {
         
         //ディレクトリが存在しない場合に、ディレクトリを作成する
@@ -65,6 +61,6 @@ class PhotoManager {
             print("failed: delete file")
         }
     }
-
-
+    
+    
 }

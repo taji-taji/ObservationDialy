@@ -49,7 +49,6 @@ class TargetTableViewController: UITableViewController {
         let target = targets[indexPath.row]
         
         cell.titleLabel.text = target.title
-        //cell.updatedLabel.text = (target.updated as NSString).substringWithRange(NSRange(location: 0, length: 16))
         cell.updatedLabel.text = DateUtility().strToDateFromNow(target.updated)
         
         // 最新の画像をサムネイルに入れる
@@ -99,21 +98,6 @@ class TargetTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     // MARK: - Navigation
 

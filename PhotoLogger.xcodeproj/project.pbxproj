@@ -28,6 +28,8 @@
 		93C7FDA31BDA89F200AC1A3D /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FDA21BDA89F200AC1A3D /* Storage.swift */; };
 		93CD876A1BF69818003F836B /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD87691BF69818003F836B /* LoadingOverlay.swift */; };
 		93DBDBA71BF83A3F00E96148 /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBA61BF83A3F00E96148 /* DateUtility.swift */; };
+		93DBDBAB1BF893E300E96148 /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBAA1BF893E300E96148 /* VideoManager.swift */; };
+		93DBDBAD1BF9E19300E96148 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBAC1BF9E19300E96148 /* VideoPlayerViewController.swift */; };
 		9B237546C96723C1FD1B6A24 /* Pods_PhotoLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87AB316AE548E70671C965DA /* Pods_PhotoLogger.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +86,8 @@
 		93C7FDA21BDA89F200AC1A3D /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		93CD87691BF69818003F836B /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		93DBDBA61BF83A3F00E96148 /* DateUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtility.swift; sourceTree = "<group>"; };
+		93DBDBAA1BF893E300E96148 /* VideoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoManager.swift; sourceTree = "<group>"; };
+		93DBDBAC1BF9E19300E96148 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		DC840323EFBAEABBAEAD193C /* Pods-PhotoLoggerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoLoggerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoLoggerTests/Pods-PhotoLoggerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,6 +147,7 @@
 				9359960D1BD5AB8C0047EE9F /* AppDelegate.swift */,
 				939EBF831BDB5D3400436BC0 /* Main.storyboard */,
 				9359960F1BD5AB8C0047EE9F /* TargetViewController.swift */,
+				93DBDBAC1BF9E19300E96148 /* VideoPlayerViewController.swift */,
 				939EBF811BDB4A3F00436BC0 /* PhotoViewController.swift */,
 				936505AA1BE4843200A824E0 /* CameraViewController.swift */,
 				935996331BD5F5A80047EE9F /* TargetTableViewController.swift */,
@@ -156,6 +161,7 @@
 				9368DD4B1BEB9E5700F6E034 /* Constants.swift */,
 				932D92251BD855CC007AEBF0 /* Data.swift */,
 				936505A61BDF1FEF00A824E0 /* PhotoManager.swift */,
+				93DBDBAA1BF893E300E96148 /* VideoManager.swift */,
 				935996141BD5AB8C0047EE9F /* Assets.xcassets */,
 				935996161BD5AB8C0047EE9F /* LaunchScreen.storyboard */,
 				935996191BD5AB8C0047EE9F /* Info.plist */,
@@ -386,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93C7FDA31BDA89F200AC1A3D /* Storage.swift in Sources */,
+				93DBDBAD1BF9E19300E96148 /* VideoPlayerViewController.swift in Sources */,
 				931165BF1BD6459400F1D32D /* PhotoTableViewCell.swift in Sources */,
 				936505A71BDF1FEF00A824E0 /* PhotoManager.swift in Sources */,
 				931165C11BD6468D00F1D32D /* PhotoTableViewController.swift in Sources */,
@@ -400,6 +407,7 @@
 				93CD876A1BF69818003F836B /* LoadingOverlay.swift in Sources */,
 				9359960E1BD5AB8C0047EE9F /* AppDelegate.swift in Sources */,
 				939EBF821BDB4A3F00436BC0 /* PhotoViewController.swift in Sources */,
+				93DBDBAB1BF893E300E96148 /* VideoManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

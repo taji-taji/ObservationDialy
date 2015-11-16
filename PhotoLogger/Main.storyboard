@@ -342,6 +342,14 @@
             </objects>
             <point key="canvasLocation" x="1218" y="24"/>
         </scene>
+        <!--AV Player View Controller-->
+        <scene sceneID="AR7-Wu-pnN">
+            <objects>
+                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="ISd-1z-mIK" customClass="VideoPlayerViewController" customModule="PhotoLogger" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7oS-uL-McM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2010" y="-637"/>
+        </scene>
         <!--Photo View Controller-->
         <scene sceneID="ami-OU-IsG">
             <objects>

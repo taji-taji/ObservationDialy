@@ -19,6 +19,7 @@ class TargetData: Data {
     dynamic var title: String = ""
     dynamic var created: String = ""
     dynamic var updated: String = ""
+    dynamic var video: VideoData?
     var photos = List<PhotoData>()
     
     // プライマリーキーを指定
@@ -43,4 +44,18 @@ class PhotoData: Data {
         return "id"
     }
 
+}
+
+class VideoData: Data {
+    
+    // MARK: Properties
+    dynamic var created: String = ""
+    var target: [TargetData] {
+        return linkingObjects(TargetData.self, forProperty: "video")
+    }
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
 }

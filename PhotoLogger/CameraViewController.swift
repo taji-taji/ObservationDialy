@@ -176,9 +176,6 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             
             // 確認画面へ
             performSegueWithIdentifier("confirmPhoto", sender: image)
-
-            // アルバムに追加.
-            // UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
         }
     }
     

@@ -59,7 +59,7 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         let barEditButton: UIBarButtonItem = UIBarButtonItem(customView: editButton)
 
         let movieButton: UIButton = UIButton(type: UIButtonType.Custom)
-        movieButton.addTarget(self, action: "makeMovie:", forControlEvents: .TouchUpInside)
+        movieButton.addTarget(self, action: "movieAction:", forControlEvents: .TouchUpInside)
         movieButton.setImage(UIImage(named: "MovieIcon"), forState: .Normal)
         movieButton.imageView?.contentMode = .ScaleAspectFit
         movieButton.frame = CGRectMake(toolbar!.bounds.size.width / 3 * 2, 0, toolbar!.bounds.size.width / 3, 50)
@@ -76,6 +76,7 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
     }
     
     override func viewWillDisappear(animated: Bool) {
+        // ツールバーを隠す
         self.navigationController?.setToolbarHidden(true, animated: true)
     }
 
@@ -85,12 +86,13 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
     }
     
     // MARK: Actions
+
+    // カメラビューへ遷移
     func AddPhoto(sender: UIBarButtonItem) {
-        // 写真を撮ってそれを選択
+        // 前回写真の取得
         let latestPhotoFile = target?.photos.last?.photo
         var latestPhotoImage: UIImage?
-        
-        // 前回写真がある場合は取得
+
         if latestPhotoFile != nil {
             latestPhotoImage = PhotoManager().get(latestPhotoFile!)
         }
@@ -98,6 +100,7 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         performSegueWithIdentifier("showCameraView", sender: latestPhotoImage)
     }
     
+    // 写真を追加
     func insertPhoto(notification: NSNotification) {
         NSNotificationCenter.defaultCenter().removeObserver(self)
         if let userInfo = notification.userInfo {
@@ -118,21 +121,24 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         }
     }
 
+    // 写真のデータ更新
     func updatePhoto(notification: NSNotification) {
         NSNotificationCenter.defaultCenter().removeObserver(self)
         self.tableView.reloadData()
         self.presentedViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    // 記録名の編集
+    // 記録タイトルの編集
     func editTarget(sender: UIBarButtonItem) {
         print("editTarget")
         performSegueWithIdentifier("ModifyItem", sender: self.target)
     }
 
-    // ムービーの作成
-    func makeMovie(sender: UIBarButtonItem) {
-        print("makeMovie")
+    // ムービーの再生
+    func movieAction(sender: UIBarButtonItem) {
+        let videoPlayerViewController = VideoPlayerViewController()
+        videoPlayerViewController.fileName = "\(target!.id).mp4"
+        self.presentViewController(videoPlayerViewController, animated: true, completion: nil)
     }
     
     // 既存の写真の編集ボタンを押した時の選択肢
@@ -144,7 +150,7 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
 
         let newIndexPath = self.tableView.indexPathForCell(cell)
         
-        // アクションを生成.
+        // アクションを生成
         let editPhoto = UIAlertAction(title: "編集する", style: .Default, handler: {
             (action: UIAlertAction!) in
             self.editPhoto(cell)
@@ -160,7 +166,7 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
             print("cancel")
         })
         
-        // アクションを追加.
+        // アクションを追加
         myAlert.addAction(editPhoto)
         myAlert.addAction(deleteAlert)
         myAlert.addAction(cancel)
@@ -338,42 +344,8 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
     }
+
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
