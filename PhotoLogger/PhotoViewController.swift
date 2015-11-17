@@ -30,7 +30,6 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
     private var realmNotificationTokenAdd: NotificationToken?
     private var realmNotificationTokenEdit: NotificationToken?
     let now = NSDate()
-    let formatter = NSDateFormatter()
     let realm = try! Realm()
 
     override func viewDidLoad() {
@@ -194,9 +193,7 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
             // targetのタイムスタンプ更新
             photo = Storage().find(PhotoData(), id: self.selectedId!)
             let target = photo!.target[0]
-            formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
-            let targetUpdated = formatter.stringFromDate(now)
-            let targetUpdateValues = ["id": target.id, "updated": targetUpdated]
+            let targetUpdateValues = ["id": target.id, "updated": now]
             Storage().update(TargetData(), updateValues: targetUpdateValues)
             
         // self.selectedIdがなければ新規
@@ -210,9 +207,8 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
             if fileName != nil {
                 photo!.comment = commentTextView.text
                 photo!.photo = fileName!
-                formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
-                photo!.created = formatter.stringFromDate(now)
-                photo!.updated = formatter.stringFromDate(now)
+                photo!.created = now
+                photo!.updated = now
             } else {
                 return
             }
@@ -234,9 +230,7 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
 
             // targetのタイムスタンプ更新
             let target = photo!.target[0]
-            formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
-            let targetUpdated = formatter.stringFromDate(now)
-            let targetUpdateValues = ["id": target.id, "updated": targetUpdated]
+            let targetUpdateValues = ["id": target.id, "updated": now]
             Storage().update(TargetData(), updateValues: targetUpdateValues)
             
             // 画像をすべて取得
@@ -246,7 +240,7 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
                 photos.append(image!)
             }
             
-            if photos.count > 2 {
+            if photos.count >= Constants.Video.minPhotos {
                 VideoManager().makeVideoFromPhotos(photos, fileName: "\(target.id).mp4")
             }
         }

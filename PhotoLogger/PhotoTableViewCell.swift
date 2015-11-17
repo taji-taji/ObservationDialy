@@ -14,6 +14,7 @@ class PhotoTableViewCell: UITableViewCell {
     @IBOutlet weak var commentText: UITextView!
     @IBOutlet weak var photoImage: UIImageView!
     @IBOutlet weak var editButton: UIButton!
+    
     var id: Int?
 
     override func awakeFromNib() {

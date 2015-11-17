@@ -26,12 +26,12 @@ class VideoPlayerViewController: AVPlayerViewController {
         
             // アイテム取得
             let playerItem = AVPlayerItem(URL: url)
-        
+            
             // 生成
-            let player = AVPlayer(playerItem: playerItem)
+            player = AVPlayer(playerItem: playerItem)
         
             // 再生
-            player.play()
+            player!.play()
         }
     }
     

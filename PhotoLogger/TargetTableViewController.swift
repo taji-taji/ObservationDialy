@@ -49,7 +49,7 @@ class TargetTableViewController: UITableViewController {
         let target = targets[indexPath.row]
         
         cell.titleLabel.text = target.title
-        cell.updatedLabel.text = DateUtility().strToDateFromNow(target.updated)
+        cell.updatedLabel.text = DateUtility().dateFromNow(target.updated)
         
         // 最新の画像をサムネイルに入れる
         if let photoData = target.photos.last {
@@ -77,22 +77,27 @@ class TargetTableViewController: UITableViewController {
             // 削除ターゲットデータを取得
             let deleteData: TargetData = targets[indexPath.row]
             
-            // ファイル名をすべて取得
+            // 画像ファイル名をすべて取得
             var deleteFiles: [String] = []
             for photo in deleteData.photos {
                 deleteFiles.append(photo.photo)
             }
-            print(deleteFiles)
+            
+            // 動画ファイル名を取得
+            let deleteVideo = "\(deleteData.id).mp4"
             
             // データを削除
             Storage().delete(deleteData)
             targets.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             
-            // ファイルをすべて削除
+            // 画像ファイルをすべて削除
             for fileName in deleteFiles {
                 PhotoManager().delete(fileName)
             }
+            
+            // 動画ファイル削除
+            VideoManager().delete(deleteVideo)
             
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view

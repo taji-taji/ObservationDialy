@@ -88,23 +88,20 @@ class TargetViewController: UIViewController, UITextFieldDelegate, UINavigationC
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if targetSaveButton === sender {
             let now = NSDate()
-            let formatter = NSDateFormatter()
-            formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
 
             let title = titleTextField.text ?? ""
-            let updated = formatter.stringFromDate(now)
             
             target = TargetData()
             target?.title = title
-            target?.updated = updated
+            target?.updated = now
             
             // targetIdがあればアップデート
             if targetId != nil {
-                Storage().update(target!, updateValues: ["id": targetId!, "title": title, "updated": updated])
+                Storage().update(target!, updateValues: ["id": targetId!, "title": title, "updated": now])
             
             // なければ新規追加
             } else {
-                let created = formatter.stringFromDate(now)
+                let created = now
                 target?.created = created
                 Storage().add(target!)
             }

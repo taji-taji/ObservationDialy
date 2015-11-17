@@ -136,9 +136,45 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
 
     // ムービーの再生
     func movieAction(sender: UIBarButtonItem) {
-        let videoPlayerViewController = VideoPlayerViewController()
-        videoPlayerViewController.fileName = "\(target!.id).mp4"
-        self.presentViewController(videoPlayerViewController, animated: true, completion: nil)
+        if photos?.count < Constants.Video.minPhotos {
+            let myAlert = UIAlertController(title: "ムービーを再生できません", message: "ムービーは画像が３枚以上になると自動的に作成されます。", preferredStyle: .Alert)
+            let ok = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+            myAlert.addAction(ok)
+            self.presentViewController(myAlert, animated: true, completion: nil)
+            return
+        }
+        
+        let videoFile = "\(self.target!.id).mp4"
+        let videoPath = VideoManager().get(videoFile)
+        let myAlert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        let play = UIAlertAction(title: "ムービーを見る", style: .Default, handler: {
+            (action: UIAlertAction!) in
+            let videoPlayerViewController = VideoPlayerViewController()
+            videoPlayerViewController.fileName = videoFile
+            self.presentViewController(videoPlayerViewController, animated: true, completion: nil)
+        })
+        let download = UIAlertAction(title: "ムービーをカメラロールに保存する", style: .Default, handler: {
+            (action: UIAlertAction!) in
+            UISaveVideoAtPathToSavedPhotosAlbum(videoPath!, self, "video:didFinishSavingWithError:contextInfo:", nil)
+        })
+        let cancel = UIAlertAction(title: "キャンセル", style: .Cancel, handler: nil)
+        myAlert.addAction(play)
+        myAlert.addAction(download)
+        myAlert.addAction(cancel)
+        self.presentViewController(myAlert, animated: true, completion: nil)
+    }
+    
+    func video(videoPath: String, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutablePointer<Void>) {
+        var title: String
+        if (error != nil) {
+            title = "ムービーの保存に失敗しました"
+        } else {
+            title = "ムービーを保存しました"
+        }
+        let myAlert = UIAlertController(title: title, message: nil, preferredStyle: .Alert)
+        let ok = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+        myAlert.addAction(ok)
+        self.presentViewController(myAlert, animated: true, completion: nil)
     }
     
     // 既存の写真の編集ボタンを押した時の選択肢
@@ -161,10 +197,7 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
             self.deleteAlert(cell.id!, indexPath: newIndexPath!)
         })
         
-        let cancel = UIAlertAction(title: "キャンセル", style: .Cancel, handler: {
-            (action: UIAlertAction!) in
-            print("cancel")
-        })
+        let cancel = UIAlertAction(title: "キャンセル", style: .Cancel, handler: nil)
         
         // アクションを追加
         myAlert.addAction(editPhoto)
@@ -332,7 +365,7 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         
         // 作成日
         let created = UILabel(frame: CGRectMake(10, 0, tableView.bounds.size.width, header.bounds.size.height))
-        created.text = (photos![section].created as NSString).substringWithRange(NSRange(location: 0, length: 16))
+        created.text = (DateUtility().dateToStr(photos![section].created) as NSString).substringWithRange(NSRange(location: 0, length: 16))
         created.font = UIFont.systemFontOfSize(15)
         created.textColor = UIColor.lightGrayColor()
 

@@ -17,9 +17,8 @@ class TargetData: Data {
     
     // MARK: Properties
     dynamic var title: String = ""
-    dynamic var created: String = ""
-    dynamic var updated: String = ""
-    dynamic var video: VideoData?
+    dynamic var created: NSDate = NSDate(timeIntervalSince1970: 1)
+    dynamic var updated: NSDate = NSDate(timeIntervalSince1970: 1)
     var photos = List<PhotoData>()
     
     // プライマリーキーを指定
@@ -34,8 +33,8 @@ class PhotoData: Data {
     // MARK: Properties
     dynamic var comment: String = ""
     dynamic var photo: String = ""
-    dynamic var created: String = ""
-    dynamic var updated: String = ""
+    dynamic var created: NSDate = NSDate(timeIntervalSince1970: 1)
+    dynamic var updated: NSDate = NSDate(timeIntervalSince1970: 1)
     var target: [TargetData] {
         return linkingObjects(TargetData.self, forProperty: "photos")
     }
@@ -44,18 +43,4 @@ class PhotoData: Data {
         return "id"
     }
 
-}
-
-class VideoData: Data {
-    
-    // MARK: Properties
-    dynamic var created: String = ""
-    var target: [TargetData] {
-        return linkingObjects(TargetData.self, forProperty: "video")
-    }
-    
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-    
 }

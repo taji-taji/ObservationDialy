@@ -11,6 +11,13 @@ import UIKit
 
 class Constants {
     
+    struct Video {
+        // 動画を作成する最小の画像数
+        static let minPhotos = 3
+        // 動画を作成する最大の画像数
+        static let maxPhotos = 400
+    }
+    
     struct Product {
         static func version() -> String {
             return "1.0"
@@ -22,9 +29,9 @@ class Constants {
         static func concept() -> UIColor {
             return UIColor(red: 127.0/255, green: 214.0/255, blue: 154.0/255, alpha: 1.0)
         }
-        // Concept Theme RGB 179 150 116
+        // Concept Theme RGB 147 196 125
         static func subConcept() -> UIColor {
-            return UIColor(red: 179.0/255, green: 150.0/255, blue: 116.0/255, alpha: 1.0)
+            return UIColor(red: 71.0/255, green: 132.0/255, blue: 93.0/255, alpha: 1.0)
         }
         // Red RGB 245 245 245
         static func backGround() -> UIColor {

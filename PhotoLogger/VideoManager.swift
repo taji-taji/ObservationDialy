@@ -63,7 +63,7 @@ class VideoManager {
         // 最初の画像から動画のサイズ指定する
         let size = images[0].size
         
-        let VideoPath = VideoDirectoryPath + "/" + fileName + ".mp4"
+        let VideoPath = VideoDirectoryPath + "/" + fileName
         
         let videoWriter: AVAssetWriter = try! AVAssetWriter(URL: NSURL(fileURLWithPath: VideoPath), fileType: AVFileTypeMPEG4)
         
@@ -95,6 +95,7 @@ class VideoManager {
         if fileManager.fileExistsAtPath(VideoPath) {
             do {
                 try fileManager.removeItemAtPath(VideoPath)
+                print("removed")
             } catch {
                 print("error: video cannot remove")
             }
@@ -126,9 +127,10 @@ class VideoManager {
                     if !adaptor.assetWriterInput.readyForMoreMediaData {
                         break
                     }
-                
-                    // 動画の時間を生成（その画像の表示する時間。開始時点と表示時間を渡す）
-                    //let frameTime: CMTime = CMTimeMake(Int64(frameCount) * Int64(fps) * Int64(durationForEachImage), fps);
+                    
+                    if frameCount == Constants.Video.maxPhotos {
+                        break
+                    }
                     
                     let lastFrameTime = CMTimeMake(Int64(frameCount), fps)
                     let presentationTime = frameCount == 0 ? lastFrameTime : CMTimeAdd(lastFrameTime, frameDuration)
@@ -146,15 +148,8 @@ class VideoManager {
         
                 // 動画生成終了
                 writerInput.markAsFinished()
-                //videoWriter.endSessionAtSourceTime(CMTimeMake(Int64(frameCount - 1) * Int64(fps) * Int64(durationForEachImage), fps))
-        
                 videoWriter.finishWritingWithCompletionHandler({
-                    while true {
-                        if videoWriter.status == .Completed {
-                            UISaveVideoAtPathToSavedPhotosAlbum(VideoPath, self, nil, nil)
-                            break
-                        }
-                    }
+                    // write processing when finish writing
                 })
             })
         }
