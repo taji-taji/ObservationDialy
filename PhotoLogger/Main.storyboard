@@ -335,6 +335,7 @@
                         <segue destination="ent-AI-hJP" kind="presentation" identifier="DetailPhotoSegue" id="jbL-fx-8fH"/>
                         <segue destination="lXz-5x-gcC" kind="presentation" identifier="showCameraView" id="BOj-OB-scx"/>
                         <segue destination="aw5-Bj-8zD" kind="presentation" identifier="ModifyItem" id="jji-9b-EEa"/>
+                        <segue destination="ISd-1z-mIK" kind="presentation" identifier="videoPlayer" modalTransitionStyle="crossDissolve" id="XkT-2a-cVk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ofl-du-Huq" userLabel="First Responder" sceneMemberID="firstResponder"/>

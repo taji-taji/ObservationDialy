@@ -29,9 +29,6 @@ class VideoPlayerViewController: AVPlayerViewController {
             
             // 生成
             player = AVPlayer(playerItem: playerItem)
-        
-            // 再生
-            player!.play()
         }
     }
     

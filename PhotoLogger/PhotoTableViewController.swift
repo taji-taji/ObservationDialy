@@ -151,10 +151,14 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
             (action: UIAlertAction!) in
             let videoPlayerViewController = VideoPlayerViewController()
             videoPlayerViewController.fileName = videoFile
+            // トランジションのスタイルを変更
+            videoPlayerViewController.modalTransitionStyle = .CrossDissolve
             self.presentViewController(videoPlayerViewController, animated: true, completion: nil)
         })
         let download = UIAlertAction(title: "ムービーをカメラロールに保存する", style: .Default, handler: {
             (action: UIAlertAction!) in
+            LoadingProxy.set(self.navigationController!)
+            LoadingProxy.on()
             UISaveVideoAtPathToSavedPhotosAlbum(videoPath!, self, "video:didFinishSavingWithError:contextInfo:", nil)
         })
         let cancel = UIAlertAction(title: "キャンセル", style: .Cancel, handler: nil)
@@ -166,6 +170,7 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
     
     func video(videoPath: String, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutablePointer<Void>) {
         var title: String
+        LoadingProxy.off()
         if (error != nil) {
             title = "ムービーの保存に失敗しました"
         } else {

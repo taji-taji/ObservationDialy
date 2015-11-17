@@ -30,6 +30,7 @@
 		93DBDBA71BF83A3F00E96148 /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBA61BF83A3F00E96148 /* DateUtility.swift */; };
 		93DBDBAB1BF893E300E96148 /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBAA1BF893E300E96148 /* VideoManager.swift */; };
 		93DBDBAD1BF9E19300E96148 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBAC1BF9E19300E96148 /* VideoPlayerViewController.swift */; };
+		93DBDBAF1BFB66AC00E96148 /* LoadingProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBAE1BFB66AC00E96148 /* LoadingProxy.swift */; };
 		9B237546C96723C1FD1B6A24 /* Pods_PhotoLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87AB316AE548E70671C965DA /* Pods_PhotoLogger.framework */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,7 @@
 		93DBDBA61BF83A3F00E96148 /* DateUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtility.swift; sourceTree = "<group>"; };
 		93DBDBAA1BF893E300E96148 /* VideoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoManager.swift; sourceTree = "<group>"; };
 		93DBDBAC1BF9E19300E96148 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
+		93DBDBAE1BFB66AC00E96148 /* LoadingProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingProxy.swift; sourceTree = "<group>"; };
 		DC840323EFBAEABBAEAD193C /* Pods-PhotoLoggerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoLoggerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoLoggerTests/Pods-PhotoLoggerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,6 +153,7 @@
 				939EBF811BDB4A3F00436BC0 /* PhotoViewController.swift */,
 				936505AA1BE4843200A824E0 /* CameraViewController.swift */,
 				935996331BD5F5A80047EE9F /* TargetTableViewController.swift */,
+				93DBDBAE1BFB66AC00E96148 /* LoadingProxy.swift */,
 				93CD87691BF69818003F836B /* LoadingOverlay.swift */,
 				931165C01BD6468D00F1D32D /* PhotoTableViewController.swift */,
 				935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */,
@@ -406,6 +409,7 @@
 				935996101BD5AB8C0047EE9F /* TargetViewController.swift in Sources */,
 				93CD876A1BF69818003F836B /* LoadingOverlay.swift in Sources */,
 				9359960E1BD5AB8C0047EE9F /* AppDelegate.swift in Sources */,
+				93DBDBAF1BFB66AC00E96148 /* LoadingProxy.swift in Sources */,
 				939EBF821BDB4A3F00436BC0 /* PhotoViewController.swift in Sources */,
 				93DBDBAB1BF893E300E96148 /* VideoManager.swift in Sources */,
 			);
