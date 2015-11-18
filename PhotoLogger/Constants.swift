@@ -11,6 +11,11 @@ import UIKit
 
 class Constants {
     
+    struct Photo {
+        // コメントの最大文字数
+        static let commentMaxCharacters: Int = 300
+    }
+    
     struct Video {
         // 動画を作成する最小の画像数
         static let minPhotos = 3

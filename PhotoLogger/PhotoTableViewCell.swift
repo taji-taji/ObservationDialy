@@ -11,7 +11,7 @@ import UIKit
 class PhotoTableViewCell: UITableViewCell {
     
     // MARK: Properties
-    @IBOutlet weak var commentText: UITextView!
+    @IBOutlet weak var commentText: UILabel!
     @IBOutlet weak var photoImage: UIImageView!
     @IBOutlet weak var editButton: UIButton!
     

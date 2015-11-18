@@ -17,7 +17,7 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var photoImageView: UIImageView?
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-
+    @IBOutlet weak var commentCountLabel: UILabel!
     var photo: PhotoData?
     // 新規作成時に選択された画像
     var selectedImage: UIImage?
@@ -27,6 +27,7 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
     var selectedId: Int?
     var isObserving = false
     var screenOffsetY: CGFloat = 0
+    var remainCount: Int = Constants.Photo.commentMaxCharacters
     private var realmNotificationTokenAdd: NotificationToken?
     private var realmNotificationTokenEdit: NotificationToken?
     let now = NSDate()
@@ -34,7 +35,7 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if selectedImage != nil {
             photoImageView?.image = selectedImage
         }
@@ -69,6 +70,10 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
         
         //ViewをFieldに設定する
         commentTextView.inputAccessoryView = myKeyboard
+        commentTextView.delegate = self
+        
+        remainCount = remainCount - commentTextView.text.characters.count
+        commentCountLabel.text = "あと\(remainCount)文字入力できます"
     
     }
     
@@ -109,6 +114,23 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
 
     // MARK: Actions
     
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        
+        // 入力済みの文字と入力された文字を合わせて取得.
+        let str = commentTextView.text + text
+        
+        // 文字数が最大値以下
+        if str.characters.count <= Constants.Photo.commentMaxCharacters {
+            commentCountLabel.textColor = UIColor.darkGrayColor()
+            remainCount = Constants.Photo.commentMaxCharacters - str.characters.count
+            commentCountLabel.text = "あと\(remainCount)文字入力できます"
+        } else {
+            commentCountLabel.textColor = UIColor.redColor()
+            commentCountLabel.text = "最大文字数を超えています"
+        }
+        return true
+    }
+    
     //テキストビューが変更された
     func textViewDidChange(textView: UITextView) {
         print("textViewDidChange")
@@ -138,8 +160,10 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
         let keyboardRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
         // 画面のサイズを取得
         let myBoundSize: CGSize = UIScreen.mainScreen().bounds.size
-        // ViewControllerを基準にtextFieldの下辺までの距離を取得
-        let txtLimit = commentTextView.frame.origin.y + commentTextView.frame.height + 8.0
+        // ViewControllerを基準にtextViewを囲っているviewの下辺までの距離を取得
+        let commentTextWrapView = commentTextView.superview!.superview!
+        // 最後の+40はキーボードの上の完了ボタンがあるバーの分
+        let txtLimit = commentTextWrapView.frame.origin.y + commentTextWrapView.frame.height + 8.0 + 40
         // ViewControllerの高さからキーボードの高さを引いた差分を取得
         let kbdLimit = myBoundSize.height - keyboardRect.size.height
 
@@ -170,8 +194,17 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
     // MARK: Actions
     @IBAction func savePhoto(sender: UIBarButtonItem) {
         
+        // コメント文字数のバリデーション
+        if !commentValidation() {
+            let myAlert = UIAlertController(title: "最大文字数を超えています", message: "\(Constants.Photo.commentMaxCharacters)文字以内で入力してください", preferredStyle: .Alert)
+            let ok = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+            myAlert.addAction(ok)
+            self.presentViewController(myAlert, animated: true, completion: nil)
+            return
+        }
+        
         // self.selectedIdがあれば編集
-        if (self.selectedId != nil) {
+        if self.selectedId != nil {
             
             //NSNotificationのインスタンスを作成
             let n: NSNotification = NSNotification(name: "photoEdited", object: self)
@@ -244,6 +277,14 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
                 VideoManager().makeVideoFromPhotos(photos, fileName: "\(target.id).mp4")
             }
         }
+    }
+    
+    // コメントの文字数のバリデーション
+    func commentValidation() -> Bool {
+        if commentTextView.text.characters.count > Constants.Photo.commentMaxCharacters {
+            return false
+        }
+        return true
     }
 
     // MARK: - Navigation

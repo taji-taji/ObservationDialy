@@ -41,7 +41,11 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         let toolbar = self.navigationController?.toolbar
         toolbar!.tintColor = UIColor.whiteColor()
         toolbar!.barTintColor = Constants.Theme.concept()
-        toolbar!.frame = CGRectMake(0, self.view.frame.height - 50, self.view.frame.width, 50)
+        let toolbarHeaight: CGFloat = 40.0
+        toolbar!.frame = CGRectMake(0, self.view.frame.height - toolbarHeaight, self.view.frame.width, toolbarHeaight)
+        
+        // ツールバー分の bottom inset を取る
+        tableView.contentInset.bottom = toolbarHeaight
         
         // ツールバーボタンのセット
         let cameraButton: UIButton = UIButton(type: UIButtonType.Custom)

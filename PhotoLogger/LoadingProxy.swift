@@ -11,7 +11,7 @@ import UIKit
 struct LoadingProxy {
     static var myActivityIndicator: UIActivityIndicatorView!
     
-    static func set(v: UIViewController, text: String?) {
+    static func set(v: UIViewController) {
         self.myActivityIndicator = UIActivityIndicatorView()
         self.myActivityIndicator.frame = CGRectMake(0, 0, v.view.bounds.width, v.view.bounds.height)
         self.myActivityIndicator.center = v.view.center
