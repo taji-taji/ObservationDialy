@@ -22,6 +22,7 @@
 		936505A71BDF1FEF00A824E0 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936505A61BDF1FEF00A824E0 /* PhotoManager.swift */; };
 		936505AB1BE4843300A824E0 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936505AA1BE4843200A824E0 /* CameraViewController.swift */; };
 		9368DD4C1BEB9E5700F6E034 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9368DD4B1BEB9E5700F6E034 /* Constants.swift */; };
+		937F41991BFD440C00DF2D80 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 937F41981BFD440C00DF2D80 /* iAd.framework */; };
 		939EBF821BDB4A3F00436BC0 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EBF811BDB4A3F00436BC0 /* PhotoViewController.swift */; };
 		939EBF841BDB5D3400436BC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 939EBF831BDB5D3400436BC0 /* Main.storyboard */; };
 		93C7FDA11BDA7B7A00AC1A3D /* StorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */; };
@@ -66,7 +67,7 @@
 		931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
 		931165C01BD6468D00F1D32D /* PhotoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewController.swift; sourceTree = "<group>"; };
 		932D92251BD855CC007AEBF0 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
-		9353CC731BDA127A00EAFCD6 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		9353CC731BDA127A00EAFCD6 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9359960A1BD5AB8C0047EE9F /* PhotoLogger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoLogger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9359960D1BD5AB8C0047EE9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9359960F1BD5AB8C0047EE9F /* TargetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +82,7 @@
 		936505A61BDF1FEF00A824E0 /* PhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		936505AA1BE4843200A824E0 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		9368DD4B1BEB9E5700F6E034 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		937F41981BFD440C00DF2D80 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		939EBF811BDB4A3F00436BC0 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		939EBF831BDB5D3400436BC0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageProtocol.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				937F41991BFD440C00DF2D80 /* iAd.framework in Frameworks */,
 				9B237546C96723C1FD1B6A24 /* Pods_PhotoLogger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,6 +119,7 @@
 		1AC6187A87C9D958D55D8118 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				937F41981BFD440C00DF2D80 /* iAd.framework */,
 				87AB316AE548E70671C965DA /* Pods_PhotoLogger.framework */,
 				28515B89B06A8C6CADF22102 /* Pods_PhotoLoggerTests.framework */,
 			);

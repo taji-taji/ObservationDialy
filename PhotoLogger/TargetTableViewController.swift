@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import iAd
 
 class TargetTableViewController: UITableViewController {
     
@@ -20,6 +21,8 @@ class TargetTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         navigationItem.leftBarButtonItem = editButtonItem()
+        
+        self.canDisplayBannerAds = true
     }
     
     override func viewWillAppear(animated: Bool) {

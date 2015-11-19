@@ -50,6 +50,8 @@ class TargetViewController: UIViewController, UITextFieldDelegate, UINavigationC
         
         //ViewをFieldに設定する
         titleTextField.inputAccessoryView = myKeyboard
+        
+        self.canDisplayBannerAds = true
     }
     
     // MARK: Actions

@@ -249,27 +249,39 @@
                                                             </constraints>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="joh-uD-Rhp">
-                                                            <rect key="frame" x="0.0" y="600" width="600" height="30"/>
+                                                            <rect key="frame" x="0.0" y="600" width="600" height="45"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" placeholderIntrinsicWidth="40" placeholderIntrinsicHeight="45" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKZ-4O-3eF">
-                                                                    <rect key="frame" x="550" y="-7" width="40" height="45"/>
+                                                                    <rect key="frame" x="550" y="0.0" width="40" height="45"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="45" id="Z4L-1e-uli"/>
                                                                     </constraints>
                                                                     <state key="normal" image="EditIcon"/>
                                                                 </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l03-yz-7dK">
+                                                                    <rect key="frame" x="505" y="0.0" width="40" height="45"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="45" id="Y48-OR-zIA"/>
+                                                                    </constraints>
+                                                                    <state key="normal" image="DownloadIcon"/>
+                                                                    <connections>
+                                                                        <action selector="savePhotoToCameraroll:" destination="b1G-HA-xKg" eventType="touchUpInside" id="MOW-Sp-B0m"/>
+                                                                    </connections>
+                                                                </button>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="30" id="MWs-6k-3b4"/>
+                                                                <constraint firstItem="l03-yz-7dK" firstAttribute="centerY" secondItem="joh-uD-Rhp" secondAttribute="centerY" id="Id1-ZJ-FLK"/>
+                                                                <constraint firstAttribute="height" constant="45" id="MWs-6k-3b4"/>
                                                                 <constraint firstItem="eKZ-4O-3eF" firstAttribute="centerY" secondItem="joh-uD-Rhp" secondAttribute="centerY" id="NaU-Ua-9mz"/>
                                                                 <constraint firstAttribute="trailing" secondItem="eKZ-4O-3eF" secondAttribute="trailing" constant="10" id="jqD-nC-3cJ"/>
+                                                                <constraint firstItem="eKZ-4O-3eF" firstAttribute="leading" secondItem="l03-yz-7dK" secondAttribute="trailing" constant="5" id="lla-vw-qOn"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jCH-so-DsL">
-                                                            <rect key="frame" x="0.0" y="630" width="600" height="239"/>
+                                                            <rect key="frame" x="0.0" y="645" width="600" height="224"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7O-DY-NtY">
-                                                                    <rect key="frame" x="10" y="0.0" width="580" height="219"/>
+                                                                    <rect key="frame" x="10" y="0.0" width="580" height="204"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -312,6 +324,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="commentText" destination="W7O-DY-NtY" id="Kmg-Fn-jx8"/>
+                                    <outlet property="downloadButton" destination="l03-yz-7dK" id="yTI-nr-X8P"/>
                                     <outlet property="editButton" destination="eKZ-4O-3eF" id="cBV-2I-zyv"/>
                                     <outlet property="photoImage" destination="ZZc-Cu-Dvz" id="Ck5-Y1-zIm"/>
                                 </connections>
@@ -336,7 +349,6 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ofl-du-Huq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="I5T-Yb-mBk"/>
             </objects>
             <point key="canvasLocation" x="1218" y="24"/>
         </scene>
@@ -562,11 +574,12 @@
     </scenes>
     <resources>
         <image name="DefaultPhoto" width="222" height="222"/>
+        <image name="DownloadIcon" width="40" height="45"/>
         <image name="EditIcon" width="27" height="7"/>
         <image name="cameraButton" width="66" height="66"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5xa-s8-gx0"/>
+        <segue reference="jbL-fx-8fH"/>
         <segue reference="U9R-Zq-D9r"/>
     </inferredMetricsTieBreakers>
 </document>

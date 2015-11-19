@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import iAd
 
 class PhotoTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -271,33 +272,36 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
     }
 
     // 写真をカメラロールに保存
-    func savePhotoToCameraroll(sender: UILongPressGestureRecognizer) {
-        if sender.state == UIGestureRecognizerState.Began {
-            let photoImageView = sender.view as! UIImageView
-
-            // インスタンス生成　styleはActionSheet.
-            let myAlert = UIAlertController(title: "写真の保存", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
-
-            // アクションを生成.
-            let savePhoto = UIAlertAction(title: "カメラロールに保存する", style: .Default, handler: {
-                (action: UIAlertAction!) in
-                // 保存中のビューを出す
-                LoadingOverlay.shared.showOverlay(self.navigationController?.view)
-                // カメラロールに保存
-                UIImageWriteToSavedPhotosAlbum(photoImageView.image!, self, "image:didFinishSavingWithError:contextInfo:", nil)
-            })
-            
-            let cancel = UIAlertAction(title: "キャンセル", style: .Cancel, handler: {
-                (action: UIAlertAction!) in
-                print("cancel")
-            })
-            
-            // アクションを追加.
-            myAlert.addAction(savePhoto)
-            myAlert.addAction(cancel)
-            
-            self.presentViewController(myAlert, animated: true, completion: nil)
+    @IBAction func savePhotoToCameraroll(sender: UIButton) {
+        
+        let cell = findUITableViewCellFromSuperViewsForView(sender) as! PhotoTableViewCell
+        guard let photoImageView = cell.photoImage else {
+            print("error")
+            return
         }
+        
+        // インスタンス生成　styleはActionSheet.
+        let myAlert = UIAlertController(title: "写真の保存", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
+
+        // アクションを生成.
+        let savePhoto = UIAlertAction(title: "カメラロールに保存する", style: .Default, handler: {
+            (action: UIAlertAction!) in
+            // 保存中のビューを出す
+            LoadingOverlay.shared.showOverlay(self.navigationController?.view)
+            // カメラロールに保存
+            UIImageWriteToSavedPhotosAlbum(photoImageView.image!, self, "image:didFinishSavingWithError:contextInfo:", nil)
+        })
+            
+        let cancel = UIAlertAction(title: "キャンセル", style: .Cancel, handler: {
+            (action: UIAlertAction!) in
+            print("cancel")
+        })
+            
+        // アクションを追加.
+        myAlert.addAction(savePhoto)
+        myAlert.addAction(cancel)
+
+        self.presentViewController(myAlert, animated: true, completion: nil)
     }
     
     func image(image: UIImage, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutablePointer<Void>) {
@@ -356,11 +360,6 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
             cell.editButton.setImage(UIImage(named: "EditIconHighlighted"), forState: .Highlighted)
 
             cell.selectionStyle = UITableViewCellSelectionStyle.None
-            
-            // 画像長押しでカメラロールに保存
-            let gesture: UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "savePhotoToCameraroll:")
-            gesture.minimumPressDuration = 0.5
-            cell.photoImage.addGestureRecognizer(gesture)
 
             return cell
     }
