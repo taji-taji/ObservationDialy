@@ -14,8 +14,12 @@ class DateUtility {
     let formatter = NSDateFormatter()
     let now = NSDate()
     
-    init() {
-        formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+    init(dateFormat: String?) {
+        if dateFormat != nil {
+            formatter.dateFormat = dateFormat
+        } else {
+            formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        }
     }
     
     func dateToStr(date: NSDate) -> String {

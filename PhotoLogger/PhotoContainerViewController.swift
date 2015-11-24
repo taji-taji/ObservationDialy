@@ -1,35 +1,37 @@
 //
-//  PhotoTableViewController.swift
+//  PhotoContainerViewController.swift
 //  PhotoLogger
 //
-//  Created by tajika on 2015/10/20.
+//  Created by tajika on 2015/11/21.
 //  Copyright © 2015年 Tajika. All rights reserved.
 //
 
 import UIKit
 import RealmSwift
-import iAd
 
-class PhotoTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+class PhotoContainerViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate {
+    
     // MARK: Properties
     var target: TargetData?
     var photos: Results<PhotoData>?
     let realm = try! Realm()
     let now = NSDate()
     let heightForHeaderInSection: CGFloat = 45
+    @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if let target = target {
             navigationItem.title = target.title
             photos = target.photos.sorted("created", ascending: false)
         }
         
         //高さ
-        self.tableView.estimatedRowHeight = 850
+        tableView.estimatedRowHeight = 850
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.dataSource = self
+        tableView.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -38,42 +40,7 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updatePhoto:", name: "photoEdited", object: nil)
         
         // ツールバーをセット
-        self.navigationController?.setToolbarHidden(false, animated: true)
-        let toolbar = self.navigationController?.toolbar
-        toolbar!.tintColor = UIColor.whiteColor()
-        toolbar!.barTintColor = Constants.Theme.concept()
-        let toolbarHeight: CGFloat = 40.0
-        toolbar!.frame = CGRectMake(0, self.view.frame.height - toolbarHeight, self.view.frame.width, toolbarHeight)
         
-        // ツールバー分の bottom inset を取る
-        tableView.contentInset.bottom = toolbarHeight
-        
-        // ツールバーボタンのセット
-        let cameraButton: UIButton = UIButton(type: UIButtonType.Custom)
-        cameraButton.addTarget(self, action: "AddPhoto:", forControlEvents: .TouchUpInside)
-        cameraButton.setImage(UIImage(named: "CameraIcon"), forState: .Normal)
-        cameraButton.imageView?.contentMode = .ScaleAspectFit
-        cameraButton.frame = CGRectMake(toolbar!.bounds.size.width / 3, 0, toolbar!.bounds.size.width / 3, 75)
-        let barCameraButton: UIBarButtonItem = UIBarButtonItem(customView: cameraButton)
-        
-        let editButton: UIButton = UIButton(type: UIButtonType.Custom)
-        editButton.addTarget(self, action: "editTarget:", forControlEvents: .TouchUpInside)
-        editButton.setImage(UIImage(named: "EditPencil"), forState: .Normal)
-        editButton.imageView?.contentMode = .ScaleAspectFit
-        editButton.frame = CGRectMake(0, 0, toolbar!.bounds.size.width / 3, 50)
-        let barEditButton: UIBarButtonItem = UIBarButtonItem(customView: editButton)
-
-        let movieButton: UIButton = UIButton(type: UIButtonType.Custom)
-        movieButton.addTarget(self, action: "movieAction:", forControlEvents: .TouchUpInside)
-        movieButton.setImage(UIImage(named: "MovieIcon"), forState: .Normal)
-        movieButton.imageView?.contentMode = .ScaleAspectFit
-        movieButton.frame = CGRectMake(toolbar!.bounds.size.width / 3 * 2, 0, toolbar!.bounds.size.width / 3, 50)
-        let barMovieButton: UIBarButtonItem = UIBarButtonItem(customView: movieButton)
-        
-        let flexibleSpace: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: self, action: nil)
-        
-        let toolbarItems = [flexibleSpace, barEditButton, flexibleSpace, barCameraButton, flexibleSpace, barMovieButton, flexibleSpace]
-        self.setToolbarItems(toolbarItems, animated: true)
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -84,24 +51,24 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         // ツールバーを隠す
         self.navigationController?.setToolbarHidden(true, animated: true)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     // MARK: Actions
-
+    
     // カメラビューへ遷移
-    func AddPhoto(sender: UIBarButtonItem) {
+    @IBAction func addPhoto(sender: UIButton) {
         // 前回写真の取得
         let latestPhotoFile = target?.photos.last?.photo
         var latestPhotoImage: UIImage?
-
+        
         if latestPhotoFile != nil {
             latestPhotoImage = PhotoManager().get(latestPhotoFile!)
         }
-
+        
         performSegueWithIdentifier("showCameraView", sender: latestPhotoImage)
     }
     
@@ -125,7 +92,7 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
             }
         }
     }
-
+    
     // 写真のデータ更新
     func updatePhoto(notification: NSNotification) {
         NSNotificationCenter.defaultCenter().removeObserver(self)
@@ -135,12 +102,11 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
     
     // 記録タイトルの編集
     func editTarget(sender: UIBarButtonItem) {
-        print("editTarget")
         performSegueWithIdentifier("ModifyItem", sender: self.target)
     }
-
-    // ムービーの再生
-    func movieAction(sender: UIBarButtonItem) {
+    
+    // ムービーの再生 or 保存
+    @IBAction func movieAction(sender: UIBarButtonItem) {
         if photos?.count < Constants.Video.minPhotos {
             let myAlert = UIAlertController(title: "ムービーを再生できません", message: "ムービーは画像が３枚以上になると自動的に作成されます。", preferredStyle: .Alert)
             let ok = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
@@ -191,9 +157,9 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
     func editAlert(sender: UIGestureRecognizer) {
         // インスタンス生成　styleはActionSheet.
         let myAlert = UIAlertController(title: "コメントを編集・削除する", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
-
-        let cell = findUITableViewCellFromSuperViewsForView(sender.view as! UIButton) as! PhotoTableViewCell
-
+        
+        let cell = TableUtility().findUITableViewCellFromSuperViewsForView(sender.view as! UIButton) as! PhotoTableViewCell
+        
         let newIndexPath = self.tableView.indexPathForCell(cell)
         
         // アクションを生成
@@ -222,7 +188,7 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         // 画面遷移
         performSegueWithIdentifier("DetailPhotoSegue", sender: cell)
     }
-
+    
     // 削除ボタンを押した時にアラートを出す
     func deleteAlert(id: Int, indexPath: NSIndexPath) {
         let alertController = UIAlertController(title: "削除します。", message: "この操作は取り消せません。", preferredStyle: .Alert)
@@ -258,21 +224,13 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         // targetのタイムスタンプ更新
         let targetUpdateValues = ["id": (self.target?.id)!, "updated": now]
         Storage().update(TargetData(), updateValues: targetUpdateValues)
-
+        
     }
     
-    func findUITableViewCellFromSuperViewsForView(sender: UIView) -> UITableViewCell {
-        var superView = sender
-        while !(superView is UITableViewCell) {
-            superView = superView.superview!
-        }
-        return superView as! UITableViewCell
-    }
-
     // 写真をカメラロールに保存
     @IBAction func savePhotoToCameraroll(sender: UIButton) {
         
-        let cell = findUITableViewCellFromSuperViewsForView(sender) as! PhotoTableViewCell
+        let cell = TableUtility().findUITableViewCellFromSuperViewsForView(sender) as! PhotoTableViewCell
         guard let photoImageView = cell.photoImage else {
             print("error")
             return
@@ -280,7 +238,7 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         
         // インスタンス生成　styleはActionSheet.
         let myAlert = UIAlertController(title: "写真の保存", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
-
+        
         // アクションを生成.
         let savePhoto = UIAlertAction(title: "カメラロールに保存する", style: .Default, handler: {
             (action: UIAlertAction!) in
@@ -289,16 +247,16 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
             // カメラロールに保存
             UIImageWriteToSavedPhotosAlbum(photoImageView.image!, self, "image:didFinishSavingWithError:contextInfo:", nil)
         })
-            
+        
         let cancel = UIAlertAction(title: "キャンセル", style: .Cancel, handler: {
             (action: UIAlertAction!) in
             print("cancel")
         })
-            
+        
         // アクションを追加.
         myAlert.addAction(savePhoto)
         myAlert.addAction(cancel)
-
+        
         self.presentViewController(myAlert, animated: true, completion: nil)
     }
     
@@ -322,47 +280,48 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         presentViewController(alertController, animated: true, completion: nil)
     }
     
-        
+    
     // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return (target?.photos)!.count
     }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 1
     }
     
-    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
-
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> 
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) ->
         UITableViewCell {
             let cellIdentifier = "PhotoTableViewCell"
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! PhotoTableViewCell
             
             let photoData = photos![indexPath.section]
-
+            
             let fileName = photoData.photo
-
+            
             if let jpeg: UIImage? = PhotoManager().get(fileName) {
                 cell.photoImage.image = jpeg
                 cell.commentText.text = photoData.comment
+                cell.timeLabel.text = DateUtility(dateFormat: "HH時mm分").dateToStr(photoData.updated)
                 cell.id = photoData.id
             }
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "editAlert:")
             cell.editButton.addGestureRecognizer(tapGestureRecognizer)
             cell.editButton.setImage(UIImage(named: "EditIconHighlighted"), forState: .Highlighted)
-
+            
             cell.selectionStyle = UITableViewCellSelectionStyle.None
-
+            
             return cell
     }
-
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         // headerのビュー
         let header = UIView(frame: CGRectMake(0, 0, tableView.bounds.size.width, heightForHeaderInSection))
         header.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.95)
@@ -371,22 +330,23 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
         
         // 作成日
         let createDate = UILabel(frame: CGRectMake(10, 0, tableView.bounds.size.width, header.bounds.size.height))
-        createDate.text = DateUtility(dateFormat: "YYYY年MM月dd日 HH:mm").dateToStr(photos![section].created)
+        createDate.text = DateUtility(dateFormat: "YYYY年 MM月 dd日").dateToStr(photos![section].created)
         createDate.font = UIFont.systemFontOfSize(17, weight: 0.3)
         createDate.textColor = UIColor(red: 150/255, green: 150/255, blue: 150/255, alpha: 1.0)
+        createDate.textAlignment = .Center
         
         header.addSubview(createDate)
         header.addSubview(headerBorder)
         return header
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return heightForHeaderInSection
     }
-
+    
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let nav: UINavigationController = segue.destinationViewController as! UINavigationController
@@ -405,14 +365,6 @@ class PhotoTableViewController: UITableViewController, UIImagePickerControllerDe
             let cameraViewController = nav.viewControllers[0] as! CameraViewController
             if let overlayImage = sender as? UIImage {
                 cameraViewController.overlayImage = overlayImage
-            }
-        } else if identifier == "ModifyItem" {
-            let targetViewController = nav.viewControllers[0] as! TargetViewController
-            if sender is TargetData {
-                if let target = sender as? TargetData {
-                    targetViewController.titleText = target.title
-                    targetViewController.targetId = target.id
-                }
             }
         }
     }

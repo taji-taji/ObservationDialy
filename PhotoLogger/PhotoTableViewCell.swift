@@ -15,6 +15,7 @@ class PhotoTableViewCell: UITableViewCell {
     @IBOutlet weak var photoImage: UIImageView!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var downloadButton: UIButton!
+    @IBOutlet weak var timeLabel: UILabel!
     
     var id: Int?
 

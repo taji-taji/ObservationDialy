@@ -12,53 +12,99 @@ class TargetViewController: UIViewController, UITextFieldDelegate, UINavigationC
     
     // MARK: Properties
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var targetSaveButton: UIBarButtonItem!
+    @IBOutlet weak var targetSaveButton: UIButton!
+    @IBOutlet weak var pageTitleLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var completeButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
     var target: TargetData?
+    var pageTitle: String?
     var titleText: String?
+    var targetImage: UIImage?
+    var completeButtonText: String?
     var targetId: Int?
+    var isKeyboardActive: Bool = false
+    var isUpdate: Bool = false
+    var indexPath: NSIndexPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleTextField.delegate = self;
+        titleTextField.delegate = self
         
-        // titleTextがnilでなければ名称変更
         if titleText != nil {
             titleTextField.text = titleText
-            self.navigationItem.title = "タイトル変更"
+        }
+        if pageTitle != nil {
+            pageTitleLabel.text = pageTitle
+        }
+        if targetImage != nil {
+            imageView.image = targetImage
+        }
+        if completeButtonText != nil {
+            completeButton.setTitle(completeButtonText, forState: .Normal)
+        }
+        if !isUpdate {
+            deleteButton.hidden = true
         }
         
+        pageTitleLabel.textColor = Constants.Theme.textColor()
+        titleTextField.textColor = Constants.Theme.textColor()
+        
         checkValidTargetTitle()
-        
-        // キーボードの完了ボタン
-        let myKeyboard = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, 40))
-        myKeyboard.backgroundColor = UIColor.whiteColor()
-        let myKeyboardLine = UIView(frame: CGRectMake(0, 0, myKeyboard.frame.size.width, 0.5))
-        myKeyboardLine.backgroundColor = UIColor.lightGrayColor()
-        myKeyboard.addSubview(myKeyboardLine)
-
-        //完了ボタンの生成
-        let completeButton = UIButton(frame: CGRectMake(300, 5, 70, 30))
-        completeButton.backgroundColor = Constants.Theme.concept()
-        completeButton.setTitle("完了", forState: .Normal)
-        completeButton.titleLabel?.font = UIFont.boldSystemFontOfSize(20)
-        completeButton.layer.cornerRadius = 3.0
-        completeButton.addTarget(self, action: "onClickCompleteButton:", forControlEvents: .TouchUpInside)
-        
-        //Viewに完了ボタンを追加する。
-        myKeyboard.addSubview(completeButton)
-        
-        //ViewをFieldに設定する
-        titleTextField.inputAccessoryView = myKeyboard
         
         self.canDisplayBannerAds = true
     }
     
     // MARK: Actions
-    func onClickCompleteButton(sender: UIButton) {
-        self.view.endEditing(true)
+    @IBAction func cancelAdd(sender: UIButton) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
+
+    @IBAction func deleteTarget(sender: UIButton) {
+        // アラート
+        let alertController = UIAlertController(title: "削除します。", message: "この操作は取り消せません。", preferredStyle: .Alert)
+        let deletePhoto = UIAlertAction(title: "削除する", style: .Default, handler: {
+            (action: UIAlertAction!) in
+            
+            let n: NSNotification = NSNotification(name: "deleteTarget", object: self, userInfo: ["indexPath": self.indexPath!])
+            //通知を送る
+            NSNotificationCenter.defaultCenter().postNotification(n)
+            self.dismissViewControllerAnimated(true, completion: nil)
+        })
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .Cancel, handler: {
+            (action: UIAlertAction!) in
+            print("cancelAction")
+        })
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(deletePhoto)
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+
+    @IBAction func addItem(sender: UIButton) {
+        let now = NSDate()
+        
+        let title = titleTextField.text ?? ""
+        
+        target = TargetData()
+        target?.title = title
+        target?.updated = now
+        
+        // targetIdがあればアップデート
+        if targetId != nil {
+            Storage().update(target!, updateValues: ["id": targetId!, "title": title, "updated": now])
+            isUpdate = true
+            
+        // なければ新規追加
+        } else {
+            target?.created = now
+            Storage().add(target!)
+        }
+
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+
     // MARK: UITextFieldDelegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // キーボードを隠す
@@ -85,29 +131,6 @@ class TargetViewController: UIViewController, UITextFieldDelegate, UINavigationC
         // キーボードが上がっている場合もあるので、キーボードを隠す処理
         self.view.endEditing(true)
         dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if targetSaveButton === sender {
-            let now = NSDate()
-
-            let title = titleTextField.text ?? ""
-            
-            target = TargetData()
-            target?.title = title
-            target?.updated = now
-            
-            // targetIdがあればアップデート
-            if targetId != nil {
-                Storage().update(target!, updateValues: ["id": targetId!, "title": title, "updated": now])
-            
-            // なければ新規追加
-            } else {
-                let created = now
-                target?.created = created
-                Storage().add(target!)
-            }
-        }
     }
 
     override func didReceiveMemoryWarning() {

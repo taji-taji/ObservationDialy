@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4268BFA2BDF6B9F9CA9E48AA /* Pods_PhotoLoggerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28515B89B06A8C6CADF22102 /* Pods_PhotoLoggerTests.framework */; };
 		931165BF1BD6459400F1D32D /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */; };
-		931165C11BD6468D00F1D32D /* PhotoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931165C01BD6468D00F1D32D /* PhotoTableViewController.swift */; };
 		932D92261BD855CC007AEBF0 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932D92251BD855CC007AEBF0 /* Data.swift */; };
 		9353CC741BDA127A00EAFCD6 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 9353CC731BDA127A00EAFCD6 /* Podfile */; };
 		9359960E1BD5AB8C0047EE9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359960D1BD5AB8C0047EE9F /* AppDelegate.swift */; };
@@ -23,6 +22,7 @@
 		936505AB1BE4843300A824E0 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936505AA1BE4843200A824E0 /* CameraViewController.swift */; };
 		9368DD4C1BEB9E5700F6E034 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9368DD4B1BEB9E5700F6E034 /* Constants.swift */; };
 		937F41991BFD440C00DF2D80 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 937F41981BFD440C00DF2D80 /* iAd.framework */; };
+		937F419B1BFFF0BD00DF2D80 /* PhotoContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937F419A1BFFF0BD00DF2D80 /* PhotoContainerViewController.swift */; };
 		939EBF821BDB4A3F00436BC0 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EBF811BDB4A3F00436BC0 /* PhotoViewController.swift */; };
 		939EBF841BDB5D3400436BC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 939EBF831BDB5D3400436BC0 /* Main.storyboard */; };
 		93C7FDA11BDA7B7A00AC1A3D /* StorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */; };
@@ -32,6 +32,8 @@
 		93DBDBAB1BF893E300E96148 /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBAA1BF893E300E96148 /* VideoManager.swift */; };
 		93DBDBAD1BF9E19300E96148 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBAC1BF9E19300E96148 /* VideoPlayerViewController.swift */; };
 		93DBDBAF1BFB66AC00E96148 /* LoadingProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBAE1BFB66AC00E96148 /* LoadingProxy.swift */; };
+		93E0F8771C009B8A00BA5EEA /* TableUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E0F8761C009B8A00BA5EEA /* TableUtility.swift */; };
+		93E0F87A1C00AC3200BA5EEA /* TargetTableViewEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E0F8791C00AC3200BA5EEA /* TargetTableViewEditCell.swift */; };
 		9B237546C96723C1FD1B6A24 /* Pods_PhotoLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87AB316AE548E70671C965DA /* Pods_PhotoLogger.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +67,6 @@
 		87AB316AE548E70671C965DA /* Pods_PhotoLogger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoLogger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C40873B2A71B70A74A79743 /* Pods-PhotoLogger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoLogger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoLogger/Pods-PhotoLogger.debug.xcconfig"; sourceTree = "<group>"; };
 		931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
-		931165C01BD6468D00F1D32D /* PhotoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewController.swift; sourceTree = "<group>"; };
 		932D92251BD855CC007AEBF0 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		9353CC731BDA127A00EAFCD6 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9359960A1BD5AB8C0047EE9F /* PhotoLogger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoLogger.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +84,7 @@
 		936505AA1BE4843200A824E0 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		9368DD4B1BEB9E5700F6E034 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		937F41981BFD440C00DF2D80 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		937F419A1BFFF0BD00DF2D80 /* PhotoContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoContainerViewController.swift; sourceTree = "<group>"; };
 		939EBF811BDB4A3F00436BC0 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		939EBF831BDB5D3400436BC0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageProtocol.swift; sourceTree = "<group>"; };
@@ -92,6 +94,8 @@
 		93DBDBAA1BF893E300E96148 /* VideoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoManager.swift; sourceTree = "<group>"; };
 		93DBDBAC1BF9E19300E96148 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		93DBDBAE1BFB66AC00E96148 /* LoadingProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingProxy.swift; sourceTree = "<group>"; };
+		93E0F8761C009B8A00BA5EEA /* TableUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableUtility.swift; sourceTree = "<group>"; };
+		93E0F8791C00AC3200BA5EEA /* TargetTableViewEditCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetTableViewEditCell.swift; sourceTree = "<group>"; };
 		DC840323EFBAEABBAEAD193C /* Pods-PhotoLoggerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoLoggerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoLoggerTests/Pods-PhotoLoggerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,20 +156,21 @@
 			children = (
 				9359960D1BD5AB8C0047EE9F /* AppDelegate.swift */,
 				939EBF831BDB5D3400436BC0 /* Main.storyboard */,
+				935996331BD5F5A80047EE9F /* TargetTableViewController.swift */,
 				9359960F1BD5AB8C0047EE9F /* TargetViewController.swift */,
-				93DBDBAC1BF9E19300E96148 /* VideoPlayerViewController.swift */,
+				935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */,
+				93E0F8791C00AC3200BA5EEA /* TargetTableViewEditCell.swift */,
+				937F419A1BFFF0BD00DF2D80 /* PhotoContainerViewController.swift */,
+				931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */,
 				939EBF811BDB4A3F00436BC0 /* PhotoViewController.swift */,
 				936505AA1BE4843200A824E0 /* CameraViewController.swift */,
-				935996331BD5F5A80047EE9F /* TargetTableViewController.swift */,
+				93DBDBAC1BF9E19300E96148 /* VideoPlayerViewController.swift */,
 				93DBDBAE1BFB66AC00E96148 /* LoadingProxy.swift */,
 				93CD87691BF69818003F836B /* LoadingOverlay.swift */,
-				931165C01BD6468D00F1D32D /* PhotoTableViewController.swift */,
-				935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */,
-				93DBDBA61BF83A3F00E96148 /* DateUtility.swift */,
-				931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */,
 				93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */,
 				93C7FDA21BDA89F200AC1A3D /* Storage.swift */,
 				9368DD4B1BEB9E5700F6E034 /* Constants.swift */,
+				93E0F8781C00A1A800BA5EEA /* Utility */,
 				932D92251BD855CC007AEBF0 /* Data.swift */,
 				936505A61BDF1FEF00A824E0 /* PhotoManager.swift */,
 				93DBDBAA1BF893E300E96148 /* VideoManager.swift */,
@@ -183,6 +188,15 @@
 				935996241BD5AB8D0047EE9F /* Info.plist */,
 			);
 			path = PhotoLoggerTests;
+			sourceTree = "<group>";
+		};
+		93E0F8781C00A1A800BA5EEA /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				93DBDBA61BF83A3F00E96148 /* DateUtility.swift */,
+				93E0F8761C009B8A00BA5EEA /* TableUtility.swift */,
+			);
+			name = Utility;
 			sourceTree = "<group>";
 		};
 		AFAFBFE6FA8C40D901618169 /* Pods */ = {
@@ -402,7 +416,7 @@
 				93DBDBAD1BF9E19300E96148 /* VideoPlayerViewController.swift in Sources */,
 				931165BF1BD6459400F1D32D /* PhotoTableViewCell.swift in Sources */,
 				936505A71BDF1FEF00A824E0 /* PhotoManager.swift in Sources */,
-				931165C11BD6468D00F1D32D /* PhotoTableViewController.swift in Sources */,
+				937F419B1BFFF0BD00DF2D80 /* PhotoContainerViewController.swift in Sources */,
 				935996341BD5F5A80047EE9F /* TargetTableViewController.swift in Sources */,
 				936505AB1BE4843300A824E0 /* CameraViewController.swift in Sources */,
 				932D92261BD855CC007AEBF0 /* Data.swift in Sources */,
@@ -414,8 +428,10 @@
 				93CD876A1BF69818003F836B /* LoadingOverlay.swift in Sources */,
 				9359960E1BD5AB8C0047EE9F /* AppDelegate.swift in Sources */,
 				93DBDBAF1BFB66AC00E96148 /* LoadingProxy.swift in Sources */,
+				93E0F87A1C00AC3200BA5EEA /* TargetTableViewEditCell.swift in Sources */,
 				939EBF821BDB4A3F00436BC0 /* PhotoViewController.swift in Sources */,
 				93DBDBAB1BF893E300E96148 /* VideoManager.swift in Sources */,
+				93E0F8771C009B8A00BA5EEA /* TableUtility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

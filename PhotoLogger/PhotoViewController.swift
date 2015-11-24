@@ -32,10 +32,11 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
     private var realmNotificationTokenEdit: NotificationToken?
     let now = NSDate()
     let realm = try! Realm()
+    var isKeyboardActive:Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         if selectedImage != nil {
             photoImageView?.image = selectedImage
         }
@@ -50,26 +51,6 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
         commentTextView.layer.borderColor = UIColor.lightGrayColor().CGColor
         commentTextView.layer.masksToBounds = true
 
-        // キーボードの完了ボタン
-        let myKeyboard = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, 40))
-        myKeyboard.backgroundColor = UIColor.whiteColor()
-        let myKeyboardLine = UIView(frame: CGRectMake(0, 0, myKeyboard.frame.size.width, 0.5))
-        myKeyboardLine.backgroundColor = UIColor.lightGrayColor()
-        myKeyboard.addSubview(myKeyboardLine)
-        
-        //完了ボタンの生成
-        let completeButton = UIButton(frame: CGRectMake(300, 5, 70, 30))
-        completeButton.backgroundColor = Constants.Theme.concept()
-        completeButton.setTitle("完了", forState: .Normal)
-        completeButton.titleLabel?.font = UIFont.boldSystemFontOfSize(20)
-        completeButton.layer.cornerRadius = 3.0
-        completeButton.addTarget(self, action: "onClickCompleteButton:", forControlEvents: .TouchUpInside)
-        
-        //Viewに完了ボタンを追加する。
-        myKeyboard.addSubview(completeButton)
-        
-        //ViewをFieldに設定する
-        commentTextView.inputAccessoryView = myKeyboard
         commentTextView.delegate = self
         
         remainCount = remainCount - commentTextView.text.characters.count
@@ -78,7 +59,6 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        print("viewWillAppear")
         // Viewの表示時にキーボード表示・非表示を監視するObserverを登録する
         super.viewWillAppear(animated)
         
@@ -154,6 +134,11 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
     
     //キーボードが表示された時
     func handleKeyboardWillShowNotification(notification: NSNotification) {
+        // キーボードのアクティブフラグを立てる
+        isKeyboardActive = true
+        saveButton.title = "完了"
+        
+        // キーボード分、画面を上にずらす
         // 郵便入れみたいなもの
         let userInfo = notification.userInfo!
         // キーボードの大きさを取得
@@ -162,8 +147,7 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
         let myBoundSize: CGSize = UIScreen.mainScreen().bounds.size
         // ViewControllerを基準にtextViewを囲っているviewの下辺までの距離を取得
         let commentTextWrapView = commentTextView.superview!.superview!
-        // 最後の+40はキーボードの上の完了ボタンがあるバーの分
-        let txtLimit = commentTextWrapView.frame.origin.y + commentTextWrapView.frame.height + 8.0 + 40
+        let txtLimit = commentTextWrapView.frame.origin.y + commentTextWrapView.frame.height + 8.0 + 15.0
         // ViewControllerの高さからキーボードの高さを引いた差分を取得
         let kbdLimit = myBoundSize.height - keyboardRect.size.height
 
@@ -180,6 +164,9 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
     //ずらした分を戻す処理
     func handleKeyboardWillHideNotification(notification: NSNotification) {
         photoScrollView.contentOffset.y = screenOffsetY
+        // キーボードのアクティブフラグを下ろす
+        isKeyboardActive = false
+        saveButton.title = "保存"
     }
 
     override func didReceiveMemoryWarning() {
@@ -187,12 +174,16 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func tapScreen(sender: UITapGestureRecognizer) {
-        self.view.endEditing(true)
-    }
-    
     // MARK: Actions
     @IBAction func savePhoto(sender: UIBarButtonItem) {
+        
+        // キーボードがアクティブな時はキーボードを閉じるだけ
+        if isKeyboardActive {
+            self.view.endEditing(true)
+            isKeyboardActive = false
+            saveButton.title = "保存"
+            return
+        }
         
         // コメント文字数のバリデーション
         if !commentValidation() {

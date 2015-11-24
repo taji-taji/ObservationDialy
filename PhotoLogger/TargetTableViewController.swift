@@ -11,28 +11,57 @@ import iAd
 
 class TargetTableViewController: UITableViewController {
     
-    // MARK: Properties
+    // MARK: - Properties
+
     var targets = Storage().findAll(TargetData(), orderby: "updated", ascending: false)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        navigationItem.leftBarButtonItem = editButtonItem()
-        
         self.canDisplayBannerAds = true
     }
     
     override func viewWillAppear(animated: Bool) {
-        targets = Storage().findAll(TargetData(), orderby: "updated", ascending: false)
-        tableView.reloadData()
+        self.targets = Storage().findAll(TargetData(), orderby: "updated", ascending: false)
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+
+    // MARK: - Actions
+
+    func deleteTarget(notification: NSNotification) {
+        if let userInfo = notification.userInfo, indexPath = userInfo["indexPath"] as? NSIndexPath {
+            NSNotificationCenter.defaultCenter().removeObserver(self)
+
+            // 削除ターゲットデータを取得
+            let deleteData: TargetData = self.targets[indexPath.row]
+        
+            // 画像ファイル名をすべて取得
+            var deleteFiles: [String] = []
+            for photo in deleteData.photos {
+                deleteFiles.append(photo.photo)
+            }
+        
+            // 動画ファイル名を取得
+            let deleteVideo = "\(deleteData.id).mp4"
+        
+            // データを削除
+            Storage().delete(deleteData)
+            self.targets.removeAtIndex(indexPath.row)
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        
+            // 画像ファイルをすべて削除
+            for fileName in deleteFiles {
+                PhotoManager().delete(fileName)
+            }
+        
+            // 動画ファイル削除
+            VideoManager().delete(deleteVideo)
+        }
     }
 
     // MARK: - Table view data source
@@ -46,97 +75,104 @@ class TargetTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let target = targets[indexPath.row]
+    
         let cellIdentifier = "TargetTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! TargetTableViewCell
-
-        let target = targets[indexPath.row]
-        
         cell.titleLabel.text = target.title
-        cell.updatedLabel.text = DateUtility().dateFromNow(target.updated)
-        
+        cell.updatedLabel.text = DateUtility(dateFormat: nil).dateFromNow(target.updated)
+             
         // 最新の画像をサムネイルに入れる
         if let photoData = target.photos.last {
             if let jpeg: UIImage? = PhotoManager().get(photoData.photo) {
                 cell.photoImageView.image = jpeg
             }
-        // 画像がない場合はデフォルト画像
+            // 画像がない場合はデフォルト画像
         } else {
             cell.photoImageView.image = UIImage(named: "DefaultPhoto")
         }
-
+            
         return cell
-    }
 
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            
-            // 削除ターゲットデータを取得
-            let deleteData: TargetData = targets[indexPath.row]
-            
-            // 画像ファイル名をすべて取得
-            var deleteFiles: [String] = []
-            for photo in deleteData.photos {
-                deleteFiles.append(photo.photo)
-            }
-            
-            // 動画ファイル名を取得
-            let deleteVideo = "\(deleteData.id).mp4"
-            
-            // データを削除
-            Storage().delete(deleteData)
-            targets.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            
-            // 画像ファイルをすべて削除
-            for fileName in deleteFiles {
-                PhotoManager().delete(fileName)
-            }
-            
-            // 動画ファイル削除
-            VideoManager().delete(deleteVideo)
-            
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
     }
 
     // MARK: - Navigation
 
     // 次の画面にデータを渡す
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // 次の画面のViewControllerを取得
-        let targetPhotoView = segue.destinationViewController as? PhotoTableViewController
-        // segueを判定して処理を振り分ける
-        if segue.identifier == "targetPhotoSegue" {
-            // 選択したセルを取得
-            if let selectedTargetCell = sender as? TargetTableViewCell {
+
+        if let selectedTargetCell = sender as? TargetTableViewCell {
+            // 選択したセルのindexPathを取得
+            let indexPath = tableView.indexPathForCell(selectedTargetCell)!
+            // indexPathからTargetDataを取得
+            let selectedTarget = targets[indexPath.row]
+            
+            if segue.identifier == "targetPhotoSegue" {
+                // 次の画面のViewControllerを取得
+                let targetPhotoViewController = segue.destinationViewController as? PhotoContainerViewController
+                // 次のViewControllerに渡す
+                targetPhotoViewController?.target = selectedTarget
+            }
+        } else if let senderButton = sender as? UIButton {
+            if segue.identifier == "ModifyItem" {
+                // 選択したセルを取得
+                let selectedTargetCell = TableUtility().findUITableViewCellFromSuperViewsForView(senderButton)
                 // 選択したセルのindexPathを取得
                 let indexPath = tableView.indexPathForCell(selectedTargetCell)!
                 // indexPathからTargetDataを取得
                 let selectedTarget = targets[indexPath.row]
-                // 次のViewControllerに渡す
-                targetPhotoView?.target = selectedTarget
+    
+                // 次の画面のViewControllerを取得
+                let targetViewController = segue.destinationViewController as? TargetViewController
+                print(selectedTarget, selectedTarget.title)
+                // 半透明にする処理
+                targetViewController!.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+                
+                targetViewController!.titleText = selectedTarget.title
+                targetViewController!.pageTitle = "記録タイトルの編集"
+                targetViewController!.completeButtonText = "変更"
+                targetViewController!.targetId = selectedTarget.id
+                targetViewController!.isUpdate = true
+                targetViewController!.indexPath = indexPath
+                
+                if let photoData = selectedTarget.photos.last {
+                    if let jpeg: UIImage? = PhotoManager().get(photoData.photo) {
+                        targetViewController!.targetImage = jpeg
+                    }
+                // 画像がない場合はデフォルト画像
+                } else {
+                    targetViewController!.targetImage = UIImage(named: "DefaultPhoto")
+                }
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: "deleteTarget:", name: "deleteTarget", object: nil)
             }
+
+        } else if segue.identifier == "AddItem" {
+            let targetViewController = segue.destinationViewController as? TargetViewController
+            // 半透明にする処理
+            targetViewController!.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
         }
+
     }
 
     @IBAction func unwindToTargetList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.sourceViewController as? TargetViewController, target = sourceViewController.target {
-            // targetの追加
-            // 0番目のindexPath
-            let newIndexPath = NSIndexPath(forRow: 0, inSection: 0)
-            // 0番目のindexPathに新規targetが来るように配列の0番目に追加
-            targets.insert(target, atIndex: 0)
             
-            // テーブルに挿入
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Top)
+            if sourceViewController.isUpdate {
+                targets = Storage().findAll(TargetData(), orderby: "updated", ascending: false)
+                self.tableView.reloadData()
+            } else {
+                // targetの追加
+                // 0番目のindexPath
+                let newIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+                // 0番目のindexPathに新規targetが来るように配列の0番目に追加
+                self.targets.insert(target, atIndex: 0)
+            
+                // テーブルに挿入
+                self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Top)
+            }
+
         }
     }
+
 }
