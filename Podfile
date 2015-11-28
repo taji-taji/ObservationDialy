@@ -3,12 +3,12 @@
 # Uncomment this line if you're using Swift
 use_frameworks!
 
-target 'PhotoLogger' do
+target 'ObservationDiary' do
 	pod "RealmSwift"
     source 'https://github.com/CocoaPods/Specs.git'
     pod "EasyTipView", "~> 0.1.0"
 end
 
-target 'PhotoLoggerTests' do
+target 'ObservationDiaryTests' do
 	pod "RealmSwift"
 end

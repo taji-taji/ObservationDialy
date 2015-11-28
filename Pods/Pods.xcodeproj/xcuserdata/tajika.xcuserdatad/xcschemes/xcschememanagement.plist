@@ -9,12 +9,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-PhotoLogger.xcscheme</key>
+		<key>Pods-ObservationDiary.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-PhotoLoggerTests.xcscheme</key>
+		<key>Pods-ObservationDiaryTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -32,7 +32,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>4E9AF9807D58DC160BF8C557B47DC163</key>
+		<key>0D2165E233FA6E30E83980BAD048E5C5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>54F689D2D089AD2EE028070F7B1AC34C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -42,17 +47,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9B81AFDAA582AFBD13F45A44BDC50975</key>
+		<key>BC25A28EE6C27716FE64C5E350661B6B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BB8B87AF7EEED4B3EB2448ED3BD61FA2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F8856AE73A214DBB270A8B860AFD2A25</key>
+		<key>DE9A9AFD74BDE391D1505B996DBFA88C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
