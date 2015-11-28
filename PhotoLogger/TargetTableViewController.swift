@@ -14,10 +14,22 @@ class TargetTableViewController: UITableViewController {
     // MARK: - Properties
 
     var targets = Storage().findAll(TargetData(), orderby: "updated", ascending: false)
+    var addTargetTour: Tour
+    var editTargetTour: Tour
+    
+    // MARK: - Initialization
+    required init?(coder aDecoder: NSCoder) {
+        addTargetTour = Tour(text: Tour.ADD_TARGET_TEXT)
+        editTargetTour = Tour(text: Tour.EDIT_TARGET_TEXT)
+        super.init(coder: aDecoder)
+    }
 
+    // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.canDisplayBannerAds = true
+
+        addTargetTour.tour(.AddTarget, forView: self.navigationItem.rightBarButtonItem!, superView: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -56,11 +68,11 @@ class TargetTableViewController: UITableViewController {
         
             // 画像ファイルをすべて削除
             for fileName in deleteFiles {
-                PhotoManager().delete(fileName)
+                PhotoUtility().delete(fileName)
             }
         
             // 動画ファイル削除
-            VideoManager().delete(deleteVideo)
+            VideoUtility().delete(deleteVideo)
         }
     }
 
@@ -85,14 +97,14 @@ class TargetTableViewController: UITableViewController {
              
         // 最新の画像をサムネイルに入れる
         if let photoData = target.photos.last {
-            if let jpeg: UIImage? = PhotoManager().get(photoData.photo) {
+            if let jpeg: UIImage? = PhotoUtility().get(photoData.photo) {
                 cell.photoImageView.image = jpeg
             }
             // 画像がない場合はデフォルト画像
         } else {
             cell.photoImageView.image = UIImage(named: "DefaultPhoto")
         }
-            
+        
         return cell
 
     }
@@ -102,7 +114,11 @@ class TargetTableViewController: UITableViewController {
     // 次の画面にデータを渡す
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 
+        addTargetTour.close()
+        editTargetTour.close()
+
         if let selectedTargetCell = sender as? TargetTableViewCell {
+            
             // 選択したセルのindexPathを取得
             let indexPath = tableView.indexPathForCell(selectedTargetCell)!
             // indexPathからTargetDataを取得
@@ -114,8 +130,11 @@ class TargetTableViewController: UITableViewController {
                 // 次のViewControllerに渡す
                 targetPhotoViewController?.target = selectedTarget
             }
+            
         } else if let senderButton = sender as? UIButton {
+            
             if segue.identifier == "ModifyItem" {
+                
                 // 選択したセルを取得
                 let selectedTargetCell = TableUtility().findUITableViewCellFromSuperViewsForView(senderButton)
                 // 選択したセルのindexPathを取得
@@ -137,7 +156,7 @@ class TargetTableViewController: UITableViewController {
                 targetViewController!.indexPath = indexPath
                 
                 if let photoData = selectedTarget.photos.last {
-                    if let jpeg: UIImage? = PhotoManager().get(photoData.photo) {
+                    if let jpeg: UIImage? = PhotoUtility().get(photoData.photo) {
                         targetViewController!.targetImage = jpeg
                     }
                 // 画像がない場合はデフォルト画像
@@ -168,10 +187,23 @@ class TargetTableViewController: UITableViewController {
                 // 0番目のindexPathに新規targetが来るように配列の0番目に追加
                 self.targets.insert(target, atIndex: 0)
             
+                // テーブル挿入完了後の処理を書くため
+                CATransaction.begin()
+                self.tableView.beginUpdates()
+                
                 // テーブルに挿入
                 self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Top)
+                
+                // テーブル挿入完了後の処理
+                CATransaction.setCompletionBlock({ () -> Void in
+                    if let cell = self.tableView.cellForRowAtIndexPath(newIndexPath) as? TargetTableViewCell {
+                        self.editTargetTour.tour(.EditTarget, forView: cell.editTargetButton, superView: self.tableView)
+                    }
+                })
+                
+                self.tableView.endUpdates()
+                CATransaction.commit()
             }
-
         }
     }
 

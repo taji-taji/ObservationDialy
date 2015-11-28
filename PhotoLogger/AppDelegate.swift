@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,10 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+
+        // ナビゲーションバーの設定
         UINavigationBar.appearance().barTintColor = Constants.Theme.concept()
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Constants.Theme.textColor()]
-        UINavigationBar.appearance().tintColor = Constants.Theme.textColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+
         return true
     }
 

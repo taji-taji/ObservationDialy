@@ -14,6 +14,20 @@ class Storage: StorageProtocol {
     private let realm: Realm
     
     init() {
+        // Realm マイグレーション
+        let config = Realm.Configuration(
+            schemaVersion: 1,
+            migrationBlock: { migration, oldSchemaVersion in
+//                migration.enumerate(PhotoData.className()) { oldObject, newObject in
+//                    if (oldSchemaVersion < 1) {
+//                    }
+//                    if (oldSchemaVersion < 2) {
+//                        newObject!["elapsedTime"] = 0
+//                    }
+//                }
+        })
+        Realm.Configuration.defaultConfiguration = config
+        
         realm = try! Realm()
     }
     

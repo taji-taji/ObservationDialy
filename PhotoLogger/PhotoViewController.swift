@@ -11,7 +11,7 @@ import RealmSwift
 
 class PhotoViewController: UIViewController, UITextViewDelegate {
     
-    // MARK: Properties
+    // MARK: - Properties
 
     @IBOutlet weak var photoScrollView: UIScrollView!
     @IBOutlet weak var photoImageView: UIImageView?
@@ -91,8 +91,13 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
             realm.removeNotification(token)
         }
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 
-    // MARK: Actions
+    // MARK: - Text view delegate
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         
@@ -168,13 +173,8 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
         isKeyboardActive = false
         saveButton.title = "保存"
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    // MARK: Actions
+    // MARK: - Actions
     @IBAction func savePhoto(sender: UIBarButtonItem) {
         
         // キーボードがアクティブな時はキーボードを閉じるだけ
@@ -224,7 +224,7 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
         } else {
         
             // ファイルを保存
-            let fileName = PhotoManager().insert((photoImageView?.image)!)
+            let fileName = PhotoUtility().insert((photoImageView?.image)!)
             
             photo = PhotoData()
     
@@ -260,12 +260,12 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
             // 画像をすべて取得
             var photos: [UIImage] = []
             for photoData in target.photos {
-                let image = PhotoManager().get(photoData.photo)
+                let image = PhotoUtility().get(photoData.photo)
                 photos.append(image!)
             }
             
             if photos.count >= Constants.Video.minPhotos {
-                VideoManager().makeVideoFromPhotos(photos, fileName: "\(target.id).mp4")
+                VideoUtility().makeVideoFromPhotos(photos, fileName: "\(target.id).mp4")
             }
         }
     }

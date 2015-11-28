@@ -11,53 +11,67 @@ import RealmSwift
 
 class PhotoContainerViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate {
     
-    // MARK: Properties
+    // MARK: - Properties
+    
     var target: TargetData?
     var photos: Results<PhotoData>?
+    var takePhotoTour: Tour
+    var editPhotoTour: Tour
+    var checkMovieTour: Tour
     let realm = try! Realm()
     let now = NSDate()
     let heightForHeaderInSection: CGFloat = 45
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var cameraBarButton: UIBarButtonItem!
 
+    // MARK: - Initializetion
+    required init?(coder aDecoder: NSCoder) {
+        takePhotoTour = Tour(text: Tour.TAKE_PHOTO_TEXT)
+        editPhotoTour = Tour(text: Tour.EDIT_PHOTO_TEXT)
+        checkMovieTour = Tour(text: Tour.CHECK_MOVIE_TEXT)
+        super.init(coder: aDecoder)
+    }
+
+    // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         if let target = target {
             navigationItem.title = target.title
             photos = target.photos.sorted("created", ascending: false)
         }
         
-        //高さ
+        // セルの高さ
         tableView.estimatedRowHeight = 850
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.dataSource = self
         tableView.delegate = self
+
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "insertPhoto:", name: "photoAdded", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updatePhoto:", name: "photoEdited", object: nil)
-        
-        // ツールバーをセット
-        
     }
     
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func viewDidAppear(animated: Bool) {
+        takePhotoTour.tour(.TakePhoto, forView: cameraBarButton, superView: self.view)
     }
     
     override func viewWillDisappear(animated: Bool) {
-        // ツールバーを隠す
-        self.navigationController?.setToolbarHidden(true, animated: true)
+        takePhotoTour.close()
+        editPhotoTour.close()
+        checkMovieTour.close()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: Actions
+    // MARK: - Actions
     
     // カメラビューへ遷移
     @IBAction func addPhoto(sender: UIButton) {
@@ -66,7 +80,7 @@ class PhotoContainerViewController: UIViewController, UIImagePickerControllerDel
         var latestPhotoImage: UIImage?
         
         if latestPhotoFile != nil {
-            latestPhotoImage = PhotoManager().get(latestPhotoFile!)
+            latestPhotoImage = PhotoUtility().get(latestPhotoFile!)
         }
         
         performSegueWithIdentifier("showCameraView", sender: latestPhotoImage)
@@ -86,6 +100,21 @@ class PhotoContainerViewController: UIViewController, UIImagePickerControllerDel
                     }
                     self.target?.photos.append(photo)
                     self.tableView.reloadData()
+                    
+                    // テーブル挿入完了後の処理を書くため
+                    CATransaction.begin()
+                    self.tableView.beginUpdates()
+                    
+                    // テーブル挿入完了後の処理
+                    CATransaction.setCompletionBlock({ () -> Void in
+                        self.checkMovieTour.tour(.CheckMovie, forView: self.navigationItem.rightBarButtonItem!, superView: nil)
+                        if let cell = self.tableView.cellForRowAtIndexPath(newIndexPath) as? PhotoTableViewCell {
+                            self.editPhotoTour.tour(.EditPhoto, forView: cell.editButton, superView: self.tableView)
+                        }
+                    })
+                    
+                    self.tableView.endUpdates()
+                    CATransaction.commit()
                 }
             } catch {
                 print("error")
@@ -116,12 +145,28 @@ class PhotoContainerViewController: UIViewController, UIImagePickerControllerDel
         }
         
         let videoFile = "\(self.target!.id).mp4"
-        let videoPath = VideoManager().get(videoFile)
+        let videoPath = VideoUtility().get(videoFile)
+        let tmpVideoPath = VideoUtility().get("tmp_" + videoFile)
         let myAlert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         let play = UIAlertAction(title: "ムービーを見る", style: .Default, handler: {
             (action: UIAlertAction!) in
             let videoPlayerViewController = VideoPlayerViewController()
             videoPlayerViewController.fileName = videoFile
+            // 一時ファイルが残っている場合は動画の作成に失敗しているので、一時ファイルから戻す
+            if tmpVideoPath != nil {
+                if videoPath != nil  {
+                    do {
+                        try NSFileManager().removeItemAtPath(videoPath!)
+                    } catch {
+                        print("error: Cannot remove video file")
+                    }
+                }
+                do {
+                    try NSFileManager().moveItemAtPath(tmpVideoPath!, toPath: VideoUtility().getFilePath(videoFile))
+                } catch {
+                    print("error: Cannot move tmp video file")
+                }
+            }
             // トランジションのスタイルを変更
             videoPlayerViewController.modalTransitionStyle = .CrossDissolve
             self.presentViewController(videoPlayerViewController, animated: true, completion: nil)
@@ -208,6 +253,7 @@ class PhotoContainerViewController: UIViewController, UIImagePickerControllerDel
     
     // 画像の削除操作
     func deletePhoto(id: Int, indexPath: NSIndexPath) {
+        editPhotoTour.close()
         let photo = Storage().find(PhotoData(), id: id)
         let deleteIndex = (self.target?.photos.count)! - (indexPath.section + 1)
         do {
@@ -215,7 +261,7 @@ class PhotoContainerViewController: UIViewController, UIImagePickerControllerDel
                 self.target?.photos.removeAtIndex(deleteIndex)
                 // Delete the row from the data source
                 self.tableView.deleteSections(NSIndexSet(index: indexPath.section), withRowAnimation: .Fade)
-                PhotoManager().delete(photo!.photo)
+                PhotoUtility().delete(photo!.photo)
             }
         } catch {
             print("error")
@@ -299,26 +345,26 @@ class PhotoContainerViewController: UIViewController, UIImagePickerControllerDel
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) ->
         UITableViewCell {
-            let cellIdentifier = "PhotoTableViewCell"
-            let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! PhotoTableViewCell
+        let cellIdentifier = "PhotoTableViewCell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! PhotoTableViewCell
             
-            let photoData = photos![indexPath.section]
+        let photoData = photos![indexPath.section]
             
-            let fileName = photoData.photo
+        let fileName = photoData.photo
             
-            if let jpeg: UIImage? = PhotoManager().get(fileName) {
-                cell.photoImage.image = jpeg
-                cell.commentText.text = photoData.comment
-                cell.timeLabel.text = DateUtility(dateFormat: "HH時mm分").dateToStr(photoData.updated)
-                cell.id = photoData.id
-            }
-            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "editAlert:")
-            cell.editButton.addGestureRecognizer(tapGestureRecognizer)
-            cell.editButton.setImage(UIImage(named: "EditIconHighlighted"), forState: .Highlighted)
-            
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
-            
-            return cell
+        if let jpeg: UIImage? = PhotoUtility().get(fileName) {
+            cell.photoImage.image = jpeg
+            cell.commentText.text = photoData.comment
+            cell.timeLabel.text = DateUtility(dateFormat: "HH時mm分").dateToStr(photoData.updated)
+            cell.id = photoData.id
+        }
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "editAlert:")
+        cell.editButton.addGestureRecognizer(tapGestureRecognizer)
+        cell.editButton.setImage(UIImage(named: "EditIconHighlighted"), forState: .Highlighted)
+        
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        
+        return cell
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -337,6 +383,7 @@ class PhotoContainerViewController: UIViewController, UIImagePickerControllerDel
         
         header.addSubview(createDate)
         header.addSubview(headerBorder)
+        
         return header
     }
     

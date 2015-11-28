@@ -110,14 +110,13 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         session.startRunning()
 
         // deviceをロックして設定
-        // swift 2.0
         do {
             try camera.lockForConfiguration()
             // フレームレート
             camera.activeVideoMinFrameDuration = CMTimeMake(1, 15)
             
             camera.unlockForConfiguration()
-        } catch _ {
+        } catch {
         }
 
     }

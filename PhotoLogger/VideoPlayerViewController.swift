@@ -19,7 +19,7 @@ class VideoPlayerViewController: AVPlayerViewController {
         
         if fileName != nil {
             
-            let filePath = VideoManager().get(fileName!)
+            let filePath = VideoUtility().get(fileName!)
         
             // 動画ファイルのURLを取得
             let url = NSURL(fileURLWithPath: filePath!)

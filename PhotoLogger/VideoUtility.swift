@@ -1,5 +1,5 @@
 //
-//  VideoManager.swift
+//  VideoUtility.swift
 //  PhotoLogger
 //
 //  Created by tajika on 2015/11/15.
@@ -9,9 +9,9 @@
 import UIKit
 import AVFoundation
 
-class VideoManager {
+class VideoUtility {
     
-    // MARK: Properties
+    // MARK: - Properties
     
     let DocumentsDirectory: String
     let VideoDirectory: String = "/videos"
@@ -36,7 +36,7 @@ class VideoManager {
         }
     }
     
-    // MARK: Methods
+    // MARK: - Methods
     func get(fileName: String) -> String? {
         let filePath = VideoDirectoryPath + "/" + fileName
         if fileManager.fileExistsAtPath(filePath) {
@@ -46,24 +46,17 @@ class VideoManager {
         }
     }
     
-    func insert(image: UIImage) -> String? {
-        
-        let jpegData = UIImageJPEGRepresentation(image, 1.0)!
-        
-        // ファイル名を指定して保存
-        formatter.dateFormat = "yyyyMMddHHmmss"
-        let fileName = formatter.stringFromDate(now) + ".mp4"
-        let filePath = VideoDirectoryPath + "/" + fileName
-        jpegData.writeToFile(filePath, atomically: true)
-        
-        return fileName
+    func getFilePath(fileName: String) -> String {
+        return VideoDirectoryPath + "/" + fileName
     }
     
     func makeVideoFromPhotos(images: [UIImage], fileName: String) {
+
         // 最初の画像から動画のサイズ指定する
         let size = images[0].size
         
         let VideoPath = VideoDirectoryPath + "/" + fileName
+        let TmpVideoPath = VideoDirectoryPath + "/tmp_" + fileName
         
         let videoWriter: AVAssetWriter = try! AVAssetWriter(URL: NSURL(fileURLWithPath: VideoPath), fileType: AVFileTypeMPEG4)
         
@@ -94,8 +87,8 @@ class VideoManager {
         
         if fileManager.fileExistsAtPath(VideoPath) {
             do {
-                try fileManager.removeItemAtPath(VideoPath)
-                print("removed")
+                try fileManager.moveItemAtPath(VideoPath, toPath: TmpVideoPath)
+                print("moved")
             } catch {
                 print("error: video cannot remove")
             }
@@ -117,13 +110,14 @@ class VideoManager {
                 var frameCount: Int = 0
         
                 // FPS
-                let fps: Int32 = 12
+                let fps: Int32 = 9
                 
                 // 各画像の表示する時間
                 let frameDuration = CMTimeMake(1, fps)
 
                 // 全画像をバッファに貯めこむ
                 for image in images {
+                    
                     if !adaptor.assetWriterInput.readyForMoreMediaData {
                         break
                     }
@@ -131,39 +125,44 @@ class VideoManager {
                     if frameCount == Constants.Video.maxPhotos {
                         break
                     }
-                    
+                        
                     let lastFrameTime = CMTimeMake(Int64(frameCount), fps)
                     let presentationTime = frameCount == 0 ? lastFrameTime : CMTimeAdd(lastFrameTime, frameDuration)
             
-                    // CGImageからバッファを生成（後述）
-                    let buffer: CVPixelBufferRef = self.pixelBufferFromCGImage(image.CGImage!, frameSize: size)
-            
-                    // 生成したバッファを追加
-                    if !adaptor.appendPixelBuffer(buffer, withPresentationTime: presentationTime) {
-                        // Error!
-                    }
-            
+                    autoreleasepool({ () -> () in
+                        // CGImageからバッファを生成（後述）
+                        let buffer: CVPixelBufferRef = self.pixelBufferFromCGImage(image.CGImage!, frameSize: size)
+                        // 生成したバッファを追加
+                        if !adaptor.appendPixelBuffer(buffer, withPresentationTime: presentationTime) {
+                            // Error!
+                        }
+                    })
+        
                     frameCount++;
                 }
         
                 // 動画生成終了
                 writerInput.markAsFinished()
                 videoWriter.finishWritingWithCompletionHandler({
-                    // write processing when finish writing
+                    do {
+                        try self.fileManager.removeItemAtPath(TmpVideoPath)
+                    } catch {
+                        print("error: Cannot remove tmp video file")
+                    }
                 })
             })
         }
     }
     
     func pixelBufferFromCGImage (img: CGImageRef, frameSize: CGSize) -> CVPixelBufferRef {
-        
+
         let options: [String: AnyObject] = [
             kCVPixelBufferCGImageCompatibilityKey as String: true,
             kCVPixelBufferCGBitmapContextCompatibilityKey as String: true
         ]
         
         let pixelBufferPointer = UnsafeMutablePointer<CVPixelBuffer?>.alloc(1)
-        
+
         _ = CVPixelBufferCreate(kCFAllocatorDefault, Int(frameSize.width), Int(frameSize.height), OSType(kCVPixelFormatType_32ARGB), options, pixelBufferPointer)
         
         _ = CVPixelBufferLockBaseAddress(pixelBufferPointer.memory!, 0)
@@ -178,7 +177,10 @@ class VideoManager {
         
         CVPixelBufferUnlockBaseAddress(pixelBufferPointer.memory!, 0)
         
-        return pixelBufferPointer.memory!
+        let pixelBuffer = pixelBufferPointer.memory!
+        pixelBufferPointer.destroy()
+        
+        return pixelBuffer
     }
     
     func delete(fileName: String) {

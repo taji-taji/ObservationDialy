@@ -1,5 +1,5 @@
 //
-//  PhotoManager.swift
+//  PhotoUtility.swift
 //  PhotoLogger
 //
 //  Created by tajika on 2015/10/27.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhotoManager {
+class PhotoUtility {
 
     // MARK: Properties
 
@@ -26,7 +26,7 @@ class PhotoManager {
         fileManager.fileExistsAtPath(PhotoDirectoryPath, isDirectory: &isDir)
     }
     
-    // MARK: Methods
+    // MARK: - Methods
     func get(fileName: String) -> UIImage? {
         let filePath = PhotoDirectoryPath + "/" + fileName
         if let jpeg: UIImage? = UIImage(contentsOfFile: filePath) {

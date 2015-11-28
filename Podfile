@@ -5,9 +5,10 @@ use_frameworks!
 
 target 'PhotoLogger' do
 	pod "RealmSwift"
+    source 'https://github.com/CocoaPods/Specs.git'
+    pod "EasyTipView", "~> 0.1.0"
 end
 
 target 'PhotoLoggerTests' do
 	pod "RealmSwift"
 end
-

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Constants {
+struct Constants {
     
     struct Photo {
         // コメントの最大文字数
@@ -31,10 +31,10 @@ class Constants {
     
     struct Theme {
         static func concept() -> UIColor {
-            return UIColor(red: 197.0/255, green: 240.0/255, blue: 197.0/255, alpha: 1.0)
+            return UIColor(red: 87.0/255, green: 194.0/255, blue: 158.0/255, alpha: 1.0)
         }
         static func subConcept() -> UIColor {
-            return UIColor(red: 71.0/255, green: 132.0/255, blue: 93.0/255, alpha: 1.0)
+            return UIColor(red: 197.0/255, green: 240.0/255, blue: 197.0/255, alpha: 1.0)
         }
         static func textColor() -> UIColor {
             return UIColor(red: 94.0/255, green: 85.0/255, blue: 81.0/255, alpha: 1.0)
