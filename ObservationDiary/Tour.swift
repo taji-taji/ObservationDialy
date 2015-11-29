@@ -40,9 +40,9 @@ struct Tour {
     }
 
     mutating func tour(tourType: TourType, forView: AnyObject, superView: UIView?) {
-//        if load(tourType) {
-//            return
-//        }
+        if load(tourType) {
+            return
+        }
         // それぞれのツアー
         start(forView, superView: superView)
         save(tourType, value: true)

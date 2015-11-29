@@ -265,7 +265,7 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
             }
             
             if photos.count >= Constants.Video.minPhotos {
-                VideoUtility().makeVideoFromPhotos(photos, fileName: "\(target.id).mp4")
+                VideoUtility().makeVideoFromTarget(target)
             }
         }
     }

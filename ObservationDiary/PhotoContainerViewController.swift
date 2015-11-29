@@ -261,7 +261,10 @@ class PhotoContainerViewController: UIViewController, UIImagePickerControllerDel
                 self.target?.photos.removeAtIndex(deleteIndex)
                 // Delete the row from the data source
                 self.tableView.deleteSections(NSIndexSet(index: indexPath.section), withRowAnimation: .Fade)
-                PhotoUtility().delete(photo!.photo)
+                if PhotoUtility().delete(photo!.photo) {
+                    // 動画の作り直し
+                    VideoUtility().makeVideoFromTarget(self.target!)
+                }
             }
         } catch {
             print("error")

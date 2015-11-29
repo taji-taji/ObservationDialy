@@ -50,6 +50,15 @@ class VideoUtility {
         return VideoDirectoryPath + "/" + fileName
     }
     
+    func makeVideoFromTarget(target: TargetData) {
+        var photos: [UIImage] = []
+        for photoData in target.photos {
+            let image = PhotoUtility().get(photoData.photo)
+            photos.append(image!)
+        }
+        makeVideoFromPhotos(photos, fileName: "\(target.id).\(Constants.Video.VideoExtension)")
+    }
+    
     func makeVideoFromPhotos(images: [UIImage], fileName: String) {
 
         // 最初の画像から動画のサイズ指定する

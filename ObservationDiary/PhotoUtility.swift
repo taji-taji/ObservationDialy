@@ -58,11 +58,13 @@ class PhotoUtility {
         return fileName
     }
     
-    func delete(fileName: String) {
+    func delete(fileName: String) -> Bool {
         do {
             try fileManager.removeItemAtPath(PhotoDirectoryPath + "/" + fileName)
+            return true
         } catch {
             print("failed: delete file")
+            return false
         }
     }
 

@@ -21,6 +21,8 @@ struct Constants {
         static let minPhotos = 3
         // 動画を作成する最大の画像数
         static let maxPhotos = 400
+        // 動画の拡張子
+        static let VideoExtension = "mp4"
     }
     
     struct Product {

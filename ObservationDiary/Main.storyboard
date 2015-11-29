@@ -18,7 +18,7 @@
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <color key="sectionIndexBackgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TargetTableViewCell" rowHeight="90" id="WNG-18-Srl" customClass="TargetTableViewCell" customModule="ObservationDiary" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TargetTableViewCell" rowHeight="90" id="WNG-18-Srl" customClass="TargetTableViewCell" customModule="ObservationDiary" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WNG-18-Srl" id="yrk-rt-DnN">
@@ -352,7 +352,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="wD8-ie-j8i">
                         <barButtonItem key="leftBarButtonItem" title="キャンセル" id="fMq-dY-IOU">
-                            <color key="tintColor" red="0.3803921569" green="0.33333333329999998" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="cancel:" destination="d6S-Ei-ZEh" id="Aq1-MC-0gi"/>
                             </connections>
@@ -767,7 +767,7 @@
         <image name="ButtonGreen" width="13" height="14"/>
         <image name="ButtonWhite" width="13" height="14"/>
         <image name="CameraIcon" width="165" height="133"/>
-        <image name="DefaultPhoto" width="222" height="222"/>
+        <image name="DefaultPhoto" width="400" height="400"/>
         <image name="DownloadIcon" width="40" height="45"/>
         <image name="EditIcon" width="27" height="7"/>
         <image name="MovieIcon" width="42" height="50"/>
@@ -776,6 +776,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="YBh-mH-eZF"/>
-        <segue reference="tKr-IY-8VN"/>
+        <segue reference="5xa-s8-gx0"/>
     </inferredMetricsTieBreakers>
 </document>
