@@ -18,7 +18,7 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var commentCountLabel: UILabel!
-    var photo: PhotoData?
+    var photo: Photo?
     // 新規作成時に選択された画像
     var selectedImage: UIImage?
     // 編集の際に受け取るコメント
@@ -212,13 +212,13 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
             }
 
             let updateValue = ["id": self.selectedId!, "comment": self.commentTextView.text]
-            Storage().update(PhotoData(), updateValues: updateValue)
+            Storage().update(Photo(), updateValues: updateValue)
             
             // targetのタイムスタンプ更新
-            photo = Storage().find(PhotoData(), id: self.selectedId!)
+            photo = Storage().find(Photo(), id: self.selectedId!)
             let target = photo!.target[0]
             let targetUpdateValues = ["id": target.id, "updated": now]
-            Storage().update(TargetData(), updateValues: targetUpdateValues)
+            Storage().update(Target(), updateValues: targetUpdateValues)
             
         // self.selectedIdがなければ新規
         } else {
@@ -226,7 +226,7 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
             // ファイルを保存
             let fileName = PhotoUtility().insert((photoImageView?.image)!)
             
-            photo = PhotoData()
+            photo = Photo()
     
             if fileName != nil {
                 photo!.comment = commentTextView.text
@@ -255,12 +255,12 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
             // targetのタイムスタンプ更新
             let target = photo!.target[0]
             let targetUpdateValues = ["id": target.id, "updated": now]
-            Storage().update(TargetData(), updateValues: targetUpdateValues)
+            Storage().update(Target(), updateValues: targetUpdateValues)
             
             // 画像をすべて取得
             var photos: [UIImage] = []
-            for photoData in target.photos {
-                let image = PhotoUtility().get(photoData.photo)
+            for targetPhoto in target.photos {
+                let image = PhotoUtility().get(targetPhoto.photo)
                 photos.append(image!)
             }
             

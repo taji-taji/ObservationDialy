@@ -50,10 +50,10 @@ class VideoUtility {
         return VideoDirectoryPath + "/" + fileName
     }
     
-    func makeVideoFromTarget(target: TargetData) {
+    func makeVideoFromTarget(target: Target) {
         var photos: [UIImage] = []
-        for photoData in target.photos {
-            let image = PhotoUtility().get(photoData.photo)
+        for photo in target.photos {
+            let image = PhotoUtility().get(photo.photo)
             photos.append(image!)
         }
         makeVideoFromPhotos(photos, fileName: "\(target.id).\(Constants.Video.VideoExtension)")

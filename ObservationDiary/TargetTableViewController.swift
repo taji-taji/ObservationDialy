@@ -13,7 +13,7 @@ class TargetTableViewController: UITableViewController {
     
     // MARK: - Properties
 
-    var targets = Storage().findAll(TargetData(), orderby: "updated", ascending: false)
+    var targets = Storage().findAll(Target(), orderby: "updated", ascending: false)
     var addTargetTour: Tour
     var editTargetTour: Tour
     
@@ -33,7 +33,7 @@ class TargetTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.targets = Storage().findAll(TargetData(), orderby: "updated", ascending: false)
+        self.targets = Storage().findAll(Target(), orderby: "updated", ascending: false)
         self.tableView.reloadData()
     }
 
@@ -50,7 +50,7 @@ class TargetTableViewController: UITableViewController {
             NSNotificationCenter.defaultCenter().removeObserver(self)
 
             // 削除ターゲットデータを取得
-            let deleteData: TargetData = self.targets[indexPath.row]
+            let deleteData: Target = self.targets[indexPath.row]
         
             // 画像ファイル名をすべて取得
             var deleteFiles: [String] = []
@@ -76,39 +76,6 @@ class TargetTableViewController: UITableViewController {
         }
     }
 
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return targets.count
-    }
-
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let target = targets[indexPath.row]
-    
-        let cellIdentifier = "TargetTableViewCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! TargetTableViewCell
-        cell.titleLabel.text = target.title
-        cell.updatedLabel.text = DateUtility(dateFormat: nil).dateFromNow(target.updated)
-             
-        // 最新の画像をサムネイルに入れる
-        if let photoData = target.photos.last {
-            if let jpeg: UIImage? = PhotoUtility().get(photoData.photo) {
-                cell.photoImageView.image = jpeg
-            }
-            // 画像がない場合はデフォルト画像
-        } else {
-            cell.photoImageView.image = UIImage(named: "DefaultPhoto")
-        }
-        
-        return cell
-
-    }
-
     // MARK: - Navigation
 
     // 次の画面にデータを渡す
@@ -121,7 +88,7 @@ class TargetTableViewController: UITableViewController {
             
             // 選択したセルのindexPathを取得
             let indexPath = tableView.indexPathForCell(selectedTargetCell)!
-            // indexPathからTargetDataを取得
+            // indexPathからTargetを取得
             let selectedTarget = targets[indexPath.row]
             
             if segue.identifier == "targetPhotoSegue" {
@@ -139,7 +106,7 @@ class TargetTableViewController: UITableViewController {
                 let selectedTargetCell = TableUtility().findUITableViewCellFromSuperViewsForView(senderButton)
                 // 選択したセルのindexPathを取得
                 let indexPath = tableView.indexPathForCell(selectedTargetCell)!
-                // indexPathからTargetDataを取得
+                // indexPathからTargetを取得
                 let selectedTarget = targets[indexPath.row]
     
                 // 次の画面のViewControllerを取得
@@ -155,8 +122,8 @@ class TargetTableViewController: UITableViewController {
                 targetViewController!.isUpdate = true
                 targetViewController!.indexPath = indexPath
                 
-                if let photoData = selectedTarget.photos.last {
-                    if let jpeg: UIImage? = PhotoUtility().get(photoData.photo) {
+                if let photo = selectedTarget.photos.last {
+                    if let jpeg: UIImage? = PhotoUtility().get(photo.photo) {
                         targetViewController!.targetImage = jpeg
                     }
                 // 画像がない場合はデフォルト画像
@@ -178,7 +145,7 @@ class TargetTableViewController: UITableViewController {
         if let sourceViewController = sender.sourceViewController as? TargetViewController, target = sourceViewController.target {
             
             if sourceViewController.isUpdate {
-                targets = Storage().findAll(TargetData(), orderby: "updated", ascending: false)
+                targets = Storage().findAll(Target(), orderby: "updated", ascending: false)
                 self.tableView.reloadData()
             } else {
                 // targetの追加
@@ -207,4 +174,41 @@ class TargetTableViewController: UITableViewController {
         }
     }
 
+}
+
+
+extension TargetTableViewController {
+
+    // MARK: - Table view data source
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return targets.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let target = targets[indexPath.row]
+        
+        let cellIdentifier = "TargetTableViewCell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! TargetTableViewCell
+        cell.titleLabel.text = target.title
+        cell.updatedLabel.text = DateUtility(dateFormat: nil).dateFromNow(target.updated)
+        
+        // 最新の画像をサムネイルに入れる
+        if let photo = target.photos.last {
+            if let jpeg: UIImage? = PhotoUtility().get(photo.photo) {
+                cell.photoImageView.image = jpeg
+            }
+            // 画像がない場合はデフォルト画像
+        } else {
+            cell.photoImageView.image = UIImage(named: "DefaultPhoto")
+        }
+        
+        return cell
+        
+    }
 }

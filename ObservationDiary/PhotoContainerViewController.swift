@@ -9,12 +9,12 @@
 import UIKit
 import RealmSwift
 
-class PhotoContainerViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate {
+class PhotoContainerViewController: UIViewController, UINavigationControllerDelegate {
     
     // MARK: - Properties
     
-    var target: TargetData?
-    var photos: Results<PhotoData>?
+    var target: Target?
+    var photos: Results<Photo>?
     var takePhotoTour: Tour
     var editPhotoTour: Tour
     var checkMovieTour: Tour
@@ -26,6 +26,7 @@ class PhotoContainerViewController: UIViewController, UIImagePickerControllerDel
     @IBOutlet weak var cameraBarButton: UIBarButtonItem!
 
     // MARK: - Initializetion
+
     required init?(coder aDecoder: NSCoder) {
         takePhotoTour = Tour(text: Tour.TAKE_PHOTO_TEXT)
         editPhotoTour = Tour(text: Tour.EDIT_PHOTO_TEXT)
@@ -34,6 +35,7 @@ class PhotoContainerViewController: UIViewController, UIImagePickerControllerDel
     }
 
     // MARK: - View life cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -90,7 +92,7 @@ class PhotoContainerViewController: UIViewController, UIImagePickerControllerDel
     func insertPhoto(notification: NSNotification) {
         NSNotificationCenter.defaultCenter().removeObserver(self)
         if let userInfo = notification.userInfo {
-            let photo = userInfo["photo"] as! PhotoData
+            let photo = userInfo["photo"] as! Photo
             let newIndexPath = NSIndexPath(forRow: 0, inSection: 0)
             do {
                 try realm.write {
@@ -254,7 +256,7 @@ class PhotoContainerViewController: UIViewController, UIImagePickerControllerDel
     // 画像の削除操作
     func deletePhoto(id: Int, indexPath: NSIndexPath) {
         editPhotoTour.close()
-        let photo = Storage().find(PhotoData(), id: id)
+        let photo = Storage().find(Photo(), id: id)
         let deleteIndex = (self.target?.photos.count)! - (indexPath.section + 1)
         do {
             try realm.write {
@@ -272,7 +274,7 @@ class PhotoContainerViewController: UIViewController, UIImagePickerControllerDel
         
         // targetのタイムスタンプ更新
         let targetUpdateValues = ["id": (self.target?.id)!, "updated": now]
-        Storage().update(TargetData(), updateValues: targetUpdateValues)
+        Storage().update(Target(), updateValues: targetUpdateValues)
         
     }
     
@@ -328,72 +330,6 @@ class PhotoContainerViewController: UIViewController, UIImagePickerControllerDel
         alertController.addAction(confirm)
         presentViewController(alertController, animated: true, completion: nil)
     }
-    
-    
-    // MARK: - Table view data source
-    
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return (target?.photos)!.count
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) ->
-        UITableViewCell {
-        let cellIdentifier = "PhotoTableViewCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! PhotoTableViewCell
-            
-        let photoData = photos![indexPath.section]
-            
-        let fileName = photoData.photo
-            
-        if let jpeg: UIImage? = PhotoUtility().get(fileName) {
-            cell.photoImage.image = jpeg
-            cell.commentText.text = photoData.comment
-            cell.timeLabel.text = DateUtility(dateFormat: "HH時mm分").dateToStr(photoData.updated)
-            cell.id = photoData.id
-        }
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "editAlert:")
-        cell.editButton.addGestureRecognizer(tapGestureRecognizer)
-        cell.editButton.setImage(UIImage(named: "EditIconHighlighted"), forState: .Highlighted)
-        
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
-        
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        // headerのビュー
-        let header = UIView(frame: CGRectMake(0, 0, tableView.bounds.size.width, heightForHeaderInSection))
-        header.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.95)
-        let headerBorder = UIView(frame: CGRectMake(0, header.bounds.size.height, header.bounds.size.width, 0.5))
-        headerBorder.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1.0)
-        
-        // 作成日
-        let createDate = UILabel(frame: CGRectMake(10, 0, tableView.bounds.size.width, header.bounds.size.height))
-        createDate.text = DateUtility(dateFormat: "YYYY年 MM月 dd日").dateToStr(photos![section].created)
-        createDate.font = UIFont.systemFontOfSize(17, weight: 0.3)
-        createDate.textColor = UIColor(red: 150/255, green: 150/255, blue: 150/255, alpha: 1.0)
-        createDate.textAlignment = .Center
-        
-        header.addSubview(createDate)
-        header.addSubview(headerBorder)
-        
-        return header
-    }
-    
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return heightForHeaderInSection
-    }
-    
     
     // MARK: - Navigation
     

@@ -41,11 +41,9 @@ struct Constants {
         static func textColor() -> UIColor {
             return UIColor(red: 94.0/255, green: 85.0/255, blue: 81.0/255, alpha: 1.0)
         }
-        // Gray background RGB 242 244 237(#f2f4ed)
         static func base() -> UIColor {
             return UIColor(red: 242.0/255, green: 244.0/255, blue: 237.0/255, alpha: 1.0)
         }
-        // Grayed font color 66 67 64
         static func gray() -> UIColor {
             return UIColor(red: 66.0/255, green: 67.0/255, blue: 64.0/255, alpha: 1.0)
         }

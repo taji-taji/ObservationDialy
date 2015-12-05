@@ -9,8 +9,13 @@
 /* Begin PBXBuildFile section */
 		4268BFA2BDF6B9F9CA9E48AA /* Pods_PhotoLoggerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28515B89B06A8C6CADF22102 /* Pods_PhotoLoggerTests.framework */; };
 		629287A3549987FE9D188A9A /* Pods_ObservationDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F63331DA03D1714C30BE0A20 /* Pods_ObservationDiary.framework */; };
+		930763DD1C12FAA900135834 /* PhotoContainerViewController+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763DC1C12FAA900135834 /* PhotoContainerViewController+TableViewDelegate.swift */; };
+		930763DF1C12FB6400135834 /* PhotoContainerViewController+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763DE1C12FB6400135834 /* PhotoContainerViewController+TableViewDataSource.swift */; };
+		930763E11C12FD7100135834 /* ModelBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763E01C12FD7100135834 /* ModelBase.swift */; };
+		930763E41C12FDC500135834 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763E31C12FDC500135834 /* Target.swift */; };
+		930763E61C12FE0200135834 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763E51C12FE0200135834 /* Photo.swift */; };
+		930763E91C12FEA900135834 /* VideoUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763E81C12FEA900135834 /* VideoUtility.swift */; };
 		931165BF1BD6459400F1D32D /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */; };
-		932D92261BD855CC007AEBF0 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932D92251BD855CC007AEBF0 /* Data.swift */; };
 		93429CB71C0531A90082D85F /* Tour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93429CB61C0531A90082D85F /* Tour.swift */; };
 		9353CC741BDA127A00EAFCD6 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 9353CC731BDA127A00EAFCD6 /* Podfile */; };
 		9359960E1BD5AB8C0047EE9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359960D1BD5AB8C0047EE9F /* AppDelegate.swift */; };
@@ -31,11 +36,9 @@
 		93C7FDA31BDA89F200AC1A3D /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FDA21BDA89F200AC1A3D /* Storage.swift */; };
 		93CD876A1BF69818003F836B /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD87691BF69818003F836B /* LoadingOverlay.swift */; };
 		93DBDBA71BF83A3F00E96148 /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBA61BF83A3F00E96148 /* DateUtility.swift */; };
-		93DBDBAB1BF893E300E96148 /* VideoUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBAA1BF893E300E96148 /* VideoUtility.swift */; };
 		93DBDBAD1BF9E19300E96148 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBAC1BF9E19300E96148 /* VideoPlayerViewController.swift */; };
 		93DBDBAF1BFB66AC00E96148 /* LoadingProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBAE1BFB66AC00E96148 /* LoadingProxy.swift */; };
 		93E0F8771C009B8A00BA5EEA /* TableUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E0F8761C009B8A00BA5EEA /* TableUtility.swift */; };
-		93E0F87A1C00AC3200BA5EEA /* TargetTableViewEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E0F8791C00AC3200BA5EEA /* TargetTableViewEditCell.swift */; };
 		F546FF9110138BB34C68AE7B /* Pods_ObservationDiaryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70B7F8D78F86A4292EBA3004 /* Pods_ObservationDiaryTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,8 +72,13 @@
 		786730243BD3F6AB47A9A35E /* Pods-ObservationDiary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObservationDiary.release.xcconfig"; path = "Pods/Target Support Files/Pods-ObservationDiary/Pods-ObservationDiary.release.xcconfig"; sourceTree = "<group>"; };
 		87AB316AE548E70671C965DA /* Pods_PhotoLogger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoLogger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C40873B2A71B70A74A79743 /* Pods-ObservationDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObservationDiary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ObservationDiary/Pods-ObservationDiary.debug.xcconfig"; sourceTree = "<group>"; };
+		930763DC1C12FAA900135834 /* PhotoContainerViewController+TableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PhotoContainerViewController+TableViewDelegate.swift"; sourceTree = "<group>"; };
+		930763DE1C12FB6400135834 /* PhotoContainerViewController+TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PhotoContainerViewController+TableViewDataSource.swift"; sourceTree = "<group>"; };
+		930763E01C12FD7100135834 /* ModelBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelBase.swift; sourceTree = "<group>"; };
+		930763E31C12FDC500135834 /* Target.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
+		930763E51C12FE0200135834 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		930763E81C12FEA900135834 /* VideoUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoUtility.swift; sourceTree = "<group>"; };
 		931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
-		932D92251BD855CC007AEBF0 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		93429CB61C0531A90082D85F /* Tour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tour.swift; sourceTree = "<group>"; };
 		9353CC731BDA127A00EAFCD6 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9359960A1BD5AB8C0047EE9F /* ObservationDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObservationDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,11 +103,9 @@
 		93C7FDA21BDA89F200AC1A3D /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		93CD87691BF69818003F836B /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		93DBDBA61BF83A3F00E96148 /* DateUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtility.swift; sourceTree = "<group>"; };
-		93DBDBAA1BF893E300E96148 /* VideoUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoUtility.swift; sourceTree = "<group>"; };
 		93DBDBAC1BF9E19300E96148 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		93DBDBAE1BFB66AC00E96148 /* LoadingProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingProxy.swift; sourceTree = "<group>"; };
 		93E0F8761C009B8A00BA5EEA /* TableUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableUtility.swift; sourceTree = "<group>"; };
-		93E0F8791C00AC3200BA5EEA /* TargetTableViewEditCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetTableViewEditCell.swift; sourceTree = "<group>"; };
 		DC840323EFBAEABBAEAD193C /* Pods-ObservationDiaryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObservationDiaryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ObservationDiaryTests/Pods-ObservationDiaryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F63331DA03D1714C30BE0A20 /* Pods_ObservationDiary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ObservationDiary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -138,6 +144,45 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		930763DA1C12771B00135834 /* TargetTableView */ = {
+			isa = PBXGroup;
+			children = (
+				935996331BD5F5A80047EE9F /* TargetTableViewController.swift */,
+				935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */,
+			);
+			name = TargetTableView;
+			sourceTree = "<group>";
+		};
+		930763DB1C12FA7D00135834 /* PhotoContainerView */ = {
+			isa = PBXGroup;
+			children = (
+				937F419A1BFFF0BD00DF2D80 /* PhotoContainerViewController.swift */,
+				930763DC1C12FAA900135834 /* PhotoContainerViewController+TableViewDelegate.swift */,
+				930763DE1C12FB6400135834 /* PhotoContainerViewController+TableViewDataSource.swift */,
+				931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */,
+			);
+			name = PhotoContainerView;
+			sourceTree = "<group>";
+		};
+		930763E21C12FDB400135834 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				930763E01C12FD7100135834 /* ModelBase.swift */,
+				930763E51C12FE0200135834 /* Photo.swift */,
+				930763E31C12FDC500135834 /* Target.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		930763EA1C12FEAE00135834 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				93DBDBAE1BFB66AC00E96148 /* LoadingProxy.swift */,
+				93CD87691BF69818003F836B /* LoadingOverlay.swift */,
+			);
+			name = Loading;
+			sourceTree = "<group>";
+		};
 		935996011BD5AB8C0047EE9F = {
 			isa = PBXGroup;
 			children = (
@@ -164,23 +209,18 @@
 			children = (
 				9359960D1BD5AB8C0047EE9F /* AppDelegate.swift */,
 				939EBF831BDB5D3400436BC0 /* Main.storyboard */,
-				935996331BD5F5A80047EE9F /* TargetTableViewController.swift */,
+				930763DA1C12771B00135834 /* TargetTableView */,
 				9359960F1BD5AB8C0047EE9F /* TargetViewController.swift */,
-				935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */,
-				93E0F8791C00AC3200BA5EEA /* TargetTableViewEditCell.swift */,
-				937F419A1BFFF0BD00DF2D80 /* PhotoContainerViewController.swift */,
-				931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */,
+				930763DB1C12FA7D00135834 /* PhotoContainerView */,
 				939EBF811BDB4A3F00436BC0 /* PhotoViewController.swift */,
 				936505AA1BE4843200A824E0 /* CameraViewController.swift */,
 				93DBDBAC1BF9E19300E96148 /* VideoPlayerViewController.swift */,
-				93DBDBAE1BFB66AC00E96148 /* LoadingProxy.swift */,
-				93CD87691BF69818003F836B /* LoadingOverlay.swift */,
 				93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */,
 				93C7FDA21BDA89F200AC1A3D /* Storage.swift */,
 				93429CB61C0531A90082D85F /* Tour.swift */,
 				9368DD4B1BEB9E5700F6E034 /* Constants.swift */,
 				93E0F8781C00A1A800BA5EEA /* Utilities */,
-				932D92251BD855CC007AEBF0 /* Data.swift */,
+				930763E21C12FDB400135834 /* Model */,
 				935996141BD5AB8C0047EE9F /* Assets.xcassets */,
 				935996161BD5AB8C0047EE9F /* LaunchScreen.storyboard */,
 				935996191BD5AB8C0047EE9F /* Info.plist */,
@@ -203,7 +243,8 @@
 				93DBDBA61BF83A3F00E96148 /* DateUtility.swift */,
 				93E0F8761C009B8A00BA5EEA /* TableUtility.swift */,
 				936505A61BDF1FEF00A824E0 /* PhotoUtility.swift */,
-				93DBDBAA1BF893E300E96148 /* VideoUtility.swift */,
+				930763E81C12FEA900135834 /* VideoUtility.swift */,
+				930763EA1C12FEAE00135834 /* Loading */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -275,7 +316,7 @@
 				TargetAttributes = {
 					935996091BD5AB8C0047EE9F = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = XP3HKSZM33;
+						DevelopmentTeam = R5U4C8KFRC;
 					};
 					9359961D1BD5AB8D0047EE9F = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -425,11 +466,15 @@
 				93C7FDA31BDA89F200AC1A3D /* Storage.swift in Sources */,
 				93DBDBAD1BF9E19300E96148 /* VideoPlayerViewController.swift in Sources */,
 				931165BF1BD6459400F1D32D /* PhotoTableViewCell.swift in Sources */,
+				930763E91C12FEA900135834 /* VideoUtility.swift in Sources */,
+				930763DF1C12FB6400135834 /* PhotoContainerViewController+TableViewDataSource.swift in Sources */,
 				936505A71BDF1FEF00A824E0 /* PhotoUtility.swift in Sources */,
+				930763E41C12FDC500135834 /* Target.swift in Sources */,
 				937F419B1BFFF0BD00DF2D80 /* PhotoContainerViewController.swift in Sources */,
+				930763DD1C12FAA900135834 /* PhotoContainerViewController+TableViewDelegate.swift in Sources */,
+				930763E61C12FE0200135834 /* Photo.swift in Sources */,
 				935996341BD5F5A80047EE9F /* TargetTableViewController.swift in Sources */,
 				936505AB1BE4843300A824E0 /* CameraViewController.swift in Sources */,
-				932D92261BD855CC007AEBF0 /* Data.swift in Sources */,
 				9368DD4C1BEB9E5700F6E034 /* Constants.swift in Sources */,
 				935996321BD5EDC20047EE9F /* TargetTableViewCell.swift in Sources */,
 				93C7FDA11BDA7B7A00AC1A3D /* StorageProtocol.swift in Sources */,
@@ -438,9 +483,8 @@
 				93CD876A1BF69818003F836B /* LoadingOverlay.swift in Sources */,
 				9359960E1BD5AB8C0047EE9F /* AppDelegate.swift in Sources */,
 				93DBDBAF1BFB66AC00E96148 /* LoadingProxy.swift in Sources */,
-				93E0F87A1C00AC3200BA5EEA /* TargetTableViewEditCell.swift in Sources */,
 				939EBF821BDB4A3F00436BC0 /* PhotoViewController.swift in Sources */,
-				93DBDBAB1BF893E300E96148 /* VideoUtility.swift in Sources */,
+				930763E11C12FD7100135834 /* ModelBase.swift in Sources */,
 				93E0F8771C009B8A00BA5EEA /* TableUtility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,6 +558,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -552,6 +597,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -571,7 +617,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ObservationDiary/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.engideer.ObservationDiary;
+				PRODUCT_BUNDLE_IDENTIFIER = com.engideer.ObservationDiaryTaji;
 				PRODUCT_NAME = ObservationDiary;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -591,7 +637,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ObservationDiary/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.engideer.ObservationDiary;
+				PRODUCT_BUNDLE_IDENTIFIER = com.engideer.ObservationDiaryTaji;
 				PRODUCT_NAME = ObservationDiary;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

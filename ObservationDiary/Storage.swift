@@ -18,7 +18,7 @@ class Storage: StorageProtocol {
         let config = Realm.Configuration(
             schemaVersion: 1,
             migrationBlock: { migration, oldSchemaVersion in
-//                migration.enumerate(PhotoData.className()) { oldObject, newObject in
+//                migration.enumerate(Photo.className()) { oldObject, newObject in
 //                    if (oldSchemaVersion < 1) {
 //                    }
 //                    if (oldSchemaVersion < 2) {
@@ -31,7 +31,7 @@ class Storage: StorageProtocol {
         realm = try! Realm()
     }
     
-    func add<T: Data>(d: T) {
+    func add<T: ModelBase>(d: T) {
         if let last = realm.objects(T).sorted("id").last {
             d.id = last.id + 1
         } else {
@@ -47,7 +47,7 @@ class Storage: StorageProtocol {
         }
     }
     
-    func update<T: Data>(type: T, updateValues: NSDictionary) {
+    func update<T: ModelBase>(type: T, updateValues: NSDictionary) {
         do {
             try realm.write {
                 self.realm.create(T.self, value: updateValues, update: true)
@@ -57,15 +57,15 @@ class Storage: StorageProtocol {
         }
     }
     
-    func find<T: Data>(type: T, id: Int) -> T? {
+    func find<T: ModelBase>(type: T, id: Int) -> T? {
         return realm.objects(T).filter("id = \(id)").first
     }
     
-    func findWhere<T: Data>(type: T, filter: String) -> [T]? {
+    func findWhere<T: ModelBase>(type: T, filter: String) -> [T]? {
         return realm.objects(T).filter(filter).map { $0 }
     }
     
-    func findAll<T: Data>(type: T, orderby: String?, ascending: Bool = true) -> [T] {
+    func findAll<T: ModelBase>(type: T, orderby: String?, ascending: Bool = true) -> [T] {
         var results = realm.objects(T)
         if orderby != nil {
             results = results.sorted(orderby!, ascending: ascending)
@@ -73,7 +73,7 @@ class Storage: StorageProtocol {
         return results.map { $0 }
     }
     
-    func delete<T: Data>(d: T) {
+    func delete<T: ModelBase>(d: T) {
         do {
             try realm.write {
                 self.realm.delete(d)

@@ -7,8 +7,8 @@
 //
 
 protocol StorageProtocol {
-    func add<T: Data>(d: T)
-    func find<T: Data>(type: T, id: Int) -> T?
-    func findAll<T: Data>(type: T, orderby: String?, ascending: Bool) -> [T]
-    func delete<T: Data>(d: T)
+    func add<T: ModelBase>(d: T)
+    func find<T: ModelBase>(type: T, id: Int) -> T?
+    func findAll<T: ModelBase>(type: T, orderby: String?, ascending: Bool) -> [T]
+    func delete<T: ModelBase>(d: T)
 }
