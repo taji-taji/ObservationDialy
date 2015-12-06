@@ -50,7 +50,7 @@ class VideoUtility {
         return VideoDirectoryPath + "/" + fileName
     }
     
-    func makeVideoFromTarget(target: Target) {
+    func makeVideoFromTarget(target: TargetData) {
         var photos: [UIImage] = []
         for photo in target.photos {
             let image = PhotoUtility().get(photo.photo)

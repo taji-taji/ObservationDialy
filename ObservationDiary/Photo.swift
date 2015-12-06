@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class Photo: ModelBase {
+class PhotoData: ModelBase {
     
     // MARK: - Properties
 
@@ -17,8 +17,8 @@ class Photo: ModelBase {
     dynamic var photo: String = ""
     dynamic var created: NSDate = NSDate(timeIntervalSince1970: 1)
     dynamic var updated: NSDate = NSDate(timeIntervalSince1970: 1)
-    var target: [Target] {
-        return linkingObjects(Target.self, forProperty: "photos")
+    var target: [TargetData] {
+        return linkingObjects(TargetData.self, forProperty: "photos")
     }
     
 }

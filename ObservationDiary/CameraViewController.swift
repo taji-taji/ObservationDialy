@@ -11,7 +11,7 @@ import AVFoundation
 
 class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
-    // MARK: Properties
+    // MARK: - Properties
 
     var input: AVCaptureDeviceInput!
     var output: AVCaptureVideoDataOutput!
@@ -29,7 +29,9 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
 
     override func viewDidLoad() {
         super.viewDidLoad()
-             
+        
+        self.navigationController?.navigationBar.barTintColor = Constants.Theme.gray()
+    
         // 前回撮影の画像をビューに重ねる
         if overlayImage != nil {
             overlayImageView?.image = overlayImage
@@ -59,6 +61,11 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         }
         session = nil
         camera = nil
+    }
+    
+    // ステータスバー隠す
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     
     func setupCamera() {
@@ -129,7 +136,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         // 画像を画面に表示
         dispatch_async(dispatch_get_main_queue()) {
-            let cropImage = self.cropThumbnailImage(image, x: 0.0, y: 0.0, width: image.size.width, height: image.size.width)
+            let cropImage = image.cropThumbnailImage(x: 0.0, y: 0.0, width: image.size.width, height: image.size.width)
             if self.imageView != nil {
                 self.imageView.image = cropImage
             }
@@ -185,19 +192,6 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    func cropThumbnailImage(image: UIImage, x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) -> UIImage {
-
-        let fixedImage = image.fixOrientation()
-
-        // 切り抜き処理
-        let cropRect  = CGRectMake(x, y, width, height)
-        let cropRef   = CGImageCreateWithImageInRect(fixedImage.CGImage!, cropRect)
-        let cropImage = UIImage(CGImage: cropRef!)
-        
-        return cropImage
     }
 
     // MARK: - Navigation
@@ -221,58 +215,4 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         return true
     }
 
-}
-
-// 画像が回転される
-extension UIImage {
-    func fixOrientation () -> UIImage {
-        if self.imageOrientation == .Up {
-            return self
-        }
-        var transform = CGAffineTransformIdentity
-        let width = self.size.width
-        let height = self.size.height
-        
-        switch (self.imageOrientation) {
-        case .Down, .DownMirrored:
-            transform = CGAffineTransformTranslate(transform, width, height)
-        case .Left, .LeftMirrored:
-            transform = CGAffineTransformTranslate(transform, width, 0)
-            transform = CGAffineTransformRotate(transform, CGFloat(M_PI_2))
-        case .Right, .RightMirrored:
-            transform = CGAffineTransformTranslate(transform, 0, height)
-            transform = CGAffineTransformRotate(transform, CGFloat(-M_PI_2))
-        default: // o.Up, o.UpMirrored:
-            break
-        }
-        
-        switch (self.imageOrientation) {
-        case .UpMirrored, .DownMirrored:
-            transform = CGAffineTransformTranslate(transform, width, 0)
-            transform = CGAffineTransformScale(transform, -1, 1)
-        case .LeftMirrored, .RightMirrored:
-            transform = CGAffineTransformTranslate(transform, height, 0)
-            transform = CGAffineTransformScale(transform, -1, 1)
-        default: // o.Up, o.Down, o.Left, o.Right
-            break
-        }
-        let cgimage = self.CGImage
-        
-        let ctx = CGBitmapContextCreate(nil, Int(width), Int(height),
-            CGImageGetBitsPerComponent(cgimage), 0,
-            CGImageGetColorSpace(cgimage),
-            CGImageGetBitmapInfo(cgimage).rawValue)
-        
-        CGContextConcatCTM(ctx, transform)
-        
-        switch (self.imageOrientation) {
-        case .Left, .LeftMirrored, .Right, .RightMirrored:
-            CGContextDrawImage(ctx, CGRectMake(0, 0, height, width), cgimage)
-        default:
-            CGContextDrawImage(ctx, CGRectMake(0, 0, width, height), cgimage)
-        }
-        let cgimg = CGBitmapContextCreateImage(ctx)
-        let img = UIImage(CGImage: cgimg!)
-        return img
-    }
 }

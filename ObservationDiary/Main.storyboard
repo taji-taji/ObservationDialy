@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="VjU-gG-ws9">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -319,8 +320,12 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="66" placeholderIntrinsicHeight="66" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zto-n5-4zo">
-                                <rect key="frame" x="267" y="884" width="66" height="66"/>
+                                <rect key="frame" x="265" y="734" width="70" height="70"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="WZx-dX-gpp"/>
+                                    <constraint firstAttribute="width" constant="70" id="or9-hf-dkv"/>
+                                </constraints>
                                 <state key="normal" image="cameraButton"/>
                                 <connections>
                                     <action selector="takeStillPicture:" destination="d6S-Ei-ZEh" eventType="touchUpInside" id="zy2-HL-2Jv"/>
@@ -338,20 +343,20 @@
                             </imageView>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.3411764706" green="0.76078431369999999" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="SfB-6Q-Zlj" firstAttribute="top" secondItem="NiA-eM-nXD" secondAttribute="bottom" id="76B-Nz-99e"/>
+                            <constraint firstItem="Zto-n5-4zo" firstAttribute="top" secondItem="ZTf-I6-fDN" secondAttribute="bottom" constant="70" id="HMJ-iz-mZP"/>
                             <constraint firstItem="ZTf-I6-fDN" firstAttribute="leading" secondItem="dPI-Zz-gSa" secondAttribute="leading" id="PFw-5A-FoB"/>
                             <constraint firstAttribute="trailing" secondItem="ZTf-I6-fDN" secondAttribute="trailing" id="c9k-Ah-o8M"/>
                             <constraint firstItem="SfB-6Q-Zlj" firstAttribute="leading" secondItem="dPI-Zz-gSa" secondAttribute="leading" id="dTe-EO-IM4"/>
                             <constraint firstItem="ZTf-I6-fDN" firstAttribute="top" secondItem="NiA-eM-nXD" secondAttribute="bottom" id="juH-HS-gNI"/>
-                            <constraint firstAttribute="bottom" secondItem="Zto-n5-4zo" secondAttribute="bottom" constant="50" id="qVx-Sf-AKf"/>
                             <constraint firstAttribute="trailing" secondItem="SfB-6Q-Zlj" secondAttribute="trailing" id="sFb-uX-Jra"/>
                             <constraint firstItem="Zto-n5-4zo" firstAttribute="centerX" secondItem="dPI-Zz-gSa" secondAttribute="centerX" id="yur-Bf-1SO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wD8-ie-j8i">
-                        <barButtonItem key="leftBarButtonItem" title="キャンセル" id="fMq-dY-IOU">
+                        <barButtonItem key="leftBarButtonItem" image="CancelButton" id="fMq-dY-IOU">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="cancel:" destination="d6S-Ei-ZEh" id="Aq1-MC-0gi"/>
@@ -549,7 +554,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="gFy-AN-wPz">
                         <barButtonItem key="rightBarButtonItem" image="MovieIcon" id="HKp-75-qTW">
-                            <inset key="imageInsets" minX="13" minY="10" maxX="0.0" maxY="10"/>
+                            <inset key="imageInsets" minX="15" minY="11" maxX="0.0" maxY="11"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="movieAction:" destination="apy-Rd-Zy0" id="Lu5-Jb-42V"/>
@@ -767,12 +772,13 @@
         <image name="ButtonGreen" width="13" height="14"/>
         <image name="ButtonWhite" width="13" height="14"/>
         <image name="CameraIcon" width="165" height="133"/>
+        <image name="CancelButton" width="15" height="15"/>
         <image name="DefaultPhoto" width="400" height="400"/>
         <image name="DownloadIcon" width="40" height="45"/>
         <image name="EditIcon" width="27" height="7"/>
         <image name="MovieIcon" width="42" height="50"/>
         <image name="SettingIcon" width="35" height="35"/>
-        <image name="cameraButton" width="66" height="66"/>
+        <image name="cameraButton" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="YBh-mH-eZF"/>

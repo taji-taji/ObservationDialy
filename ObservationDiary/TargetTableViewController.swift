@@ -13,7 +13,7 @@ class TargetTableViewController: UITableViewController {
     
     // MARK: - Properties
 
-    var targets = Storage().findAll(Target(), orderby: "updated", ascending: false)
+    var targets = Storage().findAll(TargetData(), orderby: "updated", ascending: false)
     var addTargetTour: Tour
     var editTargetTour: Tour
     
@@ -33,7 +33,7 @@ class TargetTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.targets = Storage().findAll(Target(), orderby: "updated", ascending: false)
+        self.targets = Storage().findAll(TargetData(), orderby: "updated", ascending: false)
         self.tableView.reloadData()
     }
 
@@ -50,7 +50,7 @@ class TargetTableViewController: UITableViewController {
             NSNotificationCenter.defaultCenter().removeObserver(self)
 
             // 削除ターゲットデータを取得
-            let deleteData: Target = self.targets[indexPath.row]
+            let deleteData: TargetData = self.targets[indexPath.row]
         
             // 画像ファイル名をすべて取得
             var deleteFiles: [String] = []
@@ -145,7 +145,7 @@ class TargetTableViewController: UITableViewController {
         if let sourceViewController = sender.sourceViewController as? TargetViewController, target = sourceViewController.target {
             
             if sourceViewController.isUpdate {
-                targets = Storage().findAll(Target(), orderby: "updated", ascending: false)
+                targets = Storage().findAll(TargetData(), orderby: "updated", ascending: false)
                 self.tableView.reloadData()
             } else {
                 // targetの追加

@@ -15,6 +15,7 @@
 		930763E41C12FDC500135834 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763E31C12FDC500135834 /* Target.swift */; };
 		930763E61C12FE0200135834 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763E51C12FE0200135834 /* Photo.swift */; };
 		930763E91C12FEA900135834 /* VideoUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763E81C12FEA900135834 /* VideoUtility.swift */; };
+		930763EE1C14314600135834 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763ED1C14314600135834 /* Extensions.swift */; };
 		931165BF1BD6459400F1D32D /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */; };
 		93429CB71C0531A90082D85F /* Tour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93429CB61C0531A90082D85F /* Tour.swift */; };
 		9353CC741BDA127A00EAFCD6 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 9353CC731BDA127A00EAFCD6 /* Podfile */; };
@@ -78,6 +79,7 @@
 		930763E31C12FDC500135834 /* Target.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
 		930763E51C12FE0200135834 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		930763E81C12FEA900135834 /* VideoUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoUtility.swift; sourceTree = "<group>"; };
+		930763ED1C14314600135834 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
 		93429CB61C0531A90082D85F /* Tour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tour.swift; sourceTree = "<group>"; };
 		9353CC731BDA127A00EAFCD6 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -244,6 +246,7 @@
 				93E0F8761C009B8A00BA5EEA /* TableUtility.swift */,
 				936505A61BDF1FEF00A824E0 /* PhotoUtility.swift */,
 				930763E81C12FEA900135834 /* VideoUtility.swift */,
+				930763ED1C14314600135834 /* Extensions.swift */,
 				930763EA1C12FEAE00135834 /* Loading */,
 			);
 			name = Utilities;
@@ -482,6 +485,7 @@
 				935996101BD5AB8C0047EE9F /* TargetViewController.swift in Sources */,
 				93CD876A1BF69818003F836B /* LoadingOverlay.swift in Sources */,
 				9359960E1BD5AB8C0047EE9F /* AppDelegate.swift in Sources */,
+				930763EE1C14314600135834 /* Extensions.swift in Sources */,
 				93DBDBAF1BFB66AC00E96148 /* LoadingProxy.swift in Sources */,
 				939EBF821BDB4A3F00436BC0 /* PhotoViewController.swift in Sources */,
 				930763E11C12FD7100135834 /* ModelBase.swift in Sources */,
@@ -616,6 +620,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ObservationDiary/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.engideer.ObservationDiaryTaji;
 				PRODUCT_NAME = ObservationDiary;
@@ -636,6 +641,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ObservationDiary/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.engideer.ObservationDiaryTaji;
 				PRODUCT_NAME = ObservationDiary;

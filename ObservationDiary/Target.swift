@@ -9,13 +9,13 @@
 import UIKit
 import RealmSwift
 
-class Target: ModelBase {
+class TargetData: ModelBase {
     
     // MARK: - Properties
 
     dynamic var title: String = ""
     dynamic var created: NSDate = NSDate(timeIntervalSince1970: 1)
     dynamic var updated: NSDate = NSDate(timeIntervalSince1970: 1)
-    var photos = List<Photo>()
+    var photos = List<PhotoData>()
     
 }

@@ -33,19 +33,19 @@ struct Constants {
     
     struct Theme {
         static func concept() -> UIColor {
-            return UIColor(red: 87.0/255, green: 194.0/255, blue: 158.0/255, alpha: 1.0)
+            return UIColor.rgba(87, g: 194, b: 158, a: 1.0)
         }
         static func subConcept() -> UIColor {
-            return UIColor(red: 197.0/255, green: 240.0/255, blue: 197.0/255, alpha: 1.0)
+            return UIColor.rgba(197, g: 240, b: 197, a: 1.0)
         }
         static func textColor() -> UIColor {
-            return UIColor(red: 94.0/255, green: 85.0/255, blue: 81.0/255, alpha: 1.0)
+            return UIColor.rgba(94, g: 85, b: 81, a: 1.0)
         }
         static func base() -> UIColor {
-            return UIColor(red: 242.0/255, green: 244.0/255, blue: 237.0/255, alpha: 1.0)
+            return UIColor.rgba(242, g: 244, b: 237, a: 1.0)
         }
         static func gray() -> UIColor {
-            return UIColor(red: 66.0/255, green: 67.0/255, blue: 64.0/255, alpha: 1.0)
+            return UIColor.rgba(26, g: 26, b: 26, a: 1.0)
         }
     }
 }

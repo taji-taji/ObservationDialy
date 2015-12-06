@@ -17,7 +17,7 @@ class TargetViewController: UIViewController, UITextFieldDelegate, UINavigationC
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var completeButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
-    var target: Target?
+    var target: TargetData?
     var pageTitle: String?
     var titleText: String?
     var targetImage: UIImage?
@@ -87,7 +87,7 @@ class TargetViewController: UIViewController, UITextFieldDelegate, UINavigationC
         
         let title = titleTextField.text ?? ""
         
-        target = Target()
+        target = TargetData()
         target?.title = title
         target?.updated = now
         

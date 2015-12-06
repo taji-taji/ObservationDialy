@@ -13,8 +13,8 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
     
     // MARK: - Properties
     
-    var target: Target?
-    var photos: Results<Photo>?
+    var target: TargetData?
+    var photos: Results<PhotoData>?
     var takePhotoTour: Tour
     var editPhotoTour: Tour
     var checkMovieTour: Tour
@@ -92,7 +92,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
     func insertPhoto(notification: NSNotification) {
         NSNotificationCenter.defaultCenter().removeObserver(self)
         if let userInfo = notification.userInfo {
-            let photo = userInfo["photo"] as! Photo
+            let photo = userInfo["photo"] as! PhotoData
             let newIndexPath = NSIndexPath(forRow: 0, inSection: 0)
             do {
                 try realm.write {
@@ -256,7 +256,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
     // 画像の削除操作
     func deletePhoto(id: Int, indexPath: NSIndexPath) {
         editPhotoTour.close()
-        let photo = Storage().find(Photo(), id: id)
+        let photo = Storage().find(PhotoData(), id: id)
         let deleteIndex = (self.target?.photos.count)! - (indexPath.section + 1)
         do {
             try realm.write {
@@ -274,7 +274,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
         
         // targetのタイムスタンプ更新
         let targetUpdateValues = ["id": (self.target?.id)!, "updated": now]
-        Storage().update(Target(), updateValues: targetUpdateValues)
+        Storage().update(TargetData(), updateValues: targetUpdateValues)
         
     }
     
