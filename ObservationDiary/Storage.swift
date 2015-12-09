@@ -31,7 +31,7 @@ class Storage: StorageProtocol {
         realm = try! Realm()
     }
     
-    func add<T: ModelBase>(d: T) {
+    func add<T: ModelBase>(d: T) -> Bool {
         if let last = realm.objects(T).sorted("id").last {
             d.id = last.id + 1
         } else {
@@ -41,9 +41,11 @@ class Storage: StorageProtocol {
             try realm.write({ () -> Void in
                 self.realm.add(d)
             })
+            return true
         } catch {
             realm.cancelWrite()
             print("error")
+            return false
         }
     }
     

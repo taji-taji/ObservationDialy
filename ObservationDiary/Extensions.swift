@@ -77,68 +77,28 @@ extension UIImage {
     }
 }
 
-// MARK: - UIColor
+// MARK: - NSDate
 
-extension UIColor {
-
-    class func rgba(r: Int, g: Int, b: Int, a: CGFloat) -> UIColor {
-        return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: a)
+extension NSDate {
+    class func strToDate(string: String) -> NSDate? {
+        // タイムゾーンを言語設定にあわせる
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: NSLocaleLanguageCode)
+        dateFormatter.timeZone = NSTimeZone.localTimeZone()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        
+        return dateFormatter.dateFromString(string)
     }
     
-    class func hexString(hex: String) -> UIColor {
-        let scanner = NSScanner(string: hex)
-        var color:UInt32 = 0
-        if scanner.scanHexInt(&color) {
-            let r = CGFloat((color & 0xFF0000) >> 16) / 255.0
-            let g = CGFloat((color & 0x00FF00) >> 8) / 255.0
-            let b = CGFloat((color & 0x0000FF)) / 255.0
-            return UIColor(red:r, green:g, blue:b, alpha: 1)
+    class func dateToStr(date: NSDate, format: String?) -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: NSLocaleLanguageCode)
+        if format != nil {
+            dateFormatter.dateFormat = format!
         } else {
-            print("invalid hex string")
-            return UIColor.whiteColor()
+            dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
         }
+        let dateString: String = dateFormatter.stringFromDate(date)
+        return dateString
     }
-
-}
-
-// MARK: - UIView
-
-extension UIView {
-    
-    enum BorderPosition {
-        case Top
-        case Right
-        case Bottom
-        case Left
-    }
-
-    func border(borderWidth borderWidth: CGFloat, borderColor: UIColor?, borderRadius: CGFloat?) {
-        self.layer.borderWidth = borderWidth
-        self.layer.borderColor = borderColor?.CGColor
-        if borderRadius != nil {
-            self.layer.cornerRadius = borderRadius!
-        }
-        self.layer.masksToBounds = true
-    }
-    
-    func border(position: BorderPosition, borderWidth: CGFloat, borderColor: UIColor?) {
-        let line = CALayer()
-        switch position {
-        case .Top:
-            line.frame = CGRectMake(0.0, 0.0, self.frame.width, borderWidth)
-        case .Left:
-            line.frame = CGRectMake(0.0, 0.0, borderWidth, self.frame.height)
-        case .Bottom:
-            line.frame = CGRectMake(0.0, self.frame.height - borderWidth, self.frame.width, borderWidth)
-        case .Right:
-            line.frame = CGRectMake(self.frame.width - borderWidth, 0.0, borderWidth, self.frame.height)
-        }
-        if borderColor != nil {
-            line.backgroundColor = borderColor!.CGColor
-        } else {
-            line.backgroundColor = UIColor.whiteColor().CGColor
-        }
-        self.layer.addSublayer(line)
-    }
-
 }

@@ -27,25 +27,25 @@ struct Constants {
     
     struct Product {
         static func version() -> String {
-            return "1.0"
+            return "1.0.2"
         }
     }
     
     struct Theme {
         static func concept() -> UIColor {
-            return UIColor.rgba(87, g: 194, b: 158, a: 1.0)
+            return UIColor(intRed: 87, green: 194, blue: 158, alpha: 1.0)
         }
         static func subConcept() -> UIColor {
-            return UIColor.rgba(197, g: 240, b: 197, a: 1.0)
+            return UIColor(intRed: 197, green: 240, blue: 197, alpha: 1.0)
         }
         static func textColor() -> UIColor {
-            return UIColor.rgba(94, g: 85, b: 81, a: 1.0)
+            return UIColor(intRed: 94, green: 85, blue: 81, alpha: 1.0)
         }
         static func base() -> UIColor {
-            return UIColor.rgba(242, g: 244, b: 237, a: 1.0)
+            return UIColor(intRed: 242, green: 244, blue: 237, alpha: 1.0)
         }
         static func gray() -> UIColor {
-            return UIColor.rgba(26, g: 26, b: 26, a: 1.0)
+            return UIColor(intRed: 26, green: 26, blue: 26, alpha: 1.0)
         }
     }
 }

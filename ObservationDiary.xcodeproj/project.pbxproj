@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4268BFA2BDF6B9F9CA9E48AA /* Pods_PhotoLoggerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28515B89B06A8C6CADF22102 /* Pods_PhotoLoggerTests.framework */; };
 		629287A3549987FE9D188A9A /* Pods_ObservationDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F63331DA03D1714C30BE0A20 /* Pods_ObservationDiary.framework */; };
 		930763DD1C12FAA900135834 /* PhotoContainerViewController+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763DC1C12FAA900135834 /* PhotoContainerViewController+TableViewDelegate.swift */; };
 		930763DF1C12FB6400135834 /* PhotoContainerViewController+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763DE1C12FB6400135834 /* PhotoContainerViewController+TableViewDataSource.swift */; };
@@ -16,6 +15,34 @@
 		930763E61C12FE0200135834 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763E51C12FE0200135834 /* Photo.swift */; };
 		930763E91C12FEA900135834 /* VideoUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763E81C12FEA900135834 /* VideoUtility.swift */; };
 		930763EE1C14314600135834 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763ED1C14314600135834 /* Extensions.swift */; };
+		930763EF1C14F3C300135834 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9368DD4B1BEB9E5700F6E034 /* Constants.swift */; };
+		930763F01C14F3DC00135834 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763E51C12FE0200135834 /* Photo.swift */; };
+		930763F11C14F3DE00135834 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763E31C12FDC500135834 /* Target.swift */; };
+		930763F21C14F54000135834 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FDA21BDA89F200AC1A3D /* Storage.swift */; };
+		930763F41C14F9FF00135834 /* StorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */; };
+		9307642C1C1794E200135834 /* TJColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9307642B1C1794E200135834 /* TJColorExtensions.swift */; };
+		9307642E1C17952E00135834 /* TJViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9307642D1C17952E00135834 /* TJViewExtensions.swift */; };
+		930764301C179E4C00135834 /* TargetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935996331BD5F5A80047EE9F /* TargetTableViewController.swift */; };
+		930764311C179E4F00135834 /* TargetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */; };
+		930764321C179E5100135834 /* TargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359960F1BD5AB8C0047EE9F /* TargetViewController.swift */; };
+		930764331C179E5700135834 /* PhotoContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937F419A1BFFF0BD00DF2D80 /* PhotoContainerViewController.swift */; };
+		930764341C179E5A00135834 /* PhotoContainerViewController+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763DC1C12FAA900135834 /* PhotoContainerViewController+TableViewDelegate.swift */; };
+		930764351C179E5E00135834 /* Tour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93429CB61C0531A90082D85F /* Tour.swift */; };
+		930764361C179E6300135834 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763ED1C14314600135834 /* Extensions.swift */; };
+		930764371C179E6500135834 /* TJColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9307642B1C1794E200135834 /* TJColorExtensions.swift */; };
+		930764381C179E6700135834 /* TJViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9307642D1C17952E00135834 /* TJViewExtensions.swift */; };
+		930764391C179E6D00135834 /* ModelBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763E01C12FD7100135834 /* ModelBase.swift */; };
+		9307643A1C179E7500135834 /* VideoUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763E81C12FEA900135834 /* VideoUtility.swift */; };
+		9307643B1C179E7700135834 /* PhotoUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936505A61BDF1FEF00A824E0 /* PhotoUtility.swift */; };
+		9307643C1C179E7900135834 /* TableUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E0F8761C009B8A00BA5EEA /* TableUtility.swift */; };
+		9307643D1C179E7C00135834 /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBA61BF83A3F00E96148 /* DateUtility.swift */; };
+		9307643E1C179E8400135834 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBAC1BF9E19300E96148 /* VideoPlayerViewController.swift */; };
+		9307643F1C179E8700135834 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936505AA1BE4843200A824E0 /* CameraViewController.swift */; };
+		930764401C179E8900135834 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EBF811BDB4A3F00436BC0 /* PhotoViewController.swift */; };
+		930764411C179E8B00135834 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */; };
+		930764421C179E8E00135834 /* PhotoContainerViewController+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763DE1C12FB6400135834 /* PhotoContainerViewController+TableViewDataSource.swift */; };
+		930764431C17A2DC00135834 /* LoadingProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBAE1BFB66AC00E96148 /* LoadingProxy.swift */; };
+		930764441C17A2DE00135834 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD87691BF69818003F836B /* LoadingOverlay.swift */; };
 		931165BF1BD6459400F1D32D /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */; };
 		93429CB71C0531A90082D85F /* Tour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93429CB61C0531A90082D85F /* Tour.swift */; };
 		9353CC741BDA127A00EAFCD6 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 9353CC731BDA127A00EAFCD6 /* Podfile */; };
@@ -23,7 +50,7 @@
 		935996101BD5AB8C0047EE9F /* TargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359960F1BD5AB8C0047EE9F /* TargetViewController.swift */; };
 		935996151BD5AB8C0047EE9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 935996141BD5AB8C0047EE9F /* Assets.xcassets */; };
 		935996181BD5AB8C0047EE9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 935996161BD5AB8C0047EE9F /* LaunchScreen.storyboard */; };
-		935996231BD5AB8D0047EE9F /* PhotoLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935996221BD5AB8D0047EE9F /* PhotoLoggerTests.swift */; };
+		935996231BD5AB8D0047EE9F /* ObservationDiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935996221BD5AB8D0047EE9F /* ObservationDiaryTests.swift */; };
 		935996321BD5EDC20047EE9F /* TargetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */; };
 		935996341BD5F5A80047EE9F /* TargetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935996331BD5F5A80047EE9F /* TargetTableViewController.swift */; };
 		936505A71BDF1FEF00A824E0 /* PhotoUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936505A61BDF1FEF00A824E0 /* PhotoUtility.swift */; };
@@ -67,11 +94,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		28515B89B06A8C6CADF22102 /* Pods_PhotoLoggerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoLoggerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		492079B1A99C6DDE48231E4D /* Pods-ObservationDiaryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObservationDiaryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ObservationDiaryTests/Pods-ObservationDiaryTests.release.xcconfig"; sourceTree = "<group>"; };
 		70B7F8D78F86A4292EBA3004 /* Pods_ObservationDiaryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ObservationDiaryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		786730243BD3F6AB47A9A35E /* Pods-ObservationDiary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObservationDiary.release.xcconfig"; path = "Pods/Target Support Files/Pods-ObservationDiary/Pods-ObservationDiary.release.xcconfig"; sourceTree = "<group>"; };
-		87AB316AE548E70671C965DA /* Pods_PhotoLogger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoLogger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C40873B2A71B70A74A79743 /* Pods-ObservationDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObservationDiary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ObservationDiary/Pods-ObservationDiary.debug.xcconfig"; sourceTree = "<group>"; };
 		930763DC1C12FAA900135834 /* PhotoContainerViewController+TableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PhotoContainerViewController+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		930763DE1C12FB6400135834 /* PhotoContainerViewController+TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PhotoContainerViewController+TableViewDataSource.swift"; sourceTree = "<group>"; };
@@ -80,6 +105,8 @@
 		930763E51C12FE0200135834 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		930763E81C12FEA900135834 /* VideoUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoUtility.swift; sourceTree = "<group>"; };
 		930763ED1C14314600135834 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		9307642B1C1794E200135834 /* TJColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TJColorExtensions.swift; sourceTree = "<group>"; };
+		9307642D1C17952E00135834 /* TJViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TJViewExtensions.swift; sourceTree = "<group>"; };
 		931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
 		93429CB61C0531A90082D85F /* Tour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tour.swift; sourceTree = "<group>"; };
 		9353CC731BDA127A00EAFCD6 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -90,7 +117,7 @@
 		935996171BD5AB8C0047EE9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		935996191BD5AB8C0047EE9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9359961E1BD5AB8D0047EE9F /* ObservationDiary.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObservationDiary.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		935996221BD5AB8D0047EE9F /* PhotoLoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLoggerTests.swift; sourceTree = "<group>"; };
+		935996221BD5AB8D0047EE9F /* ObservationDiaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationDiaryTests.swift; sourceTree = "<group>"; };
 		935996241BD5AB8D0047EE9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetTableViewCell.swift; sourceTree = "<group>"; };
 		935996331BD5F5A80047EE9F /* TargetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetTableViewController.swift; sourceTree = "<group>"; };
@@ -126,7 +153,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4268BFA2BDF6B9F9CA9E48AA /* Pods_PhotoLoggerTests.framework in Frameworks */,
 				F546FF9110138BB34C68AE7B /* Pods_ObservationDiaryTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,8 +164,6 @@
 			isa = PBXGroup;
 			children = (
 				937F41981BFD440C00DF2D80 /* iAd.framework */,
-				87AB316AE548E70671C965DA /* Pods_PhotoLogger.framework */,
-				28515B89B06A8C6CADF22102 /* Pods_PhotoLoggerTests.framework */,
 				F63331DA03D1714C30BE0A20 /* Pods_ObservationDiary.framework */,
 				70B7F8D78F86A4292EBA3004 /* Pods_ObservationDiaryTests.framework */,
 			);
@@ -185,6 +209,16 @@
 			name = Loading;
 			sourceTree = "<group>";
 		};
+		9307642A1C1794AE00135834 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				930763ED1C14314600135834 /* Extensions.swift */,
+				9307642B1C1794E200135834 /* TJColorExtensions.swift */,
+				9307642D1C17952E00135834 /* TJViewExtensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		935996011BD5AB8C0047EE9F = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +255,7 @@
 				93C7FDA21BDA89F200AC1A3D /* Storage.swift */,
 				93429CB61C0531A90082D85F /* Tour.swift */,
 				9368DD4B1BEB9E5700F6E034 /* Constants.swift */,
+				9307642A1C1794AE00135834 /* Extensions */,
 				93E0F8781C00A1A800BA5EEA /* Utilities */,
 				930763E21C12FDB400135834 /* Model */,
 				935996141BD5AB8C0047EE9F /* Assets.xcassets */,
@@ -233,7 +268,7 @@
 		935996211BD5AB8D0047EE9F /* ObservationDiaryTests */ = {
 			isa = PBXGroup;
 			children = (
-				935996221BD5AB8D0047EE9F /* PhotoLoggerTests.swift */,
+				935996221BD5AB8D0047EE9F /* ObservationDiaryTests.swift */,
 				935996241BD5AB8D0047EE9F /* Info.plist */,
 			);
 			path = ObservationDiaryTests;
@@ -246,7 +281,6 @@
 				93E0F8761C009B8A00BA5EEA /* TableUtility.swift */,
 				936505A61BDF1FEF00A824E0 /* PhotoUtility.swift */,
 				930763E81C12FEA900135834 /* VideoUtility.swift */,
-				930763ED1C14314600135834 /* Extensions.swift */,
 				930763EA1C12FEAE00135834 /* Loading */,
 			);
 			name = Utilities;
@@ -469,6 +503,7 @@
 				93C7FDA31BDA89F200AC1A3D /* Storage.swift in Sources */,
 				93DBDBAD1BF9E19300E96148 /* VideoPlayerViewController.swift in Sources */,
 				931165BF1BD6459400F1D32D /* PhotoTableViewCell.swift in Sources */,
+				9307642E1C17952E00135834 /* TJViewExtensions.swift in Sources */,
 				930763E91C12FEA900135834 /* VideoUtility.swift in Sources */,
 				930763DF1C12FB6400135834 /* PhotoContainerViewController+TableViewDataSource.swift in Sources */,
 				936505A71BDF1FEF00A824E0 /* PhotoUtility.swift in Sources */,
@@ -490,6 +525,7 @@
 				939EBF821BDB4A3F00436BC0 /* PhotoViewController.swift in Sources */,
 				930763E11C12FD7100135834 /* ModelBase.swift in Sources */,
 				93E0F8771C009B8A00BA5EEA /* TableUtility.swift in Sources */,
+				9307642C1C1794E200135834 /* TJColorExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,7 +533,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				935996231BD5AB8D0047EE9F /* PhotoLoggerTests.swift in Sources */,
+				930764301C179E4C00135834 /* TargetTableViewController.swift in Sources */,
+				930764331C179E5700135834 /* PhotoContainerViewController.swift in Sources */,
+				930764401C179E8900135834 /* PhotoViewController.swift in Sources */,
+				930763F01C14F3DC00135834 /* Photo.swift in Sources */,
+				930764421C179E8E00135834 /* PhotoContainerViewController+TableViewDataSource.swift in Sources */,
+				9307643E1C179E8400135834 /* VideoPlayerViewController.swift in Sources */,
+				930764351C179E5E00135834 /* Tour.swift in Sources */,
+				930763F41C14F9FF00135834 /* StorageProtocol.swift in Sources */,
+				930764371C179E6500135834 /* TJColorExtensions.swift in Sources */,
+				930764411C179E8B00135834 /* PhotoTableViewCell.swift in Sources */,
+				930764391C179E6D00135834 /* ModelBase.swift in Sources */,
+				935996231BD5AB8D0047EE9F /* ObservationDiaryTests.swift in Sources */,
+				930764381C179E6700135834 /* TJViewExtensions.swift in Sources */,
+				930764321C179E5100135834 /* TargetViewController.swift in Sources */,
+				9307643F1C179E8700135834 /* CameraViewController.swift in Sources */,
+				9307643D1C179E7C00135834 /* DateUtility.swift in Sources */,
+				930763F11C14F3DE00135834 /* Target.swift in Sources */,
+				930764361C179E6300135834 /* Extensions.swift in Sources */,
+				930764341C179E5A00135834 /* PhotoContainerViewController+TableViewDelegate.swift in Sources */,
+				930764431C17A2DC00135834 /* LoadingProxy.swift in Sources */,
+				9307643A1C179E7500135834 /* VideoUtility.swift in Sources */,
+				930763EF1C14F3C300135834 /* Constants.swift in Sources */,
+				930764311C179E4F00135834 /* TargetTableViewCell.swift in Sources */,
+				930763F21C14F54000135834 /* Storage.swift in Sources */,
+				9307643B1C179E7700135834 /* PhotoUtility.swift in Sources */,
+				9307643C1C179E7900135834 /* TableUtility.swift in Sources */,
+				930764441C17A2DE00135834 /* LoadingOverlay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,6 +687,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.engideer.ObservationDiaryTaji;
 				PRODUCT_NAME = ObservationDiary;
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -646,6 +709,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.engideer.ObservationDiaryTaji;
 				PRODUCT_NAME = ObservationDiary;
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -655,9 +719,9 @@
 			baseConfigurationReference = DC840323EFBAEABBAEAD193C /* Pods-ObservationDiaryTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = PhotoLoggerTests/Info.plist;
+				INFOPLIST_FILE = ObservationDiaryTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.engideer.PhotoLoggerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.engideer.ObservationDiaryTaji;
 				PRODUCT_NAME = ObservationDiary;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ObservationDiary.app/ObservationDiary";
 			};
@@ -668,9 +732,9 @@
 			baseConfigurationReference = 492079B1A99C6DDE48231E4D /* Pods-ObservationDiaryTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = PhotoLoggerTests/Info.plist;
+				INFOPLIST_FILE = ObservationDiaryTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.engideer.PhotoLoggerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.engideer.ObservationDiaryTaji;
 				PRODUCT_NAME = ObservationDiary;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ObservationDiary.app/ObservationDiary";
 			};

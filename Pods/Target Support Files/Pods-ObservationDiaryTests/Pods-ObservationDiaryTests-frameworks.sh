@@ -84,10 +84,12 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-ObservationDiaryTests/EasyTipView.framework"
   install_framework "Pods-ObservationDiaryTests/Realm.framework"
   install_framework "Pods-ObservationDiaryTests/RealmSwift.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-ObservationDiaryTests/EasyTipView.framework"
   install_framework "Pods-ObservationDiaryTests/Realm.framework"
   install_framework "Pods-ObservationDiaryTests/RealmSwift.framework"
 fi

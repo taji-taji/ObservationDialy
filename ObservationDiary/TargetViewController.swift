@@ -8,9 +8,9 @@
 
 import UIKit
 
-class TargetViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
+class TargetViewController: UIViewController, UITextFieldDelegate {
     
-    // MARK: Properties
+    // MARK: - Properties
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var targetSaveButton: UIButton!
     @IBOutlet weak var pageTitleLabel: UILabel!
@@ -29,8 +29,6 @@ class TargetViewController: UIViewController, UITextFieldDelegate, UINavigationC
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        titleTextField.delegate = self
         
         if titleText != nil {
             titleTextField.text = titleText
@@ -135,9 +133,7 @@ class TargetViewController: UIViewController, UITextFieldDelegate, UINavigationC
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
 
 }
 
