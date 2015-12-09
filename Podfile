@@ -7,7 +7,7 @@ target 'ObservationDiary' do
 	pod "RealmSwift"
     source 'https://github.com/CocoaPods/Specs.git'
     pod "EasyTipView", "~> 0.1.0"
-    pod 'Google/Analytics', '~> 1.0.0'
+    #    pod 'Google/Analytics', '~> 1.0.0'
 end
 
 target 'ObservationDiaryTests' do

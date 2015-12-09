@@ -48,6 +48,7 @@ class TargetViewController: UIViewController, UITextFieldDelegate {
         
         pageTitleLabel.textColor = Constants.Theme.textColor()
         titleTextField.textColor = Constants.Theme.textColor()
+        titleTextField.delegate = self
         
         checkValidTargetTitle()
         
