@@ -13,7 +13,7 @@ extension PhotoContainerViewController: UITableViewDataSource {
     // MARK: - Table view data source
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        print((target?.photos)!.count)
         return (target?.photos)!.count
     }
     

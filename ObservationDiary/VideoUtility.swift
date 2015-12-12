@@ -52,11 +52,13 @@ class VideoUtility {
     
     func makeVideoFromTarget(target: TargetData) {
         var photos: [UIImage] = []
-        for photo in target.photos {
-            let image = PhotoUtility().get(photo.photo)
-            photos.append(image!)
+        if target.photos.count >= Constants.Video.minPhotos {
+            for photo in target.photos {
+                let image = PhotoUtility().get(photo.photo)
+                photos.append(image!)
+            }
+            makeVideoFromPhotos(photos, fileName: "\(target.id).\(Constants.Video.VideoExtension)")
         }
-        makeVideoFromPhotos(photos, fileName: "\(target.id).\(Constants.Video.VideoExtension)")
     }
     
     func makeVideoFromPhotos(images: [UIImage], fileName: String) {

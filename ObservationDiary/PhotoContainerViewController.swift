@@ -24,6 +24,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var cameraBarButton: UIBarButtonItem!
+    @IBOutlet weak var noPhotoView: UIView!
 
     // MARK: - Initializetion
 
@@ -43,6 +44,8 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
             navigationItem.title = target.title
             photos = target.photos.sorted("created", ascending: false)
         }
+        
+        checkAndSwitchNoPhotoView()
         
         // セルの高さ
         tableView.estimatedRowHeight = 850
@@ -71,6 +74,14 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    private func checkAndSwitchNoPhotoView() {
+        if self.photos != nil {
+            self.noPhotoView.hidden = self.photos!.count != 0
+        } else {
+            self.noPhotoView.hidden = self.photos != nil
+        }
     }
     
     // MARK: - Actions
@@ -117,6 +128,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
                     
                     self.tableView.endUpdates()
                     CATransaction.commit()
+                    self.checkAndSwitchNoPhotoView()
                 }
             } catch {
                 print("error")
@@ -257,16 +269,17 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
     func deletePhoto(id: Int, indexPath: NSIndexPath) {
         editPhotoTour.close()
         let photo = Storage().find(PhotoData(), id: id)
+        let fileName = photo!.photo
         let deleteIndex = (self.target?.photos.count)! - (indexPath.section + 1)
         do {
             try realm.write {
                 self.target?.photos.removeAtIndex(deleteIndex)
-                // Delete the row from the data source
                 self.tableView.deleteSections(NSIndexSet(index: indexPath.section), withRowAnimation: .Fade)
-                if PhotoUtility().delete(photo!.photo) {
+                if PhotoUtility().delete(fileName) {
                     // 動画の作り直し
                     VideoUtility().makeVideoFromTarget(self.target!)
                 }
+                self.checkAndSwitchNoPhotoView()
             }
         } catch {
             print("error")

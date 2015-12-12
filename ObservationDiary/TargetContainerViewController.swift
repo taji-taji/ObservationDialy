@@ -17,6 +17,7 @@ class TargetContainerViewController: UIViewController {
     var addTargetTour: Tour
     var editTargetTour: Tour
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noTargetView: UIView!
     
     // MARK: - Initialization
     required init?(coder aDecoder: NSCoder) {
@@ -29,6 +30,7 @@ class TargetContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.canDisplayBannerAds = true
+        checkAndSwitchNoTargetView()
         
         addTargetTour.tour(.AddTarget, forView: self.navigationItem.rightBarButtonItem!, superView: nil)
         
@@ -38,6 +40,9 @@ class TargetContainerViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         self.targets = Storage().findAll(TargetData(), orderby: "updated", ascending: false)
         self.tableView.reloadData()
+        if self.targets.count == 0 {
+            self.noTargetView.hidden = false
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -76,6 +81,8 @@ class TargetContainerViewController: UIViewController {
             
             // 動画ファイル削除
             VideoUtility().delete(deleteVideo)
+            
+            checkAndSwitchNoTargetView()
         }
     }
     
@@ -173,8 +180,13 @@ class TargetContainerViewController: UIViewController {
                 
                 self.tableView.endUpdates()
                 CATransaction.commit()
+                checkAndSwitchNoTargetView()
             }
         }
+    }
+    
+    private func checkAndSwitchNoTargetView() {
+        self.noTargetView.hidden = self.targets.count != 0
     }
     
 }

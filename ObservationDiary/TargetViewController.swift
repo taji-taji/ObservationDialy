@@ -125,6 +125,10 @@ class TargetViewController: UIViewController, UITextFieldDelegate {
         checkValidTargetTitle()
     }
     
+    @IBAction func textFieldEditingChanged(sender: UITextField) {
+        targetSaveButton.enabled = !sender.text!.isEmpty
+    }
+    
     // MARK: Navigation
     @IBAction func targetCancel(sender: UIBarButtonItem) {
         // キーボードが上がっている場合もあるので、キーボードを隠す処理
@@ -137,4 +141,3 @@ class TargetViewController: UIViewController, UITextFieldDelegate {
     }
 
 }
-
