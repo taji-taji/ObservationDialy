@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import iAd
 
 class TargetViewController: UIViewController, UITextFieldDelegate {
     

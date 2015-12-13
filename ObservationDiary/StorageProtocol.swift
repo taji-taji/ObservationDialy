@@ -10,5 +10,5 @@ protocol StorageProtocol {
     func add<T: ModelBase>(d: T) -> Bool
     func find<T: ModelBase>(type: T, id: Int) -> T?
     func findAll<T: ModelBase>(type: T, orderby: String?, ascending: Bool) -> [T]
-    func delete<T: ModelBase>(d: T)
+    func delete<T: ModelBase>(d: T) -> Bool
 }

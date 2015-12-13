@@ -27,7 +27,11 @@ class Storage: StorageProtocol {
 //                }
         })
         Realm.Configuration.defaultConfiguration = config
-        
+        realm = try! Realm()
+    }
+    
+    init(defaultConfiguration identifier: String) {
+        Realm.Configuration.defaultConfiguration.inMemoryIdentifier = identifier
         realm = try! Realm()
     }
     
@@ -75,13 +79,15 @@ class Storage: StorageProtocol {
         return results.map { $0 }
     }
     
-    func delete<T: ModelBase>(d: T) {
+    func delete<T: ModelBase>(d: T) -> Bool {
         do {
             try realm.write {
                 self.realm.delete(d)
             }
+            return true
         } catch {
             print("error")
+            return false
         }
     }
     

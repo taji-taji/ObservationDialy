@@ -29,6 +29,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       codeCoverageEnabled = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9359961D1BD5AB8D0047EE9F"
+               BuildableName = "ObservationDiary.xctest"
+               BlueprintName = "ObservationDiaryTests"
+               ReferencedContainer = "container:ObservationDiary.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
