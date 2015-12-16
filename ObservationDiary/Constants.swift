@@ -27,7 +27,7 @@ struct Constants {
     
     struct Product {
         static func version() -> String {
-            return "1.0.2"
+            return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
         }
     }
     

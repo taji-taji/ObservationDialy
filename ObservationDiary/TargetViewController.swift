@@ -92,7 +92,7 @@ class TargetViewController: UIViewController, UITextFieldDelegate {
         target?.updated = now
         
         // targetIdがあればアップデート
-        if targetId != nil {
+        if let _ = targetId {
             Storage().update(target!, updateValues: ["id": targetId!, "title": title, "updated": now])
             isUpdate = true
             

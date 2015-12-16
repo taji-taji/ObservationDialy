@@ -77,7 +77,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
     }
     
     private func checkAndSwitchNoPhotoView() {
-        if self.photos != nil {
+        if let _ = self.photos {
             self.noPhotoView.hidden = self.photos!.count != 0
         } else {
             self.noPhotoView.hidden = self.photos != nil
@@ -92,7 +92,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
         let latestPhotoFile = target?.photos.last?.photo
         var latestPhotoImage: UIImage?
         
-        if latestPhotoFile != nil {
+        if let _ = latestPhotoFile {
             latestPhotoImage = PhotoUtility().get(latestPhotoFile!)
         }
         
@@ -167,8 +167,8 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
             let videoPlayerViewController = VideoPlayerViewController()
             videoPlayerViewController.fileName = videoFile
             // 一時ファイルが残っている場合は動画の作成に失敗しているので、一時ファイルから戻す
-            if tmpVideoPath != nil {
-                if videoPath != nil  {
+            if let _ = tmpVideoPath {
+                if let _ = videoPath  {
                     do {
                         try NSFileManager().removeItemAtPath(videoPath!)
                     } catch {
@@ -201,7 +201,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
     func video(videoPath: String, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutablePointer<Void>) {
         var title: String
         LoadingProxy.off()
-        if (error != nil) {
+        if let _ = error {
             title = "ムービーの保存に失敗しました"
         } else {
             title = "ムービーを保存しました"
@@ -331,7 +331,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
         var title = "保存完了"
         var message = "カメラロールへ保存しました"
         
-        if error != nil {
+        if let _ = error {
             title = "エラー"
             message = "カメラロールへの保存に失敗しました"
         }

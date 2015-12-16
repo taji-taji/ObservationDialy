@@ -59,6 +59,9 @@
 		9368DD4C1BEB9E5700F6E034 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9368DD4B1BEB9E5700F6E034 /* Constants.swift */; };
 		937F41991BFD440C00DF2D80 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 937F41981BFD440C00DF2D80 /* iAd.framework */; };
 		937F419B1BFFF0BD00DF2D80 /* PhotoContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937F419A1BFFF0BD00DF2D80 /* PhotoContainerViewController.swift */; };
+		939562EC1C1E3792000D90D0 /* DateUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939562EB1C1E3792000D90D0 /* DateUtilityTests.swift */; };
+		939562F11C20DB06000D90D0 /* AdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939562F01C20DB06000D90D0 /* AdView.xib */; };
+		939562F31C20DC04000D90D0 /* AdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939562F21C20DC04000D90D0 /* AdView.swift */; };
 		939EBF821BDB4A3F00436BC0 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EBF811BDB4A3F00436BC0 /* PhotoViewController.swift */; };
 		939EBF841BDB5D3400436BC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 939EBF831BDB5D3400436BC0 /* Main.storyboard */; };
 		93C7FDA11BDA7B7A00AC1A3D /* StorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */; };
@@ -130,6 +133,9 @@
 		9368DD4B1BEB9E5700F6E034 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		937F41981BFD440C00DF2D80 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		937F419A1BFFF0BD00DF2D80 /* PhotoContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoContainerViewController.swift; sourceTree = "<group>"; };
+		939562EB1C1E3792000D90D0 /* DateUtilityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtilityTests.swift; sourceTree = "<group>"; };
+		939562F01C20DB06000D90D0 /* AdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdView.xib; sourceTree = "<group>"; };
+		939562F21C20DC04000D90D0 /* AdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdView.swift; sourceTree = "<group>"; };
 		939EBF811BDB4A3F00436BC0 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		939EBF831BDB5D3400436BC0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageProtocol.swift; sourceTree = "<group>"; };
@@ -261,6 +267,7 @@
 				93C7FDA21BDA89F200AC1A3D /* Storage.swift */,
 				93429CB61C0531A90082D85F /* Tour.swift */,
 				9368DD4B1BEB9E5700F6E034 /* Constants.swift */,
+				939562EF1C20DAD8000D90D0 /* Ad */,
 				9307642A1C1794AE00135834 /* Extensions */,
 				93E0F8781C00A1A800BA5EEA /* Utilities */,
 				930763E21C12FDB400135834 /* Model */,
@@ -277,9 +284,19 @@
 				935996221BD5AB8D0047EE9F /* ObservationDiaryTests.swift */,
 				933571831C1BD2AB00F9D948 /* StorageTests.swift */,
 				93DBC6ED1C1DB01A0078AD62 /* TourTests.swift */,
+				939562EB1C1E3792000D90D0 /* DateUtilityTests.swift */,
 				935996241BD5AB8D0047EE9F /* Info.plist */,
 			);
 			path = ObservationDiaryTests;
+			sourceTree = "<group>";
+		};
+		939562EF1C20DAD8000D90D0 /* Ad */ = {
+			isa = PBXGroup;
+			children = (
+				939562F01C20DB06000D90D0 /* AdView.xib */,
+				939562F21C20DC04000D90D0 /* AdView.swift */,
+			);
+			name = Ad;
 			sourceTree = "<group>";
 		};
 		93E0F8781C00A1A800BA5EEA /* Utilities */ = {
@@ -393,6 +410,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				939562F11C20DB06000D90D0 /* AdView.xib in Resources */,
 				935996181BD5AB8C0047EE9F /* LaunchScreen.storyboard in Resources */,
 				935996151BD5AB8C0047EE9F /* Assets.xcassets in Resources */,
 				9353CC741BDA127A00EAFCD6 /* Podfile in Resources */,
@@ -528,6 +546,7 @@
 				93DBDBA71BF83A3F00E96148 /* DateUtility.swift in Sources */,
 				935996101BD5AB8C0047EE9F /* TargetViewController.swift in Sources */,
 				93CD876A1BF69818003F836B /* LoadingOverlay.swift in Sources */,
+				939562F31C20DC04000D90D0 /* AdView.swift in Sources */,
 				9359960E1BD5AB8C0047EE9F /* AppDelegate.swift in Sources */,
 				930763EE1C14314600135834 /* Extensions.swift in Sources */,
 				93DBDBAF1BFB66AC00E96148 /* LoadingProxy.swift in Sources */,
@@ -546,6 +565,7 @@
 				930764401C179E8900135834 /* PhotoViewController.swift in Sources */,
 				930763F01C14F3DC00135834 /* Photo.swift in Sources */,
 				930764421C179E8E00135834 /* PhotoContainerViewController+TableViewDataSource.swift in Sources */,
+				939562EC1C1E3792000D90D0 /* DateUtilityTests.swift in Sources */,
 				9307643E1C179E8400135834 /* VideoPlayerViewController.swift in Sources */,
 				930764351C179E5E00135834 /* Tour.swift in Sources */,
 				930763F41C14F9FF00135834 /* StorageProtocol.swift in Sources */,
