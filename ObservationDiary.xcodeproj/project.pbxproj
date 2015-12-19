@@ -46,6 +46,21 @@
 		930764481C18EE4800135834 /* TargetContainerViewController+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930764471C18EE4800135834 /* TargetContainerViewController+TableViewDataSource.swift */; };
 		931165BF1BD6459400F1D32D /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */; };
 		933571841C1BD2AB00F9D948 /* StorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933571831C1BD2AB00F9D948 /* StorageTests.swift */; };
+		933CD8B71C22291F00CBD3D3 /* AdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939562F21C20DC04000D90D0 /* AdView.swift */; };
+		933CD8B91C222B5500CBD3D3 /* TargetContainerViewController+ADBannerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8B81C222B5500CBD3D3 /* TargetContainerViewController+ADBannerViewDelegate.swift */; };
+		933CD8BB1C222BE500CBD3D3 /* TargetViewController+ADBannerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8BA1C222BE500CBD3D3 /* TargetViewController+ADBannerViewDelegate.swift */; };
+		933CD8BD1C222C3900CBD3D3 /* TargetViewController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8BC1C222C3900CBD3D3 /* TargetViewController+UITextFieldDelegate.swift */; };
+		933CD8BF1C222E6700CBD3D3 /* TargetContainerViewController+ADBannerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8B81C222B5500CBD3D3 /* TargetContainerViewController+ADBannerViewDelegate.swift */; };
+		933CD8C01C222E7200CBD3D3 /* TargetContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930764451C18E81100135834 /* TargetContainerViewController.swift */; };
+		933CD8C11C222E7500CBD3D3 /* TargetContainerViewController+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930764471C18EE4800135834 /* TargetContainerViewController+TableViewDataSource.swift */; };
+		933CD8C21C222E7E00CBD3D3 /* TargetViewController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8BC1C222C3900CBD3D3 /* TargetViewController+UITextFieldDelegate.swift */; };
+		933CD8C31C222E8300CBD3D3 /* TargetViewController+ADBannerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8BA1C222BE500CBD3D3 /* TargetViewController+ADBannerViewDelegate.swift */; };
+		933CD8C51C22CFFE00CBD3D3 /* VideoUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8C41C22CFFE00CBD3D3 /* VideoUtilityTests.swift */; };
+		933CD8C71C23749300CBD3D3 /* PhotoUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8C61C23749300CBD3D3 /* PhotoUtilityTests.swift */; };
+		933CD8C91C23763900CBD3D3 /* MediaUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8C81C23763900CBD3D3 /* MediaUtility.swift */; };
+		933CD8CA1C23773100CBD3D3 /* MediaUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8C81C23763900CBD3D3 /* MediaUtility.swift */; };
+		933CD8CC1C23799A00CBD3D3 /* MediaUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8CB1C23799A00CBD3D3 /* MediaUtilityTests.swift */; };
+		933CD8CD1C237F4A00CBD3D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 935996141BD5AB8C0047EE9F /* Assets.xcassets */; };
 		93429CB71C0531A90082D85F /* Tour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93429CB61C0531A90082D85F /* Tour.swift */; };
 		9353CC741BDA127A00EAFCD6 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 9353CC731BDA127A00EAFCD6 /* Podfile */; };
 		9359960E1BD5AB8C0047EE9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359960D1BD5AB8C0047EE9F /* AppDelegate.swift */; };
@@ -116,6 +131,13 @@
 		930764471C18EE4800135834 /* TargetContainerViewController+TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TargetContainerViewController+TableViewDataSource.swift"; sourceTree = "<group>"; };
 		931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
 		933571831C1BD2AB00F9D948 /* StorageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageTests.swift; sourceTree = "<group>"; };
+		933CD8B81C222B5500CBD3D3 /* TargetContainerViewController+ADBannerViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TargetContainerViewController+ADBannerViewDelegate.swift"; sourceTree = "<group>"; };
+		933CD8BA1C222BE500CBD3D3 /* TargetViewController+ADBannerViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TargetViewController+ADBannerViewDelegate.swift"; sourceTree = "<group>"; };
+		933CD8BC1C222C3900CBD3D3 /* TargetViewController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TargetViewController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
+		933CD8C41C22CFFE00CBD3D3 /* VideoUtilityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoUtilityTests.swift; sourceTree = "<group>"; };
+		933CD8C61C23749300CBD3D3 /* PhotoUtilityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoUtilityTests.swift; sourceTree = "<group>"; };
+		933CD8C81C23763900CBD3D3 /* MediaUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaUtility.swift; sourceTree = "<group>"; };
+		933CD8CB1C23799A00CBD3D3 /* MediaUtilityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaUtilityTests.swift; sourceTree = "<group>"; };
 		93429CB61C0531A90082D85F /* Tour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tour.swift; sourceTree = "<group>"; };
 		9353CC731BDA127A00EAFCD6 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9359960A1BD5AB8C0047EE9F /* ObservationDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObservationDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,17 +203,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		930763DA1C12771B00135834 /* TargetTableView */ = {
+		930763DA1C12771B00135834 /* TargetListView */ = {
 			isa = PBXGroup;
 			children = (
 				930764451C18E81100135834 /* TargetContainerViewController.swift */,
+				933CD8B81C222B5500CBD3D3 /* TargetContainerViewController+ADBannerViewDelegate.swift */,
 				930764471C18EE4800135834 /* TargetContainerViewController+TableViewDataSource.swift */,
 				935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */,
 			);
-			name = TargetTableView;
+			name = TargetListView;
 			sourceTree = "<group>";
 		};
-		930763DB1C12FA7D00135834 /* PhotoContainerView */ = {
+		930763DB1C12FA7D00135834 /* PhotoListView */ = {
 			isa = PBXGroup;
 			children = (
 				937F419A1BFFF0BD00DF2D80 /* PhotoContainerViewController.swift */,
@@ -199,7 +222,7 @@
 				930763DE1C12FB6400135834 /* PhotoContainerViewController+TableViewDataSource.swift */,
 				931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */,
 			);
-			name = PhotoContainerView;
+			name = PhotoListView;
 			sourceTree = "<group>";
 		};
 		930763E21C12FDB400135834 /* Model */ = {
@@ -231,6 +254,16 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		933CD8BE1C222CB100CBD3D3 /* TargetView */ = {
+			isa = PBXGroup;
+			children = (
+				9359960F1BD5AB8C0047EE9F /* TargetViewController.swift */,
+				933CD8BC1C222C3900CBD3D3 /* TargetViewController+UITextFieldDelegate.swift */,
+				933CD8BA1C222BE500CBD3D3 /* TargetViewController+ADBannerViewDelegate.swift */,
+			);
+			name = TargetView;
+			sourceTree = "<group>";
+		};
 		935996011BD5AB8C0047EE9F = {
 			isa = PBXGroup;
 			children = (
@@ -257,9 +290,9 @@
 			children = (
 				9359960D1BD5AB8C0047EE9F /* AppDelegate.swift */,
 				939EBF831BDB5D3400436BC0 /* Main.storyboard */,
-				930763DA1C12771B00135834 /* TargetTableView */,
-				9359960F1BD5AB8C0047EE9F /* TargetViewController.swift */,
-				930763DB1C12FA7D00135834 /* PhotoContainerView */,
+				930763DA1C12771B00135834 /* TargetListView */,
+				933CD8BE1C222CB100CBD3D3 /* TargetView */,
+				930763DB1C12FA7D00135834 /* PhotoListView */,
 				939EBF811BDB4A3F00436BC0 /* PhotoViewController.swift */,
 				936505AA1BE4843200A824E0 /* CameraViewController.swift */,
 				93DBDBAC1BF9E19300E96148 /* VideoPlayerViewController.swift */,
@@ -285,6 +318,9 @@
 				933571831C1BD2AB00F9D948 /* StorageTests.swift */,
 				93DBC6ED1C1DB01A0078AD62 /* TourTests.swift */,
 				939562EB1C1E3792000D90D0 /* DateUtilityTests.swift */,
+				933CD8C41C22CFFE00CBD3D3 /* VideoUtilityTests.swift */,
+				933CD8C61C23749300CBD3D3 /* PhotoUtilityTests.swift */,
+				933CD8CB1C23799A00CBD3D3 /* MediaUtilityTests.swift */,
 				935996241BD5AB8D0047EE9F /* Info.plist */,
 			);
 			path = ObservationDiaryTests;
@@ -304,6 +340,7 @@
 			children = (
 				93DBDBA61BF83A3F00E96148 /* DateUtility.swift */,
 				93E0F8761C009B8A00BA5EEA /* TableUtility.swift */,
+				933CD8C81C23763900CBD3D3 /* MediaUtility.swift */,
 				936505A61BDF1FEF00A824E0 /* PhotoUtility.swift */,
 				930763E81C12FEA900135834 /* VideoUtility.swift */,
 				930763EA1C12FEAE00135834 /* Loading */,
@@ -422,6 +459,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				933CD8CD1C237F4A00CBD3D3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,10 +569,12 @@
 				931165BF1BD6459400F1D32D /* PhotoTableViewCell.swift in Sources */,
 				9307642E1C17952E00135834 /* TJViewExtensions.swift in Sources */,
 				930763E91C12FEA900135834 /* VideoUtility.swift in Sources */,
+				933CD8C91C23763900CBD3D3 /* MediaUtility.swift in Sources */,
 				930764481C18EE4800135834 /* TargetContainerViewController+TableViewDataSource.swift in Sources */,
 				930763DF1C12FB6400135834 /* PhotoContainerViewController+TableViewDataSource.swift in Sources */,
 				936505A71BDF1FEF00A824E0 /* PhotoUtility.swift in Sources */,
 				930763E41C12FDC500135834 /* Target.swift in Sources */,
+				933CD8B91C222B5500CBD3D3 /* TargetContainerViewController+ADBannerViewDelegate.swift in Sources */,
 				937F419B1BFFF0BD00DF2D80 /* PhotoContainerViewController.swift in Sources */,
 				930763DD1C12FAA900135834 /* PhotoContainerViewController+TableViewDelegate.swift in Sources */,
 				930763E61C12FE0200135834 /* Photo.swift in Sources */,
@@ -544,6 +584,7 @@
 				935996321BD5EDC20047EE9F /* TargetTableViewCell.swift in Sources */,
 				93C7FDA11BDA7B7A00AC1A3D /* StorageProtocol.swift in Sources */,
 				93DBDBA71BF83A3F00E96148 /* DateUtility.swift in Sources */,
+				933CD8BB1C222BE500CBD3D3 /* TargetViewController+ADBannerViewDelegate.swift in Sources */,
 				935996101BD5AB8C0047EE9F /* TargetViewController.swift in Sources */,
 				93CD876A1BF69818003F836B /* LoadingOverlay.swift in Sources */,
 				939562F31C20DC04000D90D0 /* AdView.swift in Sources */,
@@ -551,6 +592,7 @@
 				930763EE1C14314600135834 /* Extensions.swift in Sources */,
 				93DBDBAF1BFB66AC00E96148 /* LoadingProxy.swift in Sources */,
 				939EBF821BDB4A3F00436BC0 /* PhotoViewController.swift in Sources */,
+				933CD8BD1C222C3900CBD3D3 /* TargetViewController+UITextFieldDelegate.swift in Sources */,
 				930763E11C12FD7100135834 /* ModelBase.swift in Sources */,
 				93E0F8771C009B8A00BA5EEA /* TableUtility.swift in Sources */,
 				9307642C1C1794E200135834 /* TJColorExtensions.swift in Sources */,
@@ -561,19 +603,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				933CD8C71C23749300CBD3D3 /* PhotoUtilityTests.swift in Sources */,
+				933CD8C21C222E7E00CBD3D3 /* TargetViewController+UITextFieldDelegate.swift in Sources */,
+				933CD8B71C22291F00CBD3D3 /* AdView.swift in Sources */,
 				930764331C179E5700135834 /* PhotoContainerViewController.swift in Sources */,
 				930764401C179E8900135834 /* PhotoViewController.swift in Sources */,
 				930763F01C14F3DC00135834 /* Photo.swift in Sources */,
 				930764421C179E8E00135834 /* PhotoContainerViewController+TableViewDataSource.swift in Sources */,
+				933CD8BF1C222E6700CBD3D3 /* TargetContainerViewController+ADBannerViewDelegate.swift in Sources */,
 				939562EC1C1E3792000D90D0 /* DateUtilityTests.swift in Sources */,
 				9307643E1C179E8400135834 /* VideoPlayerViewController.swift in Sources */,
+				933CD8CC1C23799A00CBD3D3 /* MediaUtilityTests.swift in Sources */,
 				930764351C179E5E00135834 /* Tour.swift in Sources */,
 				930763F41C14F9FF00135834 /* StorageProtocol.swift in Sources */,
 				930764371C179E6500135834 /* TJColorExtensions.swift in Sources */,
+				933CD8CA1C23773100CBD3D3 /* MediaUtility.swift in Sources */,
+				933CD8C51C22CFFE00CBD3D3 /* VideoUtilityTests.swift in Sources */,
 				930764411C179E8B00135834 /* PhotoTableViewCell.swift in Sources */,
 				930764391C179E6D00135834 /* ModelBase.swift in Sources */,
 				935996231BD5AB8D0047EE9F /* ObservationDiaryTests.swift in Sources */,
 				93DBC6EE1C1DB01A0078AD62 /* TourTests.swift in Sources */,
+				933CD8C11C222E7500CBD3D3 /* TargetContainerViewController+TableViewDataSource.swift in Sources */,
 				930764381C179E6700135834 /* TJViewExtensions.swift in Sources */,
 				930764321C179E5100135834 /* TargetViewController.swift in Sources */,
 				9307643F1C179E8700135834 /* CameraViewController.swift in Sources */,
@@ -586,10 +636,12 @@
 				9307643A1C179E7500135834 /* VideoUtility.swift in Sources */,
 				930763EF1C14F3C300135834 /* Constants.swift in Sources */,
 				930764311C179E4F00135834 /* TargetTableViewCell.swift in Sources */,
+				933CD8C31C222E8300CBD3D3 /* TargetViewController+ADBannerViewDelegate.swift in Sources */,
 				930763F21C14F54000135834 /* Storage.swift in Sources */,
 				9307643B1C179E7700135834 /* PhotoUtility.swift in Sources */,
 				9307643C1C179E7900135834 /* TableUtility.swift in Sources */,
 				930764441C17A2DE00135834 /* LoadingOverlay.swift in Sources */,
+				933CD8C01C222E7200CBD3D3 /* TargetContainerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

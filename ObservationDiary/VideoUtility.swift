@@ -9,31 +9,18 @@
 import UIKit
 import AVFoundation
 
-class VideoUtility {
+class VideoUtility: MediaUtility {
     
     // MARK: - Properties
     
-    let DocumentsDirectory: String
     let VideoDirectory: String = "/videos"
-    let VideoDirectoryPath: String
-    var isDir: ObjCBool = false
-    let fileManager = NSFileManager.defaultManager()
-    let now = NSDate()
-    let formatter = NSDateFormatter()
+    var VideoDirectoryPath: String = ""
     
-    init() {
-        DocumentsDirectory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first!
+    override init() {
+        super.init()
         VideoDirectoryPath = DocumentsDirectory + VideoDirectory
         fileManager.fileExistsAtPath(VideoDirectoryPath, isDirectory: &isDir)
-        
-        //ディレクトリが存在しない場合に、ディレクトリを作成する
-        if !isDir {
-            do {
-                try fileManager.createDirectoryAtPath(VideoDirectoryPath ,withIntermediateDirectories: true, attributes: nil)
-            } catch {
-                print("error: cannot create directory")
-            }
-        }
+        makeDirectoryIfNeeded(VideoDirectoryPath)
     }
     
     // MARK: - Methods

@@ -8,25 +8,22 @@
 
 import UIKit
 
-class PhotoUtility {
+class PhotoUtility: MediaUtility {
 
-    // MARK: Properties
+    // MARK: - Properties
 
-    let DocumentsDirectory: String
     let PhotoDirectory: String = "/photos"
-    let PhotoDirectoryPath: String
-    var isDir: ObjCBool = false
-    let fileManager = NSFileManager.defaultManager()
-    let now = NSDate()
-    let formatter = NSDateFormatter()
+    var PhotoDirectoryPath: String = ""
     
-    init() {
-        DocumentsDirectory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first!
+    override init() {
+        super.init()
         PhotoDirectoryPath = DocumentsDirectory + PhotoDirectory
         fileManager.fileExistsAtPath(PhotoDirectoryPath, isDirectory: &isDir)
+        makeDirectoryIfNeeded(PhotoDirectoryPath)
     }
     
     // MARK: - Methods
+
     func get(fileName: String) -> UIImage? {
         let filePath = PhotoDirectoryPath + "/" + fileName
         if let jpeg: UIImage? = UIImage(contentsOfFile: filePath) {
@@ -37,16 +34,7 @@ class PhotoUtility {
     }
 
     func insert(image: UIImage) -> String? {
-        
-        //ディレクトリが存在しない場合に、ディレクトリを作成する
-        if !isDir {
-            do {
-                try fileManager.createDirectoryAtPath(PhotoDirectoryPath ,withIntermediateDirectories: true, attributes: nil)
-            } catch {
-                print("error: cannot create directory")
-            }
-        }
-        
+
         let jpegData = UIImageJPEGRepresentation(image, 1.0)!
         
         // ファイル名を指定して保存
@@ -67,6 +55,5 @@ class PhotoUtility {
             return false
         }
     }
-
 
 }

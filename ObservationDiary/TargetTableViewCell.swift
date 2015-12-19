@@ -15,13 +15,5 @@ class TargetTableViewCell: UITableViewCell {
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var updatedLabel: UILabel!
     @IBOutlet weak var editTargetButton: UIButton!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
 
 }

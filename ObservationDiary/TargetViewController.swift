@@ -9,7 +9,7 @@
 import UIKit
 import iAd
 
-class TargetViewController: UIViewController, UITextFieldDelegate {
+class TargetViewController: UIViewController {
     
     // MARK: - Properties
     @IBOutlet weak var titleTextField: UITextField!
@@ -18,6 +18,8 @@ class TargetViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var completeButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var adView: AdView!
+
     var target: TargetData?
     var pageTitle: String?
     var titleText: String?
@@ -53,7 +55,8 @@ class TargetViewController: UIViewController, UITextFieldDelegate {
         
         checkValidTargetTitle()
         
-        self.canDisplayBannerAds = true
+        adView.adBannerView.delegate = self
+        adView.adBannerView.hidden = true
     }
     
     // MARK: Actions
@@ -104,26 +107,10 @@ class TargetViewController: UIViewController, UITextFieldDelegate {
 
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-
-    // MARK: UITextFieldDelegate
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        // キーボードを隠す
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    func textFieldDidBeginEditing(textField: UITextField) {
-        // 入力中のsaveボタンを使用不可にする
-        targetSaveButton.enabled = false
-    }
     
     func checkValidTargetTitle() {
         let text = titleTextField.text ?? ""
         targetSaveButton.enabled = !text.isEmpty
-    }
-
-    func textFieldDidEndEditing(textField: UITextField) {
-        checkValidTargetTitle()
     }
     
     @IBAction func textFieldEditingChanged(sender: UITextField) {

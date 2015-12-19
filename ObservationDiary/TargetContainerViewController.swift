@@ -9,7 +9,7 @@
 import UIKit
 import iAd
 
-class TargetContainerViewController: UIViewController, ADBannerViewDelegate {
+class TargetContainerViewController: UIViewController {
     
     // MARK: - Properties
     var targets = Storage().findAll(TargetData(), orderby: "updated", ascending: false)
@@ -18,7 +18,6 @@ class TargetContainerViewController: UIViewController, ADBannerViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noTargetView: UIView!
     @IBOutlet weak var adView: AdView!
-    
     // MARK: - Initialization
     required init?(coder aDecoder: NSCoder) {
         addTargetTour = Tour(text: Tour.ADD_TARGET_TEXT)
@@ -34,6 +33,9 @@ class TargetContainerViewController: UIViewController, ADBannerViewDelegate {
         addTargetTour.tour(.AddTarget, forView: self.navigationItem.rightBarButtonItem!, superView: nil)
 
         tableView.dataSource = self
+        
+        adView.adBannerView.delegate = self
+        adView.adBannerView.hidden = true
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -42,26 +44,10 @@ class TargetContainerViewController: UIViewController, ADBannerViewDelegate {
         if self.targets.count == 0 {
             self.noTargetView.hidden = false
         }
-        
-        adView.adBannerView.delegate = self
-        adView.adBannerView.hidden = true
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func bannerViewDidLoadAd(banner: ADBannerView!) {
-        adView.adBannerView.hidden = false
-    }
-    
-    func bannerViewActionShouldBegin(banner: ADBannerView!, willLeaveApplication willLeave: Bool) -> Bool {
-        return willLeave
-    }
-    
-    func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
-        adView.adBannerView.hidden = true
     }
     
     // MARK: - Actions

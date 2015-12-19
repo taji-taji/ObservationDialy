@@ -307,11 +307,23 @@
                                     <constraint firstItem="WMK-4K-KwJ" firstAttribute="top" secondItem="ekC-f5-hch" secondAttribute="bottom" id="wZL-5f-FMD"/>
                                 </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FuR-sW-7VI" customClass="AdView" customModule="ObservationDiary" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="549" width="600" height="51"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="XgF-15-gGC">
+                                        <variation key="widthClass=regular" constant="66"/>
+                                    </constraint>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.77254901960784317" green="0.94117647058823528" blue="0.77254901960784317" alpha="0.95000000000000007" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FuR-sW-7VI" secondAttribute="bottom" id="0kP-aq-qNh"/>
                             <constraint firstItem="Ayj-ML-i1U" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="7ag-wI-127"/>
+                            <constraint firstItem="FuR-sW-7VI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="G4W-dV-Ce1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ayj-ML-i1U" secondAttribute="trailing" id="Kzu-it-0En"/>
+                            <constraint firstAttribute="trailing" secondItem="FuR-sW-7VI" secondAttribute="trailing" id="njO-Fd-aMc"/>
                             <constraint firstItem="Ayj-ML-i1U" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="60" id="rFJ-cD-XN6"/>
                         </constraints>
                     </view>
@@ -320,6 +332,7 @@
                         <barButtonItem key="rightBarButtonItem" title="保存" style="done" id="rEk-RK-YCP"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="adView" destination="FuR-sW-7VI" id="1a8-yI-t3N"/>
                         <outlet property="completeButton" destination="AD1-pH-FTn" id="0k5-BP-ow4"/>
                         <outlet property="deleteButton" destination="457-hq-OBt" id="xll-8P-wMp"/>
                         <outlet property="imageView" destination="UQO-fn-hwm" id="Qtp-hp-2Jw"/>
