@@ -143,6 +143,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="記録リスト" id="3iO-u4-upl">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="RB7-1m-2Jx">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="AddTargetButton"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="presentation" identifier="AddItem" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="Rha-1T-DDh"/>
                             </connections>
@@ -207,6 +211,7 @@
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="560" placeholderIntrinsicHeight="40" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="例）ガジュマルの木" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gN9-v4-l2N">
                                                 <rect key="frame" x="85" y="37" width="475" height="40"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="TargetVCTargetTitleTextField"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="aef-tD-n48"/>
                                                 </constraints>
@@ -246,6 +251,7 @@
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="280" placeholderIntrinsicHeight="60" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AD1-pH-FTn">
                                                         <rect key="frame" x="280" y="0.0" width="280" height="60"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="TargetVCAddButton"/>
                                                         <fontDescription key="fontDescription" name="HiraKakuProN-W6" family="Hiragino Kaku Gothic ProN" pointSize="18"/>
                                                         <state key="normal" title="追加" backgroundImage="ButtonGreen"/>
                                                         <connections>
