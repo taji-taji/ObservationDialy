@@ -32,10 +32,10 @@ struct Tour {
     }
     
     init (text: String) {
-        preferences.bubbleColor = Constants.Theme.subConcept()
-        preferences.textColor = Constants.Theme.textColor()
-        preferences.font = UIFont(name: "HelveticaNeue-Regular", size: 10)
-        preferences.textAlignment = NSTextAlignment.Center
+        preferences.drawing.backgroundColor = Constants.Theme.subConcept()
+        preferences.drawing.foregroundColor = Constants.Theme.textColor()
+        //preferences.drawing.font = UIFont(name: "HelveticaNeue-Regular", size: 10)!
+        preferences.drawing.textAlignment = NSTextAlignment.Center
         easyTipView = EasyTipView(text: text, preferences: preferences, delegate: nil)
     }
 

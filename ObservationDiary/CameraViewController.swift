@@ -41,26 +41,36 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
 
     }
 
-    // メモリ管理のため
     override func viewWillAppear(animated: Bool) {
-        // カメラの設定
-        setupCamera()
+
+        if TARGET_OS_SIMULATOR != 0 {
+            if let image: UIImage = UIImage(named: "AppIconWhite") {
+                // 確認画面へ
+                performSegueWithIdentifier("confirmPhoto", sender: image)
+            }
+        } else {
+        
+            // カメラの設定
+            setupCamera()
+        }
     }
     
     // メモリ管理のため
     override func viewDidDisappear(animated: Bool) {
-        // camera stop メモリ解放
-        session.stopRunning()
-        
-        for output in session.outputs {
-            session.removeOutput(output as? AVCaptureOutput)
+        if let session = self.session {
+            // camera stop メモリ解放
+            session.stopRunning()
+            
+            for output in session.outputs {
+                session.removeOutput(output as? AVCaptureOutput)
+            }
+            
+            for input in session.inputs {
+                session.removeInput(input as? AVCaptureInput)
+            }
+            self.session = nil
+            self.camera = nil
         }
-        
-        for input in session.inputs {
-            session.removeInput(input as? AVCaptureInput)
-        }
-        session = nil
-        camera = nil
     }
     
     // ステータスバー隠す

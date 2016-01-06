@@ -85,11 +85,19 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-ObservationDiaryTests/EasyTipView.framework"
+  install_framework "Pods-ObservationDiaryTests/RMUniversalAlert.framework"
   install_framework "Pods-ObservationDiaryTests/Realm.framework"
   install_framework "Pods-ObservationDiaryTests/RealmSwift.framework"
+  install_framework "Pods-ObservationDiaryTests/UIActionSheet_Blocks.framework"
+  install_framework "Pods-ObservationDiaryTests/UIAlertController_Blocks.framework"
+  install_framework "Pods-ObservationDiaryTests/UIAlertView_Blocks.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-ObservationDiaryTests/EasyTipView.framework"
+  install_framework "Pods-ObservationDiaryTests/RMUniversalAlert.framework"
   install_framework "Pods-ObservationDiaryTests/Realm.framework"
   install_framework "Pods-ObservationDiaryTests/RealmSwift.framework"
+  install_framework "Pods-ObservationDiaryTests/UIActionSheet_Blocks.framework"
+  install_framework "Pods-ObservationDiaryTests/UIAlertController_Blocks.framework"
+  install_framework "Pods-ObservationDiaryTests/UIAlertView_Blocks.framework"
 fi

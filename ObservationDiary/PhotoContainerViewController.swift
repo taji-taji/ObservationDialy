@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import RMUniversalAlert
 
 class PhotoContainerViewController: UIViewController, UINavigationControllerDelegate {
     
@@ -161,41 +162,43 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
         let videoFile = "\(self.target!.id).mp4"
         let videoPath = VideoUtility().get(videoFile)
         let tmpVideoPath = VideoUtility().get("tmp_" + videoFile)
-        let myAlert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        let play = UIAlertAction(title: "ムービーを見る", style: .Default, handler: {
-            (action: UIAlertAction!) in
-            let videoPlayerViewController = VideoPlayerViewController()
-            videoPlayerViewController.fileName = videoFile
-            // 一時ファイルが残っている場合は動画の作成に失敗しているので、一時ファイルから戻す
-            if let _ = tmpVideoPath {
-                if let _ = videoPath  {
-                    do {
-                        try NSFileManager().removeItemAtPath(videoPath!)
-                    } catch {
-                        print("error: Cannot remove video file")
+        RMUniversalAlert.showActionSheetInViewController(self,
+            withTitle: nil,
+            message: nil,
+            cancelButtonTitle: "キャンセル",
+            destructiveButtonTitle: nil,
+            otherButtonTitles: ["ムービーを見る", "ムービーをカメラロールに保存する"],
+            popoverPresentationControllerBlock: {(popover) in
+                popover.barButtonItem = sender
+            },
+            tapBlock: {(alert, buttonIndex) in
+                if (buttonIndex == alert.firstOtherButtonIndex) {
+                    let videoPlayerViewController = VideoPlayerViewController()
+                    videoPlayerViewController.fileName = videoFile
+                    // 一時ファイルが残っている場合は動画の作成に失敗しているので、一時ファイルから戻す
+                    if let _ = tmpVideoPath {
+                        if let _ = videoPath  {
+                            do {
+                                try NSFileManager().removeItemAtPath(videoPath!)
+                            } catch {
+                                print("error: Cannot remove video file")
+                            }
+                        }
+                        do {
+                            try NSFileManager().moveItemAtPath(tmpVideoPath!, toPath: VideoUtility().getFilePath(videoFile))
+                        } catch {
+                            print("error: Cannot move tmp video file")
+                        }
                     }
+                    // トランジションのスタイルを変更
+                    videoPlayerViewController.modalTransitionStyle = .CrossDissolve
+                    self.presentViewController(videoPlayerViewController, animated: true, completion: nil)
+                } else if (buttonIndex == alert.firstOtherButtonIndex + 1) {
+                    LoadingProxy.set(self.navigationController!)
+                    LoadingProxy.on()
+                    UISaveVideoAtPathToSavedPhotosAlbum(videoPath!, self, "video:didFinishSavingWithError:contextInfo:", nil)
                 }
-                do {
-                    try NSFileManager().moveItemAtPath(tmpVideoPath!, toPath: VideoUtility().getFilePath(videoFile))
-                } catch {
-                    print("error: Cannot move tmp video file")
-                }
-            }
-            // トランジションのスタイルを変更
-            videoPlayerViewController.modalTransitionStyle = .CrossDissolve
-            self.presentViewController(videoPlayerViewController, animated: true, completion: nil)
         })
-        let download = UIAlertAction(title: "ムービーをカメラロールに保存する", style: .Default, handler: {
-            (action: UIAlertAction!) in
-            LoadingProxy.set(self.navigationController!)
-            LoadingProxy.on()
-            UISaveVideoAtPathToSavedPhotosAlbum(videoPath!, self, "video:didFinishSavingWithError:contextInfo:", nil)
-        })
-        let cancel = UIAlertAction(title: "キャンセル", style: .Cancel, handler: nil)
-        myAlert.addAction(play)
-        myAlert.addAction(download)
-        myAlert.addAction(cancel)
-        self.presentViewController(myAlert, animated: true, completion: nil)
     }
     
     func video(videoPath: String, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutablePointer<Void>) {
@@ -214,32 +217,29 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
     
     // 既存の写真の編集ボタンを押した時の選択肢
     func editAlert(sender: UIGestureRecognizer) {
-        // インスタンス生成　styleはActionSheet.
-        let myAlert = UIAlertController(title: "コメントを編集・削除する", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
-        
+
         let cell = TableUtility().findUITableViewCellFromSuperViewsForView(sender.view as! UIButton) as! PhotoTableViewCell
         
         let newIndexPath = self.tableView.indexPathForCell(cell)
         
-        // アクションを生成
-        let editPhoto = UIAlertAction(title: "編集する", style: .Default, handler: {
-            (action: UIAlertAction!) in
-            self.editPhoto(cell)
+        RMUniversalAlert.showActionSheetInViewController(self,
+            withTitle: "コメントを編集・削除する",
+            message: "",
+            cancelButtonTitle: "キャンセル",
+            destructiveButtonTitle: nil,
+            otherButtonTitles: ["編集する", "削除する"],
+            popoverPresentationControllerBlock: {(popover) in
+                popover.sourceView = sender.view
+                //popover.sourceRect = sender.frame
+            },
+            tapBlock: {(alert, buttonIndex) in
+                if (buttonIndex == alert.firstOtherButtonIndex) {
+                    self.editPhoto(cell)
+                } else if (buttonIndex == alert.firstOtherButtonIndex + 1) {
+                    self.deleteAlert(cell.id!, indexPath: newIndexPath!)
+                }
         })
         
-        let deleteAlert = UIAlertAction(title: "削除する", style: .Default, handler: {
-            (action: UIAlertAction!) in
-            self.deleteAlert(cell.id!, indexPath: newIndexPath!)
-        })
-        
-        let cancel = UIAlertAction(title: "キャンセル", style: .Cancel, handler: nil)
-        
-        // アクションを追加
-        myAlert.addAction(editPhoto)
-        myAlert.addAction(deleteAlert)
-        myAlert.addAction(cancel)
-        
-        self.presentViewController(myAlert, animated: true, completion: nil)
     }
     
     // 編集ボタンを押した時
@@ -300,28 +300,24 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
             return
         }
         
-        // インスタンス生成　styleはActionSheet.
-        let myAlert = UIAlertController(title: "写真の保存", message: "", preferredStyle: UIAlertControllerStyle.ActionSheet)
-        
-        // アクションを生成.
-        let savePhoto = UIAlertAction(title: "カメラロールに保存する", style: .Default, handler: {
-            (action: UIAlertAction!) in
-            // 保存中のビューを出す
-            LoadingOverlay.shared.showOverlay(self.navigationController?.view)
-            // カメラロールに保存
-            UIImageWriteToSavedPhotosAlbum(photoImageView.image!, self, "image:didFinishSavingWithError:contextInfo:", nil)
+        RMUniversalAlert.showActionSheetInViewController(self,
+            withTitle: "写真の保存",
+            message: "",
+            cancelButtonTitle: "キャンセル",
+            destructiveButtonTitle: nil,
+            otherButtonTitles: ["カメラロールに保存する"],
+            popoverPresentationControllerBlock: {(popover) in
+                popover.sourceView = sender
+                //popover.sourceRect = sender.frame
+            },
+            tapBlock: {(alert, buttonIndex) in
+                if (buttonIndex == alert.firstOtherButtonIndex) {
+                    // 保存中のビューを出す
+                    LoadingOverlay.shared.showOverlay(self.navigationController?.view)
+                    // カメラロールに保存
+                    UIImageWriteToSavedPhotosAlbum(photoImageView.image!, self, "image:didFinishSavingWithError:contextInfo:", nil)
+                }
         })
-        
-        let cancel = UIAlertAction(title: "キャンセル", style: .Cancel, handler: {
-            (action: UIAlertAction!) in
-            print("cancel")
-        })
-        
-        // アクションを追加.
-        myAlert.addAction(savePhoto)
-        myAlert.addAction(cancel)
-        
-        self.presentViewController(myAlert, animated: true, completion: nil)
     }
     
     func image(image: UIImage, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutablePointer<Void>) {
