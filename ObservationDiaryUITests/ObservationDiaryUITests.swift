@@ -52,15 +52,6 @@ class ObservationDiaryUITests: XCTestCase {
         // 二行目にはセルがないはず
         XCTAssertFalse(app.tables.cells.elementBoundByIndex(1).exists)
         
-        
-//        let app = XCUIApplication()
-//        app.navigationBars["記録リスト"].buttons["AddTargetButton"].tap()
-//        
-//        let targetvctargettitletextfieldTextField = app.textFields["TargetVCTargetTitleTextField"]
-//        targetvctargettitletextfieldTextField.tap()
-//        targetvctargettitletextfieldTextField.typeText("ガジュマル")
-//        app.buttons["TargetVCAddButton"].tap()
-        
     }
     
 }
