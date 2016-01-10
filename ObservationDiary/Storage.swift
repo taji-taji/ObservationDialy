@@ -15,7 +15,7 @@ class Storage: StorageProtocol {
     
     init() {
         // Realm マイグレーション
-        let config = Realm.Configuration(
+        var config = Realm.Configuration(
             schemaVersion: 1,
             migrationBlock: { migration, oldSchemaVersion in
 //                migration.enumerate(Photo.className()) { oldObject, newObject in
@@ -26,6 +26,9 @@ class Storage: StorageProtocol {
 //                    }
 //                }
         })
+        if NSProcessInfo.processInfo().arguments.contains("USE_UITEST_STORAGE") {
+            config.inMemoryIdentifier = "UITesting"
+        }
         Realm.Configuration.defaultConfiguration = config
         realm = try! Realm()
     }

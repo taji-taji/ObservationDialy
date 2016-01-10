@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="66"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Advertisement" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3s-8F-EdX">
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Advertisement" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3s-8F-EdX">
                     <rect key="frame" x="0.0" y="0.0" width="480" height="66"/>
                     <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
                     <color key="textColor" red="0.36862745098039218" green="0.33333333333333331" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>

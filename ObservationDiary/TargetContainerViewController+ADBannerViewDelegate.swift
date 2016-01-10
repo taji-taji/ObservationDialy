@@ -16,7 +16,7 @@ extension TargetContainerViewController: ADBannerViewDelegate {
     }
     
     func bannerViewActionShouldBegin(banner: ADBannerView!, willLeaveApplication willLeave: Bool) -> Bool {
-        return willLeave
+        return true
     }
     
     func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {

@@ -35,7 +35,6 @@ class TargetContainerViewController: UIViewController {
         tableView.dataSource = self
         
         adView.adBannerView.delegate = self
-        adView.adBannerView.hidden = true
     }
     
     override func viewWillAppear(animated: Bool) {
