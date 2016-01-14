@@ -2,24 +2,72 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>EasyTipView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Flurry-iOS-SDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Keys.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-ObservationDiary.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-ObservationDiaryTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RMUniversalAlert.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Realm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RealmSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>UIActionSheet+Blocks.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>UIAlertController+Blocks.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>UIAlertView+Blocks.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>00FDDFC4C28DBCF2B26C064E82F499DF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>07E489E7B12DB275C293F9A41329C377</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>12DD2BDAC4EC0B0F7DAC35866B0C8CED</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>276F57AA86E062E478A1DFB5A1D9D747</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -30,11 +78,6 @@
 			<true/>
 		</dict>
 		<key>62BD94AF8533B83E49BF3D374A1FDF18</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6EF1AB3E4C6677C6DF40A49ABECF60F0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -64,32 +107,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A67101D33BAB2BA8495C8C504D4D8946</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AD9533758780C2426533E585A71261AD</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BE3AF75A70E8572DCF62BED1A571A4B5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>C08CB4AF82FAD2DCC532544AE2E27206</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>C39C53DF0BAB12EC077E8E163D4171B0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E3E719392F3D14BCC0A4C08AE4759764</key>
 		<dict>
 			<key>primary</key>
 			<true/>
