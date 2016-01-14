@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		239A4C194F64C2FB911A3923 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4D54223E4FC76CA2CE0A0D5 /* Pods.framework */; };
 		629287A3549987FE9D188A9A /* Pods_ObservationDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F63331DA03D1714C30BE0A20 /* Pods_ObservationDiary.framework */; };
 		930763DD1C12FAA900135834 /* PhotoContainerViewController+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763DC1C12FAA900135834 /* PhotoContainerViewController+TableViewDelegate.swift */; };
 		930763DF1C12FB6400135834 /* PhotoContainerViewController+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763DE1C12FB6400135834 /* PhotoContainerViewController+TableViewDataSource.swift */; };
@@ -179,6 +180,7 @@
 		93DDA1411C2B5BDE00B27FCF /* ObservationDiaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationDiaryUITests.swift; sourceTree = "<group>"; };
 		93DDA1431C2B5BDE00B27FCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93E0F8761C009B8A00BA5EEA /* TableUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableUtility.swift; sourceTree = "<group>"; };
+		A4D54223E4FC76CA2CE0A0D5 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC840323EFBAEABBAEAD193C /* Pods-ObservationDiaryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObservationDiaryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ObservationDiaryTests/Pods-ObservationDiaryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F63331DA03D1714C30BE0A20 /* Pods_ObservationDiary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ObservationDiary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -190,6 +192,7 @@
 			files = (
 				937F41991BFD440C00DF2D80 /* iAd.framework in Frameworks */,
 				629287A3549987FE9D188A9A /* Pods_ObservationDiary.framework in Frameworks */,
+				239A4C194F64C2FB911A3923 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +220,7 @@
 				937F41981BFD440C00DF2D80 /* iAd.framework */,
 				F63331DA03D1714C30BE0A20 /* Pods_ObservationDiary.framework */,
 				70B7F8D78F86A4292EBA3004 /* Pods_ObservationDiaryTests.framework */,
+				A4D54223E4FC76CA2CE0A0D5 /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -538,7 +542,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ObservationDiary/Pods-ObservationDiary-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3F0320315474032BCE785A74 /* Embed Pods Frameworks */ = {

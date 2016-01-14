@@ -9,12 +9,27 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Flurry-iOS-SDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Keys.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-ObservationDiary.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-ObservationDiaryTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -52,22 +67,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>07E489E7B12DB275C293F9A41329C377</key>
+		<key>00FDDFC4C28DBCF2B26C064E82F499DF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>12DD2BDAC4EC0B0F7DAC35866B0C8CED</key>
+		<key>285E78D60142078C67127489C17723A3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>276F57AA86E062E478A1DFB5A1D9D747</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6EF1AB3E4C6677C6DF40A49ABECF60F0</key>
+		<key>62BD94AF8533B83E49BF3D374A1FDF18</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,22 +87,42 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A67101D33BAB2BA8495C8C504D4D8946</key>
+		<key>7EED689C10908EAE53BE2280B5B2862B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AD9533758780C2426533E585A71261AD</key>
+		<key>8D84C45177FA5F0408F68A0AD7A747ED</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BE3AF75A70E8572DCF62BED1A571A4B5</key>
+		<key>99C20BEB690CD0F3D2C0FFFB06D81145</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E3E719392F3D14BCC0A4C08AE4759764</key>
+		<key>9D278B53BBC4251CF942821A673B438C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C08CB4AF82FAD2DCC532544AE2E27206</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C39C53DF0BAB12EC077E8E163D4171B0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F32D052B04179AB9F26154B2F92C1532</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FEC0B981E85E2595CCB485D55636BA2F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -3,12 +3,18 @@
 # Uncomment this line if you're using Swift
 use_frameworks!
 
+plugin 'cocoapods-keys', {
+    :project => "ObservationDiary",
+    :keys => [
+    "FlurryAPIKey"
+    ]}
+
 target 'ObservationDiary' do
 	pod "RealmSwift"
     source 'https://github.com/CocoaPods/Specs.git'
     pod "EasyTipView", "~> 0.1.0"
     pod "RMUniversalAlert"
-    #    pod 'Google/Analytics', '~> 1.0.0'
+    pod "Flurry-iOS-SDK/FlurrySDK"
 end
 
 target 'ObservationDiaryTests' do
