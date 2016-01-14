@@ -8,6 +8,8 @@
 
 import UIKit
 import RealmSwift
+import Flurry_iOS_SDK
+import Keys
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = Constants.Theme.concept()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        
+        let keys = ObservationdiaryKeys()
+        Flurry.startSession(keys.flurryAPIKey())
 
         return true
     }
