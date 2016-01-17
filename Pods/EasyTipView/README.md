@@ -159,6 +159,7 @@ func showForItem(item : UIBarButtonItem, withinSuperView sview : UIView? = nil, 
 ```
 
 The same as the above method, only difference being that this is an instance method.
+
 ```swift
 func dismissWithCompletion(completion : ((finished : Bool) -> Void)?)
 ```

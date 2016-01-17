@@ -84,22 +84,22 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods/EasyTipView.framework"
-  install_framework "Pods/Flurry_iOS_SDK.framework"
-  install_framework "Pods/RMUniversalAlert.framework"
-  install_framework "Pods/Realm.framework"
-  install_framework "Pods/RealmSwift.framework"
-  install_framework "Pods/UIActionSheet_Blocks.framework"
-  install_framework "Pods/UIAlertController_Blocks.framework"
-  install_framework "Pods/UIAlertView_Blocks.framework"
+  install_framework "Pods-ObservationDiaryUITests/EasyTipView.framework"
+  install_framework "Pods-ObservationDiaryUITests/Flurry_iOS_SDK.framework"
+  install_framework "Pods-ObservationDiaryUITests/RMUniversalAlert.framework"
+  install_framework "Pods-ObservationDiaryUITests/Realm.framework"
+  install_framework "Pods-ObservationDiaryUITests/RealmSwift.framework"
+  install_framework "Pods-ObservationDiaryUITests/UIActionSheet_Blocks.framework"
+  install_framework "Pods-ObservationDiaryUITests/UIAlertController_Blocks.framework"
+  install_framework "Pods-ObservationDiaryUITests/UIAlertView_Blocks.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods/EasyTipView.framework"
-  install_framework "Pods/Flurry_iOS_SDK.framework"
-  install_framework "Pods/RMUniversalAlert.framework"
-  install_framework "Pods/Realm.framework"
-  install_framework "Pods/RealmSwift.framework"
-  install_framework "Pods/UIActionSheet_Blocks.framework"
-  install_framework "Pods/UIAlertController_Blocks.framework"
-  install_framework "Pods/UIAlertView_Blocks.framework"
+  install_framework "Pods-ObservationDiaryUITests/EasyTipView.framework"
+  install_framework "Pods-ObservationDiaryUITests/Flurry_iOS_SDK.framework"
+  install_framework "Pods-ObservationDiaryUITests/RMUniversalAlert.framework"
+  install_framework "Pods-ObservationDiaryUITests/Realm.framework"
+  install_framework "Pods-ObservationDiaryUITests/RealmSwift.framework"
+  install_framework "Pods-ObservationDiaryUITests/UIActionSheet_Blocks.framework"
+  install_framework "Pods-ObservationDiaryUITests/UIAlertController_Blocks.framework"
+  install_framework "Pods-ObservationDiaryUITests/UIAlertView_Blocks.framework"
 fi

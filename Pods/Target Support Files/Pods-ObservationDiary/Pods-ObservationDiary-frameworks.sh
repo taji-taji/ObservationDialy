@@ -84,7 +84,6 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-ObservationDiary/Keys.framework"
   install_framework "Pods-ObservationDiary/EasyTipView.framework"
   install_framework "Pods-ObservationDiary/Flurry_iOS_SDK.framework"
   install_framework "Pods-ObservationDiary/RMUniversalAlert.framework"
@@ -93,9 +92,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-ObservationDiary/UIActionSheet_Blocks.framework"
   install_framework "Pods-ObservationDiary/UIAlertController_Blocks.framework"
   install_framework "Pods-ObservationDiary/UIAlertView_Blocks.framework"
+  install_framework "Pods-ObservationDiary/Keys.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-ObservationDiary/Keys.framework"
   install_framework "Pods-ObservationDiary/EasyTipView.framework"
   install_framework "Pods-ObservationDiary/Flurry_iOS_SDK.framework"
   install_framework "Pods-ObservationDiary/RMUniversalAlert.framework"
@@ -104,4 +103,5 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-ObservationDiary/UIActionSheet_Blocks.framework"
   install_framework "Pods-ObservationDiary/UIAlertController_Blocks.framework"
   install_framework "Pods-ObservationDiary/UIAlertView_Blocks.framework"
+  install_framework "Pods-ObservationDiary/Keys.framework"
 fi
