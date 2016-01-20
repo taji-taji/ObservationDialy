@@ -9,7 +9,6 @@
 import UIKit
 import RealmSwift
 import Flurry_iOS_SDK
-import Keys
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,8 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         
-        let keys = ObservationdiaryKeys()
-        Flurry.startSession(keys.flurryAPIKey())
+        if let path = NSBundle.mainBundle().pathForResource("Keys", ofType: "plist"),
+            keys = NSDictionary(contentsOfFile: path),
+            flurryAPIKey = keys["FlurryAPIKey"] as? String {
+                Flurry.startSession(flurryAPIKey)
+        }
 
         return true
     }

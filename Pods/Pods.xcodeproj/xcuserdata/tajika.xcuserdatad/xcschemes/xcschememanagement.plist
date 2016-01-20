@@ -14,11 +14,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Keys.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-ObservationDiary.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -77,6 +72,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>2E28F55367AEAA7BC9FE2F700CFBAD97</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2FE38622EEB0772AF77B71FDB413F7CF</key>
 		<dict>
 			<key>primary</key>
@@ -102,11 +102,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9D278B53BBC4251CF942821A673B438C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>B8A1A146762BEE260ABEE8E4CF254DA8</key>
 		<dict>
 			<key>primary</key>
@@ -118,11 +113,6 @@
 			<true/>
 		</dict>
 		<key>D1830B57BC177420D0616046AF5A0568</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F32D052B04179AB9F26154B2F92C1532</key>
 		<dict>
 			<key>primary</key>
 			<true/>

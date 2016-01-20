@@ -70,6 +70,10 @@
 		935996181BD5AB8C0047EE9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 935996161BD5AB8C0047EE9F /* LaunchScreen.storyboard */; };
 		935996231BD5AB8D0047EE9F /* ObservationDiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935996221BD5AB8D0047EE9F /* ObservationDiaryTests.swift */; };
 		935996321BD5EDC20047EE9F /* TargetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */; };
+		935F62751C4EF5A600271DD8 /* AlphaControlSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935F62741C4EF5A600271DD8 /* AlphaControlSlider.swift */; };
+		935F62761C4EF7D600271DD8 /* AlphaControlSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935F62741C4EF5A600271DD8 /* AlphaControlSlider.swift */; };
+		935F62771C4EF7D700271DD8 /* AlphaControlSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935F62741C4EF5A600271DD8 /* AlphaControlSlider.swift */; };
+		935F62791C504AED00271DD8 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 935F62781C504AED00271DD8 /* Keys.plist */; };
 		936505A71BDF1FEF00A824E0 /* PhotoUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936505A61BDF1FEF00A824E0 /* PhotoUtility.swift */; };
 		936505AB1BE4843300A824E0 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936505AA1BE4843200A824E0 /* CameraViewController.swift */; };
 		9368DD4C1BEB9E5700F6E034 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9368DD4B1BEB9E5700F6E034 /* Constants.swift */; };
@@ -161,6 +165,8 @@
 		935996221BD5AB8D0047EE9F /* ObservationDiaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationDiaryTests.swift; sourceTree = "<group>"; };
 		935996241BD5AB8D0047EE9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetTableViewCell.swift; sourceTree = "<group>"; };
+		935F62741C4EF5A600271DD8 /* AlphaControlSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphaControlSlider.swift; sourceTree = "<group>"; };
+		935F62781C504AED00271DD8 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Keys.plist; sourceTree = "<group>"; };
 		936505A61BDF1FEF00A824E0 /* PhotoUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoUtility.swift; sourceTree = "<group>"; };
 		936505AA1BE4843200A824E0 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		9368DD4B1BEB9E5700F6E034 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -337,6 +343,7 @@
 				935996141BD5AB8C0047EE9F /* Assets.xcassets */,
 				935996161BD5AB8C0047EE9F /* LaunchScreen.storyboard */,
 				935996191BD5AB8C0047EE9F /* Info.plist */,
+				935F62781C504AED00271DD8 /* Keys.plist */,
 			);
 			path = ObservationDiary;
 			sourceTree = "<group>";
@@ -377,6 +384,7 @@
 		93E0F8781C00A1A800BA5EEA /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				935F62741C4EF5A600271DD8 /* AlphaControlSlider.swift */,
 				93DBDBA61BF83A3F00E96148 /* DateUtility.swift */,
 				93E0F8761C009B8A00BA5EEA /* TableUtility.swift */,
 				933CD8C81C23763900CBD3D3 /* MediaUtility.swift */,
@@ -514,6 +522,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				935F62791C504AED00271DD8 /* Keys.plist in Resources */,
 				939562F11C20DB06000D90D0 /* AdView.xib in Resources */,
 				935996181BD5AB8C0047EE9F /* LaunchScreen.storyboard in Resources */,
 				935996151BD5AB8C0047EE9F /* Assets.xcassets in Resources */,
@@ -642,7 +651,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ObservationDiary/Pods-ObservationDiary-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D1BE4C22116329D5C7F877E0 /* Check Pods Manifest.lock */ = {
@@ -672,6 +681,7 @@
 				93DBDBAD1BF9E19300E96148 /* VideoPlayerViewController.swift in Sources */,
 				931165BF1BD6459400F1D32D /* PhotoTableViewCell.swift in Sources */,
 				9307642E1C17952E00135834 /* TJViewExtensions.swift in Sources */,
+				935F62751C4EF5A600271DD8 /* AlphaControlSlider.swift in Sources */,
 				930763E91C12FEA900135834 /* VideoUtility.swift in Sources */,
 				933CD8C91C23763900CBD3D3 /* MediaUtility.swift in Sources */,
 				930764481C18EE4800135834 /* TargetContainerViewController+TableViewDataSource.swift in Sources */,
@@ -736,6 +746,7 @@
 				930763F11C14F3DE00135834 /* Target.swift in Sources */,
 				930764361C179E6300135834 /* Extensions.swift in Sources */,
 				930764341C179E5A00135834 /* PhotoContainerViewController+TableViewDelegate.swift in Sources */,
+				935F62761C4EF7D600271DD8 /* AlphaControlSlider.swift in Sources */,
 				930764431C17A2DC00135834 /* LoadingProxy.swift in Sources */,
 				9307643A1C179E7500135834 /* VideoUtility.swift in Sources */,
 				930763EF1C14F3C300135834 /* Constants.swift in Sources */,
@@ -754,6 +765,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93DDA1421C2B5BDE00B27FCF /* ObservationDiaryUITests.swift in Sources */,
+				935F62771C4EF7D700271DD8 /* AlphaControlSlider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -883,7 +895,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ObservationDiary/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(CONFIGURATION_BUILD_DIR)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.engideer.ObservationDiaryTaji;
 				PRODUCT_NAME = ObservationDiary;
 				PROVISIONING_PROFILE = "";
@@ -906,7 +918,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ObservationDiary/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(CONFIGURATION_BUILD_DIR)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.engideer.ObservationDiaryTaji;
 				PRODUCT_NAME = ObservationDiary;
 				PROVISIONING_PROFILE = "";
