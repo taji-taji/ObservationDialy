@@ -72,8 +72,10 @@
 		935996321BD5EDC20047EE9F /* TargetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */; };
 		935F62751C4EF5A600271DD8 /* AlphaControlSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935F62741C4EF5A600271DD8 /* AlphaControlSlider.swift */; };
 		935F62761C4EF7D600271DD8 /* AlphaControlSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935F62741C4EF5A600271DD8 /* AlphaControlSlider.swift */; };
-		935F62771C4EF7D700271DD8 /* AlphaControlSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935F62741C4EF5A600271DD8 /* AlphaControlSlider.swift */; };
 		935F62791C504AED00271DD8 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 935F62781C504AED00271DD8 /* Keys.plist */; };
+		935F627D1C50528E00271DD8 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935F627C1C50528E00271DD8 /* R.generated.swift */; };
+		935F627E1C5111AD00271DD8 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935F627C1C50528E00271DD8 /* R.generated.swift */; };
+		935F627F1C51129B00271DD8 /* AlphaControlSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935F62741C4EF5A600271DD8 /* AlphaControlSlider.swift */; };
 		936505A71BDF1FEF00A824E0 /* PhotoUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936505A61BDF1FEF00A824E0 /* PhotoUtility.swift */; };
 		936505AB1BE4843300A824E0 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936505AA1BE4843200A824E0 /* CameraViewController.swift */; };
 		9368DD4C1BEB9E5700F6E034 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9368DD4B1BEB9E5700F6E034 /* Constants.swift */; };
@@ -167,6 +169,7 @@
 		935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetTableViewCell.swift; sourceTree = "<group>"; };
 		935F62741C4EF5A600271DD8 /* AlphaControlSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphaControlSlider.swift; sourceTree = "<group>"; };
 		935F62781C504AED00271DD8 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Keys.plist; sourceTree = "<group>"; };
+		935F627C1C50528E00271DD8 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		936505A61BDF1FEF00A824E0 /* PhotoUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoUtility.swift; sourceTree = "<group>"; };
 		936505AA1BE4843200A824E0 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		9368DD4B1BEB9E5700F6E034 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -338,8 +341,9 @@
 				9368DD4B1BEB9E5700F6E034 /* Constants.swift */,
 				939562EF1C20DAD8000D90D0 /* Ad */,
 				9307642A1C1794AE00135834 /* Extensions */,
-				93E0F8781C00A1A800BA5EEA /* Utilities */,
 				930763E21C12FDB400135834 /* Model */,
+				93E0F8781C00A1A800BA5EEA /* Utilities */,
+				935F627B1C50521C00271DD8 /* Library */,
 				935996141BD5AB8C0047EE9F /* Assets.xcassets */,
 				935996161BD5AB8C0047EE9F /* LaunchScreen.storyboard */,
 				935996191BD5AB8C0047EE9F /* Info.plist */,
@@ -361,6 +365,14 @@
 				935996241BD5AB8D0047EE9F /* Info.plist */,
 			);
 			path = ObservationDiaryTests;
+			sourceTree = "<group>";
+		};
+		935F627B1C50521C00271DD8 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				935F627C1C50528E00271DD8 /* R.generated.swift */,
+			);
+			name = Library;
 			sourceTree = "<group>";
 		};
 		939562EF1C20DAD8000D90D0 /* Ad */ = {
@@ -416,6 +428,7 @@
 			buildConfigurationList = 935996271BD5AB8D0047EE9F /* Build configuration list for PBXNativeTarget "ObservationDiary" */;
 			buildPhases = (
 				D1BE4C22116329D5C7F877E0 /* Check Pods Manifest.lock */,
+				935F627A1C5050F000271DD8 /* ShellScript */,
 				935996061BD5AB8C0047EE9F /* Sources */,
 				935996071BD5AB8C0047EE9F /* Frameworks */,
 				935996081BD5AB8C0047EE9F /* Resources */,
@@ -624,6 +637,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ObservationDiaryUITests/Pods-ObservationDiaryUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		935F627A1C5050F000271DD8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"";
+		};
 		972DBF3E8684E2B190FA4E12 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -698,6 +724,7 @@
 				935996321BD5EDC20047EE9F /* TargetTableViewCell.swift in Sources */,
 				93C7FDA11BDA7B7A00AC1A3D /* StorageProtocol.swift in Sources */,
 				93DBDBA71BF83A3F00E96148 /* DateUtility.swift in Sources */,
+				935F627D1C50528E00271DD8 /* R.generated.swift in Sources */,
 				933CD8BB1C222BE500CBD3D3 /* TargetViewController+ADBannerViewDelegate.swift in Sources */,
 				935996101BD5AB8C0047EE9F /* TargetViewController.swift in Sources */,
 				93CD876A1BF69818003F836B /* LoadingOverlay.swift in Sources */,
@@ -717,6 +744,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				935F627E1C5111AD00271DD8 /* R.generated.swift in Sources */,
 				933CD8C71C23749300CBD3D3 /* PhotoUtilityTests.swift in Sources */,
 				933CD8C21C222E7E00CBD3D3 /* TargetViewController+UITextFieldDelegate.swift in Sources */,
 				933CD8B71C22291F00CBD3D3 /* AdView.swift in Sources */,
@@ -765,7 +793,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93DDA1421C2B5BDE00B27FCF /* ObservationDiaryUITests.swift in Sources */,
-				935F62771C4EF7D700271DD8 /* AlphaControlSlider.swift in Sources */,
+				935F627F1C51129B00271DD8 /* AlphaControlSlider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -256,7 +256,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     func noCamera() {
         if isSimulator() {
-            if let image: UIImage = UIImage(named: "ButtonGreen") {
+            if let image: UIImage = R.image.buttonGreen() {
                 self.imageView.image = image
             }
         } else {
@@ -267,7 +267,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     func simulatorBehaviorTakePicture() {
         if isSimulator() {
-            if let image: UIImage = UIImage(named: "ButtonGreen") {
+            if let image: UIImage = R.image.buttonGreen() {
                 // 適当な画像で確認画面へ
                 performSegueWithIdentifier("confirmPhoto", sender: image)
             }

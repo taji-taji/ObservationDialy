@@ -86,6 +86,7 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-ObservationDiary/EasyTipView.framework"
   install_framework "Pods-ObservationDiary/Flurry_iOS_SDK.framework"
+  install_framework "Pods-ObservationDiary/Rswift.framework"
   install_framework "Pods-ObservationDiary/RMUniversalAlert.framework"
   install_framework "Pods-ObservationDiary/Realm.framework"
   install_framework "Pods-ObservationDiary/RealmSwift.framework"
@@ -96,6 +97,7 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-ObservationDiary/EasyTipView.framework"
   install_framework "Pods-ObservationDiary/Flurry_iOS_SDK.framework"
+  install_framework "Pods-ObservationDiary/Rswift.framework"
   install_framework "Pods-ObservationDiary/RMUniversalAlert.framework"
   install_framework "Pods-ObservationDiary/Realm.framework"
   install_framework "Pods-ObservationDiary/RealmSwift.framework"

@@ -34,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>R.swift.Library.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>RMUniversalAlert.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -67,27 +72,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>029E6365098DCCA154E82AFCC63819FD</key>
+		<key>05ECF59AE7C6D253370041D8A0B88EA3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2E28F55367AEAA7BC9FE2F700CFBAD97</key>
+		<key>2556FE9F17582CBD7B92A15E2821C476</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2FE38622EEB0772AF77B71FDB413F7CF</key>
+		<key>2D8D9B16F047D6D15EA41D2BDB0A4648</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>613B7EBD3CBBC8D0B947424A51758B60</key>
+		<key>3733EF10A7D04362E69968A7D6164AB5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7658DA53BD45862EAAB0CC73780ADB60</key>
+		<key>38D669D1D2083594273D053F556FC108</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7521C15C3E996F390E556C1F007B2F19</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,27 +107,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>884C08210C1BB6F76452265CAA374AE5</key>
+		<key>A2448D24184D6BFCE98C75F642DDEA96</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B8A1A146762BEE260ABEE8E4CF254DA8</key>
+		<key>B99EFF08688E88B9189131922483A8BD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BE4F676ACD578216DDD3EE4439DA9693</key>
+		<key>D0B187D074A391695953ABCCE18BB599</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D1830B57BC177420D0616046AF5A0568</key>
+		<key>DEF9A0F166F3579AB84B51792067E17F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FBB4B288C88A19B6AE2E189C93E429D6</key>
+		<key>E97CE244FE22BAE11F2E46BAF5637188</key>
 		<dict>
 			<key>primary</key>
 			<true/>
