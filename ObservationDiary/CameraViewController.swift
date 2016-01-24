@@ -9,16 +9,19 @@
 import UIKit
 import AVFoundation
 
-class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+class CameraViewController: UIViewController {
 
     // MARK: - Properties
 
     var input: AVCaptureDeviceInput!
-    var output: AVCaptureVideoDataOutput!
+    var output: AVCaptureStillImageOutput!
     var session: AVCaptureSession!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var overlayImageView: UIImageView! = UIImageView()
-    var camera: AVCaptureDevice!
+    @IBOutlet weak var takeButton: UIButton!
+    @IBOutlet weak var cameraGrid: UIImageView!
+    @IBOutlet weak var alphaControlSlider: AlphaControlSlider!
+    var camera: AVCaptureDevice?
     var overlayImage: UIImage?
     var screenWidth: CGFloat = 0.0
     var screenHeight: CGFloat = 0.0
@@ -26,15 +29,21 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     var previewHeight: CGFloat = 0.0
     var screenTopMargin: CGFloat = 0.0
     var screenTopMarginRate: CGFloat = 0.16
+    var currentScale: CGFloat = 1.0
+    var startScale: CGFloat = 1.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.barTintColor = Constants.Theme.gray()
-    
+        self.imageView.clipsToBounds = true
+        
         // 前回撮影の画像をビューに重ねる
         if overlayImage != nil {
             overlayImageView?.image = overlayImage
+        } else {
+            alphaControlSlider.enabled = false
+            alphaControlSlider.hidden = true
         }
         
         UIInterfaceOrientation.Portrait.rawValue
@@ -42,17 +51,8 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
 
     override func viewWillAppear(animated: Bool) {
-
-        if TARGET_OS_SIMULATOR != 0 {
-            if let image: UIImage = UIImage(named: "AppIconWhite") {
-                // 確認画面へ
-                performSegueWithIdentifier("confirmPhoto", sender: image)
-            }
-        } else {
-        
-            // カメラの設定
-            setupCamera()
-        }
+        // カメラの設定
+        setupCamera()
     }
     
     // メモリ管理のため
@@ -97,6 +97,11 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             //}
         }
         
+        guard let camera = camera else {
+            noCamera()
+            return
+        }
+        
         // カメラからの入力データ
         do {
             input = try AVCaptureDeviceInput(device: camera) as AVCaptureDeviceInput
@@ -110,94 +115,111 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         }
         
         // 動画出力のインスタンス生成
-        output = AVCaptureVideoDataOutput()
+        output = AVCaptureStillImageOutput()
+        output.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
+
         // 出力をセッションに追加
         if (session.canAddOutput(output)) {
             session.addOutput(output)
         }
         
-        // ピクセルフォーマットを 32bit BGR + A とする
-        output.videoSettings = [kCVPixelBufferPixelFormatTypeKey : Int(kCVPixelFormatType_32BGRA)]
-        
-        // フレームをキャプチャするためのサブスレッド用のシリアルキューを用意
-        output.setSampleBufferDelegate(self, queue: dispatch_get_main_queue())
-        
-        output.alwaysDiscardsLateVideoFrames = true
+        // 画像を表示するレイヤーを生成.
+        let capVideoLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer.init(session: session)
+        capVideoLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        capVideoLayer.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.width)
+
+        // Viewに追加.
+        self.imageView.layer.addSublayer(capVideoLayer)
         
         session.startRunning()
 
-        // deviceをロックして設定
-        do {
-            try camera.lockForConfiguration()
-            // フレームレート
-            camera.activeVideoMinFrameDuration = CMTimeMake(1, 15)
-            
-            camera.unlockForConfiguration()
-        } catch {
-        }
-
     }
-    
-    // 新しいキャプチャの追加で呼ばれる
-    func captureOutput(captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, fromConnection connection: AVCaptureConnection!) {
+
+    @IBAction func takeStillPicture(sender: UIButton) {
         
-        // キャプチャしたsampleBufferからUIImageを作成
-        let image: UIImage = self.captureImage(sampleBuffer)
-        
-        // 画像を画面に表示
-        dispatch_async(dispatch_get_main_queue()) {
-            let cropImage = image.cropThumbnailImage(x: 0.0, y: 0.0, width: image.size.width, height: image.size.width)
-            if self.imageView != nil {
-                self.imageView.image = cropImage
+        if isSimulator() {
+            simulatorBehaviorTakePicture()
+        } else {
+            
+            // ビデオ出力に接続.
+            if let videoConnection: AVCaptureConnection = output.connectionWithMediaType(AVMediaTypeVideo) {
+                
+                // 接続から画像を取得する
+                self.output.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: { (imageDataBuffer, error) -> Void in
+                    
+                    // Jpegに変換する (NSDataにはExifなどのメタデータも含まれている)
+                    let imageData: NSData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageDataBuffer)
+                    
+                    // UIIMageを作成する
+                    let image: UIImage = UIImage(data: imageData)!
+                    
+                    let y = (image.size.height / 2) - (image.size.width / 2)
+                    let cropImage = image.cropThumbnailImage(x: 0.0, y: y, width: image.size.width, height: image.size.width)
+
+                    // シャッター音
+                    AudioServicesPlaySystemSound(1108)
+                    
+                    // 確認画面へ
+                    self.performSegueWithIdentifier("confirmPhoto", sender: cropImage)
+                    
+                })
+                
             }
         }
     }
     
-    // sampleBufferからUIImageを作成
-    func captureImage(sampleBuffer: CMSampleBufferRef) -> UIImage {
-        
-        // Sampling Bufferから画像を取得
-        let imageBuffer: CVImageBufferRef = CMSampleBufferGetImageBuffer(sampleBuffer)!
-        
-        // pixel buffer のベースアドレスをロック
-        CVPixelBufferLockBaseAddress(imageBuffer, 0)
-        
-        let baseAddress: UnsafeMutablePointer<Void> = CVPixelBufferGetBaseAddressOfPlane(imageBuffer, 0)
-        
-        let bytesPerRow: Int = CVPixelBufferGetBytesPerRow(imageBuffer)
-        let width: Int = CVPixelBufferGetWidth(imageBuffer)
-        let height: Int = CVPixelBufferGetHeight(imageBuffer)
-        
-        // 色空間
-        let colorSpace: CGColorSpaceRef = CGColorSpaceCreateDeviceRGB()!
-        
-        let bitsPerCompornent: Int = 8
-        // swift 2.0
-        let newContext: CGContextRef = CGBitmapContextCreate(baseAddress, width, height, bitsPerCompornent, bytesPerRow, colorSpace,  CGImageAlphaInfo.PremultipliedFirst.rawValue|CGBitmapInfo.ByteOrder32Little.rawValue)!
-        
-        let imageRef:CGImageRef = CGBitmapContextCreateImage(newContext)!
-        let resultImage = UIImage(CGImage: imageRef, scale: 2.0, orientation: UIImageOrientation.Right)
-
-        return resultImage
+    @IBAction func alphaChaging(sender: AlphaControlSlider) {
+        overlayImageView.alpha = CGFloat(sender.value)
     }
 
-    @IBAction func takeStillPicture(sender: UIButton) {
-        // ビデオ出力に接続.
-        if let _: AVCaptureConnection? = output.connectionWithMediaType(AVMediaTypeVideo) {
-            // シャッター音
-            AudioServicesPlaySystemSound(1108)
-
-            // プレビューのUIImage
-            let image: UIImage = self.imageView.image!
-            
-            // 確認画面へ
-            performSegueWithIdentifier("confirmPhoto", sender: image)
-        }
+    @IBAction func switchGridDisplay(sender: UIButton) {
+        cameraGrid.alpha = sender.selected ? 1 : 0
+        sender.selected = !sender.selected
     }
     
     @IBAction func cancel(sender: UIBarButtonItem) {
-        print("cancel")
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func pinchForZoom(sender: UIPinchGestureRecognizer) {
+        if let device: AVCaptureDevice = self.camera {
+            let state = sender.state
+            do {
+                try device.lockForConfiguration()
+                defer {
+                    device.unlockForConfiguration()
+                }
+                let vZoomFactor = sender.scale
+                if vZoomFactor <= device.activeFormat.videoMaxZoomFactor {
+                    if vZoomFactor < 1.0 {
+                        if state == .Began {
+                            currentScale = currentScale - (1.0 - vZoomFactor)
+                            startScale = currentScale
+                        } else {
+                            currentScale = startScale - (1.0 - vZoomFactor) * 4
+                        }
+                    } else {
+                        if state == .Began {
+                            currentScale = currentScale + (vZoomFactor - 1.0)
+                            startScale = currentScale
+                        } else {
+                            currentScale = startScale + (vZoomFactor - 1.0)
+                        }
+                    }
+                    if currentScale > 5.0 {
+                        currentScale = 5.0
+                    } else if currentScale < 1.0 {
+                        currentScale = 1.0
+                    }
+                    if state == .Began {
+                        startScale = currentScale
+                    }
+                    device.videoZoomFactor = currentScale
+                }
+            } catch let error {
+                print(error)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -221,8 +243,33 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
     
     //指定方向に自動的に変更するか？
-    override func shouldAutorotate() -> Bool{
+    override func shouldAutorotate() -> Bool {
         return true
+    }
+    
+    func noCamera() {
+        if isSimulator() {
+            if let image: UIImage = R.image.buttonGreen() {
+                self.imageView.image = image
+            }
+        } else {
+            takeButton.enabled = false
+        }
+        return
+    }
+    
+    func simulatorBehaviorTakePicture() {
+        if isSimulator() {
+            if let image: UIImage = R.image.buttonGreen() {
+                // 適当な画像で確認画面へ
+                performSegueWithIdentifier("confirmPhoto", sender: image)
+            }
+        }
+        return
+    }
+    
+    private func isSimulator() -> Bool {
+        return TARGET_OS_SIMULATOR != 0
     }
 
 }

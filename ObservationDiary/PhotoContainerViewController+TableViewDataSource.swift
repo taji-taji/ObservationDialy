@@ -39,7 +39,7 @@ extension PhotoContainerViewController: UITableViewDataSource {
             }
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "editAlert:")
             cell.editButton.addGestureRecognizer(tapGestureRecognizer)
-            cell.editButton.setImage(UIImage(named: "EditIconHighlighted"), forState: .Highlighted)
+            cell.editButton.setImage(R.image.editIconHighlighted(), forState: .Highlighted)
             
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             

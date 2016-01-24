@@ -118,25 +118,26 @@ class TargetContainerViewController: UIViewController {
                 let selectedTarget = targets[indexPath.row]
                 
                 // 次の画面のViewControllerを取得
-                let targetViewController = segue.destinationViewController as? TargetViewController
-                print(selectedTarget, selectedTarget.title)
-                // 半透明にする処理
-                targetViewController!.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
-                
-                targetViewController!.titleText = selectedTarget.title
-                targetViewController!.pageTitle = "記録タイトルの編集"
-                targetViewController!.completeButtonText = "変更"
-                targetViewController!.targetId = selectedTarget.id
-                targetViewController!.isUpdate = true
-                targetViewController!.indexPath = indexPath
-                
-                if let photo = selectedTarget.photos.last {
-                    if let jpeg: UIImage? = PhotoUtility().get(photo.photo) {
-                        targetViewController!.targetImage = jpeg
+                if let targetViewController = segue.destinationViewController as? TargetViewController {
+
+                    // 半透明にする処理
+                    targetViewController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+                    
+                    targetViewController.titleText = selectedTarget.title
+                    targetViewController.pageTitle = "記録タイトルの編集"
+                    targetViewController.completeButtonText = "変更"
+                    targetViewController.targetId = selectedTarget.id
+                    targetViewController.isUpdate = true
+                    targetViewController.indexPath = indexPath
+                    
+                    if let photo = selectedTarget.photos.last {
+                        if let jpeg: UIImage? = PhotoUtility().get(photo.photo) {
+                            targetViewController.targetImage = jpeg
+                        }
+                        // 画像がない場合はデフォルト画像
+                    } else {
+                        targetViewController.targetImage = R.image.defaultPhoto()
                     }
-                    // 画像がない場合はデフォルト画像
-                } else {
-                    targetViewController!.targetImage = UIImage(named: "DefaultPhoto")
                 }
                 NSNotificationCenter.defaultCenter().addObserver(self, selector: "deleteTarget:", name: "deleteTarget", object: nil)
             }

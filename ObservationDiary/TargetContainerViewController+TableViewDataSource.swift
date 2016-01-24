@@ -36,7 +36,7 @@ extension TargetContainerViewController: UITableViewDataSource {
             }
             // 画像がない場合はデフォルト画像
         } else {
-            cell.photoImageView.image = UIImage(named: "DefaultPhoto")
+            cell.photoImageView.image = R.image.defaultPhoto()
         }
         
         return cell
