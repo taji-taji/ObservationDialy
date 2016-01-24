@@ -1,1 +1,3 @@
 .DS_Store
+Keys.plist
+*.generated.swift
