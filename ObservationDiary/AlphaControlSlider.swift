@@ -14,7 +14,7 @@ class AlphaControlSlider: UISlider {
     
     override func awakeFromNib() {
         self.minimumTrackTintColor = Constants.Theme.concept()
-        // self.setThumbImage(UIImage(named: ""), forState: .Normal)
+        self.setThumbImage(R.image.sliderHandle(), forState: .Normal)
         self.minimumValue = 0
         self.maximumValue = 1
         self.value = 0.3

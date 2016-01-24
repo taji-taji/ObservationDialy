@@ -393,7 +393,7 @@
                                     <constraint firstAttribute="width" secondItem="ZTf-I6-fDN" secondAttribute="height" multiplier="1:1" id="rkz-RN-y2e"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CameraGrid" translatesAutoresizingMaskIntoConstraints="NO" id="TCN-as-SPI">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CameraGrid" translatesAutoresizingMaskIntoConstraints="NO" id="TCN-as-SPI">
                                 <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="TCN-as-SPI" secondAttribute="height" multiplier="1:1" id="EcE-2U-sRj"/>
@@ -452,6 +452,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="1000"/>
                     <connections>
+                        <outlet property="alphaControlSlider" destination="a8X-gV-LXM" id="PFf-HI-SNs"/>
                         <outlet property="cameraGrid" destination="TCN-as-SPI" id="jfh-tm-Pj5"/>
                         <outlet property="imageView" destination="SfB-6Q-Zlj" id="i4L-TC-uuc"/>
                         <outlet property="overlayImageView" destination="ZTf-I6-fDN" id="IfQ-JN-cxa"/>
@@ -460,7 +461,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PLS-YL-fIL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pinchGestureRecognizer id="e7S-iU-nI6">
+                <pinchGestureRecognizer delaysTouchesEnded="NO" scale="0.0" id="e7S-iU-nI6">
                     <connections>
                         <action selector="pinchForZoom:" destination="d6S-Ei-ZEh" id="Phq-EC-YfK"/>
                     </connections>

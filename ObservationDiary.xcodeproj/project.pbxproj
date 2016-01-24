@@ -75,7 +75,6 @@
 		935F62791C504AED00271DD8 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 935F62781C504AED00271DD8 /* Keys.plist */; };
 		935F627D1C50528E00271DD8 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935F627C1C50528E00271DD8 /* R.generated.swift */; };
 		935F627E1C5111AD00271DD8 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935F627C1C50528E00271DD8 /* R.generated.swift */; };
-		935F627F1C51129B00271DD8 /* AlphaControlSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935F62741C4EF5A600271DD8 /* AlphaControlSlider.swift */; };
 		936505A71BDF1FEF00A824E0 /* PhotoUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936505A61BDF1FEF00A824E0 /* PhotoUtility.swift */; };
 		936505AB1BE4843300A824E0 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936505AA1BE4843200A824E0 /* CameraViewController.swift */; };
 		9368DD4C1BEB9E5700F6E034 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9368DD4B1BEB9E5700F6E034 /* Constants.swift */; };
@@ -793,7 +792,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				93DDA1421C2B5BDE00B27FCF /* ObservationDiaryUITests.swift in Sources */,
-				935F627F1C51129B00271DD8 /* AlphaControlSlider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
