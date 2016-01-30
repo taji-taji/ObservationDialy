@@ -256,8 +256,9 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
             // 画像をすべて取得
             var photos: [UIImage] = []
             for targetPhoto in target.photos {
-                let image = PhotoUtility().get(targetPhoto.photo)
-                photos.append(image!)
+                if let image = PhotoUtility().get(targetPhoto.photo) {
+                    photos.append(image)
+                }
             }
             
             if photos.count >= Constants.Video.minPhotos {

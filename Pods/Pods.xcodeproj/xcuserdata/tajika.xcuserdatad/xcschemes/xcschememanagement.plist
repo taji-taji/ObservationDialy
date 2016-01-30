@@ -2,13 +2,76 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>EasyTipView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Flurry-iOS-SDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-ObservationDiary.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-ObservationDiaryTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-ObservationDiaryUITests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>R.swift.Library.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RMUniversalAlert.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Realm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RealmSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>UIActionSheet+Blocks.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>UIAlertController+Blocks.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>UIAlertView+Blocks.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>029E6365098DCCA154E82AFCC63819FD</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>05ECF59AE7C6D253370041D8A0B88EA3</key>
 		<dict>
 			<key>primary</key>
@@ -24,11 +87,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2FE38622EEB0772AF77B71FDB413F7CF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>3733EF10A7D04362E69968A7D6164AB5</key>
 		<dict>
 			<key>primary</key>
@@ -39,17 +97,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>613B7EBD3CBBC8D0B947424A51758B60</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>7521C15C3E996F390E556C1F007B2F19</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7658DA53BD45862EAAB0CC73780ADB60</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -59,22 +107,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>884C08210C1BB6F76452265CAA374AE5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9D278B53BBC4251CF942821A673B438C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>A2448D24184D6BFCE98C75F642DDEA96</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B8A1A146762BEE260ABEE8E4CF254DA8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -84,17 +117,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BE4F676ACD578216DDD3EE4439DA9693</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>D0B187D074A391695953ABCCE18BB599</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D1830B57BC177420D0616046AF5A0568</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -105,16 +128,6 @@
 			<true/>
 		</dict>
 		<key>E97CE244FE22BAE11F2E46BAF5637188</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F32D052B04179AB9F26154B2F92C1532</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FBB4B288C88A19B6AE2E189C93E429D6</key>
 		<dict>
 			<key>primary</key>
 			<true/>

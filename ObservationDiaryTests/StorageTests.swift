@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import RealmSwift
+@testable import ObservationDiary
 
 class StorageTest: XCTestCase {
     

@@ -12,7 +12,17 @@ import UIKit
 @IBDesignable
 class AlphaControlSlider: UISlider {
     
-    override func awakeFromNib() {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    func commonInit() {
         self.minimumTrackTintColor = Constants.Theme.concept()
         self.setThumbImage(R.image.sliderHandle(), forState: .Normal)
         self.minimumValue = 0

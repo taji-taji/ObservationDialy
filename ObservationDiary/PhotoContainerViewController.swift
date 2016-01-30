@@ -162,6 +162,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
         let videoFile = "\(self.target!.id).mp4"
         let videoPath = VideoUtility().get(videoFile)
         let tmpVideoPath = VideoUtility().get("tmp_" + videoFile)
+
         RMUniversalAlert.showActionSheetInViewController(self,
             withTitle: nil,
             message: nil,

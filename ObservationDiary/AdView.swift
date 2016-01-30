@@ -14,6 +14,10 @@ class AdView: UIView {
     
     @IBOutlet weak var adBannerView: ADBannerView!
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
     // Storyboard/xib から初期化はここから
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
