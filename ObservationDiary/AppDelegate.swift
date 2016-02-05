@@ -9,6 +9,8 @@
 import UIKit
 import RealmSwift
 import Flurry_iOS_SDK
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        Fabric.with([Crashlytics.self])
 
         // ナビゲーションバーの設定
         UINavigationBar.appearance().barTintColor = Constants.Theme.concept()
