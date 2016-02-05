@@ -12,7 +12,6 @@
 		9306DC3D1C5594CC00F98F71 /* TargetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */; };
 		9306DC3E1C5594D600F98F71 /* TargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359960F1BD5AB8C0047EE9F /* TargetViewController.swift */; };
 		9306DC3F1C5594D800F98F71 /* TargetViewController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8BC1C222C3900CBD3D3 /* TargetViewController+UITextFieldDelegate.swift */; };
-		9306DC401C5594DC00F98F71 /* TargetViewController+ADBannerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8BA1C222BE500CBD3D3 /* TargetViewController+ADBannerViewDelegate.swift */; };
 		9306DC411C5594DE00F98F71 /* PhotoContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937F419A1BFFF0BD00DF2D80 /* PhotoContainerViewController.swift */; };
 		9306DC421C5594E100F98F71 /* PhotoContainerViewController+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763DC1C12FAA900135834 /* PhotoContainerViewController+TableViewDelegate.swift */; };
 		9306DC431C5594E300F98F71 /* PhotoContainerViewController+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763DE1C12FB6400135834 /* PhotoContainerViewController+TableViewDataSource.swift */; };
@@ -22,7 +21,6 @@
 		9306DC471C5594EC00F98F71 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBAC1BF9E19300E96148 /* VideoPlayerViewController.swift */; };
 		9306DC4A1C5594F300F98F71 /* Tour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93429CB61C0531A90082D85F /* Tour.swift */; };
 		9306DC4B1C5594F500F98F71 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9368DD4B1BEB9E5700F6E034 /* Constants.swift */; };
-		9306DC4D1C5594FB00F98F71 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763ED1C14314600135834 /* Extensions.swift */; };
 		9306DC4E1C5594FE00F98F71 /* TJColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9307642B1C1794E200135834 /* TJColorExtensions.swift */; };
 		9306DC4F1C55950000F98F71 /* TJViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9307642D1C17952E00135834 /* TJViewExtensions.swift */; };
 		9306DC501C55950300F98F71 /* ModelBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763E01C12FD7100135834 /* ModelBase.swift */; };
@@ -47,14 +45,11 @@
 		930763E41C12FDC500135834 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763E31C12FDC500135834 /* Target.swift */; };
 		930763E61C12FE0200135834 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763E51C12FE0200135834 /* Photo.swift */; };
 		930763E91C12FEA900135834 /* VideoUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763E81C12FEA900135834 /* VideoUtility.swift */; };
-		930763EE1C14314600135834 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763ED1C14314600135834 /* Extensions.swift */; };
 		9307642C1C1794E200135834 /* TJColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9307642B1C1794E200135834 /* TJColorExtensions.swift */; };
 		9307642E1C17952E00135834 /* TJViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9307642D1C17952E00135834 /* TJViewExtensions.swift */; };
 		930764461C18E81100135834 /* TargetContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930764451C18E81100135834 /* TargetContainerViewController.swift */; };
 		930764481C18EE4800135834 /* TargetContainerViewController+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930764471C18EE4800135834 /* TargetContainerViewController+TableViewDataSource.swift */; };
 		931165BF1BD6459400F1D32D /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */; };
-		933CD8B91C222B5500CBD3D3 /* TargetContainerViewController+ADBannerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8B81C222B5500CBD3D3 /* TargetContainerViewController+ADBannerViewDelegate.swift */; };
-		933CD8BB1C222BE500CBD3D3 /* TargetViewController+ADBannerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8BA1C222BE500CBD3D3 /* TargetViewController+ADBannerViewDelegate.swift */; };
 		933CD8BD1C222C3900CBD3D3 /* TargetViewController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8BC1C222C3900CBD3D3 /* TargetViewController+UITextFieldDelegate.swift */; };
 		933CD8C51C22CFFE00CBD3D3 /* VideoUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8C41C22CFFE00CBD3D3 /* VideoUtilityTests.swift */; };
 		933CD8C71C23749300CBD3D3 /* PhotoUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8C61C23749300CBD3D3 /* PhotoUtilityTests.swift */; };
@@ -90,6 +85,11 @@
 		93DBDBAF1BFB66AC00E96148 /* LoadingProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBAE1BFB66AC00E96148 /* LoadingProxy.swift */; };
 		93DDA1421C2B5BDE00B27FCF /* ObservationDiaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DDA1411C2B5BDE00B27FCF /* ObservationDiaryUITests.swift */; };
 		93E0F8771C009B8A00BA5EEA /* TableUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E0F8761C009B8A00BA5EEA /* TableUtility.swift */; };
+		93E476791C64A20400EF49EF /* KeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E476781C64A20400EF49EF /* KeyManager.swift */; };
+		93E4767B1C64A59D00EF49EF /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E4767A1C64A59D00EF49EF /* UIImageExtension.swift */; };
+		93E4767D1C64A5CE00EF49EF /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E4767C1C64A5CE00EF49EF /* NSDateExtension.swift */; };
+		93E4767F1C64A5F500EF49EF /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E4767E1C64A5F500EF49EF /* UIViewControllerExtension.swift */; };
+		93E476811C64A62100EF49EF /* AdViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E476801C64A62100EF49EF /* AdViewProtocol.swift */; };
 		93FC47CE1C56613C006C580A /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FDA21BDA89F200AC1A3D /* Storage.swift */; };
 		93FC47CF1C56613E006C580A /* StorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */; };
 		93FC47D01C56DD29006C580A /* AlphaControlSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935F62741C4EF5A600271DD8 /* AlphaControlSlider.swift */; };
@@ -140,15 +140,12 @@
 		930763E31C12FDC500135834 /* Target.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
 		930763E51C12FE0200135834 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		930763E81C12FEA900135834 /* VideoUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoUtility.swift; sourceTree = "<group>"; };
-		930763ED1C14314600135834 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9307642B1C1794E200135834 /* TJColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TJColorExtensions.swift; sourceTree = "<group>"; };
 		9307642D1C17952E00135834 /* TJViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TJViewExtensions.swift; sourceTree = "<group>"; };
 		930764451C18E81100135834 /* TargetContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetContainerViewController.swift; sourceTree = "<group>"; };
 		930764471C18EE4800135834 /* TargetContainerViewController+TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TargetContainerViewController+TableViewDataSource.swift"; sourceTree = "<group>"; };
 		931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
 		933571831C1BD2AB00F9D948 /* StorageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageTests.swift; sourceTree = "<group>"; };
-		933CD8B81C222B5500CBD3D3 /* TargetContainerViewController+ADBannerViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TargetContainerViewController+ADBannerViewDelegate.swift"; sourceTree = "<group>"; };
-		933CD8BA1C222BE500CBD3D3 /* TargetViewController+ADBannerViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TargetViewController+ADBannerViewDelegate.swift"; sourceTree = "<group>"; };
 		933CD8BC1C222C3900CBD3D3 /* TargetViewController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TargetViewController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		933CD8C41C22CFFE00CBD3D3 /* VideoUtilityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoUtilityTests.swift; sourceTree = "<group>"; };
 		933CD8C61C23749300CBD3D3 /* PhotoUtilityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoUtilityTests.swift; sourceTree = "<group>"; };
@@ -189,6 +186,11 @@
 		93DDA1411C2B5BDE00B27FCF /* ObservationDiaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationDiaryUITests.swift; sourceTree = "<group>"; };
 		93DDA1431C2B5BDE00B27FCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93E0F8761C009B8A00BA5EEA /* TableUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableUtility.swift; sourceTree = "<group>"; };
+		93E476781C64A20400EF49EF /* KeyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyManager.swift; sourceTree = "<group>"; };
+		93E4767A1C64A59D00EF49EF /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		93E4767C1C64A5CE00EF49EF /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
+		93E4767E1C64A5F500EF49EF /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		93E476801C64A62100EF49EF /* AdViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdViewProtocol.swift; sourceTree = "<group>"; };
 		9EE38BCC6DA7C302BAC7B958 /* Pods_ObservationDiaryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ObservationDiaryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4D54223E4FC76CA2CE0A0D5 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D15D9258C6AB4172095DB999 /* Pods-ObservationDiaryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObservationDiaryUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ObservationDiaryUITests/Pods-ObservationDiaryUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -242,7 +244,6 @@
 			isa = PBXGroup;
 			children = (
 				930764451C18E81100135834 /* TargetContainerViewController.swift */,
-				933CD8B81C222B5500CBD3D3 /* TargetContainerViewController+ADBannerViewDelegate.swift */,
 				930764471C18EE4800135834 /* TargetContainerViewController+TableViewDataSource.swift */,
 				935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */,
 			);
@@ -282,7 +283,9 @@
 		9307642A1C1794AE00135834 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				930763ED1C14314600135834 /* Extensions.swift */,
+				93E4767C1C64A5CE00EF49EF /* NSDateExtension.swift */,
+				93E4767A1C64A59D00EF49EF /* UIImageExtension.swift */,
+				93E4767E1C64A5F500EF49EF /* UIViewControllerExtension.swift */,
 				9307642B1C1794E200135834 /* TJColorExtensions.swift */,
 				9307642D1C17952E00135834 /* TJViewExtensions.swift */,
 			);
@@ -294,7 +297,6 @@
 			children = (
 				9359960F1BD5AB8C0047EE9F /* TargetViewController.swift */,
 				933CD8BC1C222C3900CBD3D3 /* TargetViewController+UITextFieldDelegate.swift */,
-				933CD8BA1C222BE500CBD3D3 /* TargetViewController+ADBannerViewDelegate.swift */,
 			);
 			name = TargetView;
 			sourceTree = "<group>";
@@ -377,6 +379,7 @@
 			children = (
 				939562F01C20DB06000D90D0 /* AdView.xib */,
 				939562F21C20DC04000D90D0 /* AdView.swift */,
+				93E476801C64A62100EF49EF /* AdViewProtocol.swift */,
 			);
 			name = Ad;
 			sourceTree = "<group>";
@@ -399,6 +402,7 @@
 				933CD8C81C23763900CBD3D3 /* MediaUtility.swift */,
 				936505A61BDF1FEF00A824E0 /* PhotoUtility.swift */,
 				930763E81C12FEA900135834 /* VideoUtility.swift */,
+				93E476781C64A20400EF49EF /* KeyManager.swift */,
 				930763EA1C12FEAE00135834 /* Loading */,
 			);
 			name = Utilities;
@@ -714,7 +718,6 @@
 				930763DF1C12FB6400135834 /* PhotoContainerViewController+TableViewDataSource.swift in Sources */,
 				936505A71BDF1FEF00A824E0 /* PhotoUtility.swift in Sources */,
 				930763E41C12FDC500135834 /* Target.swift in Sources */,
-				933CD8B91C222B5500CBD3D3 /* TargetContainerViewController+ADBannerViewDelegate.swift in Sources */,
 				937F419B1BFFF0BD00DF2D80 /* PhotoContainerViewController.swift in Sources */,
 				930763DD1C12FAA900135834 /* PhotoContainerViewController+TableViewDelegate.swift in Sources */,
 				930763E61C12FE0200135834 /* Photo.swift in Sources */,
@@ -722,19 +725,22 @@
 				9368DD4C1BEB9E5700F6E034 /* Constants.swift in Sources */,
 				930764461C18E81100135834 /* TargetContainerViewController.swift in Sources */,
 				935996321BD5EDC20047EE9F /* TargetTableViewCell.swift in Sources */,
+				93E4767D1C64A5CE00EF49EF /* NSDateExtension.swift in Sources */,
 				93C7FDA11BDA7B7A00AC1A3D /* StorageProtocol.swift in Sources */,
 				93DBDBA71BF83A3F00E96148 /* DateUtility.swift in Sources */,
 				935F627D1C50528E00271DD8 /* R.generated.swift in Sources */,
-				933CD8BB1C222BE500CBD3D3 /* TargetViewController+ADBannerViewDelegate.swift in Sources */,
+				93E4767B1C64A59D00EF49EF /* UIImageExtension.swift in Sources */,
+				93E476791C64A20400EF49EF /* KeyManager.swift in Sources */,
 				935996101BD5AB8C0047EE9F /* TargetViewController.swift in Sources */,
+				93E476811C64A62100EF49EF /* AdViewProtocol.swift in Sources */,
 				93CD876A1BF69818003F836B /* LoadingOverlay.swift in Sources */,
 				939562F31C20DC04000D90D0 /* AdView.swift in Sources */,
 				9359960E1BD5AB8C0047EE9F /* AppDelegate.swift in Sources */,
-				930763EE1C14314600135834 /* Extensions.swift in Sources */,
 				93DBDBAF1BFB66AC00E96148 /* LoadingProxy.swift in Sources */,
 				939EBF821BDB4A3F00436BC0 /* PhotoViewController.swift in Sources */,
 				933CD8BD1C222C3900CBD3D3 /* TargetViewController+UITextFieldDelegate.swift in Sources */,
 				930763E11C12FD7100135834 /* ModelBase.swift in Sources */,
+				93E4767F1C64A5F500EF49EF /* UIViewControllerExtension.swift in Sources */,
 				93E0F8771C009B8A00BA5EEA /* TableUtility.swift in Sources */,
 				9307642C1C1794E200135834 /* TJColorExtensions.swift in Sources */,
 			);
@@ -778,8 +784,6 @@
 				93FC47CE1C56613C006C580A /* Storage.swift in Sources */,
 				9357D8471C54DFC40051D028 /* TourTests.swift in Sources */,
 				9306DC4A1C5594F300F98F71 /* Tour.swift in Sources */,
-				9306DC401C5594DC00F98F71 /* TargetViewController+ADBannerViewDelegate.swift in Sources */,
-				9306DC4D1C5594FB00F98F71 /* Extensions.swift in Sources */,
 				9306DC571C55951600F98F71 /* PhotoUtility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

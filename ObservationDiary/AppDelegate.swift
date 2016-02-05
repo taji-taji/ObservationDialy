@@ -22,10 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         
-        if let path = NSBundle.mainBundle().pathForResource("Keys", ofType: "plist"),
-            keys = NSDictionary(contentsOfFile: path),
-            flurryAPIKey = keys["FlurryAPIKey"] as? String {
-                Flurry.startSession(flurryAPIKey)
+        if let flurryAPIKey = KeyManager().getValue("FlurryAPIKey") as? String {
+            Flurry.startSession(flurryAPIKey)
+            Flurry.logPageView()
         }
 
         return true

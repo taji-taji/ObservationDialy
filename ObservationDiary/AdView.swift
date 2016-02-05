@@ -7,12 +7,12 @@
 //
 
 import UIKit
-import iAd
+import GoogleMobileAds
 
 @IBDesignable
 class AdView: UIView {
     
-    @IBOutlet weak var adBannerView: ADBannerView!
+    @IBOutlet weak var adBannerView: GADBannerView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,6 +29,7 @@ class AdView: UIView {
         let nib = UINib(nibName: "AdView", bundle: bundle)
         let view = nib.instantiateWithOwner(self, options: nil).first as! UIView
         addSubview(view)
+        adBannerView.adSize = kGADAdSizeSmartBannerPortrait
         
         // カスタムViewのサイズを自分自身と同じサイズにする
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -41,6 +42,7 @@ class AdView: UIView {
             options:NSLayoutFormatOptions(rawValue: 0),
             metrics:nil,
             views: bindings))
+
     }
     
 }

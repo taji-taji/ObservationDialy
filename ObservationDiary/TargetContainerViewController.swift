@@ -8,6 +8,7 @@
 
 import UIKit
 import iAd
+import GoogleMobileAds
 
 class TargetContainerViewController: UIViewController {
     
@@ -18,6 +19,7 @@ class TargetContainerViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noTargetView: UIView!
     @IBOutlet weak var adView: AdView!
+    
     // MARK: - Initialization
     required init?(coder aDecoder: NSCoder) {
         addTargetTour = Tour(text: Tour.ADD_TARGET_TEXT)
@@ -33,8 +35,8 @@ class TargetContainerViewController: UIViewController {
         addTargetTour.tour(.AddTarget, forView: self.navigationItem.rightBarButtonItem!, superView: nil)
 
         tableView.dataSource = self
-        
-        adView.adBannerView.delegate = self
+        self.loadAd(self.adView)
+        print("Google Mobile Ads SDK version:\(GADRequest.sdkVersion())")
     }
     
     override func viewWillAppear(animated: Bool) {

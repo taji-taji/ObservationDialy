@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import iAd
+import GoogleMobileAds
 
 class TargetViewController: UIViewController {
     
@@ -55,8 +55,7 @@ class TargetViewController: UIViewController {
         
         checkValidTargetTitle()
         
-        adView.adBannerView.delegate = self
-        adView.adBannerView.hidden = true
+        self.loadAd(adView)
     }
     
     // MARK: Actions
