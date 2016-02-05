@@ -9,6 +9,8 @@
 import UIKit
 import RealmSwift
 import Flurry_iOS_SDK
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,16 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        Fabric.with([Crashlytics.self])
 
         // ナビゲーションバーの設定
         UINavigationBar.appearance().barTintColor = Constants.Theme.concept()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         
-        if let path = NSBundle.mainBundle().pathForResource("Keys", ofType: "plist"),
-            keys = NSDictionary(contentsOfFile: path),
-            flurryAPIKey = keys["FlurryAPIKey"] as? String {
-                Flurry.startSession(flurryAPIKey)
+        if let flurryAPIKey = KeyManager().getValue("FlurryAPIKey") as? String {
+            Flurry.startSession(flurryAPIKey)
+            Flurry.logPageView()
         }
 
         return true
