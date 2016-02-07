@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import iAd
 import GoogleMobileAds
+import Material
 
 class TargetContainerViewController: UIViewController {
     
@@ -19,6 +19,7 @@ class TargetContainerViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noTargetView: UIView!
     @IBOutlet weak var adView: AdView!
+    @IBOutlet weak var addButton: NavBarButton!
     
     // MARK: - Initialization
     required init?(coder aDecoder: NSCoder) {
@@ -31,12 +32,13 @@ class TargetContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkAndSwitchNoTargetView()
+        self.addButton.backgroundColor = Constants.Theme.concept()
         
-        addTargetTour.tour(.AddTarget, forView: self.navigationItem.rightBarButtonItem!, superView: nil)
+        addTargetTour.tour(.AddTarget, forView: addButton, superView: nil)
 
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadTargetList:", name: "reloadTargetList", object: nil)
         tableView.dataSource = self
         self.loadAd(self.adView)
-        print("Google Mobile Ads SDK version:\(GADRequest.sdkVersion())")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -152,10 +154,10 @@ class TargetContainerViewController: UIViewController {
         
     }
     
-    @IBAction func unwindToTargetList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.sourceViewController as? TargetViewController, target = sourceViewController.target {
+    func reloadTargetList(notification: NSNotification) {
+        if let userInfo = notification.userInfo, isUpdate = userInfo["isUpdate"] as? Bool, target = userInfo["target"] as? TargetData {
             
-            if sourceViewController.isUpdate {
+            if isUpdate {
                 targets = Storage().findAll(TargetData(), orderby: "updated", ascending: false)
                 self.tableView.reloadData()
             } else {

@@ -18,10 +18,10 @@ class TourTests: XCTestCase {
         super.tearDown()
     }
     
-    func testGetInstance() {
-        let instance = Tour(text: Tour.ADD_TARGET_TEXT).getInstance()
-        XCTAssertEqual(String(instance.dynamicType), String(EasyTipView.self))
-    }
+//    func testGetInstance() {
+//        let instance = Tour(text: Tour.ADD_TARGET_TEXT).getInstance()
+//        XCTAssertEqual(String(instance.dynamicType), String(EasyTipView.self))
+//    }
     
     func testClose() {
         var tour = Tour(text: Tour.ADD_TARGET_TEXT)

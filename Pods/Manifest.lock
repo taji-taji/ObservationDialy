@@ -5,6 +5,7 @@ PODS:
   - Fabric (1.6.5)
   - Flurry-iOS-SDK/FlurrySDK (7.3.0)
   - Google-Mobile-Ads-SDK (7.6.0)
+  - Material (1.30.1)
   - R.swift (1.1.0):
     - R.swift.Library (~> 1.0.1)
   - R.swift.Library (1.0.1)
@@ -29,6 +30,7 @@ DEPENDENCIES:
   - Fabric
   - Flurry-iOS-SDK/FlurrySDK
   - Google-Mobile-Ads-SDK (~> 7.0)
+  - Material (~> 1.0)
   - R.swift
   - RealmSwift
   - RMUniversalAlert
@@ -39,6 +41,7 @@ SPEC CHECKSUMS:
   Fabric: 338ffd3c2afcab120638907b4251189de9ad17b3
   Flurry-iOS-SDK: 054befae0fa0244fb000985bfe757d70f87a9f60
   Google-Mobile-Ads-SDK: 0290020329c61183c4685304264b73382bc49fb4
+  Material: 3a850a19fe8310b549b2ea42131427ff40f7b006
   R.swift: d12a4b91df5dc148f60bd0731c0f0fe4ae2b720e
   R.swift.Library: 801000362d9af80918d16c4de31ddf819e003e03
   Realm: b498a6fb9d288b171ff98d0e2d4384c295be8990

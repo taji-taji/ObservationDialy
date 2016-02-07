@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMobileAds
+import Material
 
 extension UIViewController: AdViewProtocol, GADBannerViewDelegate {
     
@@ -26,6 +27,16 @@ extension UIViewController: AdViewProtocol, GADBannerViewDelegate {
     
     public func adViewDidReceiveAd(bannerView: GADBannerView!) {
         bannerView.alpha = 1
+    }
+    
+    func addNavigationBar() -> BaseNavigationBarView {
+        let navigationBarView = BaseNavigationBarView(frame: CGRectZero)
+        view.addSubview(navigationBarView)
+        navigationBarView.translatesAutoresizingMaskIntoConstraints = false
+        MaterialLayout.alignFromTop(view, child: navigationBarView)
+        MaterialLayout.alignToParentHorizontally(view, child: navigationBarView)
+        MaterialLayout.height(view, child: navigationBarView, height: 66)
+        return navigationBarView
     }
     
 }
