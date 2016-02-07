@@ -22,9 +22,9 @@ class BasicButton: FlatButton {
     
     override func prepareView() {
         super.prepareView()
-        self.pulseColor = Constants.Theme.concept()
-        self.titleLabel!.font = RobotoFont.mediumWithSize(16)
-        self.setTitleColor(Constants.Theme.textColor(), forState: .Normal)
+        self.pulseColor = Constants.Theme.concept
+        self.titleLabel!.font = RobotoFont.lightWithSize(16)
+        self.setTitleColor(Constants.Theme.textColor, forState: .Normal)
         self.contentInsetPreset = .WideRectangle3
     }
     

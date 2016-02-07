@@ -32,20 +32,35 @@ struct Constants {
     }
     
     struct Theme {
-        static func concept() -> UIColor {
-            return UIColor(intRed: 87, green: 194, blue: 158, alpha: 1.0)
+        static var concept: UIColor {
+            get {
+                return UIColor(intRed: 87, green: 194, blue: 158, alpha: 1.0)
+            }
         }
-        static func subConcept() -> UIColor {
-            return UIColor(intRed: 197, green: 240, blue: 197, alpha: 1.0)
+        static var subConcept: UIColor {
+            get {
+                return UIColor(intRed: 197, green: 240, blue: 197, alpha: 1.0)
+            }
         }
-        static func textColor() -> UIColor {
-            return UIColor(intRed: 94, green: 85, blue: 81, alpha: 1.0)
+        static var highLighted: UIColor {
+            get {
+                return UIColor(intRed: 200, green: 200, blue: 200, alpha: 1.0)
+            }
         }
-        static func base() -> UIColor {
-            return UIColor(intRed: 242, green: 244, blue: 237, alpha: 1.0)
+        static var textColor: UIColor {
+            get {
+                return UIColor(intRed: 94, green: 85, blue: 81, alpha: 1.0)
+            }
         }
-        static func gray() -> UIColor {
-            return UIColor(intRed: 26, green: 26, blue: 26, alpha: 1.0)
+        static var base: UIColor {
+            get {
+                return UIColor(intRed: 242, green: 244, blue: 237, alpha: 1.0)
+            }
+        }
+        static var gray: UIColor {
+            get {
+                return UIColor(intRed: 26, green: 26, blue: 26, alpha: 1.0)
+            }
         }
     }
 }

@@ -15,6 +15,7 @@ class DestroyButton: BasicButton {
     override func prepareView() {
         super.prepareView()
         self.pulseColor = MaterialColor.red.lighten1
+        self.titleLabel!.font = RobotoFont.mediumWithSize(16)
         self.setTitleColor(MaterialColor.red.base, forState: .Normal)
     }
     

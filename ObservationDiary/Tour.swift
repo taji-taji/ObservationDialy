@@ -32,8 +32,8 @@ struct Tour {
     }
     
     init (text: String) {
-        preferences.drawing.backgroundColor = Constants.Theme.subConcept()
-        preferences.drawing.foregroundColor = Constants.Theme.textColor()
+        preferences.drawing.backgroundColor = Constants.Theme.subConcept
+        preferences.drawing.foregroundColor = Constants.Theme.textColor
         //preferences.drawing.font = UIFont(name: "HelveticaNeue-Regular", size: 10)!
         preferences.drawing.textAlignment = NSTextAlignment.Center
         easyTipView = EasyTipView(text: text, preferences: preferences, delegate: nil)

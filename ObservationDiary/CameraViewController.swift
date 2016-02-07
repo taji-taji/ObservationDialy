@@ -35,7 +35,7 @@ class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.barTintColor = Constants.Theme.gray()
+        self.navigationController?.navigationBar.barTintColor = Constants.Theme.gray
         self.imageView.clipsToBounds = true
         
         // 前回撮影の画像をビューに重ねる

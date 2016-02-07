@@ -23,7 +23,7 @@ class BaseNavigationBarView: NavigationBarView {
     }
     
     func commonInit() {
-        self.backgroundColor = Constants.Theme.concept()
+        self.backgroundColor = Constants.Theme.concept
         self.statusBarStyle = .LightContent
     }
     

@@ -35,16 +35,16 @@ class TargetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if titleText != nil {
+        if let titleText = titleText {
             titleTextField.text = titleText
         }
-        if pageTitle != nil {
+        if let pageTitle = pageTitle {
             pageTitleLabel.text = pageTitle
         }
-        if targetImage != nil {
+        if let targetImage = targetImage {
             imageView.image = targetImage
         }
-        if completeButtonText != nil {
+        if let completeButtonText = completeButtonText {
             completeButton.setTitle(completeButtonText, forState: .Normal)
         }
         if !isUpdate {
@@ -55,8 +55,9 @@ class TargetViewController: UIViewController {
         titleTextField.titleLabelColor = MaterialColor.grey.lighten1
         titleTextField.titleLabelActiveColor = MaterialColor.grey.lighten1
         titleTextField.titleLabel?.text = "タイトル"
-        pageTitleLabel.textColor = Constants.Theme.textColor()
-        titleTextField.textColor = Constants.Theme.textColor()
+        titleTextField.placeholder = "例）ガジュマルの木"
+        pageTitleLabel.textColor = Constants.Theme.textColor
+        titleTextField.textColor = Constants.Theme.textColor
         titleTextField.delegate = self
         
         checkValidTargetTitle()      
@@ -82,7 +83,6 @@ class TargetViewController: UIViewController {
         })
         let cancelAction = UIAlertAction(title: "キャンセル", style: .Cancel, handler: {
             (action: UIAlertAction!) in
-            print("cancelAction")
         })
         
         alertController.addAction(cancelAction)

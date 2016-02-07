@@ -32,7 +32,7 @@ class TargetContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkAndSwitchNoTargetView()
-        self.addButton.backgroundColor = Constants.Theme.concept()
+        self.addButton.backgroundColor = Constants.Theme.concept
         
         addTargetTour.tour(.AddTarget, forView: addButton, superView: nil)
 

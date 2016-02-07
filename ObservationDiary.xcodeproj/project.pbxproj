@@ -57,6 +57,8 @@
 		93429CB71C0531A90082D85F /* Tour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93429CB61C0531A90082D85F /* Tour.swift */; };
 		934C62C31C67095500EF4C0D /* NavBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C62C21C67095500EF4C0D /* NavBarButton.swift */; };
 		934C62C41C670A0B00EF4C0D /* NavBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C62C21C67095500EF4C0D /* NavBarButton.swift */; };
+		934C62C61C6728F100EF4C0D /* UtilButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C62C51C6728F100EF4C0D /* UtilButton.swift */; };
+		934C62C71C6728F100EF4C0D /* UtilButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C62C51C6728F100EF4C0D /* UtilButton.swift */; };
 		935383B81C55910100E3FCBD /* StorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933571831C1BD2AB00F9D948 /* StorageTests.swift */; };
 		935383BA1C55916300E3FCBD /* MediaUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8CB1C23799A00CBD3D3 /* MediaUtilityTests.swift */; };
 		9353CC741BDA127A00EAFCD6 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 9353CC731BDA127A00EAFCD6 /* Podfile */; };
@@ -174,6 +176,7 @@
 		933CD8CB1C23799A00CBD3D3 /* MediaUtilityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaUtilityTests.swift; sourceTree = "<group>"; };
 		93429CB61C0531A90082D85F /* Tour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tour.swift; sourceTree = "<group>"; };
 		934C62C21C67095500EF4C0D /* NavBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavBarButton.swift; sourceTree = "<group>"; };
+		934C62C51C6728F100EF4C0D /* UtilButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilButton.swift; sourceTree = "<group>"; };
 		9353CC731BDA127A00EAFCD6 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9359960A1BD5AB8C0047EE9F /* ObservationDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObservationDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9359960D1BD5AB8C0047EE9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -419,6 +422,7 @@
 				93AC7BD81C64C9C900C2826E /* BaseNavigationBarView.swift */,
 				93AC7BDB1C64D7D800C2826E /* BasicButton.swift */,
 				937297251C65E2710007F909 /* FilledButton.swift */,
+				934C62C51C6728F100EF4C0D /* UtilButton.swift */,
 				934C62C21C67095500EF4C0D /* NavBarButton.swift */,
 				937297271C65E5210007F909 /* DestroyButton.swift */,
 				93AC7BDF1C65D42400C2826E /* ImageThumbnailView.swift */,
@@ -809,6 +813,7 @@
 				93E4767F1C64A5F500EF49EF /* UIViewControllerExtension.swift in Sources */,
 				93E0F8771C009B8A00BA5EEA /* TableUtility.swift in Sources */,
 				9307642C1C1794E200135834 /* TJColorExtensions.swift in Sources */,
+				934C62C61C6728F100EF4C0D /* UtilButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -831,6 +836,7 @@
 				937066921C66276B00087C9D /* BasicTextField.swift in Sources */,
 				93FC47CF1C56613E006C580A /* StorageProtocol.swift in Sources */,
 				9306DC4B1C5594F500F98F71 /* Constants.swift in Sources */,
+				934C62C71C6728F100EF4C0D /* UtilButton.swift in Sources */,
 				9306DC541C55950D00F98F71 /* DateUtility.swift in Sources */,
 				9306DC471C5594EC00F98F71 /* VideoPlayerViewController.swift in Sources */,
 				9306DC441C5594E600F98F71 /* PhotoTableViewCell.swift in Sources */,

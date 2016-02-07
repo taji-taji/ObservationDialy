@@ -23,7 +23,7 @@ class AlphaControlSlider: UISlider {
     }
     
     func commonInit() {
-        self.minimumTrackTintColor = Constants.Theme.concept()
+        self.minimumTrackTintColor = Constants.Theme.concept
         self.setThumbImage(R.image.sliderHandle(), forState: .Normal)
         self.minimumValue = 0
         self.maximumValue = 1

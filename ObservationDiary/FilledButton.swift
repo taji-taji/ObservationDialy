@@ -28,8 +28,10 @@ class FilledButton: RaisedButton {
     
     override func prepareView() {
         super.prepareView()
-        self.depth = .Depth1
-        self.backgroundColor = Constants.Theme.concept()
+        self.depth = .None
+        self.backgroundColor = Constants.Theme.subConcept
+        self.setTitleColor(Constants.Theme.textColor, forState: .Normal)
+        self.titleLabel?.font = RobotoFont.mediumWithSize(16)
         self.contentInsetPreset = .WideRectangle3
     }
     

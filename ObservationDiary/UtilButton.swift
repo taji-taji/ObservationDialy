@@ -1,5 +1,5 @@
 //
-//  NavBarButton.swift
+//  UtilButton.swift
 //  ObservationDiary
 //
 //  Created by tajika on 2016/02/07.
@@ -10,7 +10,7 @@ import UIKit
 import Material
 
 @IBDesignable
-class NavBarButton: FlatButton {
+class UtilButton: FlatButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,11 +22,8 @@ class NavBarButton: FlatButton {
     
     override func prepareView() {
         super.prepareView()
-        self.pulseColor = UIColor.whiteColor()
-        self.titleLabel!.font = RobotoFont.mediumWithSize(20)
-        self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        self.backgroundColor = UIColor.clearColor()
-        self.contentInsetPreset = .WideRectangle3
+        self.pulseColor = Constants.Theme.concept
+        self.contentInsetPreset = .WideRectangle2
     }
     
 }
