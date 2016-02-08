@@ -355,10 +355,12 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
                     photoViewController.selectedImage = cell.photoImage.image
                     photoViewController.editCommentText = cell.commentText.text
                     photoViewController.selectedId = cell.id
+                    photoViewController.targetId = target?.id
                 }
             }
         } else if identifier == "showCameraView" {
             let cameraViewController = nav.viewControllers[0] as! CameraViewController
+            cameraViewController.targetId = target?.id
             if let overlayImage = sender as? UIImage {
                 cameraViewController.overlayImage = overlayImage
             }

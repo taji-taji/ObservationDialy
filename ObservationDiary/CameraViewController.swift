@@ -31,6 +31,7 @@ class CameraViewController: UIViewController {
     var screenTopMarginRate: CGFloat = 0.16
     var currentScale: CGFloat = 1.0
     var startScale: CGFloat = 1.0
+    var targetId: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -237,6 +238,7 @@ class CameraViewController: UIViewController {
         if sender is UIImage {
             if let takenPhoto = sender as? UIImage {
                 photoViewController.selectedImage = takenPhoto
+                photoViewController.targetId = targetId
             }
 
         }

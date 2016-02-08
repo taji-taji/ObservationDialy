@@ -54,7 +54,7 @@ struct Tour {
     
     mutating func close() {
         if isShowing {
-            easyTipView.dismissWithCompletion(nil)
+            easyTipView.dismiss()
             isShowing = false
         }
     }
@@ -76,16 +76,16 @@ struct Tour {
     // それぞれのツアーを開始
     private mutating func start(forView: AnyObject, superView: UIView?) {
         if forView is UIView {
-            easyTipView.showForView(
-                forView as! UIView,
-                withinSuperview: superView,
-                animated: true
+            easyTipView.show(
+                animated: true,
+                forView: forView as! UIView,
+                withinSuperview: superView
             )
         } else if forView is UIBarButtonItem {
-            easyTipView.showForItem(
-                forView as! UIBarButtonItem,
-                withinSuperView: superView,
-                animated: true
+            easyTipView.show(
+                animated: true,
+                forItem: forView as! UIBarButtonItem,
+                withinSuperView: superView
             )
         }
         isShowing = true

@@ -22,13 +22,13 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var commentCountLabel: UILabel!
     @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var textViewHeightConstraint: NSLayoutConstraint!
-    var photo: PhotoData?
     // 新規作成時に選択された画像
     var selectedImage: UIImage?
     // 編集の際に受け取るコメント
     var editCommentText: String?
     // 編集の際に受け取るID
     var selectedId: Int?
+    var targetId: Int?
     var isObserving = false
     var screenOffsetY: CGFloat = 0
     var remainCount: Int = Constants.Photo.commentMaxCharacters
@@ -211,8 +211,12 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
             return
         }
         
+        guard let targetId = targetId, target = Storage().find(TargetData(), id: targetId) else {
+            return
+        }
+        
         // self.selectedIdがあれば編集
-        if self.selectedId != nil {
+        if let selectedId = self.selectedId {
             
             //NSNotificationのインスタンスを作成
             let n: NSNotification = NSNotification(name: "photoEdited", object: self)
@@ -223,39 +227,36 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
                         //通知を送る
                         NSNotificationCenter.defaultCenter().postNotification(n)
                     }
-                    realm.removeNotification(self.realmNotificationTokenEdit!)
                 }
                 
             }
+            realmNotificationTokenEdit?.stop()
 
-            let updateValue = ["id": self.selectedId!, "comment": self.commentTextView.text]
+            let updateValue = ["id": selectedId, "comment": self.commentTextView.text]
             Storage().update(PhotoData(), updateValues: updateValue)
             
             // targetのタイムスタンプ更新
-            photo = Storage().find(PhotoData(), id: self.selectedId!)
-            let target = photo!.target[0]
-            let targetUpdateValues = ["id": target.id, "updated": now]
-            Storage().update(TargetData(), updateValues: targetUpdateValues)
+            if let photo = Storage().find(PhotoData(), id: selectedId) {
+                let targetUpdateValues = ["id": target.id, "updated": now]
+                Storage().update(TargetData(), updateValues: targetUpdateValues)
+            }
             
         // self.selectedIdがなければ新規
         } else {
-        
-            // ファイルを保存
-            let fileName = PhotoUtility().insert((photoImageView?.image)!)
             
-            photo = PhotoData()
+            let photo = PhotoData()
     
-            if fileName != nil {
-                photo!.comment = commentTextView.text
-                photo!.photo = fileName!
-                photo!.created = now
-                photo!.updated = now
+            if let fileName = PhotoUtility().insert((photoImageView?.image)!) {
+                photo.comment = commentTextView.text
+                photo.photo = fileName
+                photo.created = now
+                photo.updated = now
             } else {
                 return
             }
 
             //NSNotificationのインスタンスを作成
-            let n: NSNotification = NSNotification(name: "photoAdded", object: self, userInfo: ["photo": photo!])
+            let n: NSNotification = NSNotification(name: "photoAdded", object: self, userInfo: ["photo": photo])
         
             realmNotificationTokenAdd = realm.addNotificationBlock{ notification, realm in
                 if notification == .DidChange {
@@ -263,14 +264,13 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
                         //通知を送る
                         NSNotificationCenter.defaultCenter().postNotification(n)
                     }
-                    realm.removeNotification(self.realmNotificationTokenAdd!)
                 }
         
             }
-            Storage().add(photo!)
+            realmNotificationTokenAdd?.stop()
+            Storage().add(photo)
 
             // targetのタイムスタンプ更新
-            let target = photo!.target[0]
             let targetUpdateValues = ["id": target.id, "updated": now]
             Storage().update(TargetData(), updateValues: targetUpdateValues)
             
