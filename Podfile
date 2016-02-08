@@ -8,12 +8,12 @@ source 'https://github.com/CocoaPods/Specs.git'
 pod 'EasyTipView', '~> 0.1.0'
 pod 'RMUniversalAlert'
 pod 'R.swift'
+pod 'Flurry-iOS-SDK/FlurrySDK'
+pod 'Google-Mobile-Ads-SDK', '~> 7.0'
+pod 'Fabric'
+pod 'Crashlytics'
 
 target 'ObservationDiary' do
-    pod 'Flurry-iOS-SDK/FlurrySDK'
-    pod 'Google-Mobile-Ads-SDK', '~> 7.0'
-    pod 'Fabric'
-    pod 'Crashlytics'
 end
 
 target 'ObservationDiaryTests' do
