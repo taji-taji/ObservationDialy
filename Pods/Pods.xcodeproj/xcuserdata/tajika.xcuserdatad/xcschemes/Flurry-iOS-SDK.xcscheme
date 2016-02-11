@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'ED1CCECD2AEEB976E4F33422'
+               BlueprintIdentifier = 'BC72459083F0FF3E59C5E9DA'
                BlueprintName = 'Flurry-iOS-SDK'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Flurry_iOS_SDK.framework'>
