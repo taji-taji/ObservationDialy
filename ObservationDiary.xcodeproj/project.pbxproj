@@ -549,6 +549,11 @@
 					935996091BD5AB8C0047EE9F = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = R5U4C8KFRC;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 					9359961D1BD5AB8D0047EE9F = {
 						CreatedOnToolsVersion = 7.0.1;

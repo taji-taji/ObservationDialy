@@ -103,21 +103,19 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
     // 写真を追加
     func insertPhoto(notification: NSNotification) {
         NSNotificationCenter.defaultCenter().removeObserver(self)
-        if let userInfo = notification.userInfo {
-            let photo = userInfo["photo"] as! PhotoData
+        if let userInfo = notification.userInfo, photo = userInfo["photo"] as? PhotoData {
+            
+            defer {
+                // 全てのモーダルを閉じる
+                self.presentedViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+            }
+            
             let newIndexPath = NSIndexPath(forRow: 0, inSection: 0)
             do {
                 try realm.write {
-                    defer {
-                        // 全てのモーダルを閉じる
-                        self.presentedViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-                    }
-                    self.target?.photos.append(photo)
-                    self.tableView.reloadData()
                     
                     // テーブル挿入完了後の処理を書くため
                     CATransaction.begin()
-                    self.tableView.beginUpdates()
                     
                     // テーブル挿入完了後の処理
                     CATransaction.setCompletionBlock({ () -> Void in
@@ -127,13 +125,17 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
                         }
                     })
                     
-                    self.tableView.endUpdates()
+                    self.target?.photos.append(photo)
+                    
+                    self.tableView.reloadData()
+                    
                     CATransaction.commit()
                     self.checkAndSwitchNoPhotoView()
                 }
             } catch {
                 print("error")
             }
+
         }
     }
     
@@ -269,8 +271,10 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
     // 画像の削除操作
     func deletePhoto(id: Int, indexPath: NSIndexPath) {
         editPhotoTour.close()
-        let photo = Storage().find(PhotoData(), id: id)
-        let fileName = photo!.photo
+        guard let photo = Storage().find(PhotoData(), id: id) else {
+            return
+        }
+        let fileName = photo.photo
         let deleteIndex = (self.target?.photos.count)! - (indexPath.section + 1)
         do {
             try realm.write {
@@ -285,6 +289,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
         } catch {
             print("error")
         }
+        Storage().delete(photo)
         
         // targetのタイムスタンプ更新
         let targetUpdateValues = ["id": (self.target?.id)!, "updated": now]

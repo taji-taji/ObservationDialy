@@ -2,7 +2,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'RealmSwift'
+pod 'RealmSwift', '0.98.0'
 pod 'EasyTipView', '~> 0.1.0'
 pod 'RMUniversalAlert'
 pod 'R.swift'

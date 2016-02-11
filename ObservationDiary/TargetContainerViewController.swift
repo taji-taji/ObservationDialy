@@ -57,7 +57,7 @@ class TargetContainerViewController: UIViewController {
     
     func deleteTarget(notification: NSNotification) {
         if let userInfo = notification.userInfo, indexPath = userInfo["indexPath"] as? NSIndexPath {
-            NSNotificationCenter.defaultCenter().removeObserver(self)
+//            NSNotificationCenter.defaultCenter().removeObserver(self)
             
             // 削除ターゲットデータを取得
             let deleteData: TargetData = self.targets[indexPath.row]

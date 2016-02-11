@@ -264,10 +264,10 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
                         //通知を送る
                         NSNotificationCenter.defaultCenter().postNotification(n)
                     }
+                    realm.removeNotification(self.realmNotificationTokenAdd!)
                 }
         
             }
-            realmNotificationTokenAdd?.stop()
             Storage().add(photo)
 
             // targetのタイムスタンプ更新
