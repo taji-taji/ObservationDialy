@@ -13,8 +13,8 @@ class PhotoTableViewCell: UITableViewCell {
     // MARK: Properties
     @IBOutlet weak var commentText: UILabel!
     @IBOutlet weak var photoImage: UIImageView!
-    @IBOutlet weak var editButton: UIButton!
-    @IBOutlet weak var downloadButton: UIButton!
+    @IBOutlet weak var editButton: UtilButton!
+    @IBOutlet weak var downloadButton: UtilButton!
     @IBOutlet weak var timeLabel: UILabel!
     
     var id: Int?

@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import Material
 
 class PhotoViewController: UIViewController, UITextViewDelegate {
     
@@ -15,16 +16,19 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var photoScrollView: UIScrollView!
     @IBOutlet weak var photoImageView: UIImageView?
+    @IBOutlet weak var commentTextWrapView: UIView!
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var commentCountLabel: UILabel!
-    var photo: PhotoData?
+    @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var textViewHeightConstraint: NSLayoutConstraint!
     // 新規作成時に選択された画像
     var selectedImage: UIImage?
     // 編集の際に受け取るコメント
     var editCommentText: String?
     // 編集の際に受け取るID
     var selectedId: Int?
+    var targetId: Int?
     var isObserving = false
     var screenOffsetY: CGFloat = 0
     var remainCount: Int = Constants.Photo.commentMaxCharacters
@@ -37,27 +41,22 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if selectedImage != nil {
+        if let selectedImage = selectedImage {
             photoImageView?.image = selectedImage
         }
         
-        if editCommentText != nil {
+        if let editCommentText = editCommentText where !editCommentText.isEmpty {
             commentTextView.text = editCommentText
         }
 
         // コメント入力欄の設定
-        commentTextView.border(borderWidth: 0.5, borderColor: UIColor.lightGrayColor(), borderRadius: 3.0)
         commentTextView.delegate = self
+        commentTextView.clipsToBounds = true
+        adjustTextViewHeight()
         
         remainCount = remainCount - commentTextView.text.characters.count
         commentCountLabel.text = "あと\(remainCount)文字入力できます"
     
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        // Viewの表示時にキーボード表示・非表示を監視するObserverを登録する
-        super.viewWillAppear(animated)
-        
         if(!isObserving) {
             let notification = NSNotificationCenter.defaultCenter()
             notification.addObserver(self, selector: "handleKeyboardWillShowNotification:"
@@ -67,8 +66,13 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
             isObserving = true
         }
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        commentTextView.becomeFirstResponder()
+    }
+    
     override func viewWillDisappear(animated: Bool) {
-        print("viewWillDisappear")
         // Viewの表示時にキーボード表示・非表示時を監視していたObserverを解放する
         super.viewWillDisappear(animated)
         if(isObserving) {
@@ -109,25 +113,38 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
             commentCountLabel.textColor = UIColor.redColor()
             commentCountLabel.text = "最大文字数を超えています"
         }
+        adjustTextViewHeight()
         return true
     }
     
     //テキストビューが変更された
     func textViewDidChange(textView: UITextView) {
-        print("textViewDidChange")
+        adjustTextViewHeight()
     }
     
     // テキストビューにフォーカスが移った
     func textViewShouldBeginEditing(textView: UITextView) -> Bool {
-        print("textViewShouldBeginEditing : \(textView.text)");
+        adjustTextViewHeight()
         return true
     }
     
     // テキストビューからフォーカスが失われた
     func textViewShouldEndEditing(textView: UITextView) -> Bool {
-        print("textViewShouldEndEditing : \(textView.text)");
         return true
     }
+    
+    private func adjustTextViewHeight() {
+        let currentSize = commentTextView.frame.size
+        let fixedWidth = currentSize.width
+        commentTextView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
+        let newSize = commentTextView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
+        let diff = newSize.height - currentSize.height
+        if newSize.height < 140 {
+            textViewHeightConstraint.constant = newSize.height
+            photoScrollView.contentOffset.y = photoScrollView.contentOffset.y + diff
+        }
+    }
+    
 
     func onClickCompleteButton(sender: UIButton) {
         self.view.endEditing(true)
@@ -144,10 +161,11 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
         let userInfo = notification.userInfo!
         // キーボードの大きさを取得
         let keyboardRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        self.scrollViewBottomConstraint.constant = keyboardRect.height
+        
         // 画面のサイズを取得
         let myBoundSize: CGSize = UIScreen.mainScreen().bounds.size
         // ViewControllerを基準にtextViewを囲っているviewの下辺までの距離を取得
-        let commentTextWrapView = commentTextView.superview!.superview!
         let txtLimit = commentTextWrapView.frame.origin.y + commentTextWrapView.frame.height + 8.0 + 15.0
         // ViewControllerの高さからキーボードの高さを引いた差分を取得
         let kbdLimit = myBoundSize.height - keyboardRect.size.height
@@ -158,12 +176,15 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
 
         //スクロールビューの移動距離設定
         if txtLimit >= kbdLimit {
-            photoScrollView.contentOffset.y = txtLimit - kbdLimit
+            UIView.animateWithDuration(userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSTimeInterval, animations: { () -> Void in
+                self.photoScrollView.contentOffset.y = txtLimit - kbdLimit
+            })
         }
     }
     
     //ずらした分を戻す処理
     func handleKeyboardWillHideNotification(notification: NSNotification) {
+        self.scrollViewBottomConstraint.constant = 0
         photoScrollView.contentOffset.y = screenOffsetY
         // キーボードのアクティブフラグを下ろす
         isKeyboardActive = false
@@ -190,8 +211,12 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
             return
         }
         
+        guard let targetId = targetId, target = Storage().find(TargetData(), id: targetId) else {
+            return
+        }
+        
         // self.selectedIdがあれば編集
-        if self.selectedId != nil {
+        if let selectedId = self.selectedId {
             
             //NSNotificationのインスタンスを作成
             let n: NSNotification = NSNotification(name: "photoEdited", object: self)
@@ -202,39 +227,36 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
                         //通知を送る
                         NSNotificationCenter.defaultCenter().postNotification(n)
                     }
-                    realm.removeNotification(self.realmNotificationTokenEdit!)
                 }
                 
             }
+            realmNotificationTokenEdit?.stop()
 
-            let updateValue = ["id": self.selectedId!, "comment": self.commentTextView.text]
+            let updateValue = ["id": selectedId, "comment": self.commentTextView.text]
             Storage().update(PhotoData(), updateValues: updateValue)
             
             // targetのタイムスタンプ更新
-            photo = Storage().find(PhotoData(), id: self.selectedId!)
-            let target = photo!.target[0]
-            let targetUpdateValues = ["id": target.id, "updated": now]
-            Storage().update(TargetData(), updateValues: targetUpdateValues)
+            if let photo = Storage().find(PhotoData(), id: selectedId) {
+                let targetUpdateValues = ["id": target.id, "updated": now]
+                Storage().update(TargetData(), updateValues: targetUpdateValues)
+            }
             
         // self.selectedIdがなければ新規
         } else {
-        
-            // ファイルを保存
-            let fileName = PhotoUtility().insert((photoImageView?.image)!)
             
-            photo = PhotoData()
+            let photo = PhotoData()
     
-            if fileName != nil {
-                photo!.comment = commentTextView.text
-                photo!.photo = fileName!
-                photo!.created = now
-                photo!.updated = now
+            if let fileName = PhotoUtility().insert((photoImageView?.image)!) {
+                photo.comment = commentTextView.text
+                photo.photo = fileName
+                photo.created = now
+                photo.updated = now
             } else {
                 return
             }
 
             //NSNotificationのインスタンスを作成
-            let n: NSNotification = NSNotification(name: "photoAdded", object: self, userInfo: ["photo": photo!])
+            let n: NSNotification = NSNotification(name: "photoAdded", object: self, userInfo: ["photo": photo])
         
             realmNotificationTokenAdd = realm.addNotificationBlock{ notification, realm in
                 if notification == .DidChange {
@@ -246,10 +268,9 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
                 }
         
             }
-            Storage().add(photo!)
+            Storage().add(photo)
 
             // targetのタイムスタンプ更新
-            let target = photo!.target[0]
             let targetUpdateValues = ["id": target.id, "updated": now]
             Storage().update(TargetData(), updateValues: targetUpdateValues)
             

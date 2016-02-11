@@ -8,17 +8,19 @@
 
 import UIKit
 import GoogleMobileAds
+import Material
 
 class TargetViewController: UIViewController {
     
     // MARK: - Properties
-    @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var targetSaveButton: UIButton!
+    @IBOutlet weak var titleTextField: BasicTextField!
+    @IBOutlet weak var targetSaveButton: FilledButton!
     @IBOutlet weak var pageTitleLabel: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var completeButton: UIButton!
-    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var imageView: ImageThumbnailView!
+    @IBOutlet weak var completeButton: FilledButton!
+    @IBOutlet weak var deleteButton: DestroyButton!
     @IBOutlet weak var adView: AdView!
+    @IBOutlet weak var cardView: TargetEditView!
 
     var target: TargetData?
     var pageTitle: String?
@@ -33,33 +35,38 @@ class TargetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if titleText != nil {
+        if let titleText = titleText {
             titleTextField.text = titleText
         }
-        if pageTitle != nil {
+        if let pageTitle = pageTitle {
             pageTitleLabel.text = pageTitle
         }
-        if targetImage != nil {
+        if let targetImage = targetImage {
             imageView.image = targetImage
         }
-        if completeButtonText != nil {
+        if let completeButtonText = completeButtonText {
             completeButton.setTitle(completeButtonText, forState: .Normal)
         }
         if !isUpdate {
             deleteButton.hidden = true
         }
         
-        pageTitleLabel.textColor = Constants.Theme.textColor()
-        titleTextField.textColor = Constants.Theme.textColor()
+        titleTextField.becomeFirstResponder()
+        titleTextField.titleLabelColor = MaterialColor.grey.lighten1
+        titleTextField.titleLabelActiveColor = MaterialColor.grey.lighten1
+        titleTextField.titleLabel?.text = "タイトル"
+        titleTextField.placeholder = "例）ガジュマルの木"
+        pageTitleLabel.textColor = Constants.Theme.textColor
+        titleTextField.textColor = Constants.Theme.textColor
         titleTextField.delegate = self
         
-        checkValidTargetTitle()
+        checkValidTargetTitle()      
         
         self.loadAd(adView)
     }
     
     // MARK: Actions
-    @IBAction func cancelAdd(sender: UIButton) {
+    @IBAction func cancel(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
@@ -76,7 +83,6 @@ class TargetViewController: UIViewController {
         })
         let cancelAction = UIAlertAction(title: "キャンセル", style: .Cancel, handler: {
             (action: UIAlertAction!) in
-            print("cancelAction")
         })
         
         alertController.addAction(cancelAction)
@@ -102,8 +108,9 @@ class TargetViewController: UIViewController {
         } else {
             target?.created = now
             Storage().add(target!)
+            isUpdate = false
         }
-
+        NSNotificationCenter.defaultCenter().postNotificationName("reloadTargetList", object: nil, userInfo: ["isUpdate": isUpdate, "target": target!])
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

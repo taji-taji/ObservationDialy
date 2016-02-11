@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics.self])
 
         // ナビゲーションバーの設定
-        UINavigationBar.appearance().barTintColor = Constants.Theme.concept()
+        UINavigationBar.appearance().barTintColor = Constants.Theme.concept
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         

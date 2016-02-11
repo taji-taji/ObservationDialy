@@ -7,13 +7,20 @@
 //
 
 import UIKit
+import Material
 
 class TargetTableViewCell: UITableViewCell {
     
     // MARK: Properties
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var photoImageView: ImageThumbnailView!
     @IBOutlet weak var updatedLabel: UILabel!
-    @IBOutlet weak var editTargetButton: UIButton!
-
+    @IBOutlet weak var editTargetButton: BasicButton!
+    @IBOutlet weak var baseView: MaterialPulseView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.baseView.pulseColor = Constants.Theme.highLighted
+        self.baseView.pulseScale = false
+    }
 }

@@ -31,11 +31,12 @@ class CameraViewController: UIViewController {
     var screenTopMarginRate: CGFloat = 0.16
     var currentScale: CGFloat = 1.0
     var startScale: CGFloat = 1.0
+    var targetId: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.barTintColor = Constants.Theme.gray()
+        self.navigationController?.navigationBar.barTintColor = Constants.Theme.gray
         self.imageView.clipsToBounds = true
         
         // 前回撮影の画像をビューに重ねる
@@ -237,6 +238,7 @@ class CameraViewController: UIViewController {
         if sender is UIImage {
             if let takenPhoto = sender as? UIImage {
                 photoViewController.selectedImage = takenPhoto
+                photoViewController.targetId = targetId
             }
 
         }

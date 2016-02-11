@@ -1,19 +1,18 @@
-# Uncomment this line to define a global platform for your project
+source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
-# Uncomment this line if you're using Swift
 use_frameworks!
 
-pod 'RealmSwift'
-source 'https://github.com/CocoaPods/Specs.git'
+pod 'RealmSwift', '0.98.0'
 pod 'EasyTipView', '~> 0.1.0'
 pod 'RMUniversalAlert'
 pod 'R.swift'
-pod 'Flurry-iOS-SDK/FlurrySDK'
+pod 'Material', '~> 1.0'
 pod 'Google-Mobile-Ads-SDK', '~> 7.0'
-pod 'Fabric'
-pod 'Crashlytics'
+pod 'Flurry-iOS-SDK/FlurrySDK'
 
 target 'ObservationDiary' do
+    pod 'Fabric'
+    pod 'Crashlytics'
 end
 
 target 'ObservationDiaryTests' do

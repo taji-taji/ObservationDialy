@@ -55,6 +55,10 @@
 		933CD8C71C23749300CBD3D3 /* PhotoUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8C61C23749300CBD3D3 /* PhotoUtilityTests.swift */; };
 		933CD8C91C23763900CBD3D3 /* MediaUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8C81C23763900CBD3D3 /* MediaUtility.swift */; };
 		93429CB71C0531A90082D85F /* Tour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93429CB61C0531A90082D85F /* Tour.swift */; };
+		934C62C31C67095500EF4C0D /* NavBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C62C21C67095500EF4C0D /* NavBarButton.swift */; };
+		934C62C41C670A0B00EF4C0D /* NavBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C62C21C67095500EF4C0D /* NavBarButton.swift */; };
+		934C62C61C6728F100EF4C0D /* UtilButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C62C51C6728F100EF4C0D /* UtilButton.swift */; };
+		934C62C71C6728F100EF4C0D /* UtilButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C62C51C6728F100EF4C0D /* UtilButton.swift */; };
 		935383B81C55910100E3FCBD /* StorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933571831C1BD2AB00F9D948 /* StorageTests.swift */; };
 		935383BA1C55916300E3FCBD /* MediaUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8CB1C23799A00CBD3D3 /* MediaUtilityTests.swift */; };
 		9353CC741BDA127A00EAFCD6 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 9353CC731BDA127A00EAFCD6 /* Podfile */; };
@@ -70,13 +74,32 @@
 		936505A71BDF1FEF00A824E0 /* PhotoUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936505A61BDF1FEF00A824E0 /* PhotoUtility.swift */; };
 		936505AB1BE4843300A824E0 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936505AA1BE4843200A824E0 /* CameraViewController.swift */; };
 		9368DD4C1BEB9E5700F6E034 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9368DD4B1BEB9E5700F6E034 /* Constants.swift */; };
-		937F41991BFD440C00DF2D80 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 937F41981BFD440C00DF2D80 /* iAd.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		9370668C1C66275A00087C9D /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC7BDB1C64D7D800C2826E /* BasicButton.swift */; };
+		9370668D1C66276000087C9D /* BaseNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC7BD81C64C9C900C2826E /* BaseNavigationBarView.swift */; };
+		9370668E1C66276200087C9D /* FilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937297251C65E2710007F909 /* FilledButton.swift */; };
+		9370668F1C66276400087C9D /* DestroyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937297271C65E5210007F909 /* DestroyButton.swift */; };
+		937066901C66276700087C9D /* ImageThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC7BDF1C65D42400C2826E /* ImageThumbnailView.swift */; };
+		937066911C66276900087C9D /* TargetEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC7BE11C65D62800C2826E /* TargetEditView.swift */; };
+		937066921C66276B00087C9D /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC7BE31C65D94300C2826E /* BasicTextField.swift */; };
+		937066931C6627F400087C9D /* TargetContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930764451C18E81100135834 /* TargetContainerViewController.swift */; };
+		937066941C6627F600087C9D /* TargetContainerViewController+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930764471C18EE4800135834 /* TargetContainerViewController+TableViewDataSource.swift */; };
+		937066951C66282F00087C9D /* AdViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E476801C64A62100EF49EF /* AdViewProtocol.swift */; };
+		937066961C66287B00087C9D /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E4767E1C64A5F500EF49EF /* UIViewControllerExtension.swift */; };
+		937066971C6628A500087C9D /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E4767A1C64A59D00EF49EF /* UIImageExtension.swift */; };
+		937066981C6628C500087C9D /* KeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E476781C64A20400EF49EF /* KeyManager.swift */; };
+		937297261C65E2710007F909 /* FilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937297251C65E2710007F909 /* FilledButton.swift */; };
+		937297281C65E5210007F909 /* DestroyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937297271C65E5210007F909 /* DestroyButton.swift */; };
 		937F419B1BFFF0BD00DF2D80 /* PhotoContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937F419A1BFFF0BD00DF2D80 /* PhotoContainerViewController.swift */; };
 		939562EC1C1E3792000D90D0 /* DateUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939562EB1C1E3792000D90D0 /* DateUtilityTests.swift */; };
 		939562F11C20DB06000D90D0 /* AdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939562F01C20DB06000D90D0 /* AdView.xib */; };
 		939562F31C20DC04000D90D0 /* AdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939562F21C20DC04000D90D0 /* AdView.swift */; };
 		939EBF821BDB4A3F00436BC0 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EBF811BDB4A3F00436BC0 /* PhotoViewController.swift */; };
 		939EBF841BDB5D3400436BC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 939EBF831BDB5D3400436BC0 /* Main.storyboard */; };
+		93AC7BD91C64C9C900C2826E /* BaseNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC7BD81C64C9C900C2826E /* BaseNavigationBarView.swift */; };
+		93AC7BDC1C64D7D800C2826E /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC7BDB1C64D7D800C2826E /* BasicButton.swift */; };
+		93AC7BE01C65D42400C2826E /* ImageThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC7BDF1C65D42400C2826E /* ImageThumbnailView.swift */; };
+		93AC7BE21C65D62800C2826E /* TargetEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC7BE11C65D62800C2826E /* TargetEditView.swift */; };
+		93AC7BE41C65D94300C2826E /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC7BE31C65D94300C2826E /* BasicTextField.swift */; };
 		93C7FDA11BDA7B7A00AC1A3D /* StorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */; };
 		93C7FDA31BDA89F200AC1A3D /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FDA21BDA89F200AC1A3D /* Storage.swift */; };
 		93CD876A1BF69818003F836B /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD87691BF69818003F836B /* LoadingOverlay.swift */; };
@@ -152,6 +175,8 @@
 		933CD8C81C23763900CBD3D3 /* MediaUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaUtility.swift; sourceTree = "<group>"; };
 		933CD8CB1C23799A00CBD3D3 /* MediaUtilityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaUtilityTests.swift; sourceTree = "<group>"; };
 		93429CB61C0531A90082D85F /* Tour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tour.swift; sourceTree = "<group>"; };
+		934C62C21C67095500EF4C0D /* NavBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavBarButton.swift; sourceTree = "<group>"; };
+		934C62C51C6728F100EF4C0D /* UtilButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilButton.swift; sourceTree = "<group>"; };
 		9353CC731BDA127A00EAFCD6 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9359960A1BD5AB8C0047EE9F /* ObservationDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObservationDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9359960D1BD5AB8C0047EE9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +193,8 @@
 		936505A61BDF1FEF00A824E0 /* PhotoUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoUtility.swift; sourceTree = "<group>"; };
 		936505AA1BE4843200A824E0 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		9368DD4B1BEB9E5700F6E034 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		937297251C65E2710007F909 /* FilledButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilledButton.swift; sourceTree = "<group>"; };
+		937297271C65E5210007F909 /* DestroyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestroyButton.swift; sourceTree = "<group>"; };
 		937F41981BFD440C00DF2D80 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		937F419A1BFFF0BD00DF2D80 /* PhotoContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoContainerViewController.swift; sourceTree = "<group>"; };
 		939562EB1C1E3792000D90D0 /* DateUtilityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtilityTests.swift; sourceTree = "<group>"; };
@@ -175,6 +202,11 @@
 		939562F21C20DC04000D90D0 /* AdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdView.swift; sourceTree = "<group>"; };
 		939EBF811BDB4A3F00436BC0 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		939EBF831BDB5D3400436BC0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		93AC7BD81C64C9C900C2826E /* BaseNavigationBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationBarView.swift; sourceTree = "<group>"; };
+		93AC7BDB1C64D7D800C2826E /* BasicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
+		93AC7BDF1C65D42400C2826E /* ImageThumbnailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageThumbnailView.swift; sourceTree = "<group>"; };
+		93AC7BE11C65D62800C2826E /* TargetEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetEditView.swift; sourceTree = "<group>"; };
+		93AC7BE31C65D94300C2826E /* BasicTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
 		93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageProtocol.swift; sourceTree = "<group>"; };
 		93C7FDA21BDA89F200AC1A3D /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		93CD87691BF69818003F836B /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
@@ -203,7 +235,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				937F41991BFD440C00DF2D80 /* iAd.framework in Frameworks */,
 				629287A3549987FE9D188A9A /* Pods_ObservationDiary.framework in Frameworks */,
 				239A4C194F64C2FB911A3923 /* Pods.framework in Frameworks */,
 			);
@@ -342,6 +373,7 @@
 				939562EF1C20DAD8000D90D0 /* Ad */,
 				9307642A1C1794AE00135834 /* Extensions */,
 				930763E21C12FDB400135834 /* Model */,
+				93AC7BDA1C64D79200C2826E /* View */,
 				93E0F8781C00A1A800BA5EEA /* Utilities */,
 				935F627B1C50521C00271DD8 /* Library */,
 				935996141BD5AB8C0047EE9F /* Assets.xcassets */,
@@ -382,6 +414,22 @@
 				93E476801C64A62100EF49EF /* AdViewProtocol.swift */,
 			);
 			name = Ad;
+			sourceTree = "<group>";
+		};
+		93AC7BDA1C64D79200C2826E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				93AC7BD81C64C9C900C2826E /* BaseNavigationBarView.swift */,
+				93AC7BDB1C64D7D800C2826E /* BasicButton.swift */,
+				937297251C65E2710007F909 /* FilledButton.swift */,
+				934C62C51C6728F100EF4C0D /* UtilButton.swift */,
+				934C62C21C67095500EF4C0D /* NavBarButton.swift */,
+				937297271C65E5210007F909 /* DestroyButton.swift */,
+				93AC7BDF1C65D42400C2826E /* ImageThumbnailView.swift */,
+				93AC7BE11C65D62800C2826E /* TargetEditView.swift */,
+				93AC7BE31C65D94300C2826E /* BasicTextField.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		93DDA1401C2B5BDE00B27FCF /* ObservationDiaryUITests */ = {
@@ -501,6 +549,11 @@
 					935996091BD5AB8C0047EE9F = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = R5U4C8KFRC;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 					9359961D1BD5AB8D0047EE9F = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -695,7 +748,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ObservationDiary/Pods-ObservationDiary-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D1BE4C22116329D5C7F877E0 /* Check Pods Manifest.lock */ = {
@@ -722,23 +775,31 @@
 			files = (
 				93429CB71C0531A90082D85F /* Tour.swift in Sources */,
 				93C7FDA31BDA89F200AC1A3D /* Storage.swift in Sources */,
+				93AC7BD91C64C9C900C2826E /* BaseNavigationBarView.swift in Sources */,
 				93DBDBAD1BF9E19300E96148 /* VideoPlayerViewController.swift in Sources */,
 				931165BF1BD6459400F1D32D /* PhotoTableViewCell.swift in Sources */,
 				9307642E1C17952E00135834 /* TJViewExtensions.swift in Sources */,
+				93AC7BDC1C64D7D800C2826E /* BasicButton.swift in Sources */,
 				935F62751C4EF5A600271DD8 /* AlphaControlSlider.swift in Sources */,
+				937297281C65E5210007F909 /* DestroyButton.swift in Sources */,
 				930763E91C12FEA900135834 /* VideoUtility.swift in Sources */,
+				934C62C31C67095500EF4C0D /* NavBarButton.swift in Sources */,
 				933CD8C91C23763900CBD3D3 /* MediaUtility.swift in Sources */,
+				93AC7BE41C65D94300C2826E /* BasicTextField.swift in Sources */,
 				930764481C18EE4800135834 /* TargetContainerViewController+TableViewDataSource.swift in Sources */,
 				930763DF1C12FB6400135834 /* PhotoContainerViewController+TableViewDataSource.swift in Sources */,
 				936505A71BDF1FEF00A824E0 /* PhotoUtility.swift in Sources */,
 				930763E41C12FDC500135834 /* Target.swift in Sources */,
+				937297261C65E2710007F909 /* FilledButton.swift in Sources */,
 				937F419B1BFFF0BD00DF2D80 /* PhotoContainerViewController.swift in Sources */,
 				930763DD1C12FAA900135834 /* PhotoContainerViewController+TableViewDelegate.swift in Sources */,
+				93AC7BE21C65D62800C2826E /* TargetEditView.swift in Sources */,
 				930763E61C12FE0200135834 /* Photo.swift in Sources */,
 				936505AB1BE4843300A824E0 /* CameraViewController.swift in Sources */,
 				9368DD4C1BEB9E5700F6E034 /* Constants.swift in Sources */,
 				930764461C18E81100135834 /* TargetContainerViewController.swift in Sources */,
 				935996321BD5EDC20047EE9F /* TargetTableViewCell.swift in Sources */,
+				93AC7BE01C65D42400C2826E /* ImageThumbnailView.swift in Sources */,
 				93E4767D1C64A5CE00EF49EF /* NSDateExtension.swift in Sources */,
 				93C7FDA11BDA7B7A00AC1A3D /* StorageProtocol.swift in Sources */,
 				93DBDBA71BF83A3F00E96148 /* DateUtility.swift in Sources */,
@@ -757,6 +818,7 @@
 				93E4767F1C64A5F500EF49EF /* UIViewControllerExtension.swift in Sources */,
 				93E0F8771C009B8A00BA5EEA /* TableUtility.swift in Sources */,
 				9307642C1C1794E200135834 /* TJColorExtensions.swift in Sources */,
+				934C62C61C6728F100EF4C0D /* UtilButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -768,37 +830,52 @@
 				9306DC581C55951800F98F71 /* VideoUtility.swift in Sources */,
 				9306DC551C55951000F98F71 /* TableUtility.swift in Sources */,
 				9306DC3F1C5594D800F98F71 /* TargetViewController+UITextFieldDelegate.swift in Sources */,
+				937066941C6627F600087C9D /* TargetContainerViewController+TableViewDataSource.swift in Sources */,
 				9306DC3D1C5594CC00F98F71 /* TargetTableViewCell.swift in Sources */,
+				9370668E1C66276200087C9D /* FilledButton.swift in Sources */,
+				9370668D1C66276000087C9D /* BaseNavigationBarView.swift in Sources */,
 				9306DC8A1C564F2E00F98F71 /* LoadingProxy.swift in Sources */,
 				93FC47D01C56DD29006C580A /* AlphaControlSlider.swift in Sources */,
 				933CD8C71C23749300CBD3D3 /* PhotoUtilityTests.swift in Sources */,
+				937066971C6628A500087C9D /* UIImageExtension.swift in Sources */,
+				937066921C66276B00087C9D /* BasicTextField.swift in Sources */,
 				93FC47CF1C56613E006C580A /* StorageProtocol.swift in Sources */,
 				9306DC4B1C5594F500F98F71 /* Constants.swift in Sources */,
+				934C62C71C6728F100EF4C0D /* UtilButton.swift in Sources */,
 				9306DC541C55950D00F98F71 /* DateUtility.swift in Sources */,
 				9306DC471C5594EC00F98F71 /* VideoPlayerViewController.swift in Sources */,
 				9306DC441C5594E600F98F71 /* PhotoTableViewCell.swift in Sources */,
 				9306DC3E1C5594D600F98F71 /* TargetViewController.swift in Sources */,
+				937066911C66276900087C9D /* TargetEditView.swift in Sources */,
 				9306DC451C5594E800F98F71 /* PhotoViewController.swift in Sources */,
 				9306DC4E1C5594FE00F98F71 /* TJColorExtensions.swift in Sources */,
 				9306DC461C5594EA00F98F71 /* CameraViewController.swift in Sources */,
+				934C62C41C670A0B00EF4C0D /* NavBarButton.swift in Sources */,
 				9306DC511C55950600F98F71 /* Photo.swift in Sources */,
 				9306DC561C55951300F98F71 /* MediaUtility.swift in Sources */,
+				937066901C66276700087C9D /* ImageThumbnailView.swift in Sources */,
 				9306DC521C55950800F98F71 /* Target.swift in Sources */,
 				935383BA1C55916300E3FCBD /* MediaUtilityTests.swift in Sources */,
 				9306DC8B1C564F3100F98F71 /* LoadingOverlay.swift in Sources */,
 				939562EC1C1E3792000D90D0 /* DateUtilityTests.swift in Sources */,
+				9370668F1C66276400087C9D /* DestroyButton.swift in Sources */,
+				937066961C66287B00087C9D /* UIViewControllerExtension.swift in Sources */,
 				9306DC501C55950300F98F71 /* ModelBase.swift in Sources */,
+				937066951C66282F00087C9D /* AdViewProtocol.swift in Sources */,
 				935383B81C55910100E3FCBD /* StorageTests.swift in Sources */,
 				93FC47D11C56DE52006C580A /* AdView.swift in Sources */,
 				9306DC5B1C55952100F98F71 /* R.generated.swift in Sources */,
 				933CD8C51C22CFFE00CBD3D3 /* VideoUtilityTests.swift in Sources */,
 				9306DC4F1C55950000F98F71 /* TJViewExtensions.swift in Sources */,
 				9306DC431C5594E300F98F71 /* PhotoContainerViewController+TableViewDataSource.swift in Sources */,
+				9370668C1C66275A00087C9D /* BasicButton.swift in Sources */,
 				9306DC411C5594DE00F98F71 /* PhotoContainerViewController.swift in Sources */,
 				93FC47CE1C56613C006C580A /* Storage.swift in Sources */,
+				937066931C6627F400087C9D /* TargetContainerViewController.swift in Sources */,
 				9357D8471C54DFC40051D028 /* TourTests.swift in Sources */,
 				9306DC4A1C5594F300F98F71 /* Tour.swift in Sources */,
 				9306DC571C55951600F98F71 /* PhotoUtility.swift in Sources */,
+				937066981C6628C500087C9D /* KeyManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

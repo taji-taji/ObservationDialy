@@ -17,8 +17,7 @@ extension TargetViewController: UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
-        // 入力中のsaveボタンを使用不可にする
-        targetSaveButton.enabled = false
+        checkValidTargetTitle()
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
