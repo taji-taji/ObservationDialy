@@ -1,5 +1,5 @@
 //
-//  TargetEditView.swift
+//  ModalView.swift
 //  ObservationDiary
 //
 //  Created by tajika on 2016/02/06.
@@ -10,7 +10,7 @@ import UIKit
 import Material
 
 @IBDesignable
-class TargetEditView: MaterialView {
+class ModalView: MaterialView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

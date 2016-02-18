@@ -170,7 +170,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
             message: nil,
             cancelButtonTitle: "キャンセル",
             destructiveButtonTitle: nil,
-            otherButtonTitles: ["ムービーを見る", "ムービーをカメラロールに保存する"],
+            otherButtonTitles: ["ムービーを見る", "ムービーをカメラロールに保存する", "ムービーをシェアする"],
             popoverPresentationControllerBlock: {(popover) in
                 popover.barButtonItem = sender
             },
@@ -200,6 +200,14 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
                     LoadingProxy.set(self.navigationController!)
                     LoadingProxy.on()
                     UISaveVideoAtPathToSavedPhotosAlbum(videoPath!, self, "video:didFinishSavingWithError:contextInfo:", nil)
+                } else if (buttonIndex == alert.firstOtherButtonIndex + 2) {
+                    guard let shareMovieViewController = R.storyboard.shareMovie.shareMovieVC() else {
+                        return
+                    }
+                    shareMovieViewController.modalTransitionStyle = .CrossDissolve
+                    shareMovieViewController.modalPresentationStyle = .OverCurrentContext
+                    shareMovieViewController.target = self.target
+                    self.presentViewController(shareMovieViewController, animated: true, completion: nil)
                 }
         })
     }

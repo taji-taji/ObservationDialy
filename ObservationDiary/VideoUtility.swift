@@ -33,6 +33,11 @@ class VideoUtility: MediaUtility {
         }
     }
     
+    func get(targetId: Int) -> String? {
+        let fileName = "\(targetId).mp4"
+        return get(fileName)
+    }
+    
     func getFilePath(fileName: String) -> String {
         return VideoDirectoryPath + "/" + fileName
     }
@@ -44,7 +49,7 @@ class VideoUtility: MediaUtility {
                 let image = PhotoUtility().get(photo.photo)
                 photos.append(image!)
             }
-            makeVideoFromPhotos(photos, fileName: "\(target.id).\(Constants.Video.VideoExtension)")
+            makeVideoFromPhotos(photos, fileName: "\(target.id)\(Constants.Video.VideoExtension)")
         }
     }
     

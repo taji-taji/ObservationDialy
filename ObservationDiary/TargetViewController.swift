@@ -20,7 +20,7 @@ class TargetViewController: UIViewController {
     @IBOutlet weak var completeButton: FilledButton!
     @IBOutlet weak var deleteButton: DestroyButton!
     @IBOutlet weak var adView: AdView!
-    @IBOutlet weak var cardView: TargetEditView!
+    @IBOutlet weak var cardView: ModalView!
 
     var target: TargetData?
     var pageTitle: String?
