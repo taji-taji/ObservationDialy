@@ -102,23 +102,21 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         
         // 入力済みの文字と入力された文字を合わせて取得.
-        let str = commentTextView.text + text
-        
-        // 文字数が最大値以下
-        if str.characters.count <= Constants.Photo.commentMaxCharacters {
-            commentCountLabel.textColor = UIColor.darkGrayColor()
-            remainCount = Constants.Photo.commentMaxCharacters - str.characters.count
-            commentCountLabel.text = "あと\(remainCount)文字入力できます"
+        var str = ""
+        if range.length == 1 && text.isEmpty {
+            let endIndex = commentTextView.text.startIndex.advancedBy(range.location)
+            str = commentTextView.text.substringToIndex(endIndex)
         } else {
-            commentCountLabel.textColor = UIColor.redColor()
-            commentCountLabel.text = "最大文字数を超えています"
+            str = commentTextView.text + text
         }
+        countCommentText(str)
         adjustTextViewHeight()
         return true
     }
     
     //テキストビューが変更された
     func textViewDidChange(textView: UITextView) {
+        countCommentText(textView.text)
         adjustTextViewHeight()
     }
     
@@ -131,6 +129,17 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
     // テキストビューからフォーカスが失われた
     func textViewShouldEndEditing(textView: UITextView) -> Bool {
         return true
+    }
+    
+    private func countCommentText(text: String) {
+        if text.characters.count <= Constants.Photo.commentMaxCharacters {
+            commentCountLabel.textColor = UIColor.darkGrayColor()
+            remainCount = Constants.Photo.commentMaxCharacters - text.characters.count
+            commentCountLabel.text = "あと\(remainCount)文字入力できます"
+        } else {
+            commentCountLabel.textColor = UIColor.redColor()
+            commentCountLabel.text = "最大文字数を超えています"
+        }
     }
     
     private func adjustTextViewHeight() {
@@ -227,10 +236,10 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
                         //通知を送る
                         NSNotificationCenter.defaultCenter().postNotification(n)
                     }
+                    realm.removeNotification(self.realmNotificationTokenEdit!)
                 }
                 
             }
-            realmNotificationTokenEdit?.stop()
 
             let updateValue = ["id": selectedId, "comment": self.commentTextView.text]
             Storage().update(PhotoData(), updateValues: updateValue)
