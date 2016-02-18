@@ -227,10 +227,10 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
                         //通知を送る
                         NSNotificationCenter.defaultCenter().postNotification(n)
                     }
+                    realm.removeNotification(self.realmNotificationTokenEdit!)
                 }
                 
             }
-            realmNotificationTokenEdit?.stop()
 
             let updateValue = ["id": selectedId, "comment": self.commentTextView.text]
             Storage().update(PhotoData(), updateValues: updateValue)
