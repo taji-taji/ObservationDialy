@@ -34,7 +34,7 @@ class VideoUtility: MediaUtility {
     }
     
     func get(targetId: Int) -> String? {
-        let fileName = "\(targetId).mp4"
+        let fileName = "\(targetId)\(Constants.Video.VideoExtension)"
         return get(fileName)
     }
     
@@ -192,6 +192,16 @@ class VideoUtility: MediaUtility {
         } catch {
             print("failed: delete file")
         }
+    }
+    
+    func duration(fileName: String) -> Float? {
+        guard let filePath = get(fileName) else {
+            return nil
+        }
+        let fileURL = NSURL(fileURLWithPath: filePath)
+        let asset: AVURLAsset = AVURLAsset(URL: fileURL)
+        let cmTime = asset.duration
+        return Float(CMTimeGetSeconds(cmTime))
     }
     
 }

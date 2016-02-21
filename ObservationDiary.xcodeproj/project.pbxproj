@@ -113,6 +113,10 @@
 		93C7FDA11BDA7B7A00AC1A3D /* StorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */; };
 		93C7FDA31BDA89F200AC1A3D /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FDA21BDA89F200AC1A3D /* Storage.swift */; };
 		93CD876A1BF69818003F836B /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD87691BF69818003F836B /* LoadingOverlay.swift */; };
+		93D9074B1C7971EE00524637 /* ShareMovieViewController+TextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D9074A1C7971EE00524637 /* ShareMovieViewController+TextViewDelegate.swift */; };
+		93D9074D1C79727F00524637 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D9074C1C79727F00524637 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift */; };
+		93D9074E1C7972CB00524637 /* ShareMovieViewController+TextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D9074A1C7971EE00524637 /* ShareMovieViewController+TextViewDelegate.swift */; };
+		93D9074F1C7972CD00524637 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D9074C1C79727F00524637 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift */; };
 		93DBDBA71BF83A3F00E96148 /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBA61BF83A3F00E96148 /* DateUtility.swift */; };
 		93DBDBAD1BF9E19300E96148 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBAC1BF9E19300E96148 /* VideoPlayerViewController.swift */; };
 		93DBDBAF1BFB66AC00E96148 /* LoadingProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBAE1BFB66AC00E96148 /* LoadingProxy.swift */; };
@@ -226,6 +230,8 @@
 		93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageProtocol.swift; sourceTree = "<group>"; };
 		93C7FDA21BDA89F200AC1A3D /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		93CD87691BF69818003F836B /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
+		93D9074A1C7971EE00524637 /* ShareMovieViewController+TextViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ShareMovieViewController+TextViewDelegate.swift"; sourceTree = "<group>"; };
+		93D9074C1C79727F00524637 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ShareMovieViewController+PickerViewDelegate+DataSource.swift"; sourceTree = "<group>"; };
 		93DBC6ED1C1DB01A0078AD62 /* TourTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourTests.swift; sourceTree = "<group>"; };
 		93DBDBA61BF83A3F00E96148 /* DateUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtility.swift; sourceTree = "<group>"; };
 		93DBDBAC1BF9E19300E96148 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
@@ -467,6 +473,8 @@
 			isa = PBXGroup;
 			children = (
 				93AD58331C6F2B08009F3EAE /* ShareMovieViewController.swift */,
+				93D9074A1C7971EE00524637 /* ShareMovieViewController+TextViewDelegate.swift */,
+				93D9074C1C79727F00524637 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift */,
 				93AD58311C6F2AED009F3EAE /* ShareMovie.storyboard */,
 			);
 			name = ShareMovieView;
@@ -819,6 +827,7 @@
 				93C7FDA31BDA89F200AC1A3D /* Storage.swift in Sources */,
 				93AC7BD91C64C9C900C2826E /* BaseNavigationBarView.swift in Sources */,
 				93DBDBAD1BF9E19300E96148 /* VideoPlayerViewController.swift in Sources */,
+				93D9074B1C7971EE00524637 /* ShareMovieViewController+TextViewDelegate.swift in Sources */,
 				931165BF1BD6459400F1D32D /* PhotoTableViewCell.swift in Sources */,
 				9307642E1C17952E00135834 /* TJViewExtensions.swift in Sources */,
 				93AC7BDC1C64D7D800C2826E /* BasicButton.swift in Sources */,
@@ -851,6 +860,7 @@
 				935F627D1C50528E00271DD8 /* R.generated.swift in Sources */,
 				93E4767B1C64A59D00EF49EF /* UIImageExtension.swift in Sources */,
 				93E476791C64A20400EF49EF /* KeyManager.swift in Sources */,
+				93D9074D1C79727F00524637 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift in Sources */,
 				935996101BD5AB8C0047EE9F /* TargetViewController.swift in Sources */,
 				93E476811C64A62100EF49EF /* AdViewProtocol.swift in Sources */,
 				93CD876A1BF69818003F836B /* LoadingOverlay.swift in Sources */,
@@ -914,6 +924,7 @@
 				9306DC5B1C55952100F98F71 /* R.generated.swift in Sources */,
 				933CD8C51C22CFFE00CBD3D3 /* VideoUtilityTests.swift in Sources */,
 				9306DC4F1C55950000F98F71 /* TJViewExtensions.swift in Sources */,
+				93D9074F1C7972CD00524637 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift in Sources */,
 				9306DC431C5594E300F98F71 /* PhotoContainerViewController+TableViewDataSource.swift in Sources */,
 				93AD58361C6F2D1A009F3EAE /* ShareMovieViewController.swift in Sources */,
 				9370668C1C66275A00087C9D /* BasicButton.swift in Sources */,
@@ -923,6 +934,7 @@
 				9357D8471C54DFC40051D028 /* TourTests.swift in Sources */,
 				9306DC4A1C5594F300F98F71 /* Tour.swift in Sources */,
 				9306DC571C55951600F98F71 /* PhotoUtility.swift in Sources */,
+				93D9074E1C7972CB00524637 /* ShareMovieViewController+TextViewDelegate.swift in Sources */,
 				937066981C6628C500087C9D /* KeyManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

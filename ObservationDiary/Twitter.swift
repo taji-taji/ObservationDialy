@@ -9,7 +9,7 @@
 import UIKit
 import Social
 import Accounts
-import RMUniversalAlert
+import SwiftyJSON
 
 struct Twitter {
     
@@ -21,6 +21,7 @@ struct Twitter {
     }
     
     var account: ACAccount
+    let fileManager = NSFileManager.defaultManager()
     
     init(account: ACAccount) {
         self.account = account
@@ -29,65 +30,99 @@ struct Twitter {
     let uploadURL = NSURL(string: "https://upload.twitter.com/1.1/media/upload.json")
     let statusURL = NSURL(string: "https://api.twitter.com/1.1/statuses/update.json")
     
-    func postWithImage(tweet: String, fileName: String, success: (responseData: NSData!, urlResponse: NSHTTPURLResponse!) -> Void, failure: ((error: NSError!) -> Void)?) {
-        let photoUtility = PhotoUtility()
-        let filePath = photoUtility.getFilePath(fileName)
-        guard let mediaData = NSData(contentsOfFile: filePath) else {
-            return
-        }
-        postMedia(tweet, mediaData: mediaData, success: success, failure: failure)
-    }
-    
     func postWithMovie(tweet: String, fileName: String, success: (responseData: NSData!, urlResponse: NSHTTPURLResponse!) -> Void, failure: ((error: NSError!) -> Void)?) {
         let videoUtility = VideoUtility()
         guard let filePath = videoUtility.get(fileName),
             mediaData = NSData(contentsOfFile: filePath) else {
             return
         }
-        postMedia(tweet, mediaData: mediaData, success: success, failure: failure)
-    }
-    
-    private func postMedia(tweet: String, mediaData: NSData, success: (responseData: NSData!, urlResponse: NSHTTPURLResponse!) -> Void, failure: ((error: NSError!) -> Void)?) {
-        let mediaKey: NSString = "media"
-        let parameters = [mediaKey: mediaData]
-        let uploadRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .POST, URL: self.uploadURL, parameters: parameters)
-        
-        uploadRequest.account = account
-        
-        uploadRequest.performRequestWithHandler { (responseData: NSData!, urlResponse: NSHTTPURLResponse!, error: NSError!) -> Void in
-            
-            guard let mediaIDString = self.twit_extractStringForKey("media_id_string", fromJSONData:responseData) else {
-                failure?(error: error)
-                return
-            }
-
-            let statusKey: NSString = "status"
-            let mediaIDKey: NSString = "media_ids"
-            
-            let statusRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .POST, URL: self.statusURL, parameters: [statusKey : tweet, mediaIDKey : mediaIDString])
-            
-            statusRequest.account = self.account
-            
-            statusRequest.performRequestWithHandler { (responseData: NSData!, urlResponse: NSHTTPURLResponse!, error: NSError!) -> Void in
-                    
-                    if let error = error {
-                        failure?(error: error)
-                    }
-                    success(responseData: responseData, urlResponse: urlResponse)
-            }
-        }
-    }
-    
-    private func twit_extractStringForKey(key: String, fromJSONData data: NSData?) -> String? {
-        guard let _ = data else {
-            return nil
-        }
         do {
-            let response = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary
-            let result = response?.objectForKey(key) as? String
-            return result
+            let fileAttr = try fileManager.attributesOfItemAtPath(filePath)
+            if let fileSize = fileAttr[NSFileSize] as? Int {
+                postMedia(tweet, mediaData: mediaData, fileSize: String(fileSize), success: success, failure: failure)
+            }
         } catch {
-            return nil
+            return
+        }
+    }
+    
+    private func postMedia(tweet: String, mediaData: NSData, fileSize: String, success: (responseData: NSData!, urlResponse: NSHTTPURLResponse!) -> Void, failure: ((error: NSError!) -> Void)?) {
+
+        uploadVideoInitRequest(fileSize, success: { (responseData) -> () in
+            let json = JSON(data: responseData)
+            let mediaIdString = json["media_id_string"].stringValue
+            self.uploadVideoAppendRequest(mediaData, mediaIdString: mediaIdString, success: { () -> () in
+                self.uploadVideoFinalizeRequest(mediaIdString, success: { (responseData) -> () in
+                    
+                    let statusKey: NSString = "status"
+                    let mediaIDKey: NSString = "media_ids"
+                    
+                    let statusRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .POST, URL: self.statusURL, parameters: [statusKey : tweet, mediaIDKey : mediaIdString])
+                    
+                    statusRequest.account = self.account
+                    
+                    statusRequest.performRequestWithHandler { (responseData: NSData!, urlResponse: NSHTTPURLResponse!, error: NSError!) -> Void in
+                        if let error = error {
+                            failure?(error: error)
+                        }
+                        success(responseData: responseData, urlResponse: urlResponse)
+                    }
+                    
+                    }, failure: { (error) -> () in
+                        failure?(error: error)
+                })
+                }, failure: { (error) -> () in
+                    failure?(error: error)
+            })
+            }) { (error) -> () in
+                failure?(error: error)
+        }
+    }
+
+    private func uploadVideoInitRequest(fileSize: String, success: (responseData: NSData) -> (), failure: ((error: NSError) -> ())?) {
+        let commandKey: NSString = "command"
+        let mediaTypeKey: NSString = "media_type"
+        let totalBytesKey: NSString = "total_bytes"
+        let initParams: [NSString: AnyObject] = [commandKey: "INIT", mediaTypeKey: "video/mp4", totalBytesKey: fileSize]
+        let initRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .POST, URL: self.uploadURL, parameters: initParams)
+        initRequest.account = account
+        initRequest.performRequestWithHandler { (responseData: NSData!, urlResponse: NSHTTPURLResponse!, error: NSError!) -> Void in
+            if let error = error {
+                failure?(error: error)
+            }
+            success(responseData: responseData)
+        }
+    }
+    
+    private func uploadVideoAppendRequest(mediaData: NSData, mediaIdString: String, success: () -> (), failure: ((error: NSError) -> ())?) {
+        let commandKey: NSString = "command"
+        let mediaIdKey: NSString = "media_id"
+        let segmentIndexKey: NSString = "segment_index"
+        let appendParam: [NSString: AnyObject] = [commandKey: "APPEND", mediaIdKey: mediaIdString, segmentIndexKey: "0"]
+        let appendRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .POST, URL: self.uploadURL, parameters: appendParam)
+        appendRequest.addMultipartData(mediaData, withName: "media", type: "video/mp4", filename: nil)
+        appendRequest.account = account
+        appendRequest.performRequestWithHandler { (responseData: NSData!, urlResponse: NSHTTPURLResponse!, error: NSError!) -> Void in
+            if let error = error {
+                failure?(error: error)
+            }
+            if urlResponse.statusCode < 300 && urlResponse.statusCode >= 200 {
+                success()
+            }
+        }
+    }
+    
+    private func uploadVideoFinalizeRequest(mediaIdString: String, success: (responseData: NSData) -> (), failure: ((error: NSError) -> ())?) {
+        let commandKey: NSString = "command"
+        let mediaIdKey: NSString = "media_id"
+        let finalizeParam: [NSString: AnyObject] = [commandKey: "FINALIZE", mediaIdKey: mediaIdString]
+        let finalizeRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .POST, URL: self.uploadURL, parameters: finalizeParam)
+        finalizeRequest.account = account
+        finalizeRequest.performRequestWithHandler { (responseData: NSData!, urlResponse: NSHTTPURLResponse!, error: NSError!) -> Void in
+            if let error = error {
+                failure?(error: error)
+            }
+            success(responseData: responseData)
         }
     }
     

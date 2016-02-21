@@ -59,6 +59,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>UIActionSheet+Blocks.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -77,32 +82,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0A9C38DA9DC831B3AFE0378B99453915</key>
+		<key>101BD3B97BABB89376D90CC2FCDC64FF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1B9A219B9FD6F02506FE4D10AA42D5D7</key>
+		<key>1FDBFF59EABF72F66FF8720737DB8E45</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1F44F468D3A6708D9580B978F6BFB2B0</key>
+		<key>218DAC2EF9063503449368E4EF948C37</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>46CE34DEF0FFD6E05F6A6691B20AB0CB</key>
+		<key>2F43BC1EDD4C71FB2554966880DE085F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>60F220CBB80A1B80DDB8BD7590295777</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>66B9FC7900AC40FFC683ACA670BDFE10</key>
+		<key>36EF63975350D897AF8C8169738C1B60</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -112,27 +112,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9299EED8D611C9CD411120EF73423E93</key>
+		<key>8718FA04F65BAE7121010EE00F0D0788</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9AD1B3611CD97D9E4A65BA2854CBC2B8</key>
+		<key>9B61C69BE6DA257B35D80E0F9606A2A9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A76AF96F7B606451CD20D8A49001193F</key>
+		<key>9DA68A8C65515008AE4122239F1787D4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BBF9AB23BE1A64A4D1E3C449AF459CA4</key>
+		<key>9F20D649FF73DBA692D6AC3ED3695962</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D36167E830694BA814538B7549FDD8C9</key>
+		<key>A5A8E509060051D6FA6E8C030D745129</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AC8AB9091CC505BB2CB5AFBA0DAAA231</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BAD38490DA055BE8EA8B87986F92FF70</key>
 		<dict>
 			<key>primary</key>
 			<true/>

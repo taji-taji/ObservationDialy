@@ -20,6 +20,7 @@ PODS:
     - UIActionSheet+Blocks (>= 0.9)
     - UIAlertController+Blocks (>= 0.9)
     - UIAlertView+Blocks (>= 0.9)
+  - SwiftyJSON (2.3.2)
   - UIActionSheet+Blocks (0.9)
   - UIAlertController+Blocks (0.9)
   - UIAlertView+Blocks (0.9)
@@ -34,6 +35,16 @@ DEPENDENCIES:
   - R.swift
   - RealmSwift (= 0.98.0)
   - RMUniversalAlert
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+
+EXTERNAL SOURCES:
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+CHECKOUT OPTIONS:
+  SwiftyJSON:
+    :commit: 42bdb102d2624b143c07850ebdc1537d5b6579b6
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
   Crashlytics: e4e8d02914f2608fbc7bf42b1a7af838b0db67a2
@@ -47,6 +58,7 @@ SPEC CHECKSUMS:
   Realm: 28efc598b8b1b378d27a222d9fc037a29ae68642
   RealmSwift: 7ef4b9ee449d711cd5a7d69a3af1cc5cd0efb619
   RMUniversalAlert: bce2ca406c24065b76665725c83e48006e8f65f8
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   UIActionSheet+Blocks: e180b7dad0a721ab7f212ac9742af799008bb358
   UIAlertController+Blocks: b48c673ff60726da468b32ab21bbc7683512d45b
   UIAlertView+Blocks: a46c99c5144f6c5dbc7d62fd2a0678daceec89a3

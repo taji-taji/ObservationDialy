@@ -207,6 +207,13 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
                     shareMovieViewController.modalTransitionStyle = .CrossDissolve
                     shareMovieViewController.modalPresentationStyle = .OverCurrentContext
                     shareMovieViewController.target = self.target
+                    if let photos = self.photos where photos.count > 0 {
+                        let photo = photos[0]
+                        let fileName = photo.photo
+                        if let jpeg = PhotoUtility().get(fileName) {
+                            shareMovieViewController.thumbImage = jpeg
+                        }
+                    }
                     self.presentViewController(shareMovieViewController, animated: true, completion: nil)
                 }
         })
