@@ -10,6 +10,7 @@ pod 'Material', '~> 1.0'
 pod 'Google-Mobile-Ads-SDK', '~> 7.0'
 pod 'Flurry-iOS-SDK/FlurrySDK'
 pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+pod 'MobilePlayer'
 
 target 'ObservationDiary' do
     pod 'Fabric'

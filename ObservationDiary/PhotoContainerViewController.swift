@@ -164,73 +164,31 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
         let videoFile = "\(self.target!.id).mp4"
         let videoPath = VideoUtility().get(videoFile)
         let tmpVideoPath = VideoUtility().get("tmp_" + videoFile)
-
-        RMUniversalAlert.showActionSheetInViewController(self,
-            withTitle: nil,
-            message: nil,
-            cancelButtonTitle: "キャンセル",
-            destructiveButtonTitle: nil,
-            otherButtonTitles: ["ムービーを見る", "ムービーをカメラロールに保存する", "ムービーをシェアする"],
-            popoverPresentationControllerBlock: {(popover) in
-                popover.barButtonItem = sender
-            },
-            tapBlock: {(alert, buttonIndex) in
-                if (buttonIndex == alert.firstOtherButtonIndex) {
-                    let videoPlayerViewController = VideoPlayerViewController()
-                    videoPlayerViewController.fileName = videoFile
-                    // 一時ファイルが残っている場合は動画の作成に失敗しているので、一時ファイルから戻す
-                    if let _ = tmpVideoPath {
-                        if let _ = videoPath  {
-                            do {
-                                try NSFileManager().removeItemAtPath(videoPath!)
-                            } catch {
-                                print("error: Cannot remove video file")
-                            }
-                        }
-                        do {
-                            try NSFileManager().moveItemAtPath(tmpVideoPath!, toPath: VideoUtility().getFilePath(videoFile))
-                        } catch {
-                            print("error: Cannot move tmp video file")
-                        }
-                    }
-                    // トランジションのスタイルを変更
-                    videoPlayerViewController.modalTransitionStyle = .CrossDissolve
-                    self.presentViewController(videoPlayerViewController, animated: true, completion: nil)
-                } else if (buttonIndex == alert.firstOtherButtonIndex + 1) {
-                    LoadingProxy.set(self.navigationController!)
-                    LoadingProxy.on()
-                    UISaveVideoAtPathToSavedPhotosAlbum(videoPath!, self, "video:didFinishSavingWithError:contextInfo:", nil)
-                } else if (buttonIndex == alert.firstOtherButtonIndex + 2) {
-                    guard let shareMovieViewController = R.storyboard.shareMovie.shareMovieVC() else {
-                        return
-                    }
-                    shareMovieViewController.modalTransitionStyle = .CrossDissolve
-                    shareMovieViewController.modalPresentationStyle = .OverCurrentContext
-                    shareMovieViewController.target = self.target
-                    if let photos = self.photos where photos.count > 0 {
-                        let photo = photos[0]
-                        let fileName = photo.photo
-                        if let jpeg = PhotoUtility().get(fileName) {
-                            shareMovieViewController.thumbImage = jpeg
-                        }
-                    }
-                    self.presentViewController(shareMovieViewController, animated: true, completion: nil)
-                }
-        })
-    }
-    
-    func video(videoPath: String, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutablePointer<Void>) {
-        var title: String
-        LoadingProxy.off()
-        if let _ = error {
-            title = "ムービーの保存に失敗しました"
-        } else {
-            title = "ムービーを保存しました"
+        
+        guard let filePath = VideoUtility().get(videoFile) else {
+            return
         }
-        let myAlert = UIAlertController(title: title, message: nil, preferredStyle: .Alert)
-        let ok = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
-        myAlert.addAction(ok)
-        self.presentViewController(myAlert, animated: true, completion: nil)
+        let videoPlayerViewController = VideoPlayerViewController(contentPath: filePath, target: target)
+        videoPlayerViewController.fileName = videoFile
+        // 一時ファイルが残っている場合は動画の作成に失敗しているので、一時ファイルから戻す
+        if let _ = tmpVideoPath {
+            if let _ = videoPath  {
+                do {
+                    try NSFileManager().removeItemAtPath(videoPath!)
+                } catch {
+                    print("error: Cannot remove video file")
+                }
+            }
+            do {
+                try NSFileManager().moveItemAtPath(tmpVideoPath!, toPath: VideoUtility().getFilePath(videoFile))
+            } catch {
+                print("error: Cannot move tmp video file")
+            }
+        }
+        // トランジションのスタイルを変更
+        videoPlayerViewController.modalTransitionStyle = .CrossDissolve
+        self.presentViewController(videoPlayerViewController, animated: true, completion: nil)
+
     }
     
     // 既存の写真の編集ボタンを押した時の選択肢
