@@ -36,8 +36,8 @@ public class BasicTextView: UIView {
         textView.font = RobotoFont.regular
         
         textView.placeholderLabel = UILabel()
-        textView.placeholderLabel!.textColor = MaterialColor.grey.base
-        textView.placeholderLabel!.text = "Description"
+        textView.placeholderLabel?.textColor = MaterialColor.grey.base
+        textView.placeholderLabel?.text = "Description"
         
         textView.titleLabel = UILabel()
         textView.titleLabel!.font = RobotoFont.mediumWithSize(12)

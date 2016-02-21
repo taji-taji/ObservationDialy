@@ -19,8 +19,8 @@ class TargetViewController: UIViewController {
     @IBOutlet weak var imageView: ImageThumbnailView!
     @IBOutlet weak var completeButton: FilledButton!
     @IBOutlet weak var deleteButton: DestroyButton!
-    @IBOutlet weak var adView: AdView!
     @IBOutlet weak var cardView: ModalView!
+    @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
 
     var target: TargetData?
     var pageTitle: String?
@@ -60,9 +60,10 @@ class TargetViewController: UIViewController {
         titleTextField.textColor = Constants.Theme.textColor
         titleTextField.delegate = self
         
-        checkValidTargetTitle()      
+        checkValidTargetTitle()
         
-        self.loadAd(adView)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide", name: UIKeyboardDidHideNotification, object: nil)
     }
     
     // MARK: Actions
@@ -132,6 +133,18 @@ class TargetViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+
+    func keyboardDidShow(notification:NSNotification) {
+        
+        if let userInfo = notification.userInfo, keyboard = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRect = keyboard.CGRectValue()
+            scrollViewBottomConstraint.constant = keyboardRect.height
+        }
+    }
+    
+    func keyboardDidHide() {
+        scrollViewBottomConstraint.constant = 0
     }
 
 }

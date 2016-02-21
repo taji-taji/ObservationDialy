@@ -18,7 +18,7 @@
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pS7-5q-irt">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="4pA-Bs-qLd"/>
                                     <barButtonItem style="plain" id="Q0U-Zw-OAt">
@@ -42,7 +42,7 @@
                                         </button>
                                     </barButtonItem>
                                 </items>
-                                <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -60,6 +60,6 @@
     </scenes>
     <resources>
         <image name="DownloadIconWhite" width="40" height="45"/>
-        <image name="TwitterIcon" width="20" height="16"/>
+        <image name="TwitterIcon" width="25" height="20"/>
     </resources>
 </document>
