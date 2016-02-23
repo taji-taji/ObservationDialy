@@ -61,9 +61,7 @@ class TargetViewController: UIViewController {
         titleTextField.delegate = self
         
         checkValidTargetTitle()
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide", name: UIKeyboardDidHideNotification, object: nil)
+
     }
     
     // MARK: Actions
@@ -133,18 +131,6 @@ class TargetViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-
-    func keyboardDidShow(notification:NSNotification) {
-        
-        if let userInfo = notification.userInfo, keyboard = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRect = keyboard.CGRectValue()
-            scrollViewBottomConstraint.constant = keyboardRect.height
-        }
-    }
-    
-    func keyboardDidHide() {
-        scrollViewBottomConstraint.constant = 0
     }
 
 }

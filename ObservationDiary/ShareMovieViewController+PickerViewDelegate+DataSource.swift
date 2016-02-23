@@ -12,7 +12,7 @@ extension ShareMovieViewController: UIPickerViewDelegate, UIPickerViewDataSource
     
     // MARK: Delegate
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return accounts[row].username
+        return "@\(accounts[row].username)"
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -27,5 +27,14 @@ extension ShareMovieViewController: UIPickerViewDelegate, UIPickerViewDataSource
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return accounts.count
     }
-    
+
+}
+
+extension UIPickerView {
+    public override func didAddSubview(subview: UIView) {
+        super.didAddSubview(subview)
+        if subview.bounds.height < 1.0 {
+            subview.backgroundColor = UIColor.clearColor()
+        }
+    }
 }

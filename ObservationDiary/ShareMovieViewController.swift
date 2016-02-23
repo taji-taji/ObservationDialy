@@ -22,7 +22,6 @@ class ShareMovieViewController: UIViewController {
     @IBOutlet weak var tweetSendButton: FilledButton!
     @IBOutlet weak var accountPicker: UIPickerView!
     @IBOutlet weak var pickerViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     var accounts = [ACAccount]()
     var accountStatus: Twitter.Status?
     var account: ACAccount?
@@ -49,9 +48,6 @@ class ShareMovieViewController: UIViewController {
         }
 
         getAccounts()
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide", name: UIKeyboardDidHideNotification, object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -75,18 +71,6 @@ class ShareMovieViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    func keyboardDidShow(notification:NSNotification) {
-        
-        if let userInfo = notification.userInfo, keyboard = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRect = keyboard.CGRectValue()
-            scrollViewBottomConstraint.constant = keyboardRect.height
-        }
-    }
-    
-    func keyboardDidHide() {
-        scrollViewBottomConstraint.constant = 0
     }
 
     @IBAction func cancel(sender: BasicButton) {

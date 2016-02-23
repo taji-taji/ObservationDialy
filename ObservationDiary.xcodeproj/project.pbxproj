@@ -121,6 +121,8 @@
 		93D907531C79969E00524637 /* VideoPlayerOverlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93D907521C79969E00524637 /* VideoPlayerOverlay.storyboard */; };
 		93D907541C79969E00524637 /* VideoPlayerOverlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93D907521C79969E00524637 /* VideoPlayerOverlay.storyboard */; };
 		93D907561C79A34100524637 /* VideoPlayerOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D907501C79962C00524637 /* VideoPlayerOverlayViewController.swift */; };
+		93D907611C7D18B800524637 /* BaseScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D907601C7D18B800524637 /* BaseScrollView.swift */; };
+		93D907621C7D18B800524637 /* BaseScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D907601C7D18B800524637 /* BaseScrollView.swift */; };
 		93DBDBA71BF83A3F00E96148 /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBA61BF83A3F00E96148 /* DateUtility.swift */; };
 		93DBDBAD1BF9E19300E96148 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBAC1BF9E19300E96148 /* VideoPlayerViewController.swift */; };
 		93DBDBAF1BFB66AC00E96148 /* LoadingProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBAE1BFB66AC00E96148 /* LoadingProxy.swift */; };
@@ -238,6 +240,7 @@
 		93D9074C1C79727F00524637 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ShareMovieViewController+PickerViewDelegate+DataSource.swift"; sourceTree = "<group>"; };
 		93D907501C79962C00524637 /* VideoPlayerOverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerOverlayViewController.swift; sourceTree = "<group>"; };
 		93D907521C79969E00524637 /* VideoPlayerOverlay.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VideoPlayerOverlay.storyboard; sourceTree = "<group>"; };
+		93D907601C7D18B800524637 /* BaseScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScrollView.swift; sourceTree = "<group>"; };
 		93DBC6ED1C1DB01A0078AD62 /* TourTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourTests.swift; sourceTree = "<group>"; };
 		93DBDBA61BF83A3F00E96148 /* DateUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtility.swift; sourceTree = "<group>"; };
 		93DBDBAC1BF9E19300E96148 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
@@ -463,6 +466,7 @@
 				93AC7BE11C65D62800C2826E /* ModalView.swift */,
 				93AC7BE31C65D94300C2826E /* BasicTextField.swift */,
 				937E65381C70466C00AB7CC9 /* BasicTextView.swift */,
+				93D907601C7D18B800524637 /* BaseScrollView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -877,6 +881,7 @@
 				93C7FDA11BDA7B7A00AC1A3D /* StorageProtocol.swift in Sources */,
 				93DBDBA71BF83A3F00E96148 /* DateUtility.swift in Sources */,
 				935F627D1C50528E00271DD8 /* R.generated.swift in Sources */,
+				93D907611C7D18B800524637 /* BaseScrollView.swift in Sources */,
 				93E4767B1C64A59D00EF49EF /* UIImageExtension.swift in Sources */,
 				93E476791C64A20400EF49EF /* KeyManager.swift in Sources */,
 				93D9074D1C79727F00524637 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift in Sources */,
@@ -943,6 +948,7 @@
 				93FC47D11C56DE52006C580A /* AdView.swift in Sources */,
 				9306DC5B1C55952100F98F71 /* R.generated.swift in Sources */,
 				933CD8C51C22CFFE00CBD3D3 /* VideoUtilityTests.swift in Sources */,
+				93D907621C7D18B800524637 /* BaseScrollView.swift in Sources */,
 				9306DC4F1C55950000F98F71 /* TJViewExtensions.swift in Sources */,
 				93D9074F1C7972CD00524637 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift in Sources */,
 				9306DC431C5594E300F98F71 /* PhotoContainerViewController+TableViewDataSource.swift in Sources */,

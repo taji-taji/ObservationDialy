@@ -27,14 +27,14 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TargetTableViewCell" rowHeight="100" id="tbv-dd-ElW" customClass="TargetTableViewCell" customModule="ObservationDiary" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="tbv-dd-ElW" id="vNr-0C-xlp">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tbv-dd-ElW" id="vNr-0C-xlp">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NQn-GO-5DE" customClass="MaterialPulseView" customModule="Material">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NQn-GO-5DE" customClass="MaterialPulseView" customModule="Material">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="99"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KZ2-7f-H7e" customClass="ImageThumbnailView" customModule="ObservationDiary" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KZ2-7f-H7e" customClass="ImageThumbnailView" customModule="ObservationDiary" customModuleProvider="target">
                                                             <rect key="frame" x="12" y="13" width="73" height="73"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
@@ -42,13 +42,13 @@
                                                                 <constraint firstAttribute="width" secondItem="KZ2-7f-H7e" secondAttribute="height" multiplier="1:1" id="wmt-Uw-kdh"/>
                                                             </constraints>
                                                         </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="54" placeholderIntrinsicHeight="27" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="izX-GN-3vq">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="54" placeholderIntrinsicHeight="27" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="izX-GN-3vq">
                                                             <rect key="frame" x="98" y="14" width="412" height="44"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFw-nk-nlX" customClass="BasicButton" customModule="ObservationDiary" customModuleProvider="target">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFw-nk-nlX" customClass="BasicButton" customModule="ObservationDiary" customModuleProvider="target">
                                                             <rect key="frame" x="522" y="48" width="70" height="38"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="60" id="gvc-ko-vjF"/>
@@ -61,13 +61,13 @@
                                                                 <segue destination="BYZ-38-t0r" kind="presentation" identifier="ModifyItem" id="7fA-QW-YDD"/>
                                                             </connections>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="最終更新：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJs-zA-AUn">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最終更新：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJs-zA-AUn">
                                                             <rect key="frame" x="102" y="65" width="64" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pR1-8i-8Ur">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pR1-8i-8Ur">
                                                             <rect key="frame" x="181" y="65" width="63" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -193,11 +193,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVo-tN-wDK">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVo-tN-wDK" customClass="BaseScrollView" customModule="ObservationDiary" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tHQ-oE-OjM" customClass="ModalView" customModule="ObservationDiary" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="181" width="560" height="239"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tHQ-oE-OjM" customClass="ModalView" customModule="ObservationDiary" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="100" width="560" height="239"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SZj-R1-19d" customClass="ImageThumbnailView" customModule="ObservationDiary" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="61" width="73" height="73"/>
@@ -214,14 +214,14 @@
                                                     <constraint firstAttribute="height" constant="1" id="xxk-Dh-GrC"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OvV-6f-hxK" customClass="BasicButton" customModule="ObservationDiary" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OvV-6f-hxK" customClass="BasicButton" customModule="ObservationDiary" customModuleProvider="target">
                                                 <rect key="frame" x="404" y="185" width="90" height="34"/>
                                                 <state key="normal" title="キャンセル"/>
                                                 <connections>
                                                     <action selector="cancel:" destination="BYZ-38-t0r" eventType="touchUpInside" id="duy-2q-hVr"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYf-vZ-QXu" customClass="DestroyButton" customModule="ObservationDiary" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYf-vZ-QXu" customClass="DestroyButton" customModule="ObservationDiary" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="185" width="36" height="34"/>
                                                 <state key="normal" title="削除"/>
                                                 <connections>
@@ -245,7 +245,7 @@
                                                     <action selector="textFieldEditingChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="HJk-qJ-R5V"/>
                                                 </connections>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSg-6g-bMN" customClass="FilledButton" customModule="ObservationDiary" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSg-6g-bMN" customClass="FilledButton" customModule="ObservationDiary" customModuleProvider="target">
                                                 <rect key="frame" x="504" y="185" width="36" height="34"/>
                                                 <state key="normal" title="追加"/>
                                                 <connections>
