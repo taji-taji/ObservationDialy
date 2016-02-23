@@ -25,12 +25,16 @@ class PhotoUtility: MediaUtility {
     // MARK: - Methods
 
     func get(fileName: String) -> UIImage? {
-        let filePath = PhotoDirectoryPath + "/" + fileName
+        let filePath = getFilePath(fileName)
         if let jpeg: UIImage? = UIImage(contentsOfFile: filePath) {
             return jpeg
         } else {
             return nil
         }
+    }
+    
+    func getFilePath(fileName: String) -> String {
+        return PhotoDirectoryPath + "/" + fileName
     }
 
     func insert(image: UIImage) -> String? {

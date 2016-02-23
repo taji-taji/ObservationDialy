@@ -79,7 +79,7 @@
 		9370668E1C66276200087C9D /* FilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937297251C65E2710007F909 /* FilledButton.swift */; };
 		9370668F1C66276400087C9D /* DestroyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937297271C65E5210007F909 /* DestroyButton.swift */; };
 		937066901C66276700087C9D /* ImageThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC7BDF1C65D42400C2826E /* ImageThumbnailView.swift */; };
-		937066911C66276900087C9D /* TargetEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC7BE11C65D62800C2826E /* TargetEditView.swift */; };
+		937066911C66276900087C9D /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC7BE11C65D62800C2826E /* ModalView.swift */; };
 		937066921C66276B00087C9D /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC7BE31C65D94300C2826E /* BasicTextField.swift */; };
 		937066931C6627F400087C9D /* TargetContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930764451C18E81100135834 /* TargetContainerViewController.swift */; };
 		937066941C6627F600087C9D /* TargetContainerViewController+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930764471C18EE4800135834 /* TargetContainerViewController+TableViewDataSource.swift */; };
@@ -89,6 +89,9 @@
 		937066981C6628C500087C9D /* KeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E476781C64A20400EF49EF /* KeyManager.swift */; };
 		937297261C65E2710007F909 /* FilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937297251C65E2710007F909 /* FilledButton.swift */; };
 		937297281C65E5210007F909 /* DestroyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937297271C65E5210007F909 /* DestroyButton.swift */; };
+		937E65391C70466C00AB7CC9 /* BasicTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937E65381C70466C00AB7CC9 /* BasicTextView.swift */; };
+		937E653A1C70466C00AB7CC9 /* BasicTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937E65381C70466C00AB7CC9 /* BasicTextView.swift */; };
+		937E653B1C7532CB00AB7CC9 /* Twitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AD582C1C6F07CF009F3EAE /* Twitter.swift */; };
 		937F419B1BFFF0BD00DF2D80 /* PhotoContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937F419A1BFFF0BD00DF2D80 /* PhotoContainerViewController.swift */; };
 		939562EC1C1E3792000D90D0 /* DateUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939562EB1C1E3792000D90D0 /* DateUtilityTests.swift */; };
 		939562F11C20DB06000D90D0 /* AdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939562F01C20DB06000D90D0 /* AdView.xib */; };
@@ -98,11 +101,28 @@
 		93AC7BD91C64C9C900C2826E /* BaseNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC7BD81C64C9C900C2826E /* BaseNavigationBarView.swift */; };
 		93AC7BDC1C64D7D800C2826E /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC7BDB1C64D7D800C2826E /* BasicButton.swift */; };
 		93AC7BE01C65D42400C2826E /* ImageThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC7BDF1C65D42400C2826E /* ImageThumbnailView.swift */; };
-		93AC7BE21C65D62800C2826E /* TargetEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC7BE11C65D62800C2826E /* TargetEditView.swift */; };
+		93AC7BE21C65D62800C2826E /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC7BE11C65D62800C2826E /* ModalView.swift */; };
 		93AC7BE41C65D94300C2826E /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC7BE31C65D94300C2826E /* BasicTextField.swift */; };
+		93AD582A1C6F07A4009F3EAE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93AD58291C6F07A4009F3EAE /* Social.framework */; };
+		93AD582D1C6F07CF009F3EAE /* Twitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AD582C1C6F07CF009F3EAE /* Twitter.swift */; };
+		93AD582F1C6F08D9009F3EAE /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93AD582E1C6F08D9009F3EAE /* Accounts.framework */; };
+		93AD58321C6F2AED009F3EAE /* ShareMovie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93AD58311C6F2AED009F3EAE /* ShareMovie.storyboard */; };
+		93AD58341C6F2B08009F3EAE /* ShareMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AD58331C6F2B08009F3EAE /* ShareMovieViewController.swift */; };
+		93AD58351C6F2CEE009F3EAE /* ShareMovie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93AD58311C6F2AED009F3EAE /* ShareMovie.storyboard */; };
+		93AD58361C6F2D1A009F3EAE /* ShareMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AD58331C6F2B08009F3EAE /* ShareMovieViewController.swift */; };
 		93C7FDA11BDA7B7A00AC1A3D /* StorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */; };
 		93C7FDA31BDA89F200AC1A3D /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FDA21BDA89F200AC1A3D /* Storage.swift */; };
 		93CD876A1BF69818003F836B /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD87691BF69818003F836B /* LoadingOverlay.swift */; };
+		93D9074B1C7971EE00524637 /* ShareMovieViewController+TextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D9074A1C7971EE00524637 /* ShareMovieViewController+TextViewDelegate.swift */; };
+		93D9074D1C79727F00524637 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D9074C1C79727F00524637 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift */; };
+		93D9074E1C7972CB00524637 /* ShareMovieViewController+TextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D9074A1C7971EE00524637 /* ShareMovieViewController+TextViewDelegate.swift */; };
+		93D9074F1C7972CD00524637 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D9074C1C79727F00524637 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift */; };
+		93D907511C79962C00524637 /* VideoPlayerOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D907501C79962C00524637 /* VideoPlayerOverlayViewController.swift */; };
+		93D907531C79969E00524637 /* VideoPlayerOverlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93D907521C79969E00524637 /* VideoPlayerOverlay.storyboard */; };
+		93D907541C79969E00524637 /* VideoPlayerOverlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93D907521C79969E00524637 /* VideoPlayerOverlay.storyboard */; };
+		93D907561C79A34100524637 /* VideoPlayerOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D907501C79962C00524637 /* VideoPlayerOverlayViewController.swift */; };
+		93D907611C7D18B800524637 /* BaseScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D907601C7D18B800524637 /* BaseScrollView.swift */; };
+		93D907621C7D18B800524637 /* BaseScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D907601C7D18B800524637 /* BaseScrollView.swift */; };
 		93DBDBA71BF83A3F00E96148 /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBA61BF83A3F00E96148 /* DateUtility.swift */; };
 		93DBDBAD1BF9E19300E96148 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBAC1BF9E19300E96148 /* VideoPlayerViewController.swift */; };
 		93DBDBAF1BFB66AC00E96148 /* LoadingProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBAE1BFB66AC00E96148 /* LoadingProxy.swift */; };
@@ -195,6 +215,7 @@
 		9368DD4B1BEB9E5700F6E034 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		937297251C65E2710007F909 /* FilledButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilledButton.swift; sourceTree = "<group>"; };
 		937297271C65E5210007F909 /* DestroyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestroyButton.swift; sourceTree = "<group>"; };
+		937E65381C70466C00AB7CC9 /* BasicTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTextView.swift; sourceTree = "<group>"; };
 		937F41981BFD440C00DF2D80 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		937F419A1BFFF0BD00DF2D80 /* PhotoContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoContainerViewController.swift; sourceTree = "<group>"; };
 		939562EB1C1E3792000D90D0 /* DateUtilityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtilityTests.swift; sourceTree = "<group>"; };
@@ -205,11 +226,21 @@
 		93AC7BD81C64C9C900C2826E /* BaseNavigationBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationBarView.swift; sourceTree = "<group>"; };
 		93AC7BDB1C64D7D800C2826E /* BasicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
 		93AC7BDF1C65D42400C2826E /* ImageThumbnailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageThumbnailView.swift; sourceTree = "<group>"; };
-		93AC7BE11C65D62800C2826E /* TargetEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetEditView.swift; sourceTree = "<group>"; };
+		93AC7BE11C65D62800C2826E /* ModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		93AC7BE31C65D94300C2826E /* BasicTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
+		93AD58291C6F07A4009F3EAE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		93AD582C1C6F07CF009F3EAE /* Twitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Twitter.swift; sourceTree = "<group>"; };
+		93AD582E1C6F08D9009F3EAE /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		93AD58311C6F2AED009F3EAE /* ShareMovie.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ShareMovie.storyboard; sourceTree = "<group>"; };
+		93AD58331C6F2B08009F3EAE /* ShareMovieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareMovieViewController.swift; sourceTree = "<group>"; };
 		93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageProtocol.swift; sourceTree = "<group>"; };
 		93C7FDA21BDA89F200AC1A3D /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		93CD87691BF69818003F836B /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
+		93D9074A1C7971EE00524637 /* ShareMovieViewController+TextViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ShareMovieViewController+TextViewDelegate.swift"; sourceTree = "<group>"; };
+		93D9074C1C79727F00524637 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ShareMovieViewController+PickerViewDelegate+DataSource.swift"; sourceTree = "<group>"; };
+		93D907501C79962C00524637 /* VideoPlayerOverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerOverlayViewController.swift; sourceTree = "<group>"; };
+		93D907521C79969E00524637 /* VideoPlayerOverlay.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VideoPlayerOverlay.storyboard; sourceTree = "<group>"; };
+		93D907601C7D18B800524637 /* BaseScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScrollView.swift; sourceTree = "<group>"; };
 		93DBC6ED1C1DB01A0078AD62 /* TourTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourTests.swift; sourceTree = "<group>"; };
 		93DBDBA61BF83A3F00E96148 /* DateUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtility.swift; sourceTree = "<group>"; };
 		93DBDBAC1BF9E19300E96148 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +266,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93AD582F1C6F08D9009F3EAE /* Accounts.framework in Frameworks */,
+				93AD582A1C6F07A4009F3EAE /* Social.framework in Frameworks */,
 				629287A3549987FE9D188A9A /* Pods_ObservationDiary.framework in Frameworks */,
 				239A4C194F64C2FB911A3923 /* Pods.framework in Frameworks */,
 			);
@@ -262,6 +295,8 @@
 		1AC6187A87C9D958D55D8118 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				93AD582E1C6F08D9009F3EAE /* Accounts.framework */,
+				93AD58291C6F07A4009F3EAE /* Social.framework */,
 				937F41981BFD440C00DF2D80 /* iAd.framework */,
 				F63331DA03D1714C30BE0A20 /* Pods_ObservationDiary.framework */,
 				70B7F8D78F86A4292EBA3004 /* Pods_ObservationDiaryTests.framework */,
@@ -363,9 +398,10 @@
 				930763DA1C12771B00135834 /* TargetListView */,
 				933CD8BE1C222CB100CBD3D3 /* TargetView */,
 				930763DB1C12FA7D00135834 /* PhotoListView */,
+				93AD58301C6F2ACE009F3EAE /* ShareMovieView */,
 				939EBF811BDB4A3F00436BC0 /* PhotoViewController.swift */,
 				936505AA1BE4843200A824E0 /* CameraViewController.swift */,
-				93DBDBAC1BF9E19300E96148 /* VideoPlayerViewController.swift */,
+				93D907551C7996B800524637 /* VideoPlayerView */,
 				93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */,
 				93C7FDA21BDA89F200AC1A3D /* Storage.swift */,
 				93429CB61C0531A90082D85F /* Tour.swift */,
@@ -402,6 +438,7 @@
 			isa = PBXGroup;
 			children = (
 				935F627C1C50528E00271DD8 /* R.generated.swift */,
+				93AD582B1C6F07BA009F3EAE /* Twitter */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -426,10 +463,41 @@
 				934C62C21C67095500EF4C0D /* NavBarButton.swift */,
 				937297271C65E5210007F909 /* DestroyButton.swift */,
 				93AC7BDF1C65D42400C2826E /* ImageThumbnailView.swift */,
-				93AC7BE11C65D62800C2826E /* TargetEditView.swift */,
+				93AC7BE11C65D62800C2826E /* ModalView.swift */,
 				93AC7BE31C65D94300C2826E /* BasicTextField.swift */,
+				937E65381C70466C00AB7CC9 /* BasicTextView.swift */,
+				93D907601C7D18B800524637 /* BaseScrollView.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		93AD582B1C6F07BA009F3EAE /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				93AD582C1C6F07CF009F3EAE /* Twitter.swift */,
+			);
+			name = Twitter;
+			sourceTree = "<group>";
+		};
+		93AD58301C6F2ACE009F3EAE /* ShareMovieView */ = {
+			isa = PBXGroup;
+			children = (
+				93AD58331C6F2B08009F3EAE /* ShareMovieViewController.swift */,
+				93D9074A1C7971EE00524637 /* ShareMovieViewController+TextViewDelegate.swift */,
+				93D9074C1C79727F00524637 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift */,
+				93AD58311C6F2AED009F3EAE /* ShareMovie.storyboard */,
+			);
+			name = ShareMovieView;
+			sourceTree = "<group>";
+		};
+		93D907551C7996B800524637 /* VideoPlayerView */ = {
+			isa = PBXGroup;
+			children = (
+				93DBDBAC1BF9E19300E96148 /* VideoPlayerViewController.swift */,
+				93D907501C79962C00524637 /* VideoPlayerOverlayViewController.swift */,
+				93D907521C79969E00524637 /* VideoPlayerOverlay.storyboard */,
+			);
+			name = VideoPlayerView;
 			sourceTree = "<group>";
 		};
 		93DDA1401C2B5BDE00B27FCF /* ObservationDiaryUITests */ = {
@@ -592,8 +660,10 @@
 			files = (
 				935F62791C504AED00271DD8 /* Keys.plist in Resources */,
 				939562F11C20DB06000D90D0 /* AdView.xib in Resources */,
+				93AD58321C6F2AED009F3EAE /* ShareMovie.storyboard in Resources */,
 				935996181BD5AB8C0047EE9F /* LaunchScreen.storyboard in Resources */,
 				935996151BD5AB8C0047EE9F /* Assets.xcassets in Resources */,
+				93D907531C79969E00524637 /* VideoPlayerOverlay.storyboard in Resources */,
 				9353CC741BDA127A00EAFCD6 /* Podfile in Resources */,
 				939EBF841BDB5D3400436BC0 /* Main.storyboard in Resources */,
 			);
@@ -603,6 +673,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93AD58351C6F2CEE009F3EAE /* ShareMovie.storyboard in Resources */,
+				93D907541C79969E00524637 /* VideoPlayerOverlay.storyboard in Resources */,
 				9306DC831C564DC400F98F71 /* Podfile in Resources */,
 				9306DC5C1C55952400F98F71 /* Assets.xcassets in Resources */,
 			);
@@ -748,7 +820,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ObservationDiary/Pods-ObservationDiary-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D1BE4C22116329D5C7F877E0 /* Check Pods Manifest.lock */ = {
@@ -777,7 +849,9 @@
 				93C7FDA31BDA89F200AC1A3D /* Storage.swift in Sources */,
 				93AC7BD91C64C9C900C2826E /* BaseNavigationBarView.swift in Sources */,
 				93DBDBAD1BF9E19300E96148 /* VideoPlayerViewController.swift in Sources */,
+				93D9074B1C7971EE00524637 /* ShareMovieViewController+TextViewDelegate.swift in Sources */,
 				931165BF1BD6459400F1D32D /* PhotoTableViewCell.swift in Sources */,
+				93D907511C79962C00524637 /* VideoPlayerOverlayViewController.swift in Sources */,
 				9307642E1C17952E00135834 /* TJViewExtensions.swift in Sources */,
 				93AC7BDC1C64D7D800C2826E /* BasicButton.swift in Sources */,
 				935F62751C4EF5A600271DD8 /* AlphaControlSlider.swift in Sources */,
@@ -793,19 +867,24 @@
 				937297261C65E2710007F909 /* FilledButton.swift in Sources */,
 				937F419B1BFFF0BD00DF2D80 /* PhotoContainerViewController.swift in Sources */,
 				930763DD1C12FAA900135834 /* PhotoContainerViewController+TableViewDelegate.swift in Sources */,
-				93AC7BE21C65D62800C2826E /* TargetEditView.swift in Sources */,
+				93AC7BE21C65D62800C2826E /* ModalView.swift in Sources */,
 				930763E61C12FE0200135834 /* Photo.swift in Sources */,
 				936505AB1BE4843300A824E0 /* CameraViewController.swift in Sources */,
 				9368DD4C1BEB9E5700F6E034 /* Constants.swift in Sources */,
 				930764461C18E81100135834 /* TargetContainerViewController.swift in Sources */,
+				937E65391C70466C00AB7CC9 /* BasicTextView.swift in Sources */,
 				935996321BD5EDC20047EE9F /* TargetTableViewCell.swift in Sources */,
 				93AC7BE01C65D42400C2826E /* ImageThumbnailView.swift in Sources */,
+				93AD58341C6F2B08009F3EAE /* ShareMovieViewController.swift in Sources */,
 				93E4767D1C64A5CE00EF49EF /* NSDateExtension.swift in Sources */,
+				93AD582D1C6F07CF009F3EAE /* Twitter.swift in Sources */,
 				93C7FDA11BDA7B7A00AC1A3D /* StorageProtocol.swift in Sources */,
 				93DBDBA71BF83A3F00E96148 /* DateUtility.swift in Sources */,
 				935F627D1C50528E00271DD8 /* R.generated.swift in Sources */,
+				93D907611C7D18B800524637 /* BaseScrollView.swift in Sources */,
 				93E4767B1C64A59D00EF49EF /* UIImageExtension.swift in Sources */,
 				93E476791C64A20400EF49EF /* KeyManager.swift in Sources */,
+				93D9074D1C79727F00524637 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift in Sources */,
 				935996101BD5AB8C0047EE9F /* TargetViewController.swift in Sources */,
 				93E476811C64A62100EF49EF /* AdViewProtocol.swift in Sources */,
 				93CD876A1BF69818003F836B /* LoadingOverlay.swift in Sources */,
@@ -846,28 +925,34 @@
 				9306DC471C5594EC00F98F71 /* VideoPlayerViewController.swift in Sources */,
 				9306DC441C5594E600F98F71 /* PhotoTableViewCell.swift in Sources */,
 				9306DC3E1C5594D600F98F71 /* TargetViewController.swift in Sources */,
-				937066911C66276900087C9D /* TargetEditView.swift in Sources */,
+				937066911C66276900087C9D /* ModalView.swift in Sources */,
 				9306DC451C5594E800F98F71 /* PhotoViewController.swift in Sources */,
+				93D907561C79A34100524637 /* VideoPlayerOverlayViewController.swift in Sources */,
 				9306DC4E1C5594FE00F98F71 /* TJColorExtensions.swift in Sources */,
 				9306DC461C5594EA00F98F71 /* CameraViewController.swift in Sources */,
 				934C62C41C670A0B00EF4C0D /* NavBarButton.swift in Sources */,
 				9306DC511C55950600F98F71 /* Photo.swift in Sources */,
 				9306DC561C55951300F98F71 /* MediaUtility.swift in Sources */,
 				937066901C66276700087C9D /* ImageThumbnailView.swift in Sources */,
+				937E653A1C70466C00AB7CC9 /* BasicTextView.swift in Sources */,
 				9306DC521C55950800F98F71 /* Target.swift in Sources */,
 				935383BA1C55916300E3FCBD /* MediaUtilityTests.swift in Sources */,
 				9306DC8B1C564F3100F98F71 /* LoadingOverlay.swift in Sources */,
 				939562EC1C1E3792000D90D0 /* DateUtilityTests.swift in Sources */,
 				9370668F1C66276400087C9D /* DestroyButton.swift in Sources */,
 				937066961C66287B00087C9D /* UIViewControllerExtension.swift in Sources */,
+				937E653B1C7532CB00AB7CC9 /* Twitter.swift in Sources */,
 				9306DC501C55950300F98F71 /* ModelBase.swift in Sources */,
 				937066951C66282F00087C9D /* AdViewProtocol.swift in Sources */,
 				935383B81C55910100E3FCBD /* StorageTests.swift in Sources */,
 				93FC47D11C56DE52006C580A /* AdView.swift in Sources */,
 				9306DC5B1C55952100F98F71 /* R.generated.swift in Sources */,
 				933CD8C51C22CFFE00CBD3D3 /* VideoUtilityTests.swift in Sources */,
+				93D907621C7D18B800524637 /* BaseScrollView.swift in Sources */,
 				9306DC4F1C55950000F98F71 /* TJViewExtensions.swift in Sources */,
+				93D9074F1C7972CD00524637 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift in Sources */,
 				9306DC431C5594E300F98F71 /* PhotoContainerViewController+TableViewDataSource.swift in Sources */,
+				93AD58361C6F2D1A009F3EAE /* ShareMovieViewController.swift in Sources */,
 				9370668C1C66275A00087C9D /* BasicButton.swift in Sources */,
 				9306DC411C5594DE00F98F71 /* PhotoContainerViewController.swift in Sources */,
 				93FC47CE1C56613C006C580A /* Storage.swift in Sources */,
@@ -875,6 +960,7 @@
 				9357D8471C54DFC40051D028 /* TourTests.swift in Sources */,
 				9306DC4A1C5594F300F98F71 /* Tour.swift in Sources */,
 				9306DC571C55951600F98F71 /* PhotoUtility.swift in Sources */,
+				93D9074E1C7972CB00524637 /* ShareMovieViewController+TextViewDelegate.swift in Sources */,
 				937066981C6628C500087C9D /* KeyManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -33,6 +33,11 @@ class VideoUtility: MediaUtility {
         }
     }
     
+    func get(targetId: Int) -> String? {
+        let fileName = "\(targetId)\(Constants.Video.VideoExtension)"
+        return get(fileName)
+    }
+    
     func getFilePath(fileName: String) -> String {
         return VideoDirectoryPath + "/" + fileName
     }
@@ -44,7 +49,7 @@ class VideoUtility: MediaUtility {
                 let image = PhotoUtility().get(photo.photo)
                 photos.append(image!)
             }
-            makeVideoFromPhotos(photos, fileName: "\(target.id).\(Constants.Video.VideoExtension)")
+            makeVideoFromPhotos(photos, fileName: "\(target.id)\(Constants.Video.VideoExtension)")
         }
     }
     
@@ -187,6 +192,16 @@ class VideoUtility: MediaUtility {
         } catch {
             print("failed: delete file")
         }
+    }
+    
+    func duration(fileName: String) -> Float? {
+        guard let filePath = get(fileName) else {
+            return nil
+        }
+        let fileURL = NSURL(fileURLWithPath: filePath)
+        let asset: AVURLAsset = AVURLAsset(URL: fileURL)
+        let cmTime = asset.duration
+        return Float(CMTimeGetSeconds(cmTime))
     }
     
 }

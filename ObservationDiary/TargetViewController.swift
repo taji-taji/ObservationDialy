@@ -19,8 +19,8 @@ class TargetViewController: UIViewController {
     @IBOutlet weak var imageView: ImageThumbnailView!
     @IBOutlet weak var completeButton: FilledButton!
     @IBOutlet weak var deleteButton: DestroyButton!
-    @IBOutlet weak var adView: AdView!
-    @IBOutlet weak var cardView: TargetEditView!
+    @IBOutlet weak var cardView: ModalView!
+    @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
 
     var target: TargetData?
     var pageTitle: String?
@@ -60,9 +60,8 @@ class TargetViewController: UIViewController {
         titleTextField.textColor = Constants.Theme.textColor
         titleTextField.delegate = self
         
-        checkValidTargetTitle()      
-        
-        self.loadAd(adView)
+        checkValidTargetTitle()
+
     }
     
     // MARK: Actions

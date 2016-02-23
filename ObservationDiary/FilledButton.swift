@@ -34,5 +34,5 @@ class FilledButton: RaisedButton {
         self.titleLabel?.font = RobotoFont.mediumWithSize(16)
         self.contentInsetPreset = .WideRectangle3
     }
-    
+
 }
