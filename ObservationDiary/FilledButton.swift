@@ -32,7 +32,7 @@ class FilledButton: RaisedButton {
         self.backgroundColor = Constants.Theme.subConcept
         self.setTitleColor(Constants.Theme.textColor, forState: .Normal)
         self.titleLabel?.font = RobotoFont.mediumWithSize(16)
-        self.contentInsetPreset = .WideRectangle3
+        self.contentEdgeInsetsPreset = .WideRectangle3
     }
 
 }

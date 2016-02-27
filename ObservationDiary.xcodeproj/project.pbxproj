@@ -49,6 +49,9 @@
 		9307642E1C17952E00135834 /* TJViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9307642D1C17952E00135834 /* TJViewExtensions.swift */; };
 		930764461C18E81100135834 /* TargetContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930764451C18E81100135834 /* TargetContainerViewController.swift */; };
 		930764481C18EE4800135834 /* TargetContainerViewController+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930764471C18EE4800135834 /* TargetContainerViewController+TableViewDataSource.swift */; };
+		930ED8D31C7FCB63007CD62E /* Material.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930ED8D21C7FCB63007CD62E /* Material.framework */; };
+		930ED8D51C814519007CD62E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930ED8D41C814519007CD62E /* SwiftyJSON.framework */; };
+		930ED8D91C814B9D007CD62E /* MobilePlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930ED8D81C814B9D007CD62E /* MobilePlayer.framework */; };
 		931165BF1BD6459400F1D32D /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */; };
 		933CD8BD1C222C3900CBD3D3 /* TargetViewController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8BC1C222C3900CBD3D3 /* TargetViewController+UITextFieldDelegate.swift */; };
 		933CD8C51C22CFFE00CBD3D3 /* VideoUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8C41C22CFFE00CBD3D3 /* VideoUtilityTests.swift */; };
@@ -187,6 +190,10 @@
 		9307642D1C17952E00135834 /* TJViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TJViewExtensions.swift; sourceTree = "<group>"; };
 		930764451C18E81100135834 /* TargetContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetContainerViewController.swift; sourceTree = "<group>"; };
 		930764471C18EE4800135834 /* TargetContainerViewController+TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TargetContainerViewController+TableViewDataSource.swift"; sourceTree = "<group>"; };
+		930ED8D21C7FCB63007CD62E /* Material.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Material.framework; path = Carthage/Build/iOS/Material.framework; sourceTree = "<group>"; };
+		930ED8D41C814519007CD62E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		930ED8D61C814B87007CD62E /* MobilePlayer.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = MobilePlayer.framework.dSYM; path = Carthage/Build/iOS/MobilePlayer.framework.dSYM; sourceTree = "<group>"; };
+		930ED8D81C814B9D007CD62E /* MobilePlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobilePlayer.framework; path = Carthage/Build/iOS/MobilePlayer.framework; sourceTree = "<group>"; };
 		931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
 		933571831C1BD2AB00F9D948 /* StorageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageTests.swift; sourceTree = "<group>"; };
 		933CD8BC1C222C3900CBD3D3 /* TargetViewController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TargetViewController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
@@ -266,6 +273,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				930ED8D31C7FCB63007CD62E /* Material.framework in Frameworks */,
+				930ED8D91C814B9D007CD62E /* MobilePlayer.framework in Frameworks */,
+				930ED8D51C814519007CD62E /* SwiftyJSON.framework in Frameworks */,
 				93AD582F1C6F08D9009F3EAE /* Accounts.framework in Frameworks */,
 				93AD582A1C6F07A4009F3EAE /* Social.framework in Frameworks */,
 				629287A3549987FE9D188A9A /* Pods_ObservationDiary.framework in Frameworks */,
@@ -295,6 +305,10 @@
 		1AC6187A87C9D958D55D8118 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				930ED8D81C814B9D007CD62E /* MobilePlayer.framework */,
+				930ED8D61C814B87007CD62E /* MobilePlayer.framework.dSYM */,
+				930ED8D41C814519007CD62E /* SwiftyJSON.framework */,
+				930ED8D21C7FCB63007CD62E /* Material.framework */,
 				93AD582E1C6F08D9009F3EAE /* Accounts.framework */,
 				93AD58291C6F07A4009F3EAE /* Social.framework */,
 				937F41981BFD440C00DF2D80 /* iAd.framework */,
@@ -553,6 +567,7 @@
 				3D032B6C3A19B1455B1D1B47 /* Embed Pods Frameworks */,
 				9833450C02441C0663659B8F /* Copy Pods Resources */,
 				93E476821C64B2F600EF49EF /* ShellScript */,
+				930ED8D11C7FCA3F007CD62E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -767,6 +782,22 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ObservationDiaryUITests/Pods-ObservationDiaryUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		930ED8D11C7FCA3F007CD62E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Material.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/MobilePlayer.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 		935F627A1C5050F000271DD8 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -820,7 +851,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ObservationDiary/Pods-ObservationDiary-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D1BE4C22116329D5C7F877E0 /* Check Pods Manifest.lock */ = {
@@ -1098,6 +1129,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ObservationDiary/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1144,6 +1176,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ObservationDiary/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

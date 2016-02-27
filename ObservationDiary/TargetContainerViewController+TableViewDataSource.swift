@@ -27,7 +27,7 @@ extension TargetContainerViewController: UITableViewDataSource {
         let cellIdentifier = "TargetTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! TargetTableViewCell
         cell.titleLabel.text = target.title
-        cell.editTargetButton.contentInsetPreset = .None
+        cell.editTargetButton.contentEdgeInsetsPreset = .None
         cell.updatedLabel.text = DateUtility(dateFormat: nil).dateFromNow(target.updated)
         
         // 最新の画像をサムネイルに入れる
