@@ -20,7 +20,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yUU-pX-hh0" customClass="BaseScrollView" customModule="ObservationDiary" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7TM-fI-wjM" customClass="ModalView" customModule="ObservationDiary" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7TM-fI-wjM" customClass="ModalView" customModule="ObservationDiary" customModuleProvider="target">
                                         <rect key="frame" x="20" y="50" width="560" height="393"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitterにムービーを投稿" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anh-Wj-sWf">
@@ -95,14 +95,14 @@
                                                     <constraint firstAttribute="height" constant="1" id="7DX-RO-34I"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tpj-6b-kCs" customClass="BasicButton" customModule="ObservationDiary" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tpj-6b-kCs" customClass="BasicButton" customModule="ObservationDiary" customModuleProvider="target">
                                                 <rect key="frame" x="368" y="339" width="90" height="34"/>
                                                 <state key="normal" title="キャンセル"/>
                                                 <connections>
                                                     <action selector="cancel:" destination="yWG-4Z-58w" eventType="touchUpInside" id="l8i-dJ-jfM"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iT0-dJ-7CM" customClass="FilledButton" customModule="ObservationDiary" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iT0-dJ-7CM" customClass="FilledButton" customModule="ObservationDiary" customModuleProvider="target">
                                                 <rect key="frame" x="468" y="339" width="72" height="34"/>
                                                 <state key="normal" title="ツイート"/>
                                                 <connections>
