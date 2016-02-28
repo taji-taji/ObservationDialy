@@ -57,6 +57,7 @@ class TargetViewController: UIViewController {
         titleTextField.titleLabelActiveColor = MaterialColor.grey.lighten1
         titleTextField.titleLabel?.text = "タイトル"
         titleTextField.placeholder = "例）ガジュマルの木"
+        titleTextField.placeholderTextColor = MaterialColor.grey.base
         pageTitleLabel.textColor = Constants.Theme.textColor
         titleTextField.textColor = Constants.Theme.textColor
         titleTextField.delegate = self

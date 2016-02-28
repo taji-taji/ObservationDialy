@@ -41,7 +41,7 @@ class ShareMovieViewController: UIViewController {
         LoadingProxy.set(self)
     
         pickerViewHeightConstraint.constant = 0
-        titleLabel.text = "Twitterアカウント"
+        titleLabel.text = "使用するTwitterアカウント"
         
         if let thumbImage = thumbImage {
             imageView.image = thumbImage
@@ -127,7 +127,7 @@ class ShareMovieViewController: UIViewController {
                 self.pickerViewHeightConstraint.constant = 50
             } else {
                 self.pickerViewHeightConstraint.constant = 80
-                self.titleLabel.text = "Twitterアカウント選択"
+                self.titleLabel.text = "使用するTwitterアカウントの選択"
             }
             self.setPickerEnabled()
         }
