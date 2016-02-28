@@ -23,7 +23,7 @@ class UtilButton: FlatButton {
     override func prepareView() {
         super.prepareView()
         self.pulseColor = Constants.Theme.concept
-        self.contentInsetPreset = .WideRectangle2
+        self.contentEdgeInsetsPreset = .WideRectangle2
     }
     
 }

@@ -56,8 +56,8 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>FlurryAPIKey</key>
+	<string>$(FlurryAPIKey)</string>
 </dict>
 </plist>

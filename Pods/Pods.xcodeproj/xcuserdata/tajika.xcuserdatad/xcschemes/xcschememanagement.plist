@@ -14,21 +14,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Material.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>MobilePlayer-MobilePlayer.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>MobilePlayer.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-ObservationDiary.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -69,11 +54,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SwiftyJSON.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>UIActionSheet+Blocks.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -92,37 +72,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>027E08B48F199A82EF675532707FBB81</key>
+		<key>05ECF59AE7C6D253370041D8A0B88EA3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0A00CECF1B565BD7A157B48D32BB412C</key>
+		<key>2556FE9F17582CBD7B92A15E2821C476</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>138615CA427B0F4333E808790CB22767</key>
+		<key>2D8D9B16F047D6D15EA41D2BDB0A4648</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>151DEB6F153C03A0DBDB91A73171A776</key>
+		<key>3733EF10A7D04362E69968A7D6164AB5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4A71B94100712DDF8694237766DC3506</key>
+		<key>38D669D1D2083594273D053F556FC108</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4EE62EE48C390E657C368F33A399C7B4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>79E06489A2AB29243B3310B6BADFE034</key>
+		<key>7521C15C3E996F390E556C1F007B2F19</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -132,42 +107,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>89592F77A183003833977C245F246632</key>
+		<key>A2448D24184D6BFCE98C75F642DDEA96</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>90F25FC5748C8FFD10D0C34C5076DDE5</key>
+		<key>B99EFF08688E88B9189131922483A8BD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9C4E70BB64168FAB91408AF7402CE1BF</key>
+		<key>D0B187D074A391695953ABCCE18BB599</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A4E2D8FD5DD16E521ADC24B1B142262C</key>
+		<key>DEF9A0F166F3579AB84B51792067E17F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DC97711F0A9251D2D1AF166347213DB2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E493D78AF804D526D2CF6BC1F4B11D32</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E89E689FBAB36106B1AE88DCA3E5FFFE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FC2E1018336A7236642D8C5AE7783DE9</key>
+		<key>E97CE244FE22BAE11F2E46BAF5637188</key>
 		<dict>
 			<key>primary</key>
 			<true/>

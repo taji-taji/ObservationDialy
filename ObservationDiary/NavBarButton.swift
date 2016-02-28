@@ -26,7 +26,7 @@ class NavBarButton: FlatButton {
         self.titleLabel!.font = RobotoFont.mediumWithSize(20)
         self.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         self.backgroundColor = UIColor.clearColor()
-        self.contentInsetPreset = .WideRectangle3
+        self.contentEdgeInsetsPreset = .WideRectangle3
     }
     
 }

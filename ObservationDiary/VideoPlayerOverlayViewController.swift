@@ -29,6 +29,8 @@ class VideoPlayerOverlayViewController: MobilePlayerOverlayViewController {
             return
         }
         
+        LogManager.setLogEvent(.TapMovieDownloadButton)
+        
         RMUniversalAlert.showAlertInViewController(self,
             withTitle: "ムービーの保存",
             message: "ムービーをカメラロールに保存します",
@@ -48,6 +50,7 @@ class VideoPlayerOverlayViewController: MobilePlayerOverlayViewController {
         guard let shareMovieViewController = R.storyboard.shareMovie.shareMovieVC(), target = target else {
             return
         }
+        LogManager.setLogEvent(.TapMovieTweetButton)
         shareMovieViewController.modalTransitionStyle = .CrossDissolve
         shareMovieViewController.modalPresentationStyle = .OverCurrentContext
         shareMovieViewController.target = target
@@ -69,6 +72,7 @@ class VideoPlayerOverlayViewController: MobilePlayerOverlayViewController {
             title = "ムービーの保存に失敗しました"
         } else {
             title = "ムービーを保存しました"
+            LogManager.setLogEvent(.DownloadMovie)
         }
         let myAlert = UIAlertController(title: title, message: nil, preferredStyle: .Alert)
         let ok = UIAlertAction(title: "OK", style: .Cancel, handler: nil)

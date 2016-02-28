@@ -25,7 +25,7 @@ class BasicButton: FlatButton {
         self.pulseColor = Constants.Theme.concept
         self.titleLabel!.font = RobotoFont.lightWithSize(16)
         self.setTitleColor(Constants.Theme.textColor, forState: .Normal)
-        self.contentInsetPreset = .WideRectangle3
+        self.contentEdgeInsetsPreset = .WideRectangle3
     }
     
 }

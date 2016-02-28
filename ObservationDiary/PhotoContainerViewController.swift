@@ -148,11 +148,13 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
     
     // 記録タイトルの編集
     func editTarget(sender: UIBarButtonItem) {
-        performSegueWithIdentifier("ModifyItem", sender: self.target)
+        performSegueWithIdentifier("EditTarget", sender: self.target)
     }
     
     // ムービーの再生 or 保存
     @IBAction func movieAction(sender: UIBarButtonItem) {
+        LogManager.setLogEvent(.TapMovieButton)
+
         if photos?.count < Constants.Video.minPhotos {
             let myAlert = UIAlertController(title: "ムービーを再生できません", message: "ムービーは画像が３枚以上になると自動的に作成されます。", preferredStyle: .Alert)
             let ok = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
@@ -193,6 +195,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
     
     // 既存の写真の編集ボタンを押した時の選択肢
     func editAlert(sender: UIGestureRecognizer) {
+        LogManager.setLogEvent(.TapEditPhotoMenuButton)
 
         let cell = TableUtility().findUITableViewCellFromSuperViewsForView(sender.view as! UIButton) as! PhotoTableViewCell
         
@@ -221,6 +224,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
     // 編集ボタンを押した時
     func editPhoto(cell: PhotoTableViewCell) {
         // 画面遷移
+        LogManager.setLogEvent(.TapEditPhotoButton)
         performSegueWithIdentifier("DetailPhotoSegue", sender: cell)
     }
     
@@ -229,6 +233,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
         let alertController = UIAlertController(title: "削除します。", message: "この操作は取り消せません。", preferredStyle: .Alert)
         let deletePhoto = UIAlertAction(title: "削除する", style: .Default, handler: {
             (action: UIAlertAction!) in
+            LogManager.setLogEvent(.TapDeletePhotoButton)
             self.deletePhoto(id, indexPath: indexPath)
         })
         let cancelAction = UIAlertAction(title: "キャンセル", style: .Cancel, handler: {
@@ -251,6 +256,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
         let deleteIndex = (self.target?.photos.count)! - (indexPath.section + 1)
         do {
             try realm.write {
+                LogManager.setLogEvent(.DeletePhoto)
                 self.target?.photos.removeAtIndex(deleteIndex)
                 self.tableView.deleteSections(NSIndexSet(index: indexPath.section), withRowAnimation: .Fade)
                 if PhotoUtility().delete(fileName) {
@@ -279,6 +285,8 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
             return
         }
         
+        LogManager.setLogEvent(.TapDownloadPhotoButton)
+        
         RMUniversalAlert.showActionSheetInViewController(self,
             withTitle: "写真の保存",
             message: "",
@@ -295,6 +303,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
                     LoadingOverlay.shared.showOverlay(self.navigationController?.view)
                     // カメラロールに保存
                     UIImageWriteToSavedPhotosAlbum(photoImageView.image!, self, "image:didFinishSavingWithError:contextInfo:", nil)
+                    LogManager.setLogEvent(.DownloadPhoto)
                 }
         })
     }

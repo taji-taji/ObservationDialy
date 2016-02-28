@@ -243,6 +243,7 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
 
             let updateValue = ["id": selectedId, "comment": self.commentTextView.text]
             Storage().update(PhotoData(), updateValues: updateValue)
+            LogManager.setLogEvent(.EditPhoto)
             
             // targetのタイムスタンプ更新
             if let photo = Storage().find(PhotoData(), id: selectedId) {
@@ -278,6 +279,7 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
         
             }
             Storage().add(photo)
+            LogManager.setLogEvent(.AddPhoto)
 
             // targetのタイムスタンプ更新
             let targetUpdateValues = ["id": target.id, "updated": now]
