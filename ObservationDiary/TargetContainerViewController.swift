@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMobileAds
 import Material
+import Flurry_iOS_SDK
 
 class TargetContainerViewController: UIViewController {
     
@@ -31,6 +32,8 @@ class TargetContainerViewController: UIViewController {
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        Flurry.logAllPageViewsForTarget(self.navigationController!)
+        
         checkAndSwitchNoTargetView()
         self.addButton.backgroundColor = Constants.Theme.concept
         
@@ -112,7 +115,7 @@ class TargetContainerViewController: UIViewController {
             
         } else if let senderButton = sender as? UIButton {
             
-            if segue.identifier == "ModifyItem" {
+            if segue.identifier == R.segue.targetContainerViewController.editTarget.identifier {
                 
                 // 選択したセルを取得
                 let selectedTargetCell = TableUtility().findUITableViewCellFromSuperViewsForView(senderButton)
@@ -143,10 +146,11 @@ class TargetContainerViewController: UIViewController {
                         targetViewController.targetImage = R.image.defaultPhoto()
                     }
                 }
+                LogManager.setLogEvent(.TapEditTargetGearButton)
                 NSNotificationCenter.defaultCenter().addObserver(self, selector: "deleteTarget:", name: "deleteTarget", object: nil)
             }
             
-        } else if segue.identifier == "AddItem" {
+        } else if segue.identifier == R.segue.targetContainerViewController.addTarget.identifier {
             let targetViewController = segue.destinationViewController as? TargetViewController
             // 半透明にする処理
             targetViewController!.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext

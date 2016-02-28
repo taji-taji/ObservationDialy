@@ -49,6 +49,7 @@ class TargetViewController: UIViewController {
         }
         if !isUpdate {
             deleteButton.hidden = true
+            LogManager.setLogEvent(.TapAddTargetButton)
         }
         
         titleTextField.becomeFirstResponder()
@@ -70,11 +71,12 @@ class TargetViewController: UIViewController {
     }
 
     @IBAction func deleteTarget(sender: UIButton) {
+        LogManager.setLogEvent(.TapDeleteTargetButton)
         // アラート
         let alertController = UIAlertController(title: "削除します。", message: "この操作は取り消せません。", preferredStyle: .Alert)
         let deletePhoto = UIAlertAction(title: "削除する", style: .Default, handler: {
             (action: UIAlertAction!) in
-            
+            LogManager.setLogEvent(.DeleteTarget)
             let n: NSNotification = NSNotification(name: "deleteTarget", object: self, userInfo: ["indexPath": self.indexPath!])
             //通知を送る
             NSNotificationCenter.defaultCenter().postNotification(n)
@@ -102,12 +104,13 @@ class TargetViewController: UIViewController {
         if let _ = targetId {
             Storage().update(target!, updateValues: ["id": targetId!, "title": title, "updated": now])
             isUpdate = true
-            
+            LogManager.setLogEvent(.EditTarget)
         // なければ新規追加
         } else {
             target?.created = now
             Storage().add(target!)
             isUpdate = false
+            LogManager.setLogEvent(.AddTarget)
         }
         NSNotificationCenter.defaultCenter().postNotificationName("reloadTargetList", object: nil, userInfo: ["isUpdate": isUpdate, "target": target!])
         self.dismissViewControllerAnimated(true, completion: nil)

@@ -52,6 +52,8 @@
 		930ED8D31C7FCB63007CD62E /* Material.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930ED8D21C7FCB63007CD62E /* Material.framework */; };
 		930ED8D51C814519007CD62E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930ED8D41C814519007CD62E /* SwiftyJSON.framework */; };
 		930ED8D91C814B9D007CD62E /* MobilePlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930ED8D81C814B9D007CD62E /* MobilePlayer.framework */; };
+		930ED8DD1C82F146007CD62E /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930ED8DC1C82F146007CD62E /* LogManager.swift */; };
+		930ED8DE1C82F146007CD62E /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930ED8DC1C82F146007CD62E /* LogManager.swift */; };
 		931165BF1BD6459400F1D32D /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */; };
 		933CD8BD1C222C3900CBD3D3 /* TargetViewController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8BC1C222C3900CBD3D3 /* TargetViewController+UITextFieldDelegate.swift */; };
 		933CD8C51C22CFFE00CBD3D3 /* VideoUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8C41C22CFFE00CBD3D3 /* VideoUtilityTests.swift */; };
@@ -194,6 +196,7 @@
 		930ED8D41C814519007CD62E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		930ED8D61C814B87007CD62E /* MobilePlayer.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = MobilePlayer.framework.dSYM; path = Carthage/Build/iOS/MobilePlayer.framework.dSYM; sourceTree = "<group>"; };
 		930ED8D81C814B9D007CD62E /* MobilePlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobilePlayer.framework; path = Carthage/Build/iOS/MobilePlayer.framework; sourceTree = "<group>"; };
+		930ED8DC1C82F146007CD62E /* LogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
 		933571831C1BD2AB00F9D948 /* StorageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageTests.swift; sourceTree = "<group>"; };
 		933CD8BC1C222C3900CBD3D3 /* TargetViewController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TargetViewController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
@@ -533,6 +536,7 @@
 				936505A61BDF1FEF00A824E0 /* PhotoUtility.swift */,
 				930763E81C12FEA900135834 /* VideoUtility.swift */,
 				93E476781C64A20400EF49EF /* KeyManager.swift */,
+				930ED8DC1C82F146007CD62E /* LogManager.swift */,
 				930763EA1C12FEAE00135834 /* Loading */,
 			);
 			name = Utilities;
@@ -912,6 +916,7 @@
 				93C7FDA11BDA7B7A00AC1A3D /* StorageProtocol.swift in Sources */,
 				93DBDBA71BF83A3F00E96148 /* DateUtility.swift in Sources */,
 				935F627D1C50528E00271DD8 /* R.generated.swift in Sources */,
+				930ED8DD1C82F146007CD62E /* LogManager.swift in Sources */,
 				93D907611C7D18B800524637 /* BaseScrollView.swift in Sources */,
 				93E4767B1C64A59D00EF49EF /* UIImageExtension.swift in Sources */,
 				93E476791C64A20400EF49EF /* KeyManager.swift in Sources */,
@@ -968,6 +973,7 @@
 				937E653A1C70466C00AB7CC9 /* BasicTextView.swift in Sources */,
 				9306DC521C55950800F98F71 /* Target.swift in Sources */,
 				935383BA1C55916300E3FCBD /* MediaUtilityTests.swift in Sources */,
+				930ED8DE1C82F146007CD62E /* LogManager.swift in Sources */,
 				9306DC8B1C564F3100F98F71 /* LoadingOverlay.swift in Sources */,
 				939562EC1C1E3792000D90D0 /* DateUtilityTests.swift in Sources */,
 				9370668F1C66276400087C9D /* DestroyButton.swift in Sources */,
@@ -1054,6 +1060,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FlurryAPIKey = FlurryAPIKeyDev;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1100,6 +1107,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FlurryAPIKey = FlurryAPIKeyRelease;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

@@ -58,7 +58,7 @@
                                                                 <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
                                                             <connections>
-                                                                <segue destination="BYZ-38-t0r" kind="presentation" identifier="ModifyItem" id="7fA-QW-YDD"/>
+                                                                <segue destination="BYZ-38-t0r" kind="presentation" identifier="EditTarget" id="7fA-QW-YDD"/>
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="最終更新：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJs-zA-AUn">
@@ -165,7 +165,7 @@
                                 <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="-10" maxY="0.0"/>
                                 <state key="normal" title="＋"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" id="QmC-va-FKU"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="AddTarget" id="QmC-va-FKU"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -872,7 +872,7 @@
         <image name="gridIcon_on" width="32" height="31"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tKr-IY-8VN"/>
         <segue reference="QmC-va-FKU"/>
+        <segue reference="5xa-s8-gx0"/>
     </inferredMetricsTieBreakers>
 </document>

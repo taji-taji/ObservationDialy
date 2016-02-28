@@ -88,6 +88,7 @@ class ShareMovieViewController: UIViewController {
         twitter.postWithMovie(tweetTextView.textView.text,
             fileName: fileName,
             success: { (responseData, urlResponse) -> Void in
+                LogManager.setLogEvent(.TweetMovie)
                 RMUniversalAlert.showAlertInViewController(self,
                     withTitle: "ツイートしました！",
                     message: nil,
