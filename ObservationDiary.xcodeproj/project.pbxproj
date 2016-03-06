@@ -73,6 +73,7 @@
 		935996151BD5AB8C0047EE9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 935996141BD5AB8C0047EE9F /* Assets.xcassets */; };
 		935996181BD5AB8C0047EE9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 935996161BD5AB8C0047EE9F /* LaunchScreen.storyboard */; };
 		935996321BD5EDC20047EE9F /* TargetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */; };
+		935D6B5E1C8C380000F94330 /* DevInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 935D6B5D1C8C380000F94330 /* DevInfo.plist */; };
 		935F62751C4EF5A600271DD8 /* AlphaControlSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935F62741C4EF5A600271DD8 /* AlphaControlSlider.swift */; };
 		935F62791C504AED00271DD8 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 935F62781C504AED00271DD8 /* Keys.plist */; };
 		935F627D1C50528E00271DD8 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935F627C1C50528E00271DD8 /* R.generated.swift */; };
@@ -117,6 +118,75 @@
 		93AD58361C6F2D1A009F3EAE /* ShareMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AD58331C6F2B08009F3EAE /* ShareMovieViewController.swift */; };
 		93C7FDA11BDA7B7A00AC1A3D /* StorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */; };
 		93C7FDA31BDA89F200AC1A3D /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FDA21BDA89F200AC1A3D /* Storage.swift */; };
+		93CCE4261C8C181E00C7C576 /* Tour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93429CB61C0531A90082D85F /* Tour.swift */; };
+		93CCE4271C8C181E00C7C576 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FDA21BDA89F200AC1A3D /* Storage.swift */; };
+		93CCE4281C8C181E00C7C576 /* BaseNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC7BD81C64C9C900C2826E /* BaseNavigationBarView.swift */; };
+		93CCE4291C8C181E00C7C576 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBAC1BF9E19300E96148 /* VideoPlayerViewController.swift */; };
+		93CCE42A1C8C181E00C7C576 /* ShareMovieViewController+TextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D9074A1C7971EE00524637 /* ShareMovieViewController+TextViewDelegate.swift */; };
+		93CCE42B1C8C181E00C7C576 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931165BE1BD6459400F1D32D /* PhotoTableViewCell.swift */; };
+		93CCE42C1C8C181E00C7C576 /* VideoPlayerOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D907501C79962C00524637 /* VideoPlayerOverlayViewController.swift */; };
+		93CCE42D1C8C181E00C7C576 /* TJViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9307642D1C17952E00135834 /* TJViewExtensions.swift */; };
+		93CCE42E1C8C181E00C7C576 /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC7BDB1C64D7D800C2826E /* BasicButton.swift */; };
+		93CCE42F1C8C181E00C7C576 /* AlphaControlSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935F62741C4EF5A600271DD8 /* AlphaControlSlider.swift */; };
+		93CCE4301C8C181E00C7C576 /* DestroyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937297271C65E5210007F909 /* DestroyButton.swift */; };
+		93CCE4311C8C181E00C7C576 /* VideoUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763E81C12FEA900135834 /* VideoUtility.swift */; };
+		93CCE4321C8C181E00C7C576 /* NavBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C62C21C67095500EF4C0D /* NavBarButton.swift */; };
+		93CCE4331C8C181E00C7C576 /* MediaUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8C81C23763900CBD3D3 /* MediaUtility.swift */; };
+		93CCE4341C8C181E00C7C576 /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC7BE31C65D94300C2826E /* BasicTextField.swift */; };
+		93CCE4351C8C181E00C7C576 /* TargetContainerViewController+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930764471C18EE4800135834 /* TargetContainerViewController+TableViewDataSource.swift */; };
+		93CCE4361C8C181E00C7C576 /* PhotoContainerViewController+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763DE1C12FB6400135834 /* PhotoContainerViewController+TableViewDataSource.swift */; };
+		93CCE4371C8C181E00C7C576 /* PhotoUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936505A61BDF1FEF00A824E0 /* PhotoUtility.swift */; };
+		93CCE4381C8C181E00C7C576 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763E31C12FDC500135834 /* Target.swift */; };
+		93CCE4391C8C181E00C7C576 /* FilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937297251C65E2710007F909 /* FilledButton.swift */; };
+		93CCE43A1C8C181E00C7C576 /* PhotoContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937F419A1BFFF0BD00DF2D80 /* PhotoContainerViewController.swift */; };
+		93CCE43B1C8C181E00C7C576 /* PhotoContainerViewController+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763DC1C12FAA900135834 /* PhotoContainerViewController+TableViewDelegate.swift */; };
+		93CCE43C1C8C181E00C7C576 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC7BE11C65D62800C2826E /* ModalView.swift */; };
+		93CCE43D1C8C181E00C7C576 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763E51C12FE0200135834 /* Photo.swift */; };
+		93CCE43E1C8C181E00C7C576 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936505AA1BE4843200A824E0 /* CameraViewController.swift */; };
+		93CCE43F1C8C181E00C7C576 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9368DD4B1BEB9E5700F6E034 /* Constants.swift */; };
+		93CCE4401C8C181E00C7C576 /* TargetContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930764451C18E81100135834 /* TargetContainerViewController.swift */; };
+		93CCE4411C8C181E00C7C576 /* BasicTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937E65381C70466C00AB7CC9 /* BasicTextView.swift */; };
+		93CCE4421C8C181E00C7C576 /* TargetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */; };
+		93CCE4431C8C181E00C7C576 /* ImageThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC7BDF1C65D42400C2826E /* ImageThumbnailView.swift */; };
+		93CCE4441C8C181E00C7C576 /* ShareMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AD58331C6F2B08009F3EAE /* ShareMovieViewController.swift */; };
+		93CCE4451C8C181E00C7C576 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E4767C1C64A5CE00EF49EF /* NSDateExtension.swift */; };
+		93CCE4461C8C181E00C7C576 /* Twitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AD582C1C6F07CF009F3EAE /* Twitter.swift */; };
+		93CCE4471C8C181E00C7C576 /* StorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */; };
+		93CCE4481C8C181E00C7C576 /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBA61BF83A3F00E96148 /* DateUtility.swift */; };
+		93CCE4491C8C181E00C7C576 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935F627C1C50528E00271DD8 /* R.generated.swift */; };
+		93CCE44A1C8C181E00C7C576 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930ED8DC1C82F146007CD62E /* LogManager.swift */; };
+		93CCE44B1C8C181E00C7C576 /* BaseScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D907601C7D18B800524637 /* BaseScrollView.swift */; };
+		93CCE44C1C8C181E00C7C576 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E4767A1C64A59D00EF49EF /* UIImageExtension.swift */; };
+		93CCE44D1C8C181E00C7C576 /* KeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E476781C64A20400EF49EF /* KeyManager.swift */; };
+		93CCE44E1C8C181E00C7C576 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D9074C1C79727F00524637 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift */; };
+		93CCE44F1C8C181E00C7C576 /* TargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359960F1BD5AB8C0047EE9F /* TargetViewController.swift */; };
+		93CCE4501C8C181E00C7C576 /* AdViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E476801C64A62100EF49EF /* AdViewProtocol.swift */; };
+		93CCE4511C8C181E00C7C576 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD87691BF69818003F836B /* LoadingOverlay.swift */; };
+		93CCE4521C8C181E00C7C576 /* AdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939562F21C20DC04000D90D0 /* AdView.swift */; };
+		93CCE4531C8C181E00C7C576 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359960D1BD5AB8C0047EE9F /* AppDelegate.swift */; };
+		93CCE4541C8C181E00C7C576 /* LoadingProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBDBAE1BFB66AC00E96148 /* LoadingProxy.swift */; };
+		93CCE4551C8C181E00C7C576 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EBF811BDB4A3F00436BC0 /* PhotoViewController.swift */; };
+		93CCE4561C8C181E00C7C576 /* TargetViewController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8BC1C222C3900CBD3D3 /* TargetViewController+UITextFieldDelegate.swift */; };
+		93CCE4571C8C181E00C7C576 /* ModelBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930763E01C12FD7100135834 /* ModelBase.swift */; };
+		93CCE4581C8C181E00C7C576 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E4767E1C64A5F500EF49EF /* UIViewControllerExtension.swift */; };
+		93CCE4591C8C181E00C7C576 /* TableUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E0F8761C009B8A00BA5EEA /* TableUtility.swift */; };
+		93CCE45A1C8C181E00C7C576 /* TJColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9307642B1C1794E200135834 /* TJColorExtensions.swift */; };
+		93CCE45B1C8C181E00C7C576 /* UtilButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C62C51C6728F100EF4C0D /* UtilButton.swift */; };
+		93CCE45D1C8C181E00C7C576 /* Material.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930ED8D21C7FCB63007CD62E /* Material.framework */; };
+		93CCE45E1C8C181E00C7C576 /* MobilePlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930ED8D81C814B9D007CD62E /* MobilePlayer.framework */; };
+		93CCE45F1C8C181E00C7C576 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930ED8D41C814519007CD62E /* SwiftyJSON.framework */; };
+		93CCE4601C8C181E00C7C576 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93AD582E1C6F08D9009F3EAE /* Accounts.framework */; };
+		93CCE4611C8C181E00C7C576 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93AD58291C6F07A4009F3EAE /* Social.framework */; };
+		93CCE4621C8C181E00C7C576 /* Pods_ObservationDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F63331DA03D1714C30BE0A20 /* Pods_ObservationDiary.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		93CCE4631C8C181E00C7C576 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4D54223E4FC76CA2CE0A0D5 /* Pods.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		93CCE4651C8C181E00C7C576 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 935F62781C504AED00271DD8 /* Keys.plist */; };
+		93CCE4661C8C181E00C7C576 /* AdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939562F01C20DB06000D90D0 /* AdView.xib */; };
+		93CCE4671C8C181E00C7C576 /* ShareMovie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93AD58311C6F2AED009F3EAE /* ShareMovie.storyboard */; };
+		93CCE4681C8C181E00C7C576 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 935996161BD5AB8C0047EE9F /* LaunchScreen.storyboard */; };
+		93CCE4691C8C181E00C7C576 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 935996141BD5AB8C0047EE9F /* Assets.xcassets */; };
+		93CCE46A1C8C181E00C7C576 /* VideoPlayerOverlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93D907521C79969E00524637 /* VideoPlayerOverlay.storyboard */; };
+		93CCE46B1C8C181E00C7C576 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 9353CC731BDA127A00EAFCD6 /* Podfile */; };
+		93CCE46C1C8C181E00C7C576 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 939EBF831BDB5D3400436BC0 /* Main.storyboard */; };
 		93CD876A1BF69818003F836B /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD87691BF69818003F836B /* LoadingOverlay.swift */; };
 		93D9074B1C7971EE00524637 /* ShareMovieViewController+TextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D9074A1C7971EE00524637 /* ShareMovieViewController+TextViewDelegate.swift */; };
 		93D9074D1C79727F00524637 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D9074C1C79727F00524637 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift */; };
@@ -174,6 +244,16 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		93CCE46D1C8C181E00C7C576 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -217,6 +297,7 @@
 		9359961E1BD5AB8D0047EE9F /* ObservationDiary.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObservationDiary.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		935996241BD5AB8D0047EE9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		935996311BD5EDC20047EE9F /* TargetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetTableViewCell.swift; sourceTree = "<group>"; };
+		935D6B5D1C8C380000F94330 /* DevInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DevInfo.plist; sourceTree = "<group>"; };
 		935F62741C4EF5A600271DD8 /* AlphaControlSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphaControlSlider.swift; sourceTree = "<group>"; };
 		935F62781C504AED00271DD8 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Keys.plist; sourceTree = "<group>"; };
 		935F627C1C50528E00271DD8 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
@@ -245,6 +326,7 @@
 		93AD58331C6F2B08009F3EAE /* ShareMovieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareMovieViewController.swift; sourceTree = "<group>"; };
 		93C7FDA01BDA7B7A00AC1A3D /* StorageProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageProtocol.swift; sourceTree = "<group>"; };
 		93C7FDA21BDA89F200AC1A3D /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		93CCE4751C8C181E00C7C576 /* ObservationDiaryDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObservationDiaryDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93CD87691BF69818003F836B /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		93D9074A1C7971EE00524637 /* ShareMovieViewController+TextViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ShareMovieViewController+TextViewDelegate.swift"; sourceTree = "<group>"; };
 		93D9074C1C79727F00524637 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ShareMovieViewController+PickerViewDelegate+DataSource.swift"; sourceTree = "<group>"; };
@@ -291,6 +373,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				F546FF9110138BB34C68AE7B /* Pods_ObservationDiaryTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93CCE45C1C8C181E00C7C576 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93CCE45D1C8C181E00C7C576 /* Material.framework in Frameworks */,
+				93CCE45E1C8C181E00C7C576 /* MobilePlayer.framework in Frameworks */,
+				93CCE45F1C8C181E00C7C576 /* SwiftyJSON.framework in Frameworks */,
+				93CCE4601C8C181E00C7C576 /* Accounts.framework in Frameworks */,
+				93CCE4611C8C181E00C7C576 /* Social.framework in Frameworks */,
+				93CCE4621C8C181E00C7C576 /* Pods_ObservationDiary.framework in Frameworks */,
+				93CCE4631C8C181E00C7C576 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +499,7 @@
 				9359960A1BD5AB8C0047EE9F /* ObservationDiary.app */,
 				9359961E1BD5AB8D0047EE9F /* ObservationDiary.xctest */,
 				93DDA13F1C2B5BDE00B27FCF /* ObservationDiaryUITests.xctest */,
+				93CCE4751C8C181E00C7C576 /* ObservationDiaryDev.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -432,6 +529,7 @@
 				935996141BD5AB8C0047EE9F /* Assets.xcassets */,
 				935996161BD5AB8C0047EE9F /* LaunchScreen.storyboard */,
 				935996191BD5AB8C0047EE9F /* Info.plist */,
+				935D6B5D1C8C380000F94330 /* DevInfo.plist */,
 				935F62781C504AED00271DD8 /* Keys.plist */,
 			);
 			path = ObservationDiary;
@@ -603,6 +701,30 @@
 			productReference = 9359961E1BD5AB8D0047EE9F /* ObservationDiary.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		93CCE4221C8C181E00C7C576 /* ObservationDiaryDev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93CCE4721C8C181E00C7C576 /* Build configuration list for PBXNativeTarget "ObservationDiaryDev" */;
+			buildPhases = (
+				93CCE4231C8C181E00C7C576 /* Check Pods Manifest.lock */,
+				93CCE4241C8C181E00C7C576 /* ShellScript */,
+				93CCE4251C8C181E00C7C576 /* Sources */,
+				93CCE45C1C8C181E00C7C576 /* Frameworks */,
+				93CCE4641C8C181E00C7C576 /* Resources */,
+				93CCE46D1C8C181E00C7C576 /* Embed Frameworks */,
+				93CCE46E1C8C181E00C7C576 /* Embed Pods Frameworks */,
+				93CCE46F1C8C181E00C7C576 /* Copy Pods Resources */,
+				93CCE4701C8C181E00C7C576 /* ShellScript */,
+				93CCE4711C8C181E00C7C576 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ObservationDiaryDev;
+			productName = PhotoLogger;
+			productReference = 93CCE4751C8C181E00C7C576 /* ObservationDiaryDev.app */;
+			productType = "com.apple.product-type.application";
+		};
 		93DDA13E1C2B5BDE00B27FCF /* ObservationDiaryUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93DDA1481C2B5BDE00B27FCF /* Build configuration list for PBXNativeTarget "ObservationDiaryUITests" */;
@@ -646,6 +768,9 @@
 						CreatedOnToolsVersion = 7.0.1;
 						TestTargetID = 935996091BD5AB8C0047EE9F;
 					};
+					93CCE4221C8C181E00C7C576 = {
+						DevelopmentTeam = R5U4C8KFRC;
+					};
 					93DDA13E1C2B5BDE00B27FCF = {
 						CreatedOnToolsVersion = 7.2;
 						TestTargetID = 935996091BD5AB8C0047EE9F;
@@ -666,6 +791,7 @@
 			projectRoot = "";
 			targets = (
 				935996091BD5AB8C0047EE9F /* ObservationDiary */,
+				93CCE4221C8C181E00C7C576 /* ObservationDiaryDev */,
 				9359961D1BD5AB8D0047EE9F /* ObservationDiaryTests */,
 				93DDA13E1C2B5BDE00B27FCF /* ObservationDiaryUITests */,
 			);
@@ -683,6 +809,7 @@
 				935996181BD5AB8C0047EE9F /* LaunchScreen.storyboard in Resources */,
 				935996151BD5AB8C0047EE9F /* Assets.xcassets in Resources */,
 				93D907531C79969E00524637 /* VideoPlayerOverlay.storyboard in Resources */,
+				935D6B5E1C8C380000F94330 /* DevInfo.plist in Resources */,
 				9353CC741BDA127A00EAFCD6 /* Podfile in Resources */,
 				939EBF841BDB5D3400436BC0 /* Main.storyboard in Resources */,
 			);
@@ -696,6 +823,21 @@
 				93D907541C79969E00524637 /* VideoPlayerOverlay.storyboard in Resources */,
 				9306DC831C564DC400F98F71 /* Podfile in Resources */,
 				9306DC5C1C55952400F98F71 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93CCE4641C8C181E00C7C576 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93CCE4651C8C181E00C7C576 /* Keys.plist in Resources */,
+				93CCE4661C8C181E00C7C576 /* AdView.xib in Resources */,
+				93CCE4671C8C181E00C7C576 /* ShareMovie.storyboard in Resources */,
+				93CCE4681C8C181E00C7C576 /* LaunchScreen.storyboard in Resources */,
+				93CCE4691C8C181E00C7C576 /* Assets.xcassets in Resources */,
+				93CCE46A1C8C181E00C7C576 /* VideoPlayerOverlay.storyboard in Resources */,
+				93CCE46B1C8C181E00C7C576 /* Podfile in Resources */,
+				93CCE46C1C8C181E00C7C576 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -814,6 +956,93 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"";
+		};
+		93CCE4231C8C181E00C7C576 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		93CCE4241C8C181E00C7C576 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"";
+		};
+		93CCE46E1C8C181E00C7C576 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93CCE46F1C8C181E00C7C576 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ObservationDiary/Pods-ObservationDiary-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93CCE4701C8C181E00C7C576 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 213291df46397c8a0f026184f126af919bb45920 2f615fed6487773f9cf9a4aa79792098b93d07e530f4a1c48f0b4023f619a499";
+		};
+		93CCE4711C8C181E00C7C576 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Material.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/MobilePlayer.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 		93E476821C64B2F600EF49EF /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -999,6 +1228,67 @@
 				9306DC571C55951600F98F71 /* PhotoUtility.swift in Sources */,
 				93D9074E1C7972CB00524637 /* ShareMovieViewController+TextViewDelegate.swift in Sources */,
 				937066981C6628C500087C9D /* KeyManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93CCE4251C8C181E00C7C576 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93CCE4261C8C181E00C7C576 /* Tour.swift in Sources */,
+				93CCE4271C8C181E00C7C576 /* Storage.swift in Sources */,
+				93CCE4281C8C181E00C7C576 /* BaseNavigationBarView.swift in Sources */,
+				93CCE4291C8C181E00C7C576 /* VideoPlayerViewController.swift in Sources */,
+				93CCE42A1C8C181E00C7C576 /* ShareMovieViewController+TextViewDelegate.swift in Sources */,
+				93CCE42B1C8C181E00C7C576 /* PhotoTableViewCell.swift in Sources */,
+				93CCE42C1C8C181E00C7C576 /* VideoPlayerOverlayViewController.swift in Sources */,
+				93CCE42D1C8C181E00C7C576 /* TJViewExtensions.swift in Sources */,
+				93CCE42E1C8C181E00C7C576 /* BasicButton.swift in Sources */,
+				93CCE42F1C8C181E00C7C576 /* AlphaControlSlider.swift in Sources */,
+				93CCE4301C8C181E00C7C576 /* DestroyButton.swift in Sources */,
+				93CCE4311C8C181E00C7C576 /* VideoUtility.swift in Sources */,
+				93CCE4321C8C181E00C7C576 /* NavBarButton.swift in Sources */,
+				93CCE4331C8C181E00C7C576 /* MediaUtility.swift in Sources */,
+				93CCE4341C8C181E00C7C576 /* BasicTextField.swift in Sources */,
+				93CCE4351C8C181E00C7C576 /* TargetContainerViewController+TableViewDataSource.swift in Sources */,
+				93CCE4361C8C181E00C7C576 /* PhotoContainerViewController+TableViewDataSource.swift in Sources */,
+				93CCE4371C8C181E00C7C576 /* PhotoUtility.swift in Sources */,
+				93CCE4381C8C181E00C7C576 /* Target.swift in Sources */,
+				93CCE4391C8C181E00C7C576 /* FilledButton.swift in Sources */,
+				93CCE43A1C8C181E00C7C576 /* PhotoContainerViewController.swift in Sources */,
+				93CCE43B1C8C181E00C7C576 /* PhotoContainerViewController+TableViewDelegate.swift in Sources */,
+				93CCE43C1C8C181E00C7C576 /* ModalView.swift in Sources */,
+				93CCE43D1C8C181E00C7C576 /* Photo.swift in Sources */,
+				93CCE43E1C8C181E00C7C576 /* CameraViewController.swift in Sources */,
+				93CCE43F1C8C181E00C7C576 /* Constants.swift in Sources */,
+				93CCE4401C8C181E00C7C576 /* TargetContainerViewController.swift in Sources */,
+				93CCE4411C8C181E00C7C576 /* BasicTextView.swift in Sources */,
+				93CCE4421C8C181E00C7C576 /* TargetTableViewCell.swift in Sources */,
+				93CCE4431C8C181E00C7C576 /* ImageThumbnailView.swift in Sources */,
+				93CCE4441C8C181E00C7C576 /* ShareMovieViewController.swift in Sources */,
+				93CCE4451C8C181E00C7C576 /* NSDateExtension.swift in Sources */,
+				93CCE4461C8C181E00C7C576 /* Twitter.swift in Sources */,
+				93CCE4471C8C181E00C7C576 /* StorageProtocol.swift in Sources */,
+				93CCE4481C8C181E00C7C576 /* DateUtility.swift in Sources */,
+				93CCE4491C8C181E00C7C576 /* R.generated.swift in Sources */,
+				93CCE44A1C8C181E00C7C576 /* LogManager.swift in Sources */,
+				93CCE44B1C8C181E00C7C576 /* BaseScrollView.swift in Sources */,
+				93CCE44C1C8C181E00C7C576 /* UIImageExtension.swift in Sources */,
+				93CCE44D1C8C181E00C7C576 /* KeyManager.swift in Sources */,
+				93CCE44E1C8C181E00C7C576 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift in Sources */,
+				93CCE44F1C8C181E00C7C576 /* TargetViewController.swift in Sources */,
+				93CCE4501C8C181E00C7C576 /* AdViewProtocol.swift in Sources */,
+				93CCE4511C8C181E00C7C576 /* LoadingOverlay.swift in Sources */,
+				93CCE4521C8C181E00C7C576 /* AdView.swift in Sources */,
+				93CCE4531C8C181E00C7C576 /* AppDelegate.swift in Sources */,
+				93CCE4541C8C181E00C7C576 /* LoadingProxy.swift in Sources */,
+				93CCE4551C8C181E00C7C576 /* PhotoViewController.swift in Sources */,
+				93CCE4561C8C181E00C7C576 /* TargetViewController+UITextFieldDelegate.swift in Sources */,
+				93CCE4571C8C181E00C7C576 /* ModelBase.swift in Sources */,
+				93CCE4581C8C181E00C7C576 /* UIViewControllerExtension.swift in Sources */,
+				93CCE4591C8C181E00C7C576 /* TableUtility.swift in Sources */,
+				93CCE45A1C8C181E00C7C576 /* TJColorExtensions.swift in Sources */,
+				93CCE45B1C8C181E00C7C576 /* UtilButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1295,6 +1585,100 @@
 			};
 			name = Release;
 		};
+		93CCE4731C8C181E00C7C576 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C40873B2A71B70A74A79743 /* Pods-ObservationDiary.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/ObservationDiary/DevInfo.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(CONFIGURATION_BUILD_DIR)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-framework",
+					"\"EasyTipView\"",
+					"-framework",
+					"\"Flurry_iOS_SDK\"",
+					"-framework",
+					"\"RMUniversalAlert\"",
+					"-framework",
+					"\"Realm\"",
+					"-framework",
+					"\"RealmSwift\"",
+					"-framework",
+					"\"Rswift\"",
+					"-framework",
+					"\"UIActionSheet_Blocks\"",
+					"-framework",
+					"\"UIAlertController_Blocks\"",
+					"-framework",
+					"\"UIAlertView_Blocks\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.engideer.ObservationDiaryDevTaji;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		93CCE4741C8C181E00C7C576 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 786730243BD3F6AB47A9A35E /* Pods-ObservationDiary.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/ObservationDiary/DevInfo.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks $(CONFIGURATION_BUILD_DIR)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-framework",
+					"\"EasyTipView\"",
+					"-framework",
+					"\"Flurry_iOS_SDK\"",
+					"-framework",
+					"\"RMUniversalAlert\"",
+					"-framework",
+					"\"Realm\"",
+					"-framework",
+					"\"RealmSwift\"",
+					"-framework",
+					"\"Rswift\"",
+					"-framework",
+					"\"UIActionSheet_Blocks\"",
+					"-framework",
+					"\"UIAlertController_Blocks\"",
+					"-framework",
+					"\"UIAlertView_Blocks\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.engideer.ObservationDiaryDevTaji;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		93DDA1461C2B5BDE00B27FCF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D15D9258C6AB4172095DB999 /* Pods-ObservationDiaryUITests.debug.xcconfig */;
@@ -1350,6 +1734,15 @@
 			buildConfigurations = (
 				9359962B1BD5AB8D0047EE9F /* Debug */,
 				9359962C1BD5AB8D0047EE9F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		93CCE4721C8C181E00C7C576 /* Build configuration list for PBXNativeTarget "ObservationDiaryDev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93CCE4731C8C181E00C7C576 /* Debug */,
+				93CCE4741C8C181E00C7C576 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

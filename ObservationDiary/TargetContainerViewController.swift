@@ -42,6 +42,7 @@ class TargetContainerViewController: UIViewController {
         addTargetTour.tour(.AddTarget, forView: addButton, superView: nil)
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadTargetList:", name: "reloadTargetList", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "deleteTarget:", name: "deleteTarget", object: nil)
         tableView.dataSource = self
         self.loadAd(self.adView)
     }
@@ -163,7 +164,6 @@ class TargetContainerViewController: UIViewController {
                     }
                 }
                 LogManager.setLogEvent(.TapEditTargetGearButton)
-                NSNotificationCenter.defaultCenter().addObserver(self, selector: "deleteTarget:", name: "deleteTarget", object: nil)
             }
             
         } else if segue.identifier == R.segue.targetContainerViewController.addTarget.identifier {

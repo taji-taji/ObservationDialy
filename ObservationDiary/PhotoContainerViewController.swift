@@ -133,7 +133,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
                     
                     // テーブル挿入完了後の処理
                     CATransaction.setCompletionBlock({ () -> Void in
-                        self.checkMovieTour.tour(.CheckMovie, forView: self.navigationItem.rightBarButtonItem!, superView: nil)
+                        self.checkMovieTour.tour(.CheckMovie, forView: self.movieButton, superView: nil)
                         if let cell = self.tableView.cellForRowAtIndexPath(newIndexPath) as? PhotoTableViewCell {
                             self.editPhotoTour.tour(.EditPhoto, forView: cell.editButton, superView: self.tableView)
                         }
