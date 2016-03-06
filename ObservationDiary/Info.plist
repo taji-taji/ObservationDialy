@@ -36,6 +36,8 @@
 			</dict>
 		</array>
 	</dict>
+	<key>FlurryAPIKey</key>
+	<string>$(FlurryAPIKey)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
@@ -57,7 +59,7 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
-	<key>FlurryAPIKey</key>
-	<string>$(FlurryAPIKey)</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

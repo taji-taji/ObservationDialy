@@ -65,7 +65,7 @@ class TargetContainerViewController: UIViewController {
         addButton.setImage(R.image.addIcon(), forState: .Highlighted)
         self.addButton.addTarget(self, action: "addButtonTapped", forControlEvents: .TouchUpInside)
         self.navigationView.navigationBarView.rightControls = [addButton]
-        self.navigationView.navigationBarView.titleLabel?.text = "記録一覧"
+        self.navigationView.navigationBarView.titleLabel?.text = "記録リスト"
     }
     
     func addButtonTapped() {
