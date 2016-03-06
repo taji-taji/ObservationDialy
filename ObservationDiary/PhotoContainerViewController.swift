@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import RMUniversalAlert
+import Material
 
 class PhotoContainerViewController: UIViewController, UINavigationControllerDelegate {
     
@@ -19,6 +20,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
     var takePhotoTour: Tour
     var editPhotoTour: Tour
     var checkMovieTour: Tour
+    var movieButton = FlatButton()
     let realm = try! Realm()
     let now = NSDate()
     let heightForHeaderInSection: CGFloat = 45
@@ -26,6 +28,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var cameraBarButton: UIBarButtonItem!
     @IBOutlet weak var noPhotoView: UIView!
+    @IBOutlet weak var navigationView: BaseNavigationBarView!
 
     // MARK: - Initializetion
 
@@ -42,11 +45,13 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
         super.viewDidLoad()
 
         if let target = target {
-            navigationItem.title = target.title
+            navigationView.navigationBarView.titleLabel?.text = target.title
             photos = target.photos.sorted("created", ascending: false)
         }
         
         checkAndSwitchNoPhotoView()
+        setBackButton(self.navigationView)
+        setNavigationItems()
         
         // セルの高さ
         tableView.estimatedRowHeight = 850
@@ -85,6 +90,15 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
         }
     }
     
+    private func setNavigationItems() {
+        movieButton.pulseScale = false
+        movieButton.pulseColor = MaterialColor.white
+        movieButton.setImage(R.image.movieIcon(), forState: .Normal)
+        movieButton.setImage(R.image.movieIcon(), forState: .Highlighted)
+        self.movieButton.addTarget(self, action: "movieAction:", forControlEvents: .TouchUpInside)
+        self.navigationView.navigationBarView.rightControls = [movieButton]
+    }
+    
     // MARK: - Actions
     
     // カメラビューへ遷移
@@ -119,7 +133,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
                     
                     // テーブル挿入完了後の処理
                     CATransaction.setCompletionBlock({ () -> Void in
-                        self.checkMovieTour.tour(.CheckMovie, forView: self.navigationItem.rightBarButtonItem!, superView: nil)
+                        self.checkMovieTour.tour(.CheckMovie, forView: self.movieButton, superView: nil)
                         if let cell = self.tableView.cellForRowAtIndexPath(newIndexPath) as? PhotoTableViewCell {
                             self.editPhotoTour.tour(.EditPhoto, forView: cell.editButton, superView: self.tableView)
                         }
@@ -152,7 +166,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
     }
     
     // ムービーの再生 or 保存
-    @IBAction func movieAction(sender: UIBarButtonItem) {
+    func movieAction(sender: UIButton) {
         LogManager.setLogEvent(.TapMovieButton)
 
         if photos?.count < Constants.Video.minPhotos {
@@ -225,7 +239,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
     func editPhoto(cell: PhotoTableViewCell) {
         // 画面遷移
         LogManager.setLogEvent(.TapEditPhotoButton)
-        performSegueWithIdentifier("DetailPhotoSegue", sender: cell)
+        performSegueWithIdentifier(R.segue.photoContainerViewController.detailPhotoSegue, sender: cell)
     }
     
     // 削除ボタンを押した時にアラートを出す
@@ -335,7 +349,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
         let nav: UINavigationController = segue.destinationViewController as! UINavigationController
         let identifier = segue.identifier
         
-        if identifier == "DetailPhotoSegue" {
+        if identifier == R.segue.photoContainerViewController.detailPhotoSegue.identifier {
             let photoViewController = nav.viewControllers[0] as! PhotoViewController
             if sender is PhotoTableViewCell {
                 if let cell = sender as? PhotoTableViewCell {
@@ -345,7 +359,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
                     photoViewController.targetId = target?.id
                 }
             }
-        } else if identifier == "showCameraView" {
+        } else if identifier == R.segue.photoContainerViewController.showCameraView.identifier {
             let cameraViewController = nav.viewControllers[0] as! CameraViewController
             cameraViewController.targetId = target?.id
             if let overlayImage = sender as? UIImage {

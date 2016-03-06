@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0720"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "935996091BD5AB8C0047EE9F"
-               BuildableName = "ObservationDiary.app"
-               BlueprintName = "ObservationDiary"
+               BlueprintIdentifier = "93CCE4221C8C181E00C7C576"
+               BuildableName = "ObservationDiaryDev.app"
+               BlueprintName = "ObservationDiaryDev"
                ReferencedContainer = "container:ObservationDiary.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,33 +28,13 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9359961D1BD5AB8D0047EE9F"
-               BuildableName = "ObservationDiary.xctest"
-               BlueprintName = "ObservationDiaryTests"
-               ReferencedContainer = "container:ObservationDiary.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "93DDA13E1C2B5BDE00B27FCF"
-               BuildableName = "ObservationDiaryUITests.xctest"
-               BlueprintName = "ObservationDiaryUITests"
-               ReferencedContainer = "container:ObservationDiary.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "935996091BD5AB8C0047EE9F"
-            BuildableName = "ObservationDiary.app"
-            BlueprintName = "ObservationDiary"
+            BlueprintIdentifier = "93CCE4221C8C181E00C7C576"
+            BuildableName = "ObservationDiaryDev.app"
+            BlueprintName = "ObservationDiaryDev"
             ReferencedContainer = "container:ObservationDiary.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -75,9 +55,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "935996091BD5AB8C0047EE9F"
-            BuildableName = "ObservationDiary.app"
-            BlueprintName = "ObservationDiary"
+            BlueprintIdentifier = "93CCE4221C8C181E00C7C576"
+            BuildableName = "ObservationDiaryDev.app"
+            BlueprintName = "ObservationDiaryDev"
             ReferencedContainer = "container:ObservationDiary.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -94,9 +74,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "935996091BD5AB8C0047EE9F"
-            BuildableName = "ObservationDiary.app"
-            BlueprintName = "ObservationDiary"
+            BlueprintIdentifier = "93CCE4221C8C181E00C7C576"
+            BuildableName = "ObservationDiaryDev.app"
+            BlueprintName = "ObservationDiaryDev"
             ReferencedContainer = "container:ObservationDiary.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

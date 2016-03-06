@@ -52,4 +52,8 @@ class VideoPlayerViewController: MobilePlayerViewController {
         super.didReceiveMemoryWarning()
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        UIApplication.sharedApplication().statusBarHidden = false
+    }
+
 }

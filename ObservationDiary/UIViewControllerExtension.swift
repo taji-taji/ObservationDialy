@@ -29,14 +29,26 @@ extension UIViewController: AdViewProtocol, GADBannerViewDelegate {
         bannerView.alpha = 1
     }
     
-    func addNavigationBar() -> BaseNavigationBarView {
-        let navigationBarView = BaseNavigationBarView(frame: CGRectZero)
-        view.addSubview(navigationBarView)
-        navigationBarView.translatesAutoresizingMaskIntoConstraints = false
-        MaterialLayout.alignFromTop(view, child: navigationBarView)
-        MaterialLayout.alignToParentHorizontally(view, child: navigationBarView)
-        MaterialLayout.height(view, child: navigationBarView, height: 66)
-        return navigationBarView
+}
+
+protocol BackButtonDelegate {
+    func setBackButton(navigationBar: BaseNavigationBarView)
+}
+
+extension UIViewController: BackButtonDelegate {
+    
+    func setBackButton(navigationBar: BaseNavigationBarView) {
+        let backButton = FlatButton()
+        backButton.pulseScale = false
+        backButton.pulseColor = MaterialColor.white
+        backButton.setImage(R.image.backIcon(), forState: .Normal)
+        backButton.setImage(R.image.backIcon(), forState: .Highlighted)
+        backButton.addTarget(self, action: "back", forControlEvents: .TouchUpInside)
+        navigationBar.navigationBarView.leftControls = [backButton]
     }
     
+    func back() {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+
 }
