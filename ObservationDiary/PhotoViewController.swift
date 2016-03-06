@@ -18,10 +18,12 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var photoImageView: UIImageView?
     @IBOutlet weak var commentTextWrapView: UIView!
     @IBOutlet weak var commentTextView: UITextView!
-    @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var commentCountLabel: UILabel!
     @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var textViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var navigationView: BaseNavigationBarView!
+    var saveButton = FlatButton()
+    var cancelButton = FlatButton()
     // 新規作成時に選択された画像
     var selectedImage: UIImage?
     // 編集の際に受け取るコメント
@@ -40,6 +42,8 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setNavigationItems()
 
         if let selectedImage = selectedImage {
             photoImageView?.image = selectedImage
@@ -56,7 +60,7 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
         
         remainCount = remainCount - commentTextView.text.characters.count
         commentCountLabel.text = "あと\(remainCount)文字入力できます"
-    
+
         if(!isObserving) {
             let notification = NSNotificationCenter.defaultCenter()
             notification.addObserver(self, selector: "handleKeyboardWillShowNotification:"
@@ -95,6 +99,22 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    private func setNavigationItems() {
+        saveButton.pulseScale = false
+        saveButton.pulseColor = MaterialColor.white
+        saveButton.setTitle("保存", forState: .Normal)
+        saveButton.setTitleColor(MaterialColor.white, forState: .Normal)
+        saveButton.addTarget(self, action: "savePhoto:", forControlEvents: .TouchUpInside)
+        self.navigationView.navigationBarView.rightControls = [saveButton]
+        
+        cancelButton.pulseScale = false
+        cancelButton.pulseColor = MaterialColor.white
+        cancelButton.setTitle("キャンセル", forState: .Normal)
+        cancelButton.setTitleColor(MaterialColor.white, forState: .Normal)
+        cancelButton.addTarget(self, action: "cancel:", forControlEvents: .TouchUpInside)
+        self.navigationView.navigationBarView.leftControls = [cancelButton]
     }
 
     // MARK: - Text view delegate
@@ -163,7 +183,7 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
     func handleKeyboardWillShowNotification(notification: NSNotification) {
         // キーボードのアクティブフラグを立てる
         isKeyboardActive = true
-        saveButton.title = "完了"
+        saveButton.setTitle("完了", forState: .Normal)
         
         // キーボード分、画面を上にずらす
         // 郵便入れみたいなもの
@@ -197,17 +217,17 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
         photoScrollView.contentOffset.y = screenOffsetY
         // キーボードのアクティブフラグを下ろす
         isKeyboardActive = false
-        saveButton.title = "保存"
+        saveButton.setTitle("保存", forState: .Normal)
     }
     
     // MARK: - Actions
-    @IBAction func savePhoto(sender: UIBarButtonItem) {
+    func savePhoto(sender: UIButton) {
         
         // キーボードがアクティブな時はキーボードを閉じるだけ
         if isKeyboardActive {
             self.view.endEditing(true)
             isKeyboardActive = false
-            saveButton.title = "保存"
+            saveButton.setTitle("保存", forState: .Normal)
             return
         }
         
@@ -308,7 +328,7 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
     }
 
     // MARK: - Navigation
-    @IBAction func cancel(sender: UIBarButtonItem) {
+    func cancel(sender: UIButton) {
         let isPresentingInAddPhotoMode = presentingViewController is UINavigationController
         if isPresentingInAddPhotoMode {
             dismissViewControllerAnimated(true, completion: nil)

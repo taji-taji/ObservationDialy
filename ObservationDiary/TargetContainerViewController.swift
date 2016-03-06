@@ -17,10 +17,11 @@ class TargetContainerViewController: UIViewController {
     var targets = Storage().findAll(TargetData(), orderby: "updated", ascending: false)
     var addTargetTour: Tour
     var editTargetTour: Tour
+    var addButton: FlatButton = FlatButton()
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noTargetView: UIView!
     @IBOutlet weak var adView: AdView!
-    @IBOutlet weak var addButton: NavBarButton!
+    @IBOutlet weak var navigationView: BaseNavigationBarView!
     
     // MARK: - Initialization
     required init?(coder aDecoder: NSCoder) {
@@ -35,7 +36,8 @@ class TargetContainerViewController: UIViewController {
         Flurry.logAllPageViewsForTarget(self.navigationController!)
         
         checkAndSwitchNoTargetView()
-        self.addButton.backgroundColor = Constants.Theme.concept
+//        self.addButton.backgroundColor = Constants.Theme.concept
+        self.setNavigationItems()
         
         addTargetTour.tour(.AddTarget, forView: addButton, superView: nil)
 
@@ -54,6 +56,20 @@ class TargetContainerViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    private func setNavigationItems() {
+        addButton.pulseScale = false
+        addButton.pulseColor = MaterialColor.white
+        addButton.setImage(R.image.addIcon(), forState: .Normal)
+        addButton.setImage(R.image.addIcon(), forState: .Highlighted)
+        self.addButton.addTarget(self, action: "addButtonTapped", forControlEvents: .TouchUpInside)
+        self.navigationView.navigationBarView.rightControls = [addButton]
+        self.navigationView.navigationBarView.titleLabel?.text = "記録一覧"
+    }
+    
+    func addButtonTapped() {
+        performSegueWithIdentifier(R.segue.targetContainerViewController.addTarget, sender: nil)
     }
     
     // MARK: - Actions
