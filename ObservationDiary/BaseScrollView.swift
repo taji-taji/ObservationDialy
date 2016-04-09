@@ -43,8 +43,8 @@ class BaseScrollView: UIScrollView {
     }
     
     func setKeyboardObserver() {
-        notificationCenter.addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
-        notificationCenter.addObserver(self, selector: "keyboardDidHide", name: UIKeyboardDidHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(BaseScrollView.keyboardDidShow(_:)), name: UIKeyboardDidShowNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(BaseScrollView.keyboardDidHide), name: UIKeyboardDidHideNotification, object: nil)
     }
     
     func keyboardDidShow(notification: NSNotification) {

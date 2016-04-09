@@ -41,8 +41,8 @@ class TargetContainerViewController: UIViewController {
         
         addTargetTour.tour(.AddTarget, forView: addButton, superView: nil)
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadTargetList:", name: "reloadTargetList", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "deleteTarget:", name: "deleteTarget", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TargetContainerViewController.reloadTargetList(_:)), name: "reloadTargetList", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TargetContainerViewController.deleteTarget(_:)), name: "deleteTarget", object: nil)
         tableView.dataSource = self
         self.loadAd(self.adView)
     }
@@ -64,7 +64,7 @@ class TargetContainerViewController: UIViewController {
         addButton.pulseColor = MaterialColor.white
         addButton.setImage(R.image.addIcon(), forState: .Normal)
         addButton.setImage(R.image.addIcon(), forState: .Highlighted)
-        self.addButton.addTarget(self, action: "addButtonTapped", forControlEvents: .TouchUpInside)
+        self.addButton.addTarget(self, action: #selector(TargetContainerViewController.addButtonTapped), forControlEvents: .TouchUpInside)
         self.navigationView.navigationBarView.rightControls = [addButton]
         self.navigationView.navigationBarView.titleLabel?.text = "記録リスト"
     }

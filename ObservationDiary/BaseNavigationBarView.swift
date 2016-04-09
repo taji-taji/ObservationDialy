@@ -12,7 +12,7 @@ import Material
 @IBDesignable
 class BaseNavigationBarView: UIView {
     
-    var navigationBarView: NavigationBarView = NavigationBarView()
+    var navigationBarView: Toolbar = Toolbar()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

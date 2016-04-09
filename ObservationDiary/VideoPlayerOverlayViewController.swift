@@ -40,7 +40,7 @@ class VideoPlayerOverlayViewController: MobilePlayerOverlayViewController {
                 if index == alert.destructiveButtonIndex {
                     LoadingProxy.set(self.parentViewController!)
                     LoadingProxy.on()
-                    UISaveVideoAtPathToSavedPhotosAlbum(filePath, self, "video:didFinishSavingWithError:contextInfo:", nil)
+                    UISaveVideoAtPathToSavedPhotosAlbum(filePath, self, #selector(VideoPlayerOverlayViewController.video(_:didFinishSavingWithError:contextInfo:)), nil)
                 }
         }
         

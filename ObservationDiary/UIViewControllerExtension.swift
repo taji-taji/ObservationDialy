@@ -43,7 +43,7 @@ extension UIViewController: BackButtonDelegate {
         backButton.pulseColor = MaterialColor.white
         backButton.setImage(R.image.backIcon(), forState: .Normal)
         backButton.setImage(R.image.backIcon(), forState: .Highlighted)
-        backButton.addTarget(self, action: "back", forControlEvents: .TouchUpInside)
+        backButton.addTarget(self, action: #selector(UIViewController.back), forControlEvents: .TouchUpInside)
         navigationBar.navigationBarView.leftControls = [backButton]
     }
     

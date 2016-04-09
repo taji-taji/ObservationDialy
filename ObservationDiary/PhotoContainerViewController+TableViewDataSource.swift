@@ -37,7 +37,7 @@ extension PhotoContainerViewController: UITableViewDataSource {
                 cell.timeLabel.text = DateUtility(dateFormat: "HH時mm分").dateToStr(photo.updated)
                 cell.id = photo.id
             }
-            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "editAlert:")
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PhotoContainerViewController.editAlert(_:)))
             cell.editButton.addGestureRecognizer(tapGestureRecognizer)
             cell.editButton.setImage(R.image.editIconHighlighted(), forState: .Highlighted)
             

@@ -68,6 +68,10 @@
 		935383BA1C55916300E3FCBD /* MediaUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933CD8CB1C23799A00CBD3D3 /* MediaUtilityTests.swift */; };
 		9353CC741BDA127A00EAFCD6 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 9353CC731BDA127A00EAFCD6 /* Podfile */; };
 		9357D8471C54DFC40051D028 /* TourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBC6ED1C1DB01A0078AD62 /* TourTests.swift */; };
+		93591E921CB10D51000F1FD2 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93591E901CB10D51000F1FD2 /* Realm.framework */; };
+		93591E931CB10D51000F1FD2 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93591E911CB10D51000F1FD2 /* RealmSwift.framework */; };
+		93591E941CB10D64000F1FD2 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93591E901CB10D51000F1FD2 /* Realm.framework */; };
+		93591E951CB10D64000F1FD2 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93591E911CB10D51000F1FD2 /* RealmSwift.framework */; };
 		9359960E1BD5AB8C0047EE9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359960D1BD5AB8C0047EE9F /* AppDelegate.swift */; };
 		935996101BD5AB8C0047EE9F /* TargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359960F1BD5AB8C0047EE9F /* TargetViewController.swift */; };
 		935996151BD5AB8C0047EE9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 935996141BD5AB8C0047EE9F /* Assets.xcassets */; };
@@ -288,6 +292,8 @@
 		934C62C21C67095500EF4C0D /* NavBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavBarButton.swift; sourceTree = "<group>"; };
 		934C62C51C6728F100EF4C0D /* UtilButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilButton.swift; sourceTree = "<group>"; };
 		9353CC731BDA127A00EAFCD6 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93591E901CB10D51000F1FD2 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		93591E911CB10D51000F1FD2 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		9359960A1BD5AB8C0047EE9F /* ObservationDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObservationDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9359960D1BD5AB8C0047EE9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9359960F1BD5AB8C0047EE9F /* TargetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetViewController.swift; sourceTree = "<group>"; };
@@ -359,6 +365,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				930C60DE1C83B8CF00D6D6EC /* Material.framework in Frameworks */,
+				93591E921CB10D51000F1FD2 /* Realm.framework in Frameworks */,
+				93591E931CB10D51000F1FD2 /* RealmSwift.framework in Frameworks */,
 				930ED8D91C814B9D007CD62E /* MobilePlayer.framework in Frameworks */,
 				930ED8D51C814519007CD62E /* SwiftyJSON.framework in Frameworks */,
 				93AD582F1C6F08D9009F3EAE /* Accounts.framework in Frameworks */,
@@ -381,6 +389,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				93CCE45D1C8C181E00C7C576 /* Material.framework in Frameworks */,
+				93591E941CB10D64000F1FD2 /* Realm.framework in Frameworks */,
+				93591E951CB10D64000F1FD2 /* RealmSwift.framework in Frameworks */,
 				93CCE45E1C8C181E00C7C576 /* MobilePlayer.framework in Frameworks */,
 				93CCE45F1C8C181E00C7C576 /* SwiftyJSON.framework in Frameworks */,
 				93CCE4601C8C181E00C7C576 /* Accounts.framework in Frameworks */,
@@ -404,6 +414,8 @@
 		1AC6187A87C9D958D55D8118 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				93591E901CB10D51000F1FD2 /* Realm.framework */,
+				93591E911CB10D51000F1FD2 /* RealmSwift.framework */,
 				930ED8D81C814B9D007CD62E /* MobilePlayer.framework */,
 				930ED8D61C814B87007CD62E /* MobilePlayer.framework.dSYM */,
 				930ED8D41C814519007CD62E /* SwiftyJSON.framework */,
@@ -937,6 +949,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Material.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/MobilePlayer.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 			);
 			outputPaths = (
 			);
@@ -1037,6 +1051,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Material.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/MobilePlayer.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 			);
 			outputPaths = (
 			);
