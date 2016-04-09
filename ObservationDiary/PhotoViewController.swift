@@ -63,9 +63,9 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
 
         if(!isObserving) {
             let notification = NSNotificationCenter.defaultCenter()
-            notification.addObserver(self, selector: "handleKeyboardWillShowNotification:"
+            notification.addObserver(self, selector: #selector(PhotoViewController.handleKeyboardWillShowNotification(_:))
                 , name: UIKeyboardWillShowNotification, object: nil)
-            notification.addObserver(self, selector: "handleKeyboardWillHideNotification:"
+            notification.addObserver(self, selector: #selector(PhotoViewController.handleKeyboardWillHideNotification(_:))
                 , name: UIKeyboardWillHideNotification, object: nil)
             isObserving = true
         }
@@ -106,14 +106,14 @@ class PhotoViewController: UIViewController, UITextViewDelegate {
         saveButton.pulseColor = MaterialColor.white
         saveButton.setTitle("保存", forState: .Normal)
         saveButton.setTitleColor(MaterialColor.white, forState: .Normal)
-        saveButton.addTarget(self, action: "savePhoto:", forControlEvents: .TouchUpInside)
+        saveButton.addTarget(self, action: #selector(PhotoViewController.savePhoto(_:)), forControlEvents: .TouchUpInside)
         self.navigationView.navigationBarView.rightControls = [saveButton]
         
         cancelButton.pulseScale = false
         cancelButton.pulseColor = MaterialColor.white
         cancelButton.setTitle("キャンセル", forState: .Normal)
         cancelButton.setTitleColor(MaterialColor.white, forState: .Normal)
-        cancelButton.addTarget(self, action: "cancel:", forControlEvents: .TouchUpInside)
+        cancelButton.addTarget(self, action: #selector(PhotoViewController.cancel(_:)), forControlEvents: .TouchUpInside)
         self.navigationView.navigationBarView.leftControls = [cancelButton]
     }
 

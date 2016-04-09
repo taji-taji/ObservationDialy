@@ -63,8 +63,8 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "insertPhoto:", name: "photoAdded", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updatePhoto:", name: "photoEdited", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PhotoContainerViewController.insertPhoto(_:)), name: "photoAdded", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PhotoContainerViewController.updatePhoto(_:)), name: "photoEdited", object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -95,7 +95,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
         movieButton.pulseColor = MaterialColor.white
         movieButton.setImage(R.image.movieIcon(), forState: .Normal)
         movieButton.setImage(R.image.movieIcon(), forState: .Highlighted)
-        self.movieButton.addTarget(self, action: "movieAction:", forControlEvents: .TouchUpInside)
+        self.movieButton.addTarget(self, action: #selector(PhotoContainerViewController.movieAction(_:)), forControlEvents: .TouchUpInside)
         self.navigationView.navigationBarView.rightControls = [movieButton]
     }
     
@@ -316,7 +316,7 @@ class PhotoContainerViewController: UIViewController, UINavigationControllerDele
                     // 保存中のビューを出す
                     LoadingOverlay.shared.showOverlay(self.navigationController?.view)
                     // カメラロールに保存
-                    UIImageWriteToSavedPhotosAlbum(photoImageView.image!, self, "image:didFinishSavingWithError:contextInfo:", nil)
+                    UIImageWriteToSavedPhotosAlbum(photoImageView.image!, self, #selector(PhotoContainerViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
                     LogManager.setLogEvent(.DownloadPhoto)
                 }
         })

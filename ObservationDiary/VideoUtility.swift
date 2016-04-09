@@ -108,9 +108,7 @@ class VideoUtility: MediaUtility {
             let media_queue = dispatch_queue_create("mediaInputQueue", nil)
         
             writerInput.requestMediaDataWhenReadyOnQueue(media_queue, usingBlock: { () -> Void in
-                
-                // 現在のフレームカウント
-                var frameCount: Int = 0
+
         
                 // FPS
                 let fps: Int32 = 9
@@ -119,18 +117,18 @@ class VideoUtility: MediaUtility {
                 let frameDuration = CMTimeMake(1, fps)
 
                 // 全画像をバッファに貯めこむ
-                for image in images {
+                for (index, image) in images.enumerate() {
                     
                     if !adaptor.assetWriterInput.readyForMoreMediaData {
                         break
                     }
                     
-                    if frameCount == Constants.Video.maxPhotos {
+                    if index == Constants.Video.maxPhotos {
                         break
                     }
                         
-                    let lastFrameTime = CMTimeMake(Int64(frameCount), fps)
-                    let presentationTime = frameCount == 0 ? lastFrameTime : CMTimeAdd(lastFrameTime, frameDuration)
+                    let lastFrameTime = CMTimeMake(Int64(index), fps)
+                    let presentationTime = index == 0 ? lastFrameTime : CMTimeAdd(lastFrameTime, frameDuration)
             
                     autoreleasepool({ () -> () in
                         // CGImageからバッファを生成（後述）
@@ -140,8 +138,7 @@ class VideoUtility: MediaUtility {
                             // Error!
                         }
                     })
-        
-                    frameCount++;
+
                 }
         
                 // 動画生成終了
