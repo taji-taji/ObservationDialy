@@ -42,18 +42,18 @@ class VideoUtility: MediaUtility {
         return VideoDirectoryPath + "/" + fileName
     }
     
-    func makeVideoFromTarget(target: TargetData) {
+    func makeVideoFromTarget(target: TargetData, fps: Int32 = 7) {
         var photos: [UIImage] = []
         if target.photos.count >= Constants.Video.minPhotos {
             for photo in target.photos {
                 let image = PhotoUtility().get(photo.photo)
                 photos.append(image!)
             }
-            makeVideoFromPhotos(photos, fileName: "\(target.id)\(Constants.Video.VideoExtension)")
+            makeVideoFromPhotos(photos, fileName: "\(target.id)\(Constants.Video.VideoExtension)", fps: fps)
         }
     }
     
-    func makeVideoFromPhotos(images: [UIImage], fileName: String) {
+    func makeVideoFromPhotos(images: [UIImage], fileName: String, fps: Int32 = 7) {
 
         // 最初の画像から動画のサイズ指定する
         let size = images[0].size
@@ -111,7 +111,7 @@ class VideoUtility: MediaUtility {
 
         
                 // FPS
-                let fps: Int32 = 9
+                let fps: Int32 = fps // 1 ~ 13
                 
                 // 各画像の表示する時間
                 let frameDuration = CMTimeMake(1, fps)

@@ -21,23 +21,21 @@ class TargetViewController: UIViewController {
     @IBOutlet weak var deleteButton: DestroyButton!
     @IBOutlet weak var cardView: ModalView!
     @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var speedSlider: BasicSlider!
 
     var target: TargetData?
     var pageTitle: String?
-    var titleText: String?
     var targetImage: UIImage?
-    var completeButtonText: String?
     var targetId: Int?
+    var completeButtonText: String?
     var isKeyboardActive: Bool = false
     var isUpdate: Bool = false
     var indexPath: NSIndexPath?
+    var originalFps: Float = 7
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let titleText = titleText {
-            titleTextField.text = titleText
-        }
+
         if let pageTitle = pageTitle {
             pageTitleLabel.text = pageTitle
         }
@@ -51,6 +49,11 @@ class TargetViewController: UIViewController {
             deleteButton.hidden = true
             LogManager.setLogEvent(.TapAddTargetButton)
         }
+        if let target = target {
+            titleTextField.text = target.title
+            speedSlider.value = Float(target.fps)
+        }
+        originalFps = speedSlider.value
         
         titleTextField.becomeFirstResponder()
         titleTextField.titleLabelColor = MaterialColor.grey.lighten1
@@ -96,16 +99,24 @@ class TargetViewController: UIViewController {
         let now = NSDate()
         
         let title = titleTextField.text ?? ""
+        let fps = Int32(speedSlider.value)
         
         target = TargetData()
         target?.title = title
         target?.updated = now
+        target?.fps = fps
         
-        // targetIdがあればアップデート
-        if let _ = targetId {
-            Storage().update(target!, updateValues: ["id": targetId!, "title": title, "updated": now])
+        // targetがあればアップデート
+        if let targetId = targetId {
+            if let target = Storage().find(TargetData(), id: targetId) {
+                if originalFps != Float(fps) {
+                    VideoUtility().makeVideoFromTarget(target, fps: fps)
+                }
+                Storage().update(target, updateValues: ["id": targetId, "title": title, "updated": now, "fps": Int(fps)])
+            }
             isUpdate = true
             LogManager.setLogEvent(.EditTarget)
+
         // なければ新規追加
         } else {
             target?.created = now
@@ -124,6 +135,13 @@ class TargetViewController: UIViewController {
     
     @IBAction func textFieldEditingChanged(sender: UITextField) {
         targetSaveButton.enabled = !sender.text!.isEmpty
+    }
+    
+    @IBAction func sliderValueChanged(sender: UISlider) {
+        print(sender.value)
+        let step: Float = 1
+        let currentValue = round((sender.value - sender.minimumValue) / step) + 1
+        sender.value = currentValue
     }
     
     // MARK: Navigation

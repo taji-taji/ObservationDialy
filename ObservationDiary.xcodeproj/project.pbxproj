@@ -72,6 +72,8 @@
 		93591E931CB10D51000F1FD2 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93591E911CB10D51000F1FD2 /* RealmSwift.framework */; };
 		93591E941CB10D64000F1FD2 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93591E901CB10D51000F1FD2 /* Realm.framework */; };
 		93591E951CB10D64000F1FD2 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93591E911CB10D51000F1FD2 /* RealmSwift.framework */; };
+		93591E971CBA2D45000F1FD2 /* BasicSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93591E961CBA2D45000F1FD2 /* BasicSlider.swift */; };
+		93591E981CBA2D45000F1FD2 /* BasicSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93591E961CBA2D45000F1FD2 /* BasicSlider.swift */; };
 		9359960E1BD5AB8C0047EE9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359960D1BD5AB8C0047EE9F /* AppDelegate.swift */; };
 		935996101BD5AB8C0047EE9F /* TargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359960F1BD5AB8C0047EE9F /* TargetViewController.swift */; };
 		935996151BD5AB8C0047EE9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 935996141BD5AB8C0047EE9F /* Assets.xcassets */; };
@@ -294,6 +296,7 @@
 		9353CC731BDA127A00EAFCD6 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93591E901CB10D51000F1FD2 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		93591E911CB10D51000F1FD2 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		93591E961CBA2D45000F1FD2 /* BasicSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicSlider.swift; sourceTree = "<group>"; };
 		9359960A1BD5AB8C0047EE9F /* ObservationDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObservationDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9359960D1BD5AB8C0047EE9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9359960F1BD5AB8C0047EE9F /* TargetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetViewController.swift; sourceTree = "<group>"; };
@@ -640,6 +643,7 @@
 			isa = PBXGroup;
 			children = (
 				935F62741C4EF5A600271DD8 /* AlphaControlSlider.swift */,
+				93591E961CBA2D45000F1FD2 /* BasicSlider.swift */,
 				93DBDBA61BF83A3F00E96148 /* DateUtility.swift */,
 				93E0F8761C009B8A00BA5EEA /* TableUtility.swift */,
 				933CD8C81C23763900CBD3D3 /* MediaUtility.swift */,
@@ -1139,6 +1143,7 @@
 				930763E91C12FEA900135834 /* VideoUtility.swift in Sources */,
 				934C62C31C67095500EF4C0D /* NavBarButton.swift in Sources */,
 				933CD8C91C23763900CBD3D3 /* MediaUtility.swift in Sources */,
+				93591E971CBA2D45000F1FD2 /* BasicSlider.swift in Sources */,
 				93AC7BE41C65D94300C2826E /* BasicTextField.swift in Sources */,
 				930764481C18EE4800135834 /* TargetContainerViewController+TableViewDataSource.swift in Sources */,
 				930763DF1C12FB6400135834 /* PhotoContainerViewController+TableViewDataSource.swift in Sources */,
@@ -1265,6 +1270,7 @@
 				93CCE4311C8C181E00C7C576 /* VideoUtility.swift in Sources */,
 				93CCE4321C8C181E00C7C576 /* NavBarButton.swift in Sources */,
 				93CCE4331C8C181E00C7C576 /* MediaUtility.swift in Sources */,
+				93591E981CBA2D45000F1FD2 /* BasicSlider.swift in Sources */,
 				93CCE4341C8C181E00C7C576 /* BasicTextField.swift in Sources */,
 				93CCE4351C8C181E00C7C576 /* TargetContainerViewController+TableViewDataSource.swift in Sources */,
 				93CCE4361C8C181E00C7C576 /* PhotoContainerViewController+TableViewDataSource.swift in Sources */,

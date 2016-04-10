@@ -12,7 +12,7 @@ import RealmSwift
 class PhotoData: ModelBase {
     
     // MARK: - Properties
-
+    
     dynamic var comment: String = ""
     dynamic var photo: String = ""
     dynamic var created: NSDate = NSDate(timeIntervalSince1970: 1)

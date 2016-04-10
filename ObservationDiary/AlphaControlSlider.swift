@@ -10,21 +10,10 @@ import Foundation
 import UIKit
 
 @IBDesignable
-class AlphaControlSlider: UISlider {
+class AlphaControlSlider: BasicSlider {
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        commonInit()
-    }
-    
-    func commonInit() {
-        self.minimumTrackTintColor = Constants.Theme.concept
-        self.setThumbImage(R.image.sliderHandle(), forState: .Normal)
+    override func commonInit() {
+        super.commonInit()
         self.minimumValue = 0
         self.maximumValue = 1
         self.value = 0.3

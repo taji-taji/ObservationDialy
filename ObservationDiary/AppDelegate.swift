@@ -40,6 +40,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
     }
 
+}
 
+func bundlePath(path: String) -> String? {
+    let resourcePath = NSBundle.mainBundle().resourcePath as NSString?
+    return resourcePath?.stringByAppendingPathComponent(path)
 }
 

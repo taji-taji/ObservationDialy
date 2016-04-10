@@ -16,15 +16,13 @@ class Storage: StorageProtocol {
     init() {
         // Realm マイグレーション
         var config = Realm.Configuration(
-            schemaVersion: 1,
+            schemaVersion: 2,
             migrationBlock: { migration, oldSchemaVersion in
-//                migration.enumerate(Photo.className()) { oldObject, newObject in
-//                    if (oldSchemaVersion < 1) {
-//                    }
-//                    if (oldSchemaVersion < 2) {
-//                        newObject!["elapsedTime"] = 0
-//                    }
-//                }
+                migration.enumerate(TargetData.className()) { oldObject, newObject in
+                    if oldSchemaVersion < 2 {
+                        newObject!["fps"] = 7
+                    }
+                }
         })
         if NSProcessInfo.processInfo().arguments.contains("USE_UITEST_STORAGE") {
             config.inMemoryIdentifier = "UITesting"

@@ -147,8 +147,8 @@ class TargetContainerViewController: UIViewController {
                     // 半透明にする処理
                     targetViewController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
                     
-                    targetViewController.titleText = selectedTarget.title
-                    targetViewController.pageTitle = "記録タイトルの編集"
+                    targetViewController.target = selectedTarget
+                    targetViewController.pageTitle = "記録の編集"
                     targetViewController.completeButtonText = "変更"
                     targetViewController.targetId = selectedTarget.id
                     targetViewController.isUpdate = true
