@@ -33,6 +33,8 @@ class TargetContainerViewController: UIViewController {
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        AppVersionManager.versionUp(self)
+        
         Flurry.logAllPageViewsForTarget(self.navigationController!)
         
         checkAndSwitchNoTargetView()
