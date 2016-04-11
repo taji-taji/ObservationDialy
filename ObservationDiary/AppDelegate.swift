@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         
         LogManager.startLogSession()
+        
+        AppVersionManager.versionUp(application.keyWindow!.rootViewController!)
 
         return true
     }

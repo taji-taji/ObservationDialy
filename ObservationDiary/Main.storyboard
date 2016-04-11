@@ -195,7 +195,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tHQ-oE-OjM" customClass="ModalView" customModule="ObservationDiary" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="100" width="560" height="332"/>
+                                        <rect key="frame" x="20" y="100" width="560" height="337"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SZj-R1-19d" customClass="ImageThumbnailView" customModule="ObservationDiary" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="61" width="73" height="73"/>
@@ -213,21 +213,21 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QUz-e3-AZK">
-                                                <rect key="frame" x="0.0" y="259" width="560" height="1"/>
+                                                <rect key="frame" x="0.0" y="262" width="560" height="1"/>
                                                 <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="lUa-j9-PHr"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OvV-6f-hxK" customClass="BasicButton" customModule="ObservationDiary" customModuleProvider="target">
-                                                <rect key="frame" x="418" y="280" width="80" height="32"/>
+                                                <rect key="frame" x="404" y="283" width="90" height="34"/>
                                                 <state key="normal" title="キャンセル"/>
                                                 <connections>
                                                     <action selector="cancel:" destination="BYZ-38-t0r" eventType="touchUpInside" id="duy-2q-hVr"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYf-vZ-QXu" customClass="DestroyButton" customModule="ObservationDiary" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="280" width="32" height="32"/>
+                                                <rect key="frame" x="20" y="283" width="36" height="34"/>
                                                 <state key="normal" title="削除"/>
                                                 <connections>
                                                     <action selector="deleteTarget:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VSp-Xm-DHS"/>
@@ -251,32 +251,32 @@
                                                 </connections>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSg-6g-bMN" customClass="FilledButton" customModule="ObservationDiary" customModuleProvider="target">
-                                                <rect key="frame" x="508" y="280" width="32" height="32"/>
+                                                <rect key="frame" x="504" y="283" width="36" height="34"/>
                                                 <state key="normal" title="追加"/>
                                                 <connections>
                                                     <action selector="addItem:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tc6-b8-Kgh"/>
                                                 </connections>
                                             </button>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="7" minValue="1" maxValue="13" translatesAutoresizingMaskIntoConstraints="NO" id="cy8-0r-ndf" customClass="BasicSlider" customModule="ObservationDiary" customModuleProvider="target">
-                                                <rect key="frame" x="18" y="197" width="524" height="28"/>
+                                                <rect key="frame" x="18" y="197" width="524" height="31"/>
                                                 <connections>
                                                     <action selector="sliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="EtT-SS-4rb"/>
                                                 </connections>
                                             </slider>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="動画の速度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="163-8J-p0d">
-                                                <rect key="frame" x="20" y="170" width="70" height="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ムービーの再生スピード" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="163-8J-p0d">
+                                                <rect key="frame" x="20" y="170" width="154" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" red="0.23921568630000001" green="0.25490196079999999" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="速い" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QmX-If-UqK">
-                                                <rect key="frame" x="516" y="224" width="24" height="15"/>
+                                                <rect key="frame" x="516" y="227" width="24" height="15"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.23921568630000001" green="0.25490196079999999" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="遅い" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shC-I3-rWy">
-                                                <rect key="frame" x="20" y="224" width="24" height="15"/>
+                                                <rect key="frame" x="20" y="227" width="24" height="15"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.23921568630000001" green="0.25490196079999999" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>

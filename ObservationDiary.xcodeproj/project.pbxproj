@@ -74,6 +74,8 @@
 		93591E951CB10D64000F1FD2 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93591E911CB10D51000F1FD2 /* RealmSwift.framework */; };
 		93591E971CBA2D45000F1FD2 /* BasicSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93591E961CBA2D45000F1FD2 /* BasicSlider.swift */; };
 		93591E981CBA2D45000F1FD2 /* BasicSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93591E961CBA2D45000F1FD2 /* BasicSlider.swift */; };
+		93591E9A1CBC610D000F1FD2 /* AppVersionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93591E991CBC610C000F1FD2 /* AppVersionManager.swift */; };
+		93591E9B1CBC610D000F1FD2 /* AppVersionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93591E991CBC610C000F1FD2 /* AppVersionManager.swift */; };
 		9359960E1BD5AB8C0047EE9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359960D1BD5AB8C0047EE9F /* AppDelegate.swift */; };
 		935996101BD5AB8C0047EE9F /* TargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9359960F1BD5AB8C0047EE9F /* TargetViewController.swift */; };
 		935996151BD5AB8C0047EE9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 935996141BD5AB8C0047EE9F /* Assets.xcassets */; };
@@ -297,6 +299,7 @@
 		93591E901CB10D51000F1FD2 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		93591E911CB10D51000F1FD2 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		93591E961CBA2D45000F1FD2 /* BasicSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicSlider.swift; sourceTree = "<group>"; };
+		93591E991CBC610C000F1FD2 /* AppVersionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppVersionManager.swift; sourceTree = "<group>"; };
 		9359960A1BD5AB8C0047EE9F /* ObservationDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObservationDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9359960D1BD5AB8C0047EE9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9359960F1BD5AB8C0047EE9F /* TargetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetViewController.swift; sourceTree = "<group>"; };
@@ -651,6 +654,7 @@
 				930763E81C12FEA900135834 /* VideoUtility.swift */,
 				93E476781C64A20400EF49EF /* KeyManager.swift */,
 				930ED8DC1C82F146007CD62E /* LogManager.swift */,
+				93591E991CBC610C000F1FD2 /* AppVersionManager.swift */,
 				930763EA1C12FEAE00135834 /* Loading */,
 			);
 			name = Utilities;
@@ -1173,6 +1177,7 @@
 				93D9074D1C79727F00524637 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift in Sources */,
 				935996101BD5AB8C0047EE9F /* TargetViewController.swift in Sources */,
 				93E476811C64A62100EF49EF /* AdViewProtocol.swift in Sources */,
+				93591E9A1CBC610D000F1FD2 /* AppVersionManager.swift in Sources */,
 				93CD876A1BF69818003F836B /* LoadingOverlay.swift in Sources */,
 				939562F31C20DC04000D90D0 /* AdView.swift in Sources */,
 				9359960E1BD5AB8C0047EE9F /* AppDelegate.swift in Sources */,
@@ -1300,6 +1305,7 @@
 				93CCE44E1C8C181E00C7C576 /* ShareMovieViewController+PickerViewDelegate+DataSource.swift in Sources */,
 				93CCE44F1C8C181E00C7C576 /* TargetViewController.swift in Sources */,
 				93CCE4501C8C181E00C7C576 /* AdViewProtocol.swift in Sources */,
+				93591E9B1CBC610D000F1FD2 /* AppVersionManager.swift in Sources */,
 				93CCE4511C8C181E00C7C576 /* LoadingOverlay.swift in Sources */,
 				93CCE4521C8C181E00C7C576 /* AdView.swift in Sources */,
 				93CCE4531C8C181E00C7C576 /* AppDelegate.swift in Sources */,
